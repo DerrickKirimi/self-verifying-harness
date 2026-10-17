@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "walkthrough.schema.json",
+  "title": "Annotated bug walkthrough (M0 eval item)",
+  "type": "object",
+  "required": ["id", "app", "recording", "claims"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "app": {
+      "type": "object",
+      "required": ["repo", "pre_fix_commit", "post_fix_commit"],
+      "properties": {
+        "repo": {"type": "string", "description": "Path or URL of the app repo the owner controls"},
+        "pre_fix_commit": {"type": "string"},
+        "post_fix_commit": {"type": "string"},
+        "bug_origin": {"enum": ["real", "planted"]}
+      }
+    },
+    "recording": {
+      "type": "object",
+      "required": ["path", "duration_s"],
+      "properties": {
+        "path": {"type": "string", "description": "Relative to evals/recordings/ (gitignored or stored with LFS)"},
+        "duration_s": {"type": "number", "minimum": 0},
+        "speakers": {"type": "array", "items": {"type": "string"}, "description": "Owner only for M0"}
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["t_start_s", "t_end_s", "text", "kind", "reproduction"],
+        "additionalProperties": false,
+        "properties": {
+          "t_start_s": {"type": "number", "minimum": 0},
+          "t_end_s": {"type": "number", "minimum": 0},
+          "text": {"type": "string", "description": "The claim as stated, lightly normalised"},
+          "kind": {"enum": ["bug", "behaviour", "constraint", "request"]},
+          "shown_on_screen": {"type": "boolean"},
+          "reproduction": {
+            "type": "object",
+            "required": ["path", "runner"],
+            "properties": {
+              "path": {"type": "string", "description": "Relative to evals/reproductions/"},
+              "runner": {"enum": ["playwright", "pytest"]},
+              "observed": {
+                "type": "object",
+                "description": "Filled by the oracle/nop run, never by hand",
+                "properties": {
+                  "fails_on_pre_fix": {"type": "boolean"},
+                  "passes_on_post_fix": {"type": "boolean"},
+                  "run_at": {"type": "string", "format": "date-time"}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

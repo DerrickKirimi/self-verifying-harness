@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+evals/recordings/
+*.mp4
+*.wav
+*.webm
+traces/
+.scion/agents
