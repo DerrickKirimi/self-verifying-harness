@@ -1,13 +1,13 @@
 {
-  "run_at": "2026-10-20T18:36:21.563702+00:00",
+  "run_at": "2026-10-20T18:58:59.921207+00:00",
   "passed": true,
   "scope": "Actual MCP CLI + HTTP SDK + frozen public media/index; no live model inference or retrieval quality claim",
   "retrieval_timestamps_s": [
-    3.7112964777777777,
-    3.4083335,
-    3.8627779666666666,
-    3.5598149888888893,
-    3.2568520111111106
+    4.7716669,
+    5.680555833333333,
+    5.832037322222222,
+    6.286481788888889,
+    6.4379632777777775
   ],
   "screen_text_samples": 12,
   "versions": {
@@ -19,6 +19,7 @@
   "unauthorized_status": 401,
   "provenance": {
     "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+    "retrieval_method": "embeddinggemma2-observation",
     "recordings": 11,
     "version": "0.1.0"
   },

@@ -1,0 +1,1876 @@
+{
+  "run_at": "2026-10-20T18:58:06.033170+00:00",
+  "versions": {
+    "deepagents": "0.7.28",
+    "mcp": "2.3.0",
+    "google-genai": "2.31.0",
+    "langchain-google-genai": "4.4.2"
+  },
+  "index_provenance": [
+    {
+      "id": "swebench-bpmn-1557",
+      "identity": {
+        "recording_id": "swebench-bpmn-1557",
+        "media_sha256": "29ef13593291739b2e19bb76ca0dc4acc7eb0cc9491b84997cac4a8b7a362815",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 49452,
+        "output_tokens": 2023,
+        "total_tokens": 51475,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "identity": {
+        "recording_id": "swebench-bpmn-1570",
+        "media_sha256": "74a72f40dc46e662419b7b0af6da58a5ec6a55eb674020781226487209b1e091",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 50442,
+        "output_tokens": 2562,
+        "total_tokens": 53004,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "identity": {
+        "recording_id": "swebench-bpmn-1610",
+        "media_sha256": "4f5f5b423fedc1e16aca0f2651b63322b81d9055cc71540786b88fc6499a8e53",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 50082,
+        "output_tokens": 2431,
+        "total_tokens": 52513,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "identity": {
+        "recording_id": "swebench-bpmn-1623",
+        "media_sha256": "d5e89fad422e9d16286260a3d7befcabb9901f8987f2a5f650868f7a67b14236",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 49565,
+        "output_tokens": 4181,
+        "total_tokens": 53746,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "identity": {
+        "recording_id": "swebench-bpmn-1638",
+        "media_sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 50622,
+        "output_tokens": 3126,
+        "total_tokens": 53748,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "identity": {
+        "recording_id": "swebench-bpmn-1640",
+        "media_sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 49608,
+        "output_tokens": 2982,
+        "total_tokens": 52590,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "identity": {
+        "recording_id": "swebench-bpmn-1655",
+        "media_sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 49902,
+        "output_tokens": 2771,
+        "total_tokens": 52673,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "identity": {
+        "recording_id": "swebench-bpmn-1659",
+        "media_sha256": "1661275794ac56cc1bde7e3790f7233de817170995336da12089c336363e9998",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 48912,
+        "output_tokens": 2563,
+        "total_tokens": 51475,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "identity": {
+        "recording_id": "swebench-bpmn-1679",
+        "media_sha256": "be1925039dea24dd160978f40e52df53caa2f30eadb4826b74de192d952a4bd3",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 49563,
+        "output_tokens": 2837,
+        "total_tokens": 52400,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "identity": {
+        "recording_id": "swebench-bpmn-1719",
+        "media_sha256": "60563d817e9beecd50ee38f774ad0aa339a348b3efc4f879e4058e872406e917",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 49578,
+        "output_tokens": 1670,
+        "total_tokens": 51248,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "identity": {
+        "recording_id": "swebench-bpmn-1928",
+        "media_sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "prompt_sha256": "63538fa44d366dbbcd1c74f9f0b2aa81e4d56b496b811b1b07fa59c40a6d60e0",
+        "model": "gemini-3.5-flash-lite",
+        "frame_count": 45,
+        "sampler": "preceding_pts_v1"
+      },
+      "usage": {
+        "input_tokens": 48822,
+        "output_tokens": 2050,
+        "total_tokens": 50872,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    }
+  ],
+  "semantic_index_report_sha256": "21b676718797f14dbe9a70b6477891e2fd3214a2014a5d9450e24414cb4f4b57",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "selected": "embeddinggemma2-observation",
+  "passed": true,
+  "summary": {
+    "fixed45": {
+      "hit1": {
+        "successes": 8,
+        "n": 11,
+        "wilson95": [
+          0.43435469882387084,
+          0.902539407099751
+        ]
+      },
+      "hit5": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "strict1": {
+        "successes": 3,
+        "n": 11,
+        "wilson95": [
+          0.09746059290024889,
+          0.5656453011761291
+        ]
+      },
+      "strict5": {
+        "successes": 7,
+        "n": 11,
+        "wilson95": [
+          0.35380117450784887,
+          0.8483352890463243
+        ]
+      }
+    },
+    "temporal3": {
+      "hit1": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "hit5": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "strict1": {
+        "successes": 3,
+        "n": 11,
+        "wilson95": [
+          0.09746059290024889,
+          0.5656453011761291
+        ]
+      },
+      "strict5": {
+        "successes": 5,
+        "n": 11,
+        "wilson95": [
+          0.21271271622459764,
+          0.719908462590678
+        ]
+      }
+    },
+    "midpoint": {
+      "hit1": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "hit5": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "strict1": {
+        "successes": 3,
+        "n": 11,
+        "wilson95": [
+          0.09746059290024889,
+          0.5656453011761291
+        ]
+      },
+      "strict5": {
+        "successes": 3,
+        "n": 11,
+        "wilson95": [
+          0.09746059290024889,
+          0.5656453011761291
+        ]
+      }
+    },
+    "embeddinggemma2": {
+      "hit1": {
+        "successes": 8,
+        "n": 11,
+        "wilson95": [
+          0.43435469882387084,
+          0.902539407099751
+        ]
+      },
+      "hit5": {
+        "successes": 11,
+        "n": 11,
+        "wilson95": [
+          0.7411670330319684,
+          1.0
+        ]
+      },
+      "strict1": {
+        "successes": 4,
+        "n": 11,
+        "wilson95": [
+          0.15166471095367573,
+          0.6461988254921511
+        ]
+      },
+      "strict5": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      }
+    },
+    "embeddinggemma2-observation": {
+      "hit1": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "hit5": {
+        "successes": 11,
+        "n": 11,
+        "wilson95": [
+          0.7411670330319684,
+          1.0
+        ]
+      },
+      "strict1": {
+        "successes": 4,
+        "n": 11,
+        "wilson95": [
+          0.15166471095367573,
+          0.6461988254921511
+        ]
+      },
+      "strict5": {
+        "successes": 8,
+        "n": 11,
+        "wilson95": [
+          0.43435469882387084,
+          0.902539407099751
+        ]
+      }
+    }
+  },
+  "cases": {
+    "fixed45": [
+      {
+        "id": "swebench-bpmn-1557",
+        "query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "retrieval_query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "gold_span": [
+          7.5,
+          9.9
+        ],
+        "timestamps_s": [
+          4.73,
+          6.050000000000001,
+          5.83,
+          3.41,
+          2.0900000000000003
+        ],
+        "distance_s": [
+          2.7699999999999996,
+          1.4499999999999993,
+          1.67,
+          4.09,
+          5.41
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "bcb747e591ecfa4da93333da3956b4583030181586cabfa07b036ab675376ab0"
+      },
+      {
+        "id": "swebench-bpmn-1570",
+        "query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "retrieval_query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "gold_span": [
+          2.0,
+          4.0
+        ],
+        "timestamps_s": [
+          4.107,
+          4.329000000000001,
+          4.551,
+          4.773,
+          4.995
+        ],
+        "distance_s": [
+          0.1070000000000002,
+          0.3290000000000006,
+          0.5510000000000002,
+          0.7729999999999997,
+          0.9950000000000001
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "1487e7727529ac46646804cb77fc568178806563f3a5faa439cbded5044f2ac8"
+      },
+      {
+        "id": "swebench-bpmn-1610",
+        "query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "retrieval_query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "gold_span": [
+          8.0,
+          9.99
+        ],
+        "timestamps_s": [
+          7.437000000000001,
+          1.221,
+          5.439,
+          9.213000000000001,
+          8.769
+        ],
+        "distance_s": [
+          0.5629999999999988,
+          6.779,
+          2.561,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "f400732d4e86052013402866fe62ed430516d9821957c31210f09e080939ddc6"
+      },
+      {
+        "id": "swebench-bpmn-1623",
+        "query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "retrieval_query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "gold_span": [
+          16.0,
+          20.3
+        ],
+        "timestamps_s": [
+          1.578888888888889,
+          4.736666666666666,
+          10.15,
+          0.22555555555555556,
+          8.345555555555556
+        ],
+        "distance_s": [
+          14.421111111111111,
+          11.263333333333334,
+          5.85,
+          15.774444444444445,
+          7.654444444444444
+        ],
+        "hit1": false,
+        "hit5": false,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "279348b55a6a015a7526a34b48c987c6009be01582404abfc61fb57e7d507730"
+      },
+      {
+        "id": "swebench-bpmn-1638",
+        "query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "retrieval_query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "gold_span": [
+          0.5,
+          3.12
+        ],
+        "timestamps_s": [
+          0.7973333333333333,
+          1.8373333333333335,
+          1.9066666666666667,
+          1.976,
+          2.0453333333333337
+        ],
+        "distance_s": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "e291ce9a1d7299ccd38c58edb87a7c8ee88dd5b7fab17dfd54753ef3f6c9b5dc"
+      },
+      {
+        "id": "swebench-bpmn-1640",
+        "query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "retrieval_query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "gold_span": [
+          7.5,
+          12.5
+        ],
+        "timestamps_s": [
+          7.151666666666666,
+          7.560333333333333,
+          6.743,
+          6.334333333333333,
+          5.925666666666667
+        ],
+        "distance_s": [
+          0.3483333333333336,
+          0,
+          0.7569999999999997,
+          1.1656666666666666,
+          1.5743333333333327
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "87caa849bdc093acdc95433753d2ce31be1d0b69219c7ef796d2b5fc6ef03711"
+      },
+      {
+        "id": "swebench-bpmn-1655",
+        "query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "retrieval_query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "gold_span": [
+          5.0,
+          6.816667
+        ],
+        "timestamps_s": [
+          5.529074344444444,
+          5.074629877777777,
+          3.8627779666666666,
+          3.2568520111111106,
+          3.7112964777777777
+        ],
+        "distance_s": [
+          0,
+          0,
+          1.1372220333333334,
+          1.7431479888888894,
+          1.2887035222222223
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "3809fbf198ac123c4aaf0a26fc30cb1e882f31d93ace695c386d1e7153833002"
+      },
+      {
+        "id": "swebench-bpmn-1659",
+        "query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "retrieval_query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "gold_span": [
+          6.0,
+          9.0
+        ],
+        "timestamps_s": [
+          7.504,
+          5.936,
+          6.608,
+          5.4879999999999995,
+          4.368
+        ],
+        "distance_s": [
+          0,
+          0.06400000000000006,
+          0,
+          0.5120000000000005,
+          1.6319999999999997
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "847d1b040745d0e3d01d9553ff95bf3ee6d2eeec238d29f229c438705399775e"
+      },
+      {
+        "id": "swebench-bpmn-1679",
+        "query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "retrieval_query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "gold_span": [
+          14.0,
+          18.9
+        ],
+        "timestamps_s": [
+          4.83,
+          5.25,
+          2.31,
+          1.8900000000000001,
+          2.7299999999999995
+        ],
+        "distance_s": [
+          9.17,
+          8.75,
+          11.69,
+          12.11,
+          11.27
+        ],
+        "hit1": false,
+        "hit5": false,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "6cbec5e33024c5bb35133f66e4a031a62a6fe1865993a4a1c321d7128d521511"
+      },
+      {
+        "id": "swebench-bpmn-1719",
+        "query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "retrieval_query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "gold_span": [
+          31.0,
+          35.0
+        ],
+        "timestamps_s": [
+          6.884222222222222,
+          14.297999999999998,
+          33.361999999999995,
+          13.238888888888887,
+          32.30288888888889
+        ],
+        "distance_s": [
+          24.11577777777778,
+          16.702,
+          0,
+          17.761111111111113,
+          0
+        ],
+        "hit1": false,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "de2a231508e78d27c6bad92186a58a48c4e0b4f095e9c11e82091faf85ec2393"
+      },
+      {
+        "id": "swebench-bpmn-1928",
+        "query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "retrieval_query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "gold_span": [
+          4.0,
+          6.0
+        ],
+        "timestamps_s": [
+          2.997,
+          0.111,
+          2.553,
+          8.769,
+          5.439
+        ],
+        "distance_s": [
+          1.0030000000000001,
+          3.889,
+          1.447,
+          2.769,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "1bb51af7f973be19e6588f51ddd04b4b45c690c6ce4cb0240b859896d6213bad"
+      }
+    ],
+    "temporal3": [
+      {
+        "id": "swebench-bpmn-1557",
+        "query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "retrieval_query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "gold_span": [
+          7.5,
+          9.9
+        ],
+        "timestamps_s": [
+          5.83,
+          5.61,
+          2.0900000000000003,
+          6.050000000000001,
+          4.95
+        ],
+        "distance_s": [
+          1.67,
+          1.8899999999999997,
+          5.41,
+          1.4499999999999993,
+          2.55
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "bcb747e591ecfa4da93333da3956b4583030181586cabfa07b036ab675376ab0"
+      },
+      {
+        "id": "swebench-bpmn-1570",
+        "query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "retrieval_query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "gold_span": [
+          2.0,
+          4.0
+        ],
+        "timestamps_s": [
+          4.329000000000001,
+          4.551,
+          4.773,
+          4.995,
+          5.217
+        ],
+        "distance_s": [
+          0.3290000000000006,
+          0.5510000000000002,
+          0.7729999999999997,
+          0.9950000000000001,
+          1.2169999999999996
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "1487e7727529ac46646804cb77fc568178806563f3a5faa439cbded5044f2ac8"
+      },
+      {
+        "id": "swebench-bpmn-1610",
+        "query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "retrieval_query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "gold_span": [
+          8.0,
+          9.99
+        ],
+        "timestamps_s": [
+          7.659000000000001,
+          7.437000000000001,
+          7.215,
+          5.661,
+          5.217
+        ],
+        "distance_s": [
+          0.3409999999999993,
+          0.5629999999999988,
+          0.7850000000000001,
+          2.3390000000000004,
+          2.7830000000000004
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "f400732d4e86052013402866fe62ed430516d9821957c31210f09e080939ddc6"
+      },
+      {
+        "id": "swebench-bpmn-1623",
+        "query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "retrieval_query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "gold_span": [
+          16.0,
+          20.3
+        ],
+        "timestamps_s": [
+          1.1277777777777778,
+          9.698888888888888,
+          1.578888888888889,
+          10.15,
+          4.285555555555556
+        ],
+        "distance_s": [
+          14.872222222222222,
+          6.301111111111112,
+          14.421111111111111,
+          5.85,
+          11.714444444444444
+        ],
+        "hit1": false,
+        "hit5": false,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "279348b55a6a015a7526a34b48c987c6009be01582404abfc61fb57e7d507730"
+      },
+      {
+        "id": "swebench-bpmn-1638",
+        "query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "retrieval_query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "gold_span": [
+          0.5,
+          3.12
+        ],
+        "timestamps_s": [
+          0.8666666666666667,
+          0.7973333333333333,
+          0.728,
+          1.9066666666666667,
+          1.976
+        ],
+        "distance_s": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "e291ce9a1d7299ccd38c58edb87a7c8ee88dd5b7fab17dfd54753ef3f6c9b5dc"
+      },
+      {
+        "id": "swebench-bpmn-1640",
+        "query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "retrieval_query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "gold_span": [
+          7.5,
+          12.5
+        ],
+        "timestamps_s": [
+          6.334333333333333,
+          6.743,
+          7.151666666666666,
+          7.560333333333333,
+          5.925666666666667
+        ],
+        "distance_s": [
+          1.1656666666666666,
+          0.7569999999999997,
+          0.3483333333333336,
+          0,
+          1.5743333333333327
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "87caa849bdc093acdc95433753d2ce31be1d0b69219c7ef796d2b5fc6ef03711"
+      },
+      {
+        "id": "swebench-bpmn-1655",
+        "query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "retrieval_query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "gold_span": [
+          5.0,
+          6.816667
+        ],
+        "timestamps_s": [
+          5.680555833333333,
+          4.9231483888888885,
+          5.529074344444444,
+          5.377592855555555,
+          3.8627779666666666
+        ],
+        "distance_s": [
+          0,
+          0.0768516111111115,
+          0,
+          0,
+          1.1372220333333334
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "3809fbf198ac123c4aaf0a26fc30cb1e882f31d93ace695c386d1e7153833002"
+      },
+      {
+        "id": "swebench-bpmn-1659",
+        "query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "retrieval_query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "gold_span": [
+          6.0,
+          9.0
+        ],
+        "timestamps_s": [
+          5.712,
+          7.279999999999999,
+          7.728,
+          7.504,
+          5.936
+        ],
+        "distance_s": [
+          0.28800000000000026,
+          0,
+          0,
+          0,
+          0.06400000000000006
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "847d1b040745d0e3d01d9553ff95bf3ee6d2eeec238d29f229c438705399775e"
+      },
+      {
+        "id": "swebench-bpmn-1679",
+        "query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "retrieval_query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "gold_span": [
+          14.0,
+          18.9
+        ],
+        "timestamps_s": [
+          5.25,
+          4.83,
+          2.31,
+          5.67,
+          4.41
+        ],
+        "distance_s": [
+          8.75,
+          9.17,
+          11.69,
+          8.33,
+          9.59
+        ],
+        "hit1": false,
+        "hit5": false,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "6cbec5e33024c5bb35133f66e4a031a62a6fe1865993a4a1c321d7128d521511"
+      },
+      {
+        "id": "swebench-bpmn-1719",
+        "query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "retrieval_query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "gold_span": [
+          31.0,
+          35.0
+        ],
+        "timestamps_s": [
+          33.361999999999995,
+          13.238888888888887,
+          32.30288888888889,
+          14.297999999999998,
+          7.943333333333333
+        ],
+        "distance_s": [
+          0,
+          17.761111111111113,
+          0,
+          16.702,
+          23.056666666666665
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "de2a231508e78d27c6bad92186a58a48c4e0b4f095e9c11e82091faf85ec2393"
+      },
+      {
+        "id": "swebench-bpmn-1928",
+        "query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "retrieval_query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "gold_span": [
+          4.0,
+          6.0
+        ],
+        "timestamps_s": [
+          2.775,
+          0.111,
+          0.333,
+          2.997,
+          3.2190000000000003
+        ],
+        "distance_s": [
+          1.225,
+          3.889,
+          3.667,
+          1.0030000000000001,
+          0.7809999999999997
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "1bb51af7f973be19e6588f51ddd04b4b45c690c6ce4cb0240b859896d6213bad"
+      }
+    ],
+    "midpoint": [
+      {
+        "id": "swebench-bpmn-1557",
+        "query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "retrieval_query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "gold_span": [
+          7.5,
+          9.9
+        ],
+        "timestamps_s": [
+          4.95
+        ],
+        "distance_s": [
+          2.55
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "bcb747e591ecfa4da93333da3956b4583030181586cabfa07b036ab675376ab0"
+      },
+      {
+        "id": "swebench-bpmn-1570",
+        "query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "retrieval_query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "gold_span": [
+          2.0,
+          4.0
+        ],
+        "timestamps_s": [
+          4.995
+        ],
+        "distance_s": [
+          0.9950000000000001
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "1487e7727529ac46646804cb77fc568178806563f3a5faa439cbded5044f2ac8"
+      },
+      {
+        "id": "swebench-bpmn-1610",
+        "query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "retrieval_query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "gold_span": [
+          8.0,
+          9.99
+        ],
+        "timestamps_s": [
+          4.995
+        ],
+        "distance_s": [
+          3.005
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "f400732d4e86052013402866fe62ed430516d9821957c31210f09e080939ddc6"
+      },
+      {
+        "id": "swebench-bpmn-1623",
+        "query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "retrieval_query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "gold_span": [
+          16.0,
+          20.3
+        ],
+        "timestamps_s": [
+          10.15
+        ],
+        "distance_s": [
+          5.85
+        ],
+        "hit1": false,
+        "hit5": false,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "279348b55a6a015a7526a34b48c987c6009be01582404abfc61fb57e7d507730"
+      },
+      {
+        "id": "swebench-bpmn-1638",
+        "query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "retrieval_query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "gold_span": [
+          0.5,
+          3.12
+        ],
+        "timestamps_s": [
+          1.56
+        ],
+        "distance_s": [
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "e291ce9a1d7299ccd38c58edb87a7c8ee88dd5b7fab17dfd54753ef3f6c9b5dc"
+      },
+      {
+        "id": "swebench-bpmn-1640",
+        "query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "retrieval_query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "gold_span": [
+          7.5,
+          12.5
+        ],
+        "timestamps_s": [
+          9.195
+        ],
+        "distance_s": [
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "87caa849bdc093acdc95433753d2ce31be1d0b69219c7ef796d2b5fc6ef03711"
+      },
+      {
+        "id": "swebench-bpmn-1655",
+        "query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "retrieval_query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "gold_span": [
+          5.0,
+          6.816667
+        ],
+        "timestamps_s": [
+          3.4083335
+        ],
+        "distance_s": [
+          1.5916665
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "3809fbf198ac123c4aaf0a26fc30cb1e882f31d93ace695c386d1e7153833002"
+      },
+      {
+        "id": "swebench-bpmn-1659",
+        "query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "retrieval_query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "gold_span": [
+          6.0,
+          9.0
+        ],
+        "timestamps_s": [
+          5.04
+        ],
+        "distance_s": [
+          0.96
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "847d1b040745d0e3d01d9553ff95bf3ee6d2eeec238d29f229c438705399775e"
+      },
+      {
+        "id": "swebench-bpmn-1679",
+        "query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "retrieval_query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "gold_span": [
+          14.0,
+          18.9
+        ],
+        "timestamps_s": [
+          9.45
+        ],
+        "distance_s": [
+          4.550000000000001
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "6cbec5e33024c5bb35133f66e4a031a62a6fe1865993a4a1c321d7128d521511"
+      },
+      {
+        "id": "swebench-bpmn-1719",
+        "query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "retrieval_query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "gold_span": [
+          31.0,
+          35.0
+        ],
+        "timestamps_s": [
+          23.83
+        ],
+        "distance_s": [
+          7.170000000000002
+        ],
+        "hit1": false,
+        "hit5": false,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "de2a231508e78d27c6bad92186a58a48c4e0b4f095e9c11e82091faf85ec2393"
+      },
+      {
+        "id": "swebench-bpmn-1928",
+        "query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "retrieval_query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "gold_span": [
+          4.0,
+          6.0
+        ],
+        "timestamps_s": [
+          4.995
+        ],
+        "distance_s": [
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "1bb51af7f973be19e6588f51ddd04b4b45c690c6ce4cb0240b859896d6213bad"
+      }
+    ],
+    "embeddinggemma2": [
+      {
+        "id": "swebench-bpmn-1557",
+        "query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "retrieval_query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "gold_span": [
+          7.5,
+          9.9
+        ],
+        "timestamps_s": [
+          5.17,
+          5.390000000000001,
+          5.61,
+          6.050000000000001,
+          5.83
+        ],
+        "distance_s": [
+          2.33,
+          2.1099999999999994,
+          1.8899999999999997,
+          1.4499999999999993,
+          1.67
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "bcb747e591ecfa4da93333da3956b4583030181586cabfa07b036ab675376ab0"
+      },
+      {
+        "id": "swebench-bpmn-1570",
+        "query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "retrieval_query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "gold_span": [
+          2.0,
+          4.0
+        ],
+        "timestamps_s": [
+          2.109,
+          0.333,
+          3.8850000000000002,
+          2.3310000000000004,
+          1.887
+        ],
+        "distance_s": [
+          0,
+          1.667,
+          0,
+          0,
+          0.11299999999999999
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "1487e7727529ac46646804cb77fc568178806563f3a5faa439cbded5044f2ac8"
+      },
+      {
+        "id": "swebench-bpmn-1610",
+        "query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "retrieval_query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "gold_span": [
+          8.0,
+          9.99
+        ],
+        "timestamps_s": [
+          5.661,
+          5.439,
+          9.213000000000001,
+          3.2190000000000003,
+          7.881
+        ],
+        "distance_s": [
+          2.3390000000000004,
+          2.561,
+          0,
+          4.781,
+          0.11899999999999977
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "f400732d4e86052013402866fe62ed430516d9821957c31210f09e080939ddc6"
+      },
+      {
+        "id": "swebench-bpmn-1623",
+        "query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "retrieval_query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "gold_span": [
+          16.0,
+          20.3
+        ],
+        "timestamps_s": [
+          6.09,
+          10.15,
+          3.8344444444444448,
+          16.916666666666668,
+          16.465555555555557
+        ],
+        "distance_s": [
+          9.91,
+          5.85,
+          12.165555555555555,
+          0,
+          0
+        ],
+        "hit1": false,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "279348b55a6a015a7526a34b48c987c6009be01582404abfc61fb57e7d507730"
+      },
+      {
+        "id": "swebench-bpmn-1638",
+        "query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "retrieval_query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "gold_span": [
+          0.5,
+          3.12
+        ],
+        "timestamps_s": [
+          0.7973333333333333,
+          0.936,
+          1.0053333333333334,
+          1.0746666666666667,
+          1.2133333333333334
+        ],
+        "distance_s": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "e291ce9a1d7299ccd38c58edb87a7c8ee88dd5b7fab17dfd54753ef3f6c9b5dc"
+      },
+      {
+        "id": "swebench-bpmn-1640",
+        "query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "retrieval_query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "gold_span": [
+          7.5,
+          12.5
+        ],
+        "timestamps_s": [
+          0.613,
+          1.0216666666666667,
+          18.18566666666667,
+          7.151666666666666,
+          17.777
+        ],
+        "distance_s": [
+          6.8870000000000005,
+          6.4783333333333335,
+          5.68566666666667,
+          0.3483333333333336,
+          5.277000000000001
+        ],
+        "hit1": false,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "87caa849bdc093acdc95433753d2ce31be1d0b69219c7ef796d2b5fc6ef03711"
+      },
+      {
+        "id": "swebench-bpmn-1655",
+        "query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "retrieval_query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "gold_span": [
+          5.0,
+          6.816667
+        ],
+        "timestamps_s": [
+          4.7716669,
+          4.468703922222223,
+          4.620185411111111,
+          5.074629877777777,
+          5.529074344444444
+        ],
+        "distance_s": [
+          0.2283331000000004,
+          0.5312960777777773,
+          0.3798145888888893,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "3809fbf198ac123c4aaf0a26fc30cb1e882f31d93ace695c386d1e7153833002"
+      },
+      {
+        "id": "swebench-bpmn-1659",
+        "query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "retrieval_query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "gold_span": [
+          6.0,
+          9.0
+        ],
+        "timestamps_s": [
+          6.16,
+          1.456,
+          5.4879999999999995,
+          5.936,
+          6.608
+        ],
+        "distance_s": [
+          0,
+          4.5440000000000005,
+          0.5120000000000005,
+          0.06400000000000006,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "847d1b040745d0e3d01d9553ff95bf3ee6d2eeec238d29f229c438705399775e"
+      },
+      {
+        "id": "swebench-bpmn-1679",
+        "query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "retrieval_query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "gold_span": [
+          14.0,
+          18.9
+        ],
+        "timestamps_s": [
+          5.25,
+          4.83,
+          15.329999999999998,
+          15.75,
+          17.85
+        ],
+        "distance_s": [
+          8.75,
+          9.17,
+          0,
+          0,
+          0
+        ],
+        "hit1": false,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "6cbec5e33024c5bb35133f66e4a031a62a6fe1865993a4a1c321d7128d521511"
+      },
+      {
+        "id": "swebench-bpmn-1719",
+        "query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "retrieval_query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "gold_span": [
+          31.0,
+          35.0
+        ],
+        "timestamps_s": [
+          33.361999999999995,
+          14.297999999999998,
+          34.42111111111111,
+          35.48022222222222,
+          13.238888888888887
+        ],
+        "distance_s": [
+          0,
+          16.702,
+          0,
+          0.480222222222217,
+          17.761111111111113
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "de2a231508e78d27c6bad92186a58a48c4e0b4f095e9c11e82091faf85ec2393"
+      },
+      {
+        "id": "swebench-bpmn-1928",
+        "query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "retrieval_query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "gold_span": [
+          4.0,
+          6.0
+        ],
+        "timestamps_s": [
+          8.769,
+          4.773,
+          4.995,
+          5.217,
+          8.325
+        ],
+        "distance_s": [
+          2.769,
+          0,
+          0,
+          0,
+          2.3249999999999993
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "1bb51af7f973be19e6588f51ddd04b4b45c690c6ce4cb0240b859896d6213bad"
+      }
+    ],
+    "embeddinggemma2-observation": [
+      {
+        "id": "swebench-bpmn-1557",
+        "query": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+        "retrieval_query": "Morphing a data store outside a pool to a data object produces an error.",
+        "gold_span": [
+          7.5,
+          9.9
+        ],
+        "timestamps_s": [
+          8.469999999999999,
+          6.49,
+          6.710000000000001,
+          7.15,
+          7.37
+        ],
+        "distance_s": [
+          0,
+          1.0099999999999998,
+          0.7899999999999991,
+          0.34999999999999964,
+          0.1299999999999999
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "bcb747e591ecfa4da93333da3956b4583030181586cabfa07b036ab675376ab0"
+      },
+      {
+        "id": "swebench-bpmn-1570",
+        "query": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+        "retrieval_query": "Wrapping the process in a pool makes the diagram jump in the viewport.",
+        "gold_span": [
+          2.0,
+          4.0
+        ],
+        "timestamps_s": [
+          1.665,
+          2.553,
+          3.8850000000000002,
+          2.109,
+          2.775
+        ],
+        "distance_s": [
+          0.33499999999999996,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "1487e7727529ac46646804cb77fc568178806563f3a5faa439cbded5044f2ac8"
+      },
+      {
+        "id": "swebench-bpmn-1610",
+        "query": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+        "retrieval_query": "An active text editing box remains visible after leaving the subprocess plane.",
+        "gold_span": [
+          8.0,
+          9.99
+        ],
+        "timestamps_s": [
+          5.661,
+          3.2190000000000003,
+          7.881,
+          5.439,
+          6.5489999999999995
+        ],
+        "distance_s": [
+          2.3390000000000004,
+          4.781,
+          0.11899999999999977,
+          2.561,
+          1.4510000000000005
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "f400732d4e86052013402866fe62ed430516d9821957c31210f09e080939ddc6"
+      },
+      {
+        "id": "swebench-bpmn-1623",
+        "query": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+        "retrieval_query": "After switching diagrams and returning, the subprocess drilldown overlay disappears.",
+        "gold_span": [
+          16.0,
+          20.3
+        ],
+        "timestamps_s": [
+          6.09,
+          10.15,
+          16.465555555555557,
+          3.8344444444444448,
+          9.247777777777777
+        ],
+        "distance_s": [
+          9.91,
+          5.85,
+          0,
+          12.165555555555555,
+          6.752222222222223
+        ],
+        "hit1": false,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "279348b55a6a015a7526a34b48c987c6009be01582404abfc61fb57e7d507730"
+      },
+      {
+        "id": "swebench-bpmn-1638",
+        "query": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+        "retrieval_query": "Clearing a task label triggers linting errors.",
+        "gold_span": [
+          0.5,
+          3.12
+        ],
+        "timestamps_s": [
+          0.7973333333333333,
+          1.2133333333333334,
+          0.936,
+          1.0053333333333334,
+          1.0746666666666667
+        ],
+        "distance_s": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "e291ce9a1d7299ccd38c58edb87a7c8ee88dd5b7fab17dfd54753ef3f6c9b5dc"
+      },
+      {
+        "id": "swebench-bpmn-1640",
+        "query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+        "retrieval_query": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties.",
+        "gold_span": [
+          7.5,
+          12.5
+        ],
+        "timestamps_s": [
+          0.613,
+          1.0216666666666667,
+          18.18566666666667,
+          17.777,
+          7.151666666666666
+        ],
+        "distance_s": [
+          6.8870000000000005,
+          6.4783333333333335,
+          5.68566666666667,
+          5.277000000000001,
+          0.3483333333333336
+        ],
+        "hit1": false,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "87caa849bdc093acdc95433753d2ce31be1d0b69219c7ef796d2b5fc6ef03711"
+      },
+      {
+        "id": "swebench-bpmn-1655",
+        "query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+        "retrieval_query": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color.",
+        "gold_span": [
+          5.0,
+          6.816667
+        ],
+        "timestamps_s": [
+          4.7716669,
+          4.468703922222223,
+          4.620185411111111,
+          5.074629877777777,
+          5.529074344444444
+        ],
+        "distance_s": [
+          0.2283331000000004,
+          0.5312960777777773,
+          0.3798145888888893,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "3809fbf198ac123c4aaf0a26fc30cb1e882f31d93ace695c386d1e7153833002"
+      },
+      {
+        "id": "swebench-bpmn-1659",
+        "query": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+        "retrieval_query": "the label and attached association remain behind.",
+        "gold_span": [
+          6.0,
+          9.0
+        ],
+        "timestamps_s": [
+          1.232,
+          5.936,
+          9.968,
+          2.8,
+          1.456
+        ],
+        "distance_s": [
+          4.768,
+          0.06400000000000006,
+          0.968,
+          3.2,
+          4.5440000000000005
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": false,
+        "index_sha256": "847d1b040745d0e3d01d9553ff95bf3ee6d2eeec238d29f229c438705399775e"
+      },
+      {
+        "id": "swebench-bpmn-1679",
+        "query": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+        "retrieval_query": "leaves the exported XML loop type unchanged.",
+        "gold_span": [
+          14.0,
+          18.9
+        ],
+        "timestamps_s": [
+          15.329999999999998,
+          14.91,
+          17.009999999999998,
+          17.43,
+          16.59
+        ],
+        "distance_s": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "6cbec5e33024c5bb35133f66e4a031a62a6fe1865993a4a1c321d7128d521511"
+      },
+      {
+        "id": "swebench-bpmn-1719",
+        "query": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+        "retrieval_query": "Collapsing an expanded subprocess leaves internal event labels visible outside it.",
+        "gold_span": [
+          31.0,
+          35.0
+        ],
+        "timestamps_s": [
+          33.361999999999995,
+          34.42111111111111,
+          35.48022222222222,
+          14.297999999999998,
+          32.30288888888889
+        ],
+        "distance_s": [
+          0,
+          0,
+          0.480222222222217,
+          16.702,
+          0
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": true,
+        "strict5": true,
+        "index_sha256": "de2a231508e78d27c6bad92186a58a48c4e0b4f095e9c11e82091faf85ec2393"
+      },
+      {
+        "id": "swebench-bpmn-1928",
+        "query": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+        "retrieval_query": "Using the space tool vertically across an empty pool increases its height.",
+        "gold_span": [
+          4.0,
+          6.0
+        ],
+        "timestamps_s": [
+          8.769,
+          4.773,
+          4.995,
+          5.217,
+          8.325
+        ],
+        "distance_s": [
+          2.769,
+          0,
+          0,
+          0,
+          2.3249999999999993
+        ],
+        "hit1": true,
+        "hit5": true,
+        "strict1": false,
+        "strict5": true,
+        "index_sha256": "1bb51af7f973be19e6588f51ddd04b4b45c690c6ce4cb0240b859896d6213bad"
+      }
+    ]
+  },
+  "limitations": [
+    "Curated short clips, one application, silent media",
+    "Gold claim text used only as evaluation query",
+    "Common caption budget across methods"
+  ]
+}

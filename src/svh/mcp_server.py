@@ -84,9 +84,9 @@ def build_server(evidence: Evidence):
         return evidence.transcript(recording_id, t0, t1)
 
     @server.tool(annotations=read_only)
-    def find_moment(recording_id: str, query: str, limit: int = 5) -> dict[str, Any]:
+    async def find_moment(recording_id: str, query: str, limit: int = 5) -> dict[str, Any]:
         """Search timestamped visual evidence; inspect returned frames to confirm."""
-        return evidence.find_moment(recording_id, query, limit)
+        return await asyncio.to_thread(evidence.find_moment, recording_id, query, limit)
 
     @server.tool(annotations=read_only)
     def get_screen_text(recording_id: str, t0: float, t1: float) -> dict[str, Any]:
@@ -101,6 +101,7 @@ def build_server(evidence: Evidence):
     @server.resource("svh://provenance")
     def provenance() -> str:
         return json.dumps({"corpus_sha256": evidence.corpus_sha256,
+                           "retrieval_method": evidence.retrieval_method,
                            "recordings": len(evidence.recordings), "version": "0.1.0"})
 
     @server.prompt()

@@ -1,0 +1,74 @@
+{
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "device": "cpu",
+  "mode": "text-only",
+  "files": {
+    "config_sentence_transformers.json": "031e56a498d33c349ab489a21885bcfe25b4fcba841149dc99e1e90d4a7c28f5",
+    "tokenizer.json": "4d777ef5bdc1aa36227abdfb77c3e49e7b9c892d16e1b6bda41c393504828be4",
+    "modules.json": "3d02572a0455b832de67fb8e63a54981bc7e8b46e337c95e917bd8122a533bfd",
+    "preprocessor_config.json": "ea2ae257e901064abdd98dceb19f2b0da06af600bed15e0f99f5c85c37ee9d78",
+    "tokenizer_config.json": "17bd5d6e9364ca49a534e1502076593317c298d4a663623091ed45388f004874",
+    "config.json": "b8f1e9931b57fbc054acdb445c41765d55b0074c58d145fa82839941ad1b5bb3",
+    "tokenizer.model": "e594c8a90eb08d8bda498ff4747977dc827ae0c3c56b5c0d41a605a22d02ef03",
+    "sentence_bert_config.json": "b1bcd9f2dce3ae863b359e87d0710b5dbc3314a59ecb4e2f97c7778fc8e4b228",
+    "processor_config.json": "168f6a08522f3ce5dea596d94d003af2fd691742d4f41fe1f9d8cce76bfbf69c",
+    "README.md": "b677a0ee2818c36f091b65fd3d9b4baea9f04d53b02b49cae916c74bf9682037",
+    "chat_template.jinja": "4b852efc0b9960283e735363331e6f325b33bc74bdbaa076f595bc4e9b94d85e",
+    "model.safetensors": "197a32965d4b1105faf060417baa899e193fb73cd401f42ec9295234d5553d79",
+    "1_Pooling/config.json": "8759bdf7c77efc7df7723f64856a593c8943b71ee38baf2a88771fbaf78438f9",
+    "2_Normalize/config.json": "cdb09dfca347a56aa2d691744e38d5ad3c7cbc2834e7181272b9a15328b82524"
+  },
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "versions": {
+    "torch": "2.14.1+cpu",
+    "transformers": "5.20.2",
+    "sentence-transformers": "6.1.0"
+  },
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "vectors_sha256": "d487882c829b3796576e4acb3beeb4bafc7530c45e0d0069c7da47b6e681d317"
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "vectors_sha256": "63f4c865b75b075f860949e24878cceaed534bc21c29eff8d1f8266b59d85091"
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "vectors_sha256": "24502cf7235dfc178c12c44479245cf1b74ff04c679b8679b0a785fd22dae767"
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "vectors_sha256": "6f3c3f18e02b8edda561bfe11386ef34ac45051677f923e518263c7e4095a179"
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "vectors_sha256": "ad9ddb747e97d37e0cbd9f560f852d11fa9540b37fdad7c1c8ead321a9cc42ce"
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "vectors_sha256": "0806fe64e57ce57ce3b584195004b1be07c0be50bc5b6f0e62d767209f723026"
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "vectors_sha256": "650039202d33da23e98ee11fa0aff2e1b7af423ec5e772366246ea030db68b38"
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "vectors_sha256": "694b24d2cca6b6db9fa6be1512c1011bbc46925ad4f126ae4d4fa88eb800bd0d"
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "vectors_sha256": "e3808a08467a15cf159ae1487b9506af8f72679b4f0eec0643db64b4bae1336f"
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "vectors_sha256": "a2741a4042bfdf018bcb339f346da5c4b4459cfbfb8227016232ba0db61c5046"
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "vectors_sha256": "8a709deff056122c4ce9d9dc4cd7840bd6b744bd8d51487d0fe3cffbe595bc9c"
+    }
+  ]
+}

@@ -27,7 +27,7 @@ class Recording:
 
 
 class Evidence:
-    def __init__(self, recordings, corpus_sha256, *, visual_indexes=None, transcripts=None, retrieval_method="fixed45"):
+    def __init__(self, recordings, corpus_sha256, *, visual_indexes=None, transcripts=None, retrieval_method="fixed45", semantic_root=None):
         self.recordings = {record.id: record for record in recordings}
         if len(self.recordings) != len(recordings):
             raise ValueError("Duplicate recording identifier")
@@ -35,6 +35,11 @@ class Evidence:
         self.visual_indexes = visual_indexes or {}
         self.transcripts = transcripts or {}
         self.retrieval_method = retrieval_method
+        self.semantic_root = semantic_root
+        if retrieval_method not in {"fixed45", "temporal3", "embeddinggemma2", "embeddinggemma2-observation"}:
+            raise ValueError("Unknown server retrieval policy")
+        if retrieval_method.startswith("embeddinggemma2") and semantic_root is None:
+            raise ValueError("Semantic retrieval requires server-owned index paths")
         self._frame_times = {}
         for identifier, index in self.visual_indexes.items():
             record = self.recording(identifier)
@@ -66,7 +71,12 @@ class Evidence:
                 path = root / "data/runtime" / kind / (record.id + ".json")
                 if path.exists():
                     target[record.id] = json.loads(path.read_text())
-        return cls(recordings, identity["corpus_sha256"], visual_indexes=indexes, transcripts=transcripts)
+        policy_path = root / "data/runtime/retrieval-policy.json"
+        policy = json.loads(policy_path.read_text()) if policy_path.exists() else {}
+        if policy and policy["corpus_sha256"] != identity["corpus_sha256"]:
+            raise ValueError("Retrieval policy belongs to a different corpus")
+        return cls(recordings, identity["corpus_sha256"], visual_indexes=indexes, transcripts=transcripts,
+                   retrieval_method=policy.get("method", "fixed45"), semantic_root=root)
 
     def recording(self, recording_id):
         if recording_id not in self.recordings:
@@ -131,9 +141,18 @@ class Evidence:
             raise ValueError("Supply a question of at most 2000 characters")
         if recording_id not in self.visual_indexes:
             raise ValueError("Recording has not been visually indexed")
-        from svh.ingest import retrieve
+        if self.retrieval_method.startswith("embeddinggemma2"):
+            from svh.semantic import retrieve
+            matches = retrieve(self.semantic_root, recording_id, query, limit,
+                               focus_observation=self.retrieval_method.endswith("-observation"))
+            for match in matches:
+                frame = min(self.visual_indexes[recording_id]["frames"], key=lambda frame: abs(frame["timestamp_s"] - match["timestamp_s"]))
+                match["caption"] = frame["caption"]
+        else:
+            from svh.ingest import retrieve
+            matches = retrieve(self.visual_indexes[recording_id], query, self.retrieval_method, limit)
         return {"recording_id": recording_id, "method": self.retrieval_method,
-                "matches": retrieve(self.visual_indexes[recording_id], query, self.retrieval_method, limit),
+                "matches": matches,
                 "evidence_mode": "model_captions; view frames to confirm"}
 
     def screen_text(self, recording_id, t0, t1):

@@ -1,6 +1,7 @@
 """Measure frozen retrieval gates separately from model-visible ingestion."""
 import hashlib
 import json
+import argparse
 from datetime import datetime, timezone
 from importlib.metadata import version
 from pathlib import Path
@@ -10,8 +11,16 @@ from svh.ingest import retrieve
 from svh.oracle import wilson
 
 root = Path(__file__).resolve().parents[1]
-manifest, annotations = load_frozen_corpus(root, Path("evals/frozen-m0.json"))
+parser = argparse.ArgumentParser()
+parser.add_argument("--semantic", action="store_true")
+parser.add_argument("--corpus", type=Path, default=Path("evals/frozen-m0.json"))
+parser.add_argument("--output", type=Path, default=Path("notes/runs/m1-retrieval.json"))
+args = parser.parse_args()
+manifest, annotations = load_frozen_corpus(root, args.corpus)
 results = {method: [] for method in ("fixed45", "temporal3", "midpoint")}
+if args.semantic:
+    results["embeddinggemma2"] = []
+    results["embeddinggemma2-observation"] = []
 provenance = []
 for annotation in annotations:
     path = root / "data/runtime/visual-index" / (annotation["id"] + ".json")
@@ -24,11 +33,17 @@ for annotation in annotations:
     claim = annotation["claims"][0]
     start, end = claim["t_start_s"], claim["t_end_s"]
     for method in results:
-        hits = ([{"timestamp_s": annotation["media"]["duration_s"] / 2}] if method == "midpoint"
-                else retrieve(index, claim["text"], method) if index else [])
+        if method.startswith("embeddinggemma2"):
+            from svh.semantic import retrieve as semantic_retrieve, observation_query
+            hits = semantic_retrieve(root, annotation["id"], claim["text"],
+                                     focus_observation=method.endswith("-observation"))
+        else:
+            hits = ([{"timestamp_s": annotation["media"]["duration_s"] / 2}] if method == "midpoint"
+                    else retrieve(index, claim["text"], method) if index else [])
         times = [hit["timestamp_s"] for hit in hits]
         distances = [max(start - time, time - end, 0) for time in times]
         results[method].append({"id": annotation["id"], "query": claim["text"],
+            "retrieval_query": observation_query(claim["text"]) if method.endswith("-observation") else claim["text"],
             "gold_span": [start, end], "timestamps_s": times,
             "distance_s": distances, "hit1": bool(distances and distances[0] <= 5),
             "hit5": any(distance <= 5 for distance in distances),
@@ -48,6 +63,14 @@ selected = "fixed45"
 if (summary["temporal3"]["strict1"]["successes"] > summary["fixed45"]["strict1"]["successes"]
     and all(summary["temporal3"][key]["successes"] >= summary["fixed45"][key]["successes"] for key in ("hit1", "hit5"))):
     selected = "temporal3"
+for method in ("embeddinggemma2", "embeddinggemma2-observation") if args.semantic else ():
+    candidate, current = summary[method], summary[selected]
+    # Keep the measured baseline unless semantic retrieval improves a gate
+    # metric without losing the other, or improves strict localization at parity.
+    if (all(candidate[key]["successes"] >= current[key]["successes"] for key in ("hit1", "hit5"))
+        and (any(candidate[key]["successes"] > current[key]["successes"] for key in ("hit1", "hit5"))
+             or candidate["strict1"]["successes"] > current["strict1"]["successes"])):
+        selected = method
 metrics = summary[selected]
 common = {(entry["identity"]["model"], entry["identity"]["prompt_sha256"], entry["identity"]["sampler"])
           for entry in provenance if entry["identity"]}
@@ -56,9 +79,10 @@ if len(common) > 1:
 report = {"run_at": datetime.now(timezone.utc).isoformat(),
           "versions": {name: version(name) for name in ("deepagents", "mcp", "google-genai", "langchain-google-genai")},
           "index_provenance": provenance,
+          "semantic_index_report_sha256": hashlib.sha256((root / "notes/runs/m1-semantic-index.json").read_bytes()).hexdigest() if args.semantic else None,
           "corpus_sha256": manifest["corpus_sha256"], "selected": selected,
           "passed": len(annotations) >= 10 and metrics["hit1"]["wilson95"][0] >= .5 and metrics["hit5"]["wilson95"][0] >= .7,
           "summary": summary, "cases": results,
           "limitations": ["Curated short clips, one application, silent media", "Gold claim text used only as evaluation query", "Common caption budget across methods"]}
-(root / "notes/runs/m1-retrieval.json").write_text(json.dumps(report, indent=2) + "\n")
-print(json.dumps({key: value for key, value in report.items() if key != "cases"}, indent=2))
+(root / args.output).write_text(json.dumps(report, indent=2) + "\n")
+print(json.dumps({key: value for key, value in report.items() if key not in {"cases", "index_provenance"}}, indent=2))

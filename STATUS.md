@@ -2,12 +2,11 @@
 
 Update this file at every session checkpoint. Read AGENTS.md first.
 
-## Current milestone: M1 (ingestion and MCP), starting
+## Current milestone: M2 (claims and codebase checkpoint), starting
 
-**M0 has passed; the full MVP is not shipped.** MCP HTTP evidence access works.
-Paid visual ingestion and synthetic audio smoke are complete. The lexical
-retrieval comparison failed M1; generated reproductions/fixes and Harbor trials
-have not been measured. [RUN]
+**M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
+retrieval, authenticated MCP HTTP and the synthetic audio path work. Generated
+claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
   10–20-case and lower-bound >=0.70 gate. Proof: `notes/runs/m0-gate.json`.
@@ -48,6 +47,12 @@ have not been measured. [RUN]
 - [INF] M1–M3 prospective acceptance and shipping evidence are fixed before model
   measurements in `evals/PROTOCOL.md` (D26). Reference projects, embedders and
   storage choices are replaceable. Docker is current; no cloud migration needed.
+- [RUN] M1 selected local text-only EmbeddingGemma 2 retrieval passes, with
+  observation-focused queries over unchanged 45-frame captions. Earlier lexical
+  and raw semantic failures are preserved; all are development-set measurements.
+  Strict @1 is 4/11 [15.17%,64.62%]; no unseen-app or speech quality claim.
+  `notes/2026-10-20-m1-complete.md`. Total cost **$0.464144** across 19 settled
+  Gemini requests, no unsettled reservations; **$3.535856** local budget remains.
 - [CODE/RUN] MCP HTTP boundary now works with the frozen corpus: authenticated
   loopback access, registered metadata, bounded PNG frames, silent-media status,
   resources and a versioned prompt. Actual SDK protocol: 2026-07-28. Thin tool
@@ -58,27 +63,24 @@ have not been measured. [RUN]
 
 ## Next concrete steps
 
-1. Curation is complete and frozen. Do not restart either terminal Docker batch.
-   M0 now passes on all eleven admitted cases; use the frozen manifest in M1.
-2. Budget-covered Gemini transport is tested, including actual summarization
-   middleware and all public call modes. Authenticated metadata confirms both
-   candidate models and token limits. Eleven transport tests pass; full suite
-   now 72 passed including visual timeline/retrieval/audio and HTTP checks. See `notes/2026-10-20-budgeted-gemini.md`.
-   Disable delegation through the selected harness profile and verify Docker
-   boundaries before executing any generated code.
-3. Visual ingestion batch 6879 is terminal: all eleven corrected 45-frame indexes
-   exist. Do not restart it. The lexical baseline fails M1 (hit@1 8/11, hit@5
-   9/11); temporal windows fail too. Frozen reports:
-   `notes/runs/m1-lexical-baseline.json`, `notes/runs/m1-retrieval.json`.
-   Audio functional and updated actual MCP smoke pass. Total settled cost
-   $0.464144 including abandoned runs; no unsettled requests at this checkpoint.
-   See `notes/2026-10-20-m1-ingestion-design.md`.
-4. Evaluate pinned local EmbeddingGemma 2 text-only semantic retrieval on the
-   unchanged captions, preserving the failed lexical baseline and fixed gate.
-   CPU-only optional dependencies and safe-weight downloads are being prepared;
-   no semantic inference or improvement has been measured yet. M2/M3 features
-   wait for M1: then claims/checkpoints, generated check/fix, held-out regressions,
-   wrong-fix controls and actual Harbor oracle/nop trials.
+1. M0 and M1 have passed their measured gates. All visual batches and embedding
+   batch exec 38031 are terminal; do not restart them. Selected-method HTTP smoke
+   also completed. Full suite: **74 passed**. M1 details and replay commands:
+   `notes/2026-10-20-m1-complete.md`; selected report
+   `notes/runs/m1-selected-retrieval.json`. Runtime policy selects the measured
+   local method; read-only MCP needs no Gemini key.
+2. Start M2 by building its frozen scoring/attempt artifacts before features.
+   Extract claims under matched issue-only/temporal-media conditions, without
+   passing gold claims, test names, test/source patches or grader scripts to the
+   model. Use the existing deepagents loop for the codebase checkpoint.
+3. Configure the selected harness profile to disable its auto-added general
+   purpose subagent (subagents=[] alone is insufficient). Implement and verify
+   a Docker-only backend before any agent-generated command executes. Start
+   each permitted code view at the known buggy commit with solution history
+   removed, no owner paths/credentials mounted and network disabled.
+4. Then measure M2 and proceed to M3 generated reproduction/fix, frozen observed
+   fail/pass, independent native regressions, wrong-fix controls and real Harbor
+   nop/oracle trials. Preserve prospective gates in `evals/PROTOCOL.md`.
 
 ## Evidence and history
 
@@ -98,6 +100,6 @@ have not been measured. [RUN]
 | Gate | Current evidence |
 |---|---|
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
-| M1 ingestion/retrieval/MCP | Lexical retrieval gate failed; audio functional and MCP smoke passed |
+| M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Not measured |
 | M3 generated verification/fix/Harbor | Not measured; MVP incomplete |

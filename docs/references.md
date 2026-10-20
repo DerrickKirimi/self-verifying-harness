@@ -133,3 +133,24 @@ dependencies. No local clones were created for these readings. [RUN]
 | [GIFdroid](https://arxiv.org/html/2112.04128v1) | v1 (2021); introduction and approach | Keyframe-to-UI-graph replay precedent |
 | [CAPdroid](https://arxiv.org/html/2302.00886v1) | v1 (2023); introduction, approach overview | Video-action captioning precedent |
 | [JANUS](https://arxiv.org/abs/2407.08610), [author PDF](https://ojcchar.github.io/files/28-icse24-vid-dupl.pdf) | Abstract, author-hosted introduction/method overview | Visual/OCR/temporal duplicate-video retrieval |
+
+### Local semantic retrieval experiment, checked 2026-10-20
+
+- [SRC/CODE] EmbeddingGemma 2 primary model card:
+  https://huggingface.co/google/embeddinggemma-2 . Pinned revision
+  `914f7f89142e33e77833254d9c9b90c3cef7303b`; ignored local download
+  `data/external/embeddinggemma-2/914f7f89142e33e77833254d9c9b90c3cef7303b/`.
+  Public, ungated Apache-2.0 safe weights and configuration; no downloaded Python
+  or pickle weights selected. File hashes are recorded by the index runner.
+- [SRC] Google's multimodal/setup guide:
+  https://ai.google.dev/gemma/docs/embeddinggemma/multimodal-embeddinggemma-with-sentence-transformers .
+  It documents selectively disabling vision/audio encoders and CPU operation.
+  Our first semantic candidate is text-only over the unchanged 45 captions,
+  not a measured image/audio/video embedding result.
+- [SRC/CODE] Package metadata checked via `https://pypi.org/pypi/{package}/json`:
+  sentence-transformers 6.1.0, transformers 5.20.2, torch 2.14.1 and torchvision
+  0.29.1. Linux installs are explicitly routed to the official CPU wheel index
+  https://download.pytorch.org/whl/cpu . Actual installations:
+  torch 2.14.1+cpu, torchvision 0.29.1+cpu. The installed shared processor needs
+  Torchvision even with the vision encoder disabled; initial missing-dependency
+  failure was resolved before any semantic quality measurement.
