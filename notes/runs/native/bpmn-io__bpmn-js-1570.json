@@ -1,0 +1,104 @@
+{
+  "task": "bpmn-io__bpmn-js-1570",
+  "run_at": "2026-10-20T14:28:49.490406+00:00",
+  "graded_at": "2026-10-20T14:28:49.490421+00:00",
+  "row_sha256": "b1a32eab7574ada254d622584f370c2a6e88d5e57edb93f9fd0b9ccd0957d5fd",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570@sha256:ff51a6a93e0ac0995f544c75df9c2c725fd78bfcfc02786be3c4d469f806bb31",
+  "image_id": "sha256:61c74cf6be6111bb634589b6b053ff02119f58bb3a0a857b994584e8743ea1e1",
+  "base_commit": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+  "fix_patch_sha256": "7e2a7cd18e82216402c826e5cb19b747aeffa779e619a28f3eead476a4d5fc24",
+  "test_patch_sha256": "c7408f5a9f2ff654bca886cb4837831852bd475497516660ab77a486c6feaf36",
+  "upstream_eval_sha256": "00ac36d747004ac55dcb880f48822595d29cebac2b767f7ed1f216679139826b",
+  "executed_eval_sha256": "f69c81414d4e136b29ad00f4af3c223db9fc0ede7f86d1ad067e1d19bdb4e66c",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1727,
+      "discovered": 1734,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "4 FAILED, 1723 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - undo FAILED\n\tAssertionError: expected 0 to deeply equal -866\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:125:26)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at expectViewbox (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:121:70)\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:68:9)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - undo ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - undo FAILED\n\tAssertionError: expected 0 to deeply equal -866\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:125:26)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at expectViewbox (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:121:70)\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:68:9)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - redo ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - redo FAILED\n\tAssertionError: expected 0 to deeply equal -866\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:125:26)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at expectViewbox (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:121:70)\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:87:9)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "features - drilldown Navigation - Collaboration should remember scroll and zoom after morph ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Navigation - Collaboration should remember scroll and zoom after morph FAILED\n\tAssertionError: expected 0 to deeply equal -866\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:108:31)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Navigation - Collaboration should not reset scroll on create collaboration FAILED\n\tAssertionError: expected 0 to deeply equal -866\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:125:26)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at expectViewbox (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:121:70)\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownIntegrationSpec.js:50:9)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "0170190bdbfbf5a822f7d8ffccc581ebb7f9ca75be546352ed4ec2195e3bb87a",
+      "raw_log_sha256": "50da124b2188a4837db8a379bd836f44e6250696f819b4437067ff64ee5d7948"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1727,
+      "discovered": 1734,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1727 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - undo ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - redo ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "features - drilldown Navigation - Collaboration should remember scroll and zoom after morph ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "80dfc22942a1b521e30fedf264922aef1df364213f5f25b8b9a0f0d4a65b4ad7",
+      "raw_log_sha256": "8607b07205ddb759576ba93c7dd4632d12d80264f43865ab05b149ce98a37381"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1570/logs"
+}

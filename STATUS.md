@@ -46,6 +46,11 @@ Update this file at the end of every working session: what changed, gate results
   suite: **49 passed**. No model transport is wired to it yet and no metered
   calls have been made. Private local configuration is capped below the supplied
   prepaid balance; no key or billing screenshot is committed.
+- [RUN] Current external admission gate: **3/3 admitted annotations, Wilson 95%
+  [43.85%, 100%]**, below the required sample size and lower bound. This is
+  `notes/runs/m0-gate.json`, not model performance. Cases 1557, 1570 and 1655
+  pass; 1567 was rejected because its target failure is a runtime exception.
+  Candidate 1578 is running; remaining candidates are queued sequentially.
 
 ## Log
 
@@ -82,8 +87,14 @@ Update this file at the end of every working session: what changed, gate results
 
 ## Next step
 
+The live curation command currently has exec session **97904**. Poll that handle
+while available; do not start a duplicate batch. If that process has actually
+ended, inspect progress and resume the same command. No API calls are pending.
+
 Finish the sequential native-oracle batch, freeze proofs for passing candidates,
-and admit reviewed annotations with `svh eval-gate`. The provenance adapter and
+and admit reviewed annotations with
+`.venv/bin/python -I scripts/admit_reviewed_cases.py`, then `svh eval-gate`.
+The provenance adapter and
 first admission are implemented. Curation includes one application only; do not
 present it as cross-application or speech evaluation. Admission requires 10–20
 distinct artifacts, every oracle passing, Wilson lower bound >=0.70 (D22).

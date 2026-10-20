@@ -1,0 +1,53 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1570",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1570",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1570.json",
+    "row_sha256": "b1a32eab7574ada254d622584f370c2a6e88d5e57edb93f9fd0b9ccd0957d5fd"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+    "fix_patch_sha256": "7e2a7cd18e82216402c826e5cb19b747aeffa779e619a28f3eead476a4d5fc24",
+    "test_patch_sha256": "c7408f5a9f2ff654bca886cb4837831852bd475497516660ab77a486c6feaf36",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570@sha256:ff51a6a93e0ac0995f544c75df9c2c725fd78bfcfc02786be3c4d469f806bb31"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1570/media.gif",
+    "sha256": "74a72f40dc46e662419b7b0af6da58a5ec6a55eb674020781226487209b1e091",
+    "source_url": "https://user-images.githubusercontent.com/58601/149092385-c30308a4-e70a-4d70-bb26-4d71cd154ad6.gif",
+    "duration_s": 9.99,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 2.0,
+      "t_end_s": 4.0,
+      "text": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - undo ",
+        "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration - redo ",
+        "features - drilldown Navigation - Collaboration should remember scroll and zoom after morph ",
+        "features - drilldown Navigation - Collaboration should not reset scroll on create collaboration "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1570-ee559f197f35bfcc.json",
+    "report_sha256": "ee559f197f35bfcc21fa345fcdde28f508faf97070b2cec6d25d330d4db35dfd"
+  }
+}
