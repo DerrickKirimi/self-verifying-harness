@@ -25,3 +25,19 @@ Append new decisions; don't rewrite old ones. To reverse a decision, add a new e
 4. **Meeting bot at M5.** Is a hosted meeting-bot API acceptable, or is self-hosting the join step part of what you want to learn?
 5. **"Anthropic's Sion".** Please add a link to `docs/references.md` so it can be compared with Scion from a primary source.
 6. **The GitHub repo is public.** The idea files contain your own dictated thoughts, and the docs name local paths and your other projects. The bootstrap commit wasn't pushed for that reason. Push once you're happy for all of it to be public.
+
+## Decisions (20 Oct 2026, first implementation)
+
+| # | Decision | Why / evidence |
+|---|---|---|
+| D11 | **References are replaceable evidence, never inherited architecture.** Supersedes the Kubrick-specific part of D5. MCP remains the intended integration boundary; the Python SDK/server framework is selected at M1. | Owner's explicit direction in this session. [SRC] No Pixeltable or reference-project dependency is included in the M0 implementation. [CODE] |
+| D12 | **Use the repo's own small issue board for the first three M0 fixtures.** | Fictional local data, deterministic HTTP behaviour, no credentials or existing product needed. [CODE] This is an implementation choice pending any owner preference for a different app. [INF] |
+| D13 | **First client baseline: Claude Code through standard MCP, without forking its loop.** Client selection is provisional pending the owner's answer; the verifier stays a standalone Python library/CLI. | Claude Code documents HTTP MCP configuration and server prompts. [SRC] This establishes integration feasibility, not a comparative quality result. No client integration or agent-driven fixes have been measured yet. |
+| D14 | **M0 fixture oracle first; no ingestion code before the M0 gate.** | Three hand-written HTTP checks use one frozen test snapshot against two archived Git revisions, in Docker. Setup/collection errors, skips and empty runs do not verify a claim. [CODE] These fixtures are not narrated walkthroughs and do not pass M0. |
+| D15 | **Select retrieval on measured M0 results, not the age or sophistication of a reference.** | No retrieval store, OCR stack, embedder integration or STT provider is selected by this session. [CODE] An embedding model and a complete ingestion/retrieval system are separate decisions; whether any model meets our needs remains unmeasured. [INF] |
+| D16 | **Implement current MCP capabilities supported by both sides, with explicit fallbacks.** | On 2026-10-20, the specification's `latest` URL resolves to `2026-07-28`; it documents per-request capability negotiation, core resources/prompts/tools and elicitation, and opt-in Tasks, Skills and Apps extensions. [SRC] At M1, check SDK and client support before pinning dependencies; evaluate Tasks for long verification runs and Apps for evidence review. No support is claimed from reading the specification alone. |
+
+Sources for D13/D16: [Claude Code MCP](https://code.claude.com/docs/en/mcp),
+[MCP specification](https://modelcontextprotocol.io/specification/2026-07-28), read 2026-10-20.
+The owner's written instruction to implement and ship, together with the supplied
+AGENTS.md commit/push instruction, authorizes the repository pushes for this work. [SRC]

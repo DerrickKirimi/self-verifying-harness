@@ -6,7 +6,9 @@ Update this file at the end of every working session: what changed, gate results
 
 - [CODE] First local issue-board fixture and three pytest HTTP reproductions prepared.
   The initial app revision deliberately contains search, closed-filter and priority-sort bugs.
-- No oracle results or owner recordings yet; M0 has not passed.
+- [RUN] All three reproductions observed failing by assertion on `426a532`, before any
+  app fix was applied. Raw pytest/JUnit output: `notes/runs/pre-fix.json`.
+- No post-fix results or owner recordings yet; M0 has not passed.
 
 ## Log
 

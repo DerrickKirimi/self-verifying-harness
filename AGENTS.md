@@ -44,8 +44,8 @@ A harness that turns **claims about software, spoken or shown in recordings** (m
 ## Stack (initial; see `docs/decisions.md` before changing it)
 
 - **Language:** Python 3.11+, managed with `uv`.
-- **Tool boundary:** a FastMCP server on streamable HTTP, following Kubrick's pattern. It owns the tools and versioned prompts and injects trusted arguments (paths, commits, URLs) on the server side.
-- **Ingestion:** transcript + diarization, scene-change frames, screen-region OCR, and embeddings (a text embedder plus EmbeddingGemma 2, `google/embeddinggemma-2`).
+- **Tool boundary:** MCP; choose the current SDK/server framework at M1 (D11/D16). Reference projects are replaceable examples. The server owns trusted execution arguments (paths, commits, URLs); negotiate capabilities against the chosen client.
+- **Ingestion (candidate design, unmeasured):** transcript + diarization, scene-change frames, screen-region OCR, and embeddings. Select models and retrieval storage against M0; no inherited Pixeltable or model dependency (D15).
 - **Verification:** Playwright (Python) and pytest, run in a sandbox. Task packaging follows Harbor's format.
 - **Reasoning:** the owner's existing coding harness (Claude Code, deepagents, ...) as an MCP client. Don't write a new agent loop.
 - **Later:** Temporal for durable per-stage execution, OpenTelemetry tracing, SPACE for sandboxes, Scion for multi-agent roles and chat channels.
