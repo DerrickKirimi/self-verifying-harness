@@ -41,6 +41,30 @@ uv run svh eval-gate --annotations evals/annotations --output notes/runs/m0-gate
 alive; a quiet process is not evidence of a hang. The batch handles one task at
 a time and preserves at least 15 GiB of free disk before further pulls.
 
+## Reproduce from a new clone
+
+[CODE] Raw media, rows and execution logs are deliberately absent from Git. A
+fresh clone must download the pinned data and execute its own oracles. Historical
+proof metadata alone does not make `svh validate` pass without matching raw logs.
+The explicit rerun uses already recorded image digests where available; it does
+not replace them with today's mutable image tags. This takes Docker storage and
+CPU time, but no model credits. Do not run beside an already active batch.
+
+```sh
+uv sync --locked --extra datasets
+uv run python -I scripts/prepare_m0_source.py
+uv run python -I scripts/prepare_review_media.py
+uv run python -I scripts/run_m0_oracles.py --rerun
+uv run python -I scripts/admit_reviewed_cases.py --refresh-proofs
+uv run svh eval-gate --annotations evals/annotations --output notes/runs/m0-gate.json
+```
+
+[CODE] Recorded manual reviews apply only to identical media hashes. New bytes
+must be reviewed again; downloading a replacement never grants admission. A
+refresh retains historical proof snapshots and validates fresh logs before
+replacing annotation references. The current corpus is still being assembled;
+the final command must fail until the required sample and interval are met.
+
 [SRC/CODE] Shared Gemini access is authorized, with prepaid credit evidence and
 auto-reload disabled. Private configuration uses the external secret file, never
 key bytes in this repository. `svh.budget` implements atomic persistent worst-case

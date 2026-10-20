@@ -1,0 +1,19 @@
+{
+  "run_at": "2026-10-20T14:34:03.122343+00:00",
+  "exit_code": 0,
+  "stdout": "dev-00000-of-00001.parquet downloaded and hash-verified\ntest-00000-of-00001.parquet downloaded and hash-verified\nExported 12 reviewed candidate rows\n",
+  "stderr": "",
+  "downloaded_files": [
+    {
+      "name": "dev-00000-of-00001.parquet",
+      "sha256": "714f4b815680608168d620c87c6b3420b3d4690d6656fc85b1da6511bfb55931",
+      "bytes": 3220440
+    },
+    {
+      "name": "test-00000-of-00001.parquet",
+      "sha256": "ce21141e0b2aadb6b91cf21d27c93e4c159afb1c4c25b7b4ea9222d823dd9da7",
+      "bytes": 8083200
+    }
+  ],
+  "exported_rows": 12
+}

@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1578",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1578",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1578.json",
+    "row_sha256": "cd544332768ef148bda762be836f276342222a69314f9cdb7ec361d781666427"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "c4cbc7821ae9295bff4ee7b6b6b6c3fb76af6296",
+    "fix_patch_sha256": "a896823f06e7a3dd93f8006235345dd469ed0f5337911f7625f18858663f7775",
+    "test_patch_sha256": "17af1f53df3a1e91e0ef30ac0c7088437fe6254ca37bb929d34a67b4a08ac2eb",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1578@sha256:63853ae240dc8c1e92939e265c2968666da1991711a86009b6886784a9029e99"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1578/media.gif",
+    "sha256": "8f66eeb4501b05948f762fac44b9c3d1879d9cd89158fa1bf52814a00d3ca059",
+    "source_url": "https://user-images.githubusercontent.com/15230555/147228024-18c202f6-9b3f-4128-8469-1ce583273a3c.gif",
+    "duration_s": 19.37,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 12.0,
+      "t_end_s": 16.0,
+      "text": "After copying a pool containing a task, exporting and importing the diagram produces errors. Copying must create distinct process identities and correctly connected diagram information.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/copy-paste basic diagram integration should wire DIs correctly "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1578-2f434aa27b9ae897.json",
+    "report_sha256": "2f434aa27b9ae897c97c47220db8c3ef8372d56e6b02a0611f6fd6229cc61576"
+  }
+}

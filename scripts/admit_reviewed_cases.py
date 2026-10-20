@@ -4,6 +4,7 @@ Never marks unseen media reviewed or trusts a saved verification Boolean.
 Run with the installed interpreter: uv run python -I scripts/admit_reviewed_cases.py.
 """
 
+import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -14,6 +15,9 @@ from svh.sources import DATASET, REVISION, rows
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--refresh-proofs", action="store_true", help="bind annotations to newly executed proofs; retain all historical proof snapshots")
+    args = parser.parse_args()
     root = Path.cwd().resolve()
     reviews = json.loads((root / "evals/reviews.json").read_text())
     inventory = json.loads((root / "notes/runs/m0-media-inventory.json").read_text())
@@ -22,12 +26,14 @@ def main():
     outcomes = []
     for task, review in reviews["cases"].items():
         path = root / "evals/annotations" / ("swebench-bpmn-" + task.rsplit("-", 1)[1] + ".json")
-        if path.exists():
+        if path.exists() and not args.refresh_proofs:
             validate_external(root, path, pinned_rows=pinned)
             outcomes.append({"task": task, "state": "existing-validated"})
             continue
         state = progress["cases"].get(task, {})
         if state.get("state") != "oracle-passed":
+            if path.exists() and args.refresh_proofs:
+                raise ValueError("Cannot refresh an admitted case without a new passing oracle: " + task)
             outcomes.append({"task": task, "state": "not-admitted", "reason": state.get("state", "pending")})
             continue
         media = inventory[task]

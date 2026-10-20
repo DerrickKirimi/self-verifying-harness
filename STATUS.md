@@ -46,11 +46,20 @@ Update this file at the end of every working session: what changed, gate results
   suite: **49 passed**. No model transport is wired to it yet and no metered
   calls have been made. Private local configuration is capped below the supplied
   prepaid balance; no key or billing screenshot is committed.
-- [RUN] Current external admission gate: **3/3 admitted annotations, Wilson 95%
-  [43.85%, 100%]**, below the required sample size and lower bound. This is
+- [RUN] Current external admission gate: **4/4 admitted annotations, Wilson 95%
+  [51.01%, 100%]**, below the required sample size and lower bound. This is
   `notes/runs/m0-gate.json`, not model performance. Cases 1557, 1570 and 1655
-  pass; 1567 was rejected because its target failure is a runtime exception.
-  Candidate 1578 is running; remaining candidates are queued sequentially.
+  and 1578 pass; 1567 was rejected because its target failure is a runtime
+  exception. Candidate 1610 is running; remaining candidates are queued.
+- [CODE/RUN] Fresh-clone source preparation now downloads and hash-verifies both
+  pinned Parquet files, then exports the reviewed rows. An isolated temporary-root
+  replay fetched both files and exported 12 rows successfully:
+  `notes/runs/m0-source-replay-smoke.json`. Explicit `--rerun` and
+  `--refresh-proofs` support fresh local oracle evidence without deleting public
+  historical proof metadata. Full fresh-clone Docker replay remains unmeasured.
+- [SRC] Owner explicitly requested a side agent for a relevance-ranked literature
+  review. `/root/literature_review` is researching primary sources and writing
+  `docs/literature-review.md` plus reference entries; main work continues on M0.
 
 ## Log
 

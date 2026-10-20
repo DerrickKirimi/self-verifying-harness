@@ -1,0 +1,68 @@
+{
+  "task": "bpmn-io__bpmn-js-1578",
+  "run_at": "2026-10-20T14:33:20.205740+00:00",
+  "graded_at": "2026-10-20T14:33:20.205760+00:00",
+  "row_sha256": "cd544332768ef148bda762be836f276342222a69314f9cdb7ec361d781666427",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1578@sha256:63853ae240dc8c1e92939e265c2968666da1991711a86009b6886784a9029e99",
+  "image_id": "sha256:23b823b13bce3b4eae7f3c6189c8d1f96953e56548f69405310cafee22bc83c6",
+  "base_commit": "c4cbc7821ae9295bff4ee7b6b6b6c3fb76af6296",
+  "fix_patch_sha256": "a896823f06e7a3dd93f8006235345dd469ed0f5337911f7625f18858663f7775",
+  "test_patch_sha256": "17af1f53df3a1e91e0ef30ac0c7088437fe6254ca37bb929d34a67b4a08ac2eb",
+  "upstream_eval_sha256": "dc24ce3820fa5c4d34d0be0cff0f0da81d131b6110660717f1ed32298da1d84d",
+  "executed_eval_sha256": "884fd296e899fc0a371e014e220b274f94208bb2a690752809d6def3b5eca444",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1680,
+      "discovered": 1687,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1679 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "c4cbc7821ae9295bff4ee7b6b6b6c3fb76af6296",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/copy-paste basic diagram integration should wire DIs correctly FAILED\n\tAssertionError: expected undefined to exist\n\t    at eval (webpack-internal:///./test/spec/features/copy-paste/BpmnCopyPasteSpec.js:483:36)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features/copy-paste basic diagram integration should wire DIs correctly ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/copy-paste basic diagram integration should wire DIs correctly FAILED\n\tAssertionError: expected undefined to exist\n\t    at eval (webpack-internal:///./test/spec/features/copy-paste/BpmnCopyPasteSpec.js:483:36)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "4d3dad67e7209bffdde4f7ca61378716cb4801bafbe23190e7dbdb476e91566b",
+      "raw_log_sha256": "3ebc4e522252b87a58739be5a9c4159336a534171163de390a95ec346d533af8"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1680,
+      "discovered": 1687,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1680 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "c4cbc7821ae9295bff4ee7b6b6b6c3fb76af6296",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/copy-paste basic diagram integration should wire DIs correctly ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "2b42ec83b8a517831d65ed90a509e736fb917e547fb0ef5b85d68d89a5e12eb8",
+      "raw_log_sha256": "c328fe91d994d5b968f99f25bd8f002b097139d762a186c0dca57498f2360823"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1578/logs"
+}
