@@ -8,3 +8,4 @@ evals/recordings/
 *.webm
 traces/
 .scion/agents
+data/external/

@@ -1,0 +1,1428 @@
+{
+  "dataset": "SWE-bench/SWE-bench_Multimodal",
+  "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+  "scope": "Issue-media URL inventory; extensions and untyped links are candidates, not decoded media",
+  "rows_by_split": {
+    "dev": 100,
+    "test": 480
+  },
+  "sources": [
+    {
+      "file": "data/dev-00000-of-00001.parquet",
+      "sha256": "714f4b815680608168d620c87c6b3420b3d4690d6656fc85b1da6511bfb55931",
+      "rows": 100
+    },
+    {
+      "file": "data/test-00000-of-00001.parquet",
+      "sha256": "ce21141e0b2aadb6b91cf21d27c93e4c159afb1c4c25b7b4ea9222d823dd9da7",
+      "rows": 480
+    }
+  ],
+  "video_candidate_tasks": 2,
+  "gif_candidate_tasks": 67,
+  "unresolved_candidate_tasks": 8,
+  "candidates": [
+    {
+      "id": "Automattic__wp-calypso-23991",
+      "split": "dev",
+      "repo": "Automattic/wp-calypso",
+      "base_commit": "4e8168f998f4619a58251fb93fdc0683596399bc",
+      "image": "swebench/sweb.eval.x86_64.automattic_1776_wp-calypso-23991:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/5654161/29975637-c3d4073a-8f3f-11e7-8108-400114d4adbf.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 202
+    },
+    {
+      "id": "Automattic__wp-calypso-26335",
+      "split": "dev",
+      "repo": "Automattic/wp-calypso",
+      "base_commit": "1afcc6abc9e3e772d27086374d0a1b6e5a733a67",
+      "image": "swebench/sweb.eval.x86_64.automattic_1776_wp-calypso-26335:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/128826/43183813-c8289eb8-9029-11e8-9f76-f7671c63554e.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 4,
+      "pass_to_pass_count": 39
+    },
+    {
+      "id": "chartjs__Chart.js-11352",
+      "split": "dev",
+      "repo": "chartjs/Chart.js",
+      "base_commit": "201ddffa1d0d0bf61a4372ff1386dbcffd606850",
+      "image": "swebench/sweb.eval.x86_64.chartjs_1776_chart.js-11352:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/12361341/236559775-b3c7823e-816b-43cd-b6eb-c44d0ca8dc7b.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "processing__p5.js-6111",
+      "split": "dev",
+      "repo": "processing/p5.js",
+      "base_commit": "113b99ea8b249285f1ba2c09d869f0288a256cd4",
+      "image": "swebench/sweb.eval.x86_64.processing_1776_p5.js-6111:latest",
+      "video_urls": [
+        "https://user-images.githubusercontent.com/39549290/232807717-8b1dfde2-ff46-443d-94c7-7802bc719c35.mp4"
+      ],
+      "gif_urls": [],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 29,
+      "pass_to_pass_count": 2567
+    },
+    {
+      "id": "PrismJS__prism-3372",
+      "split": "test",
+      "repo": "PrismJS/prism",
+      "base_commit": "554ff3240df2fc10a8f14d60f38f1e2e8afe5386",
+      "image": "swebench/sweb.eval.x86_64.prismjs_1776_prism-3372:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://raw.githubusercontent.com/qjebbs/vscode-plantuml/0af623302daf540dc0702bbf66d2efee15d7c5de/images/auto_update_demo.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 11,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1080",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "d0ff81a6e7dfa10138e773820fd2970fb22140db",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1080:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/26740468/54624728-3b1b1780-4a6e-11e9-830b-3957d8b91cf7.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 13,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1083",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "aed11d88afeb0803ec1d09c085c749fffde3fc6d",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1083:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/59529953-a72ce080-8ee2-11e9-9a46-6fb9ef981724.gif",
+        "https://user-images.githubusercontent.com/58601/59529974-b449cf80-8ee2-11e9-88c4-2c52f0c0f122.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1085",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "d0ff81a6e7dfa10138e773820fd2970fb22140db",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1085:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/59585029-db212500-90df-11e9-9d8c-00938b31449b.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1092",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "ca64b1b3535b97b440441c5b50a114e8a30f76af",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1092:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/59662199-bf378500-91ac-11e9-82dc-a2e20af3acce.gif",
+        "https://user-images.githubusercontent.com/58601/59662218-c78fc000-91ac-11e9-96df-a9aa58acbed1.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1119",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "23505a47830db4207b59044bf5383ba8f0323464",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1119:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/59101607-cac3ba00-8929-11e9-93bd-487418827d06.gif",
+        "https://user-images.githubusercontent.com/58601/59101749-47569880-892a-11e9-99ab-c624f3f09797.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1143",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "f5d55fe5dda86c96fb99507efbf859d4b6406f66",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1143:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/51420727/61866021-ad947c00-aed4-11e9-9b2c-cd49d7d07ab3.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1151",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "32f0a000d0ac4fde7484ae7d925ece7d2618b333",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1151:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/49441941-494b6d80-f7c8-11e8-8528-a9623b61a8bd.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1168",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "bf180321a3a40428c3f87b639b87cc3fc578066e",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1168:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/9433996/62857445-eebfc500-bcf7-11e9-9aad-239c93734e32.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1174",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "4cda939b4dda0624507ddcd7b865d72a8fccf746",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1174:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28307541/60582557-5b56b400-9d89-11e9-8d78-984d2662761c.gif",
+        "https://user-images.githubusercontent.com/28307541/60582558-5bef4a80-9d89-11e9-8bcd-b867e425ccb8.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1179",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "c9e9f002c9248c2b6fe2b3b1668447d01a69d054",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1179:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/7633572/63582090-b42c1700-c598-11e9-90fd-aacc18d93bb2.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1192",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "014359523071b86f885e87e4204f92686b55b3d6",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1192:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/7633572/62688525-552ba700-b9c9-11e9-80db-6eff81de0a60.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 4,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1196",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "f177a462ea72b2431ce4f44f92b3da776cff4d9e",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1196:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/15003836/64706761-52354200-d4b2-11e9-8664-548293f4f3b6.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1198",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "2e80209820961c622c9457087e0bea99ecbd6401",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1198:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/8074799/65500496-0f1e9a00-dec8-11e9-889c-bff0582f1c6f.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1200",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "2e80209820961c622c9457087e0bea99ecbd6401",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1200:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/8074799/65552698-bc77c900-df2d-11e9-9327-c9e8ed50a64d.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1206",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "37bcd070e8406a43a7316893c6b68debeaae5e26",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1206:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28307541/65588246-77808080-df87-11e9-91e4-61ebe3fffb66.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1221",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "2e27d7430642439e30806941d0df43018ca729eb",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1221:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/15003836/66655358-33a2a200-ec3c-11e9-8ec7-bfeb1eaf75da.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1236",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "f8ef569eb95eb60db731a01b62186b32a69a31ac",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1236:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28307541/68217768-78bfb700-ffe3-11e9-9281-080ad0fc2b05.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1238",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "7ad31ae3dce17b53e98946cfc487a4cb8111947a",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1238:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://cloud.githubusercontent.com/assets/7633572/25659953/5b7cecae-300a-11e7-8f86-24ce50c19d9b.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1299",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "9c114de26a5cb8eec3470cf1da1d00362d3d79f9",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1299:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/77805963-a0dbaf80-7083-11ea-98f3-ba5183a2af78.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1330",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "a445144ca93582a0202e951f5ce7f47b2639bac1",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1330:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/77896278-52433680-7278-11ea-85d1-d841f8191154.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1337",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "4706a407c0b139682c4d9b36db323095d38681d0",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1337:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/42630599-9be1950a-85d7-11e8-8625-0683b09b28b7.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1348",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "36e4f6113c5fc1e826894244c6da39636b75861c",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1348:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/42800119/91721650-65e12900-eb99-11ea-9152-2e1ce15134f5.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1434",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "c3e0d6d16477bc2e9e37109a9ff1254b6695c7cc",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1434:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/7633572/89532801-a647c400-d7f2-11ea-87d6-ea536b0197ba.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1442",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "f3394441ad73b84fdc23790556c4aadcdcbd4b82",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1442:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/7633572/116668611-de54ef80-a99d-11eb-9654-e34dae31b255.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1542",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "0f4d30829d4965699aee2ff0622efc0b2ffdb84c",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1542:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/144435022-881cace6-c2d4-45bc-b2b2-08118f04a74e.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1557",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "143603a26dbcc6dec8ca37df94562fc9050e96b4",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1557:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/42800119/138047751-6691a166-0650-45f8-ace9-f65429e9b76e.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1567",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "695c261709027d595949265b499adf21916971ad",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1567:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/149093282-c547ec1f-6c9e-4e1d-9d5e-11e98953225d.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1570",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/149092385-c30308a4-e70a-4d70-bb26-4d71cd154ad6.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 4,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1578",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "c4cbc7821ae9295bff4ee7b6b6b6c3fb76af6296",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1578:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/15230555/147228024-18c202f6-9b3f-4128-8469-1ce583273a3c.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1584",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "7baefd7bc33b2c0e2caf61322e7e950d10f737fe",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1584:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/15230555/147228024-18c202f6-9b3f-4128-8469-1ce583273a3c.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1610",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/155515880-d0f6feb4-6380-4c64-a709-7819926e17b4.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1623",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "21f7ed402d25c6c0737459a86a39323642634715",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1623:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/27808087/158993088-cd5dab32-1bf0-40b2-afab-3adde3d3d7fc.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1638",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/21984219/164674929-c8e344a5-71d1-4cab-8611-b4cd5ef87a02.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1640",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/7633572/150531680-3f51471b-df5f-4b08-b6c1-d49b2e6a2209.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1644",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "c550d09d1d0ce9132ed51d38aa3764bf080ab290",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1644:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/7633572/150531680-3f51471b-df5f-4b08-b6c1-d49b2e6a2209.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 4,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1655",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655:latest",
+      "video_urls": [
+        "https://user-images.githubusercontent.com/25825387/169325524-f91870f7-c0e5-4b43-999f-4045eeeb2697.mov"
+      ],
+      "gif_urls": [],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1659",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "9737708a581560baca444e5bcbab1ecfee7acd39",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1659:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/21984219/169510262-f80040f3-b078-481b-b62b-a934ca55b106.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1677",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "ee75929dd1e9bbb5c6ba5ce5c4475008b354a825",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1677:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/170051640-9f96fea5-5cea-45e8-87d7-c68db5b06438.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1679",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/61787903/172374025-61f23e34-b199-4e67-bddd-ec7a3aafdb92.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1719",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "a02fe7bfa1f2923c1c2c1a650e8116329e602492",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1719:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/33545902/178237778-960903e0-70dd-41d2-adb8-362360785914.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1847",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "3c90e8ef96b0a315bf78b25b29053abd87b57b27",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1847:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/218044358-8873ccfa-402b-43e1-938c-318a024a9e5b.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "bpmn-io__bpmn-js-1928",
+      "split": "test",
+      "repo": "bpmn-io/bpmn-js",
+      "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/58601/201333134-d400f316-8fa1-4de2-a48a-d10d1a7938bf.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "carbon-design-system__carbon-11416",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "b53e3e9e02a18e4cf94b9f90e31caf4e979ac05b",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-11416:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/8028956/167522167-a565b687-5f2c-4dab-b8df-13f3be074b8c.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "carbon-design-system__carbon-3237",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "07f1a995ee488120aaa852825f69e28c1cc09919",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-3237:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/40420828/60198449-3fba4d80-985f-11e9-896b-09ec707cb629.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "carbon-design-system__carbon-3918",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "45649e812b53f7060e0bab47f0acaf709a5b7707",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-3918:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/5973294/61083551-b162d180-a3f1-11e9-9963-2bce349fc077.gif",
+        "https://user-images.githubusercontent.com/5973294/61083652-ee2ec880-a3f1-11e9-890d-ce0ef151f68d.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 24
+    },
+    {
+      "id": "carbon-design-system__carbon-5156",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "f3422c43819222edf20a2b431414bcc04a8d19e5",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-5156:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28265588/72900871-f4025080-3d28-11ea-9b38-0e13c93c9121.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "carbon-design-system__carbon-5173",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "c5fddd108bade91e59c1c98a7bbf2e2bba47f57e",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-5173:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28265588/72614042-85d91a80-3931-11ea-9894-b0162bb12630.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "carbon-design-system__carbon-7288",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "c154f651a30294aade2a5c8b2b75e0addabdbf25",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-7288:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/3808948/99061929-7dc62780-25a2-11eb-9c8d-86bcc074dfb6.gif",
+        "https://user-images.githubusercontent.com/3808948/99061955-84ed3580-25a2-11eb-9afd-323677fb3418.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 152
+    },
+    {
+      "id": "carbon-design-system__carbon-7350",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "e70264b8c397315d810c36d82f3f0f6d0173891f",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-7350:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28265588/93094235-efb4ea00-f6a1-11ea-8f59-0217a060c1c2.gif",
+        "https://user-images.githubusercontent.com/28265588/93094304-078c6e00-f6a2-11ea-9b1b-a6df302be3f0.gif",
+        "https://user-images.githubusercontent.com/28265588/93094364-1d9a2e80-f6a2-11ea-8ecd-ebf341dcf51c.gif",
+        "https://user-images.githubusercontent.com/28265588/93094412-2db20e00-f6a2-11ea-8a9e-70a5e18656ab.gif",
+        "https://user-images.githubusercontent.com/28265588/93094522-4e7a6380-f6a2-11ea-849e-3eba4b52d581.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 154
+    },
+    {
+      "id": "carbon-design-system__carbon-8279",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "c4114f11873716335c4ebbfbd543ea4c55ef8d1a",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-8279:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/14354863/107256086-09ffb380-6a07-11eb-8e90-8066adf87d56.gif",
+        "https://user-images.githubusercontent.com/14354863/107276514-20b30400-6a21-11eb-8783-88661c8191b8.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 158
+    },
+    {
+      "id": "carbon-design-system__carbon-8469",
+      "split": "test",
+      "repo": "carbon-design-system/carbon",
+      "base_commit": "14b4dc1010d7ea5bdf54edc92fb4b939065bc02c",
+      "image": "swebench/sweb.eval.x86_64.carbon-design-system_1776_carbon-8469:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/28265588/114999773-7339f200-9ea2-11eb-9802-89c68faa081a.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 161
+    },
+    {
+      "id": "eslint__eslint-14033",
+      "split": "test",
+      "repo": "eslint/eslint",
+      "base_commit": "f6602d569427e9e2a4f3b5ca3fc3a8bffb28d15e",
+      "image": "swebench/sweb.eval.x86_64.eslint_1776_eslint-14033:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/15704333/100765799-a89fe080-33d6-11eb-8aae-160e28610e24.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "grommet__grommet-2695",
+      "split": "test",
+      "repo": "grommet/grommet",
+      "base_commit": "bcde5d660f50359d8e46e33dcfe3bbc8968471ef",
+      "image": "swebench/sweb.eval.x86_64.grommet_1776_grommet-2695:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/17486011/51508491-b6a57300-1df5-11e9-9d98-0583ae700f65.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 46
+    },
+    {
+      "id": "grommet__grommet-6227",
+      "split": "test",
+      "repo": "grommet/grommet",
+      "base_commit": "f8c7358c43895ac8bb10e91ada33a5356a3adedd",
+      "image": "swebench/sweb.eval.x86_64.grommet_1776_grommet-6227:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/30321668/172786398-9c749797-0f0f-479a-b3ae-3231630781b9.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 76
+    },
+    {
+      "id": "openlayers__openlayers-10982",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "0549951e9ee935836c92a20ef72d79d9ee10a226",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-10982:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/2290300/72719209-b01c1980-3b77-11ea-8955-54e50695b729.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-11226",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "4621496d44792cabc04935b9090d543c037bc471",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-11226:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/5003/85848942-5c5acf80-b7aa-11ea-8b26-e3ab39f79227.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-11377",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "302bc662af22bc353c87ae1a3700c6958c69b8e9",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-11377:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/3100059/88535094-a6cda700-d009-11ea-826b-093126e3438a.gif",
+        "https://user-images.githubusercontent.com/3100059/88535101-aa612e00-d009-11ea-9c84-2cc95cb310c5.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15114",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "d4ce437830efcfe44b57a1fac53b727a1eed2f0e",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15114:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/113348625/642ad6a9-226d-4851-a4d9-04e9b4a9d17c",
+        "https://github.com/openlayers/openlayers/assets/113348625/805fad3b-cdd0-424b-a4b2-8d3f19fe9253"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15168",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "92b93740defba1d13dd173acf41257d884484f4e",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15168:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/332812/3e63f872-2d44-42fb-b822-0cbf02ff69cf"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15229",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "1f9250c0f7223dbf7c4f128d28649a9c534fbf33",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15229:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/445223/ec886b5c-df7f-48e2-a00f-942582e6558f"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15484",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "73f4636c85e569c6aca36f2ad478b677b7929872",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15484:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/49240900/a4cd6239-76b7-418c-85a4-af35fbbf57d5"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15683",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "e0efc264d17712e7d5de3baa57c313357453ee81",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15683:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/621420/656573d1-44a4-4611-b916-b89a39f9535d",
+        "https://github.com/openlayers/openlayers/assets/621420/cdcd5277-bdf4-45d7-be0f-a50b434c2aee"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 5,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15685",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "7a88544d0f02253088bedaf8c0adf3a73d24739b",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15685:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/27783775/4fd8876d-86e2-4dae-a6cb-9d43ece7745d"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15796",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "b28273044fbe7c7fd6335c73f428e0d890a7e33d",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15796:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/381932/53a78f52-9edf-421e-b289-623942977cfc"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-15825",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "78a22e75102a452ed15aadaf194ad931e93a0205",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-15825:latest",
+      "video_urls": [],
+      "gif_urls": [],
+      "unresolved_asset_urls": [
+        "https://github.com/openlayers/openlayers/assets/50118328/55d29e8f-0248-4492-b28f-2825f2f6803e"
+      ],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "openlayers__openlayers-9083",
+      "split": "test",
+      "repo": "openlayers/openlayers",
+      "base_commit": "d8156577c941ab0d7f647e86dac1e7181db7e5f2",
+      "image": "swebench/sweb.eval.x86_64.openlayers_1776_openlayers-9083:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/8699204/50322054-d46c7900-04d3-11e9-8129-f2b597006ee1.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "fail_only",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "prettier__prettier-14262",
+      "split": "test",
+      "repo": "prettier/prettier",
+      "base_commit": "37fb53acf33a20379a93bfecea8242c03ce0a4fc",
+      "image": "swebench/sweb.eval.x86_64.prettier_1776_prettier-14262:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/476567/214179620-3f27356b-9ce1-4dc3-96a8-db30a4441391.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "prettier__prettier-16347",
+      "split": "test",
+      "repo": "prettier/prettier",
+      "base_commit": "b26f56bd316a3ed11c33f50cd4a3dac44a4ee529",
+      "image": "swebench/sweb.eval.x86_64.prettier_1776_prettier-16347:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://file.mo7.cc/static/lxh_gif/lxh_71.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "prettier__prettier-4115",
+      "split": "test",
+      "repo": "prettier/prettier",
+      "base_commit": "f6f6f2e2eaa8d784ddb54e9219416e37cc3b94ec",
+      "image": "swebench/sweb.eval.x86_64.prettier_1776_prettier-4115:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/25302911/37053023-4a36a348-2138-11e8-9f2a-af057a9998e7.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "prettier__prettier-9866",
+      "split": "test",
+      "repo": "prettier/prettier",
+      "base_commit": "892a70e0d3011349155d2f82d56a99532f23fd19",
+      "image": "swebench/sweb.eval.x86_64.prettier_1776_prettier-9866:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/23690145/69402850-06b1d680-0d34-11ea-891b-4a39dc14012a.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "scratchfoundation__scratch-gui-5039",
+      "split": "test",
+      "repo": "scratchfoundation/scratch-gui",
+      "base_commit": "5b1670f520138ffbca7ce36e7bc9c6de9390d4f2",
+      "image": "swebench/sweb.eval.x86_64.scratchfoundation_1776_scratch-gui-5039:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/8245567/61958597-95b81780-affc-11e9-9ac5-1f8a4f4d465b.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0
+    },
+    {
+      "id": "scratchfoundation__scratch-gui-8492",
+      "split": "test",
+      "repo": "scratchfoundation/scratch-gui",
+      "base_commit": "0eb9ced9ae6d833a230c1c27dbf42dcb4e30bec4",
+      "image": "swebench/sweb.eval.x86_64.scratchfoundation_1776_scratch-gui-8492:latest",
+      "video_urls": [],
+      "gif_urls": [
+        "https://user-images.githubusercontent.com/3431616/62747201-66a09d80-ba21-11e9-9112-da7e580554f1.gif"
+      ],
+      "unresolved_asset_urls": [],
+      "has_fix_patch": true,
+      "has_test_patch": true,
+      "has_eval_script": true,
+      "eval_type": "pass_and_fail",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 7
+    }
+  ],
+  "oracle_runs_performed_by_audit": 0,
+  "pilot_row_matches_pinned_source": true
+}

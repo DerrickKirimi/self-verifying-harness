@@ -40,6 +40,12 @@ Reference projects inform decisions; none is a required base. The M0 runner
 has no MCP, Pixeltable, embedding-model or agent-loop dependency. Current
 integration and retrieval decisions are in [the decision log](docs/decisions.md).
 
+The first external oracle also works: a SWE-bench Multimodal BPMN video task
+fails at the expected color assertion before its reference fix, then passes
+its 1777 executed tests afterward (7 existing skips remain unchanged).
+This is a supplied-oracle pilot; media annotation and full M0 admission are
+still pending. See the [audit, proof and reproduction commands](notes/2026-10-20-swebench-multimodal-pilot.md).
+
 ## Why
 
 Today the path runs: meeting → transcriber → someone writes a text ticket → a developer finds the gap days later. Context gets lost at every step, and "the fix works" usually means a test written after the fix that has only ever been seen passing. This project keeps the recording's evidence attached to the work and insists on a reproduction that fails first.

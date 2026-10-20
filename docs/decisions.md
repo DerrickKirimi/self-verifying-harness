@@ -51,3 +51,10 @@ AGENTS.md commit/push instruction, authorizes the repository pushes for this wor
 
 Evidence and candidate revisions: `notes/2026-10-20-public-dataset-audit.md`.
 No public candidate is verified or included in M0 yet. [RUN]
+
+## Decisions (20 Oct 2026, primary benchmark pilot)
+
+| # | Decision | Why / evidence |
+|---|---|---|
+| D19 | **Use the pinned current SWE-bench Multimodal release as the primary visual-task source; supplement its media coverage as needed.** Supersedes the next-step priority for CodeV in the first audit. | Owner delegated selection and expressed interest in this benchmark. [SRC] Actual Parquet inspection found direct video and GIF candidates, and the official site documents a recent v2 environment/grading refresh. [RUN/SRC] Newer-model difficulty and media contribution remain unmeasured. [INF] |
+| D20 | **Keep one implementation branch and isolated adapters/artifacts.** | No conflicting product implementations yet justify branch divergence. [INF] Start with the native BPMN color-label oracle; keep raw data and gold patches ignored, then attach annotated media after the oracle succeeds. |

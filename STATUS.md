@@ -17,7 +17,17 @@ Update this file at the end of every working session: what changed, gate results
   D11–D16 in `docs/decisions.md` record this; retrieval/SDK choices remain open.
 - [SRC] Docker is the current backend; E2B/Daytona or other backends can be added
   later (D17). Public video/task pairs are now candidates for M0 (D18), so owner
-  narration no longer blocks the visual path. No external case has been verified.
+  narration no longer blocks the visual path.
+- [RUN/SRC] SWE-bench Multimodal is now the selected primary visual-task source.
+  Its official site reports a September 2026 v2 refresh. The pinned Parquet audit
+  covers 580 rows and identifies 2 direct video-link tasks, 67 GIF-link tasks
+  and 8 untyped-asset candidates (overlapping categories, not verified media).
+  See `notes/2026-10-20-swebench-multimodal-pilot.md`.
+- [RUN] **First external supplied-oracle pilot succeeded:** BPMN label color,
+  1/1 case, Wilson 95% [20.65%, 100%]. Expected assertion fails before the gold
+  fix; afterward all 1777 executed tests pass, with the same 7 skips in both
+  runs. Proof: `notes/runs/swebench-bpmn-pilot.json`. Media annotation/admission
+  and agent-generated reproductions remain unmeasured; M0 is not complete.
 
 ## Log
 
@@ -47,24 +57,31 @@ Update this file at the end of every working session: what changed, gate results
     five documented regression cases at the inspected revision; CodeV's video-only
     subset has one task with fix/test patches. Full findings, pinned revisions,
     current limitations and source URLs: `notes/2026-10-20-public-dataset-audit.md`.
+  - [RUN] Selected SWE-bench Multimodal as the primary visual source and completed
+    the first native external Docker oracle. Pinned Parquet audit and BPMN pilot:
+    `notes/2026-10-20-swebench-multimodal-pilot.md`. Final runner checks: 27 tests
+    passed. All raw media/gold patches stay under ignored `data/external/`.
 
 ## Next step
 
-Next single unit: establish reuse permission and pilot CodeV's
-`matplotlib__matplotlib-25631` video task in Docker against its base revision and
-gold patch. Observe the supplied tests failing/passing ourselves; do not count
-dataset metadata as verification. If unsuitable, pilot an E2E browser case.
-See the public-dataset audit for exact source revisions and remaining checks.
+Next single unit: connect the successful BPMN oracle to an external-source
+annotation/provenance adapter. Support its native test runner and immutable
+base+patch states; finish full-clip review and timestamp annotation. The local
+walkthrough schema currently only covers pytest/Playwright and commit pairs.
 
-Then bind annotations and recording hashes to oracle reports and assemble the
-10–20-bug M0 set from accepted public cases and/or controlled recordings.
+Then assemble the 10–20-bug M0 set from reviewed video/GIF candidates in the pinned
+SWE-bench Multimodal release, supplementing from other sources when necessary.
+Use the two direct-video tasks as anchors; inspect untyped assets before
+asserting video coverage. Do not present GIF-only cases as narrated recordings.
 Owner clips in `docs/recording-guide.md` remain an option, especially for the
 speech path, rather than a blocker. Do not begin M1 ingestion before M0 passes.
-The harness-client question is still pending; it does not affect these fixtures.
+Coding-harness client integration remains M1 work; the current gate is independent
+of that client and does not require another owner decision.
 
 ## Gate results
 
 | Milestone | Gate | Result | Date |
 |---|---|---|---|
 | M0 fixture checkpoint | Same pytest fails before / passes after | [RUN] 3/3; Wilson 95% [43.85%, 100%]; `notes/runs/fixture-oracle.json` | 2026-10-20 |
+| External native oracle pilot | Supplied test fails before / passes after gold patch | [RUN] 1/1; Wilson 95% [20.65%, 100%]; `notes/runs/swebench-bpmn-pilot.json` | 2026-10-20 |
 | M0 complete | 10–20 recorded annotated bugs; every reproduction fails before / passes after | Not passed: recordings/annotations and full sample missing | 2026-10-20 |

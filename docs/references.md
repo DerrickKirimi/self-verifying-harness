@@ -57,3 +57,18 @@ and local temporary download locations are in
 | [CodeV / Visual SWE-bench](https://github.com/luolin101/CodeV) | `46a6b65bf57f24cd33eddbc2445583939207df37`; README, tree and video-only JSON | One video task with base revision, fix/test patches and test identifiers; execution and reuse permission unverified. [CODE/RUN] |
 | [SWE-bench Multimodal](https://huggingface.co/datasets/SWE-bench/SWE-bench_Multimodal/blob/main/README.md) | README last-listed revision `4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5`; card and file listing, not task rows | Filter mixed visual assets for video-bearing tasks with runnable oracles. [SRC/INF] |
 | [TANGO](https://two-to-tango.github.io/tango/) | Overview read; no archive downloaded | Bug videos for duplicate detection; repair oracle not established by the overview. [SRC] |
+
+## SWE-bench Multimodal native pilot (2026-10-20)
+
+- [SRC] [Official v2 update](https://www.swebench.com/multimodal.html), dated
+  2026-09-01; environment/grading refresh and 480 selected test tasks.
+- [CODE] Official harness reference clone: `/home/d3rrick/swe/llms/SWE-bench`,
+  `02e7a74ffd0b707aab73d203fe87bdc7c76afc8e`. Read native eval-script execution,
+  image-asset staging, BPMN log parser, grading and TestSpec. Its full package
+  is not a product dependency; the pilot consumes the released task contract.
+- [RUN] Read both Parquet files at dataset revision
+  `4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5`, verified file hashes and audited all
+  580 rows. Exact inventory: `notes/runs/swebench-multimodal-audit.json`.
+- [RUN] BPMN native oracle pilot passed; report and raw-log hashes in
+  `notes/runs/swebench-bpmn-pilot.json`. Scope, commands and limitations:
+  `notes/2026-10-20-swebench-multimodal-pilot.md`.
