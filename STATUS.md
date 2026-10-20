@@ -5,8 +5,8 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 ## Current milestone: M1 (ingestion and MCP), starting
 
 **M0 has passed; the full MVP is not shipped.** MCP HTTP evidence access works.
-No paid model calls, model ingestion, agent-generated reproductions/fixes or
-Harbor trials have been measured. [RUN]
+Paid visual ingestion is running; retrieval gates, agent-generated reproductions/
+fixes and Harbor trials have not been measured. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
   10–20-case and lower-bound >=0.70 gate. Proof: `notes/runs/m0-gate.json`.
@@ -61,12 +61,16 @@ Harbor trials have been measured. [RUN]
    M0 now passes on all eleven admitted cases; use the frozen manifest in M1.
 2. Budget-covered Gemini transport is tested, including actual summarization
    middleware and all public call modes. Authenticated metadata confirms both
-   candidate models and token limits; no paid generation yet. Eleven new tests
-   pass; full suite 68 passed. See `notes/2026-10-20-budgeted-gemini.md`.
+   candidate models and token limits. Eleven transport tests pass; full suite
+   now 72 passed including visual timeline/retrieval/audio and HTTP checks. See `notes/2026-10-20-budgeted-gemini.md`.
    Disable delegation through the selected harness profile and verify Docker
    boundaries before executing any generated code.
-3. Build ingestion/retrieval and measure M1 against the fixed-frame baseline,
-   then proceed through M2 claims/checkpoints and M3 generated check/fix, held-out
+3. Corrected 45-frame ingestion is running sequentially in exec session 34917.
+   Do not launch another batch; poll it and resume only after termination.
+   Prior seek-based outputs are archived and their costs retained. Current
+   design/commands: `notes/2026-10-20-m1-ingestion-design.md`. After completion,
+   run retrieval evaluation and synthetic audio smoke to finish M1;
+      then proceed through M2 claims/checkpoints and M3 generated check/fix, held-out
    regressions, wrong-fix controls and actual Harbor oracle/nop trials.
 
 ## Evidence and history

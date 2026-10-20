@@ -83,6 +83,16 @@ def build_server(evidence: Evidence):
         """Read an ingested transcript span, or explicit no-audio status for silent media."""
         return evidence.transcript(recording_id, t0, t1)
 
+    @server.tool(annotations=read_only)
+    def find_moment(recording_id: str, query: str, limit: int = 5) -> dict[str, Any]:
+        """Search timestamped visual evidence; inspect returned frames to confirm."""
+        return evidence.find_moment(recording_id, query, limit)
+
+    @server.tool(annotations=read_only)
+    def get_screen_text(recording_id: str, t0: float, t1: float) -> dict[str, Any]:
+        """Read sampled model-recognized screen text; transcription may contain errors."""
+        return evidence.screen_text(recording_id, t0, t1)
+
     @server.resource("svh://recordings")
     def recordings() -> str:
         """Registered media, without host paths or evaluation gold."""

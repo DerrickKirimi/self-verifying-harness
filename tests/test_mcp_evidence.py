@@ -32,7 +32,11 @@ def evidence(tmp_path):
                     "color=c=red:s=32x32:d=2", "-c:v", "mpeg4", str(media)], check=True, timeout=20)
     record = Recording("controlled", media, hashlib.sha256(media.read_bytes()).hexdigest(),
                        2.0, False, "video", "https://example.com/controlled.mp4")
-    return Evidence([record], "a" * 64)
+    index = {"identity": {"recording_id": record.id, "media_sha256": record.sha256,
+                           "corpus_sha256": "a" * 64},
+             "frames": [{"timestamp_s": (n + .5) * 2 / 45, "caption": "red screen",
+                          "screen_text": "Controlled"} for n in range(45)]}
+    return Evidence([record], "a" * 64, visual_indexes={record.id: index})
 
 
 def test_frame_inputs_cannot_change_trusted_media_or_escape_bounds(evidence):
@@ -115,6 +119,10 @@ def test_real_http_sdk_images_prompts_resources_and_deepagents(evidence):
                 assert sum(block.type == "image" for block in frames.content) == 2
                 transcript = await client.call_tool("get_transcript", {"recording_id": "controlled", "t0": 0, "t1": 2})
                 assert transcript.structured_content["status"] == "no_audio"
+                moments = await client.call_tool("find_moment", {"recording_id": "controlled", "query": "red screen"})
+                assert len(moments.structured_content["matches"]) == 5
+                text = await client.call_tool("get_screen_text", {"recording_id": "controlled", "t0": 0, "t1": 1})
+                assert text.structured_content["frames"][0]["text"] == "Controlled"
                 invalid = await client.call_tool("get_recording", {"recording_id": "../../.env"})
                 assert invalid.is_error
                 resources = await client.list_resources()

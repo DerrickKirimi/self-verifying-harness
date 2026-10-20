@@ -30,10 +30,22 @@ def main():
     mcp.add_argument("--corpus", type=Path, default=Path("evals/frozen-m0.json"))
     mcp.add_argument("--token-file", type=Path, default=Path("data/runtime/mcp.token"))
     mcp.add_argument("--port", type=int, default=8765)
+    ingest = commands.add_parser("ingest", help="budgeted timestamped ingestion of registered corpus recordings")
+    ingest.add_argument("--corpus", type=Path, default=Path("evals/frozen-m0.json"))
+    ingest.add_argument("--recording")
+    commands.add_parser("budget", help="show the persistent Gemini charged/reserved budget without credentials")
     serve = commands.add_parser("serve", help="run an archived fixture for recording")
     serve.add_argument("--revision", choices=["pre", "post"], default="pre")
     args = parser.parse_args()
     args.root = args.root.resolve()
+    if args.command == "budget":
+        from svh.budget import Budget
+        print(json.dumps(Budget(args.root / "data/runtime/gemini-budget.sqlite", "4.00").summary(), indent=2))
+        return
+    if args.command == "ingest":
+        from svh.ingest import ingest_corpus
+        ingest_corpus(args.root, args.corpus, args.recording)
+        return
     if args.command == "mcp":
         from svh.mcp_server import serve as serve_mcp
 
