@@ -46,13 +46,14 @@ Update this file at the end of every working session: what changed, gate results
   suite: **49 passed**. No model transport is wired to it yet and no metered
   calls have been made. Private local configuration is capped below the supplied
   prepaid balance; no key or billing screenshot is committed.
-- [RUN] Current external admission gate: **3/3 admitted annotations, Wilson 95%
-  [43.85%, 100%]**, below the required sample size and lower bound. This is
+- [RUN] Current external admission gate: **5/5 admitted annotations, Wilson 95%
+  [56.55%, 100%]**, below the required sample size and lower bound. This is
   `notes/runs/m0-gate.json`, not model performance. Cases 1557, 1570 and 1655
-  pass; 1567 was rejected because its target failure is a runtime exception.
+  plus 1610 and 1623 pass; 1567 was rejected because its target failure is a runtime exception.
   Case 1578 passed its native oracle but was subsequently excluded for insufficient
   oracle-to-claim alignment (D24); its historical proof remains. Candidate 1610
-  is running. Two additional reviewed candidates, 1640 and 1928, are queued for
+  has passed, as has 1623; candidate 1638 is live. Two additional reviewed
+  candidates, 1640 and 1928, are queued for
   a subsequent batch resume after the currently live 12-case process finishes.
 - [CODE/RUN] Fresh-clone source preparation now downloads and hash-verifies both
   pinned Parquet files, then exports the reviewed rows. An isolated temporary-root
@@ -68,6 +69,12 @@ Update this file at the end of every working session: what changed, gate results
 - [CODE/RUN] Admission now requires an explicit direct-alignment review and exact
   agreement with the reviewed claim text/timestamps. Supporting-invariant and
   changed-claim rejection checks added; total suite: **51 passed**.
+- [SRC/CODE] First executable harness selected: deepagents with the official MCP
+  v2 client/server (D25). Current package metadata exposed a real incompatibility:
+  the released LangChain MCP adapter still requires MCP <2. No M1 dependencies
+  or ingestion features have been installed; actual interoperability, sandbox
+  and full cost-guard coverage remain gates. See
+  `notes/2026-10-20-harness-selection.md`.
 
 ## Log
 

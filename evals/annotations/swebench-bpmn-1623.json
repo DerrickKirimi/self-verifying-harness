@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1623",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1623",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1623.json",
+    "row_sha256": "55c56ff90748ede134bb22c02bf5caa6a38e269d12a75a59175e0c2a6d1919ac"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "21f7ed402d25c6c0737459a86a39323642634715",
+    "fix_patch_sha256": "8c50f38a88b3b35fa5dc8003c051e584df0260be341d929efb3668bbbd5b4d24",
+    "test_patch_sha256": "f87811ad38b4a77698eacd7451ed2e64f2af3a8b1c1fcba973692f9315e3dd65",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1623@sha256:7038a30f623bbdbd27997654002a75dc7dc73b3204cb1be669fc2908f2415165"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1623/media.gif",
+    "sha256": "d5e89fad422e9d16286260a3d7befcabb9901f8987f2a5f650868f7a67b14236",
+    "source_url": "https://user-images.githubusercontent.com/27808087/158993088-cd5dab32-1bf0-40b2-afab-3adde3d3d7fc.gif",
+    "duration_s": 20.3,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 16.0,
+      "t_end_s": 20.3,
+      "text": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "Modeler drill down should allow drill down into collapsed sub-process after viewer.open "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1623-2c0a46727bfb1610.json",
+    "report_sha256": "2c0a46727bfb1610dd5c17ebbebeea98729107ea085a760642d9bd9ca96b6200"
+  }
+}

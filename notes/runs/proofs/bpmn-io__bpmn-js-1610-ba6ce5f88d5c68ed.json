@@ -1,0 +1,69 @@
+{
+  "task": "bpmn-io__bpmn-js-1610",
+  "run_at": "2026-10-20T14:40:15.236030+00:00",
+  "graded_at": "2026-10-20T14:40:15.236090+00:00",
+  "row_sha256": "2845e9da54f123fa7a563b7c1cb8661fd6b9d61203a3735255dd85485d429668",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610@sha256:e04c512ea4dd182059b2eea39716ebd7ee750db6008d8442c2dd65ff9d62f767",
+  "image_id": "sha256:eb696667ec53ed2275e1b90aaed16c226398699b10e9a7d0cb405a2babf7ce71",
+  "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+  "fix_patch_sha256": "641d310841ddef9623f0d3ff843507f72298821e663a154dcca3cfeba85cf5ae",
+  "test_patch_sha256": "f3af9d89c95325a98be8b651165cae760b2e0971ccbadfa43f4ca1355cbb13f2",
+  "upstream_eval_sha256": "703057b869b28b8d2f890c9e8999329d628e15e869316a089c13370a522c0495",
+  "executed_eval_sha256": "fbc34e52146e150529e48c5a8806ed4dba1a471d004150d6a7ccbb7abee53851",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1769,
+      "discovered": 1776,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1768 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "c657944a7af9d3eab1a7900ed3340395110ca754",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - label-editing basics should submit on root element changed FAILED\n\tAssertionError: expected true to be false\n\t    at eval (webpack-internal:///./test/spec/features/label-editing/LabelEditingProviderSpec.js:183:47)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features - label-editing basics should submit on root element changed ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - label-editing basics should submit on root element changed FAILED\n\tAssertionError: expected true to be false\n\t    at eval (webpack-internal:///./test/spec/features/label-editing/LabelEditingProviderSpec.js:183:47)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "d91a8c41b54c9f271fb12f9f54ab4ba33d036060ab3202b3c8ac9afb0acef723",
+      "raw_log_sha256": "9dd3c577a432e24001c2089c409f4a6fd3d033cd84e9ab9f1787cf1ad136e8b1"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1769,
+      "discovered": 1776,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1769 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "c657944a7af9d3eab1a7900ed3340395110ca754",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features - label-editing basics should submit on root element changed ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "511f4126c2092c6ab290b785c588475fabd43bcb1d1b5c66cff1d7d947876070",
+      "raw_log_sha256": "de6f47c99690de7d4abcddf0b9e16eb8033feb1f9b52e1af39e7690434e5dc67"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "data/external/proofs/5e2f17e3df24d2e5f91d28b357085016ffb32da2250d2652a9599210cfb88a1d",
+  "source_report_sha256": "5e2f17e3df24d2e5f91d28b357085016ffb32da2250d2652a9599210cfb88a1d"
+}

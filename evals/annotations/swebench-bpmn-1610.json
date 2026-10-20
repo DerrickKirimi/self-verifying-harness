@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1610",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1610",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1610.json",
+    "row_sha256": "2845e9da54f123fa7a563b7c1cb8661fd6b9d61203a3735255dd85485d429668"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+    "fix_patch_sha256": "641d310841ddef9623f0d3ff843507f72298821e663a154dcca3cfeba85cf5ae",
+    "test_patch_sha256": "f3af9d89c95325a98be8b651165cae760b2e0971ccbadfa43f4ca1355cbb13f2",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610@sha256:e04c512ea4dd182059b2eea39716ebd7ee750db6008d8442c2dd65ff9d62f767"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1610/media.gif",
+    "sha256": "4f5f5b423fedc1e16aca0f2651b63322b81d9055cc71540786b88fc6499a8e53",
+    "source_url": "https://user-images.githubusercontent.com/58601/155515880-d0f6feb4-6380-4c64-a709-7819926e17b4.gif",
+    "duration_s": 9.99,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 8.0,
+      "t_end_s": 9.99,
+      "text": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features - label-editing basics should submit on root element changed "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1610-ba6ce5f88d5c68ed.json",
+    "report_sha256": "ba6ce5f88d5c68edaeb8c101e17a1aae283d77d9fda95502ca6bb2a99af09b55"
+  }
+}

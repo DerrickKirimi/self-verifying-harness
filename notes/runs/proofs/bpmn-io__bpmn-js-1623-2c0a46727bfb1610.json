@@ -1,0 +1,69 @@
+{
+  "task": "bpmn-io__bpmn-js-1623",
+  "run_at": "2026-10-20T14:44:32.335676+00:00",
+  "graded_at": "2026-10-20T14:44:32.335689+00:00",
+  "row_sha256": "55c56ff90748ede134bb22c02bf5caa6a38e269d12a75a59175e0c2a6d1919ac",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1623@sha256:7038a30f623bbdbd27997654002a75dc7dc73b3204cb1be669fc2908f2415165",
+  "image_id": "sha256:25d66dd1a3c57d5d1a35e457e738eb922ad93e48c72a0db6578cbc007d655f7d",
+  "base_commit": "21f7ed402d25c6c0737459a86a39323642634715",
+  "fix_patch_sha256": "8c50f38a88b3b35fa5dc8003c051e584df0260be341d929efb3668bbbd5b4d24",
+  "test_patch_sha256": "f87811ad38b4a77698eacd7451ed2e64f2af3a8b1c1fcba973692f9315e3dd65",
+  "upstream_eval_sha256": "b377a7f53b72c79b0a40b14b698dc606561142b759c3418a9345bcc3d2bbb8ec",
+  "executed_eval_sha256": "590402c0d1c6e6061cd433c9a26d5517b691bbacef93ef31b591d041ca047cc4",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1772,
+      "discovered": 1779,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1771 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "21f7ed402d25c6c0737459a86a39323642634715",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) Modeler drill down should allow drill down into collapsed sub-process after viewer.open FAILED\n\tAssertionError: expected null to exist\n\t    at verifyDrilldown (webpack-internal:///./test/spec/ModelerSpec.js:724:27)",
+      "targets": [
+        {
+          "name": "Modeler drill down should allow drill down into collapsed sub-process after viewer.open ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) Modeler drill down should allow drill down into collapsed sub-process after viewer.open FAILED\n\tAssertionError: expected null to exist\n\t    at verifyDrilldown (webpack-internal:///./test/spec/ModelerSpec.js:724:27)"
+        }
+      ],
+      "log_sha256": "25db4b4fa110ded47a4c989f22620386cb9625037f7092dffad068b75d3851bd",
+      "raw_log_sha256": "ae334a45873eabe8dd94fdb67de2bd59c9c8ee5ee8b1d371c127bc0820c8516b"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1772,
+      "discovered": 1779,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1772 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "21f7ed402d25c6c0737459a86a39323642634715",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "Modeler drill down should allow drill down into collapsed sub-process after viewer.open ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "4bf99727045d87cb79548d138aaa792d3c041550e47a014b7d9f547addcd6c3d",
+      "raw_log_sha256": "bdb456ec8fa650b9daa999c8a81ad9f6568ca35e10afcda855c5be8913701340"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "data/external/proofs/347fe501ba6d9643a040ef0dc314f51b92962a02dfb8867be6977c09e526290b",
+  "source_report_sha256": "347fe501ba6d9643a040ef0dc314f51b92962a02dfb8867be6977c09e526290b"
+}

@@ -45,6 +45,28 @@ Local clones live in `~/swe/llms/<repo>`. Commits are as read on the date shown.
   Used only to establish the provisional first client's MCP integration path,
   not to claim comparative harness quality or successful local integration.
 
+### Harness preflight (read 2026-10-20)
+
+- [deepagents upstream](https://github.com/langchain-ai/deepagents) and
+  [backend documentation](https://docs.langchain.com/oss/python/deepagents/backends).
+  Local upstream clone `/home/d3rrick/swe/llms/deepagents-upstream`, commit
+  `ade3f9560f45e3e6d018614e85a27b7c28841887`: read explicit model/middleware/backend
+  parameters and base sandbox implementation. That clone is version 0.7.26;
+  current package metadata lists 0.7.28. [CODE/SRC]
+- [Official MCP SDK](https://github.com/modelcontextprotocol/python-sdk),
+  [v2 overview](https://py.sdk.modelcontextprotocol.io/whats-new/) and
+  [migration guide](https://py.sdk.modelcontextprotocol.io/migration/).
+  Read high-level client/server and protocol change sections; no SDK installed
+  or interoperability result produced yet. [SRC/RUN]
+- [LangChain MCP adapters](https://github.com/langchain-ai/langchain-mcp-adapters).
+  Read repository overview and official package metadata; released adapter 0.3.2
+  requires MCP <2, so it is not the selected bridge (D25). [SRC/INF]
+- Official PyPI JSON metadata for `deepagents`, `mcp`, `fastmcp`,
+  `langchain-mcp-adapters` and `langchain-google-genai`: version, release time,
+  Python requirements and dependency constraints recorded with exact URLs in
+  `notes/runs/m1-package-candidates.json`. Selection rationale and unmeasured
+  integration checks: `notes/2026-10-20-harness-selection.md`. [RUN/INF]
+
 ## Public evaluation candidates (read 2026-10-20)
 
 No external candidate has passed our oracle yet. [RUN] Detailed inspection scope

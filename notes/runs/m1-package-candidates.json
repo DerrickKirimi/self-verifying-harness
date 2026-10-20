@@ -1,0 +1,92 @@
+{
+  "checked_at": "2026-10-20T14:42:02.030226+00:00",
+  "scope": "Candidate metadata only; not installed or interoperability-tested",
+  "packages": {
+    "deepagents": {
+      "version": "0.7.28",
+      "requires_python": "<4.0,>=3.11",
+      "released_at": "2026-10-16T20:21:09.178773Z",
+      "source": "https://pypi.org/pypi/deepagents/json",
+      "requires_dist": [
+        "langchain<2.0.0,>=1.4.6",
+        "langchain-core<2.0.0,>=1.6.11",
+        "langchain-anthropic<2.0.0,>=1.7.6",
+        "langchain-google-genai<5.0.0,>=4.4.2",
+        "langsmith>=0.14.11",
+        "packaging>=23.2",
+        "wcmatch>=11.0",
+        "langchain-aws<2.0.0,>=1.9.0; extra == \"aws\"",
+        "langchain-quickjs>=0.3.9; extra == \"quickjs\"",
+        "av<19.0.0,>=18.0.0; extra == \"video\"",
+        "pillow<13.0.0,>=12.3.0; extra == \"video\""
+      ]
+    },
+    "langchain-mcp-adapters": {
+      "version": "0.3.2",
+      "requires_python": ">=3.10",
+      "released_at": "2026-08-06T06:15:02.832559Z",
+      "source": "https://pypi.org/pypi/langchain-mcp-adapters/json",
+      "requires_dist": [
+        "langchain-core<2.0.0,>=1.3.3",
+        "mcp<2.0.0,>=1.24.0",
+        "typing-extensions>=4.14.0"
+      ]
+    },
+    "mcp": {
+      "version": "2.3.0",
+      "requires_python": ">=3.10",
+      "released_at": "2026-10-02T22:06:52.119073Z",
+      "source": "https://pypi.org/pypi/mcp/json",
+      "requires_dist": [
+        "anyio>=4.10; python_version >= \"3.14\"",
+        "anyio>=4.9; python_version < \"3.14\"",
+        "httpx2>=2.10.0",
+        "jsonschema>=4.20.0",
+        "mcp-types==2.3.0",
+        "opentelemetry-api>=1.28.0",
+        "pydantic>=2.12.0",
+        "pyjwt[crypto]>=2.10.1",
+        "python-multipart>=0.0.9",
+        "pywin32>=311; sys_platform == \"win32\"",
+        "sse-starlette>=3.0.0",
+        "starlette>=0.27; python_version < \"3.14\"",
+        "starlette>=0.48.0; python_version >= \"3.14\"",
+        "typing-extensions>=4.13.0",
+        "typing-inspection>=0.4.1",
+        "uvicorn>=0.31.1; sys_platform != \"emscripten\"",
+        "python-dotenv>=1.0.0; extra == \"cli\"",
+        "typer>=0.16.0; extra == \"cli\"",
+        "rich>=13.9.4; extra == \"rich\""
+      ]
+    },
+    "fastmcp": {
+      "version": "4.1.2",
+      "requires_python": ">=3.10",
+      "released_at": "2026-10-20T14:01:33.947417Z",
+      "source": "https://pypi.org/pypi/fastmcp/json",
+      "requires_dist": [
+        "fastmcp-slim[client,server]==4.1.2",
+        "fastmcp-slim[anthropic]==4.1.2; extra == \"anthropic\"",
+        "fastmcp-slim[apps]==4.1.2; extra == \"apps\"",
+        "fastmcp-slim[azure]==4.1.2; extra == \"azure\"",
+        "fastmcp-slim[code-mode]==4.1.2; extra == \"code-mode\"",
+        "fastmcp-slim[gemini]==4.1.2; extra == \"gemini\"",
+        "fastmcp-slim[jev]==4.1.2; extra == \"jev\"",
+        "fastmcp-slim[openai]==4.1.2; extra == \"openai\"",
+        "fastmcp-tasks==4.1.2; extra == \"tasks\""
+      ]
+    },
+    "langchain-google-genai": {
+      "version": "4.4.2",
+      "requires_python": "<4.0.0,>=3.10.0",
+      "released_at": "2026-10-13T17:25:45.539531Z",
+      "source": "https://pypi.org/pypi/langchain-google-genai/json",
+      "requires_dist": [
+        "filetype<2.0.0,>=1.2.0",
+        "google-genai<3.0.0,>=2.20.0",
+        "langchain-core<2.0.0,>=1.6.10",
+        "pydantic<3.0.0,>=2.0.0"
+      ]
+    }
+  }
+}
