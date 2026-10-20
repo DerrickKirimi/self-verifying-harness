@@ -74,7 +74,8 @@ def main():
                 save()
                 continue
         native_args = ["--row", str(row_path), "--image", image,
-                "--output", str(output), "--logs", str(source / "cases" / task / "logs")]
+                "--output", str(output), "--logs",
+                prior["raw_logs"] if reuse else str(source / "cases" / task / "logs")]
         if reuse:
             native_args.append("--regrade")
         case["state"] = "running-oracle"

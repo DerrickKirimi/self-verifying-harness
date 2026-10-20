@@ -39,9 +39,22 @@
     "bpmn-io__bpmn-js-1638": {
       "report": "notes/runs/native/bpmn-io__bpmn-js-1638.json",
       "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1638.json",
-      "state": "running-oracle",
+      "state": "oracle-passed",
       "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c"
+    },
+    "bpmn-io__bpmn-js-1655": {
+      "report": "notes/runs/swebench-bpmn-pilot.json",
+      "row": "data/external/swebench-multimodal/bpmn-pilot-row.json",
+      "state": "error",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+      "detail": "FileNotFoundError: [Errno 2] No such file or directory: '/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1655/logs/pre.log'"
+    },
+    "bpmn-io__bpmn-js-1659": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1659.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1659.json",
+      "state": "running-oracle",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1659@sha256:bbd5d87428577de9c0f1d70bec0b2a462b80d535279dd8e116f29f83ebb0b189"
     }
   },
-  "updated_at": "2026-10-20T14:45:21.212047+00:00"
+  "updated_at": "2026-10-20T14:48:11.893334+00:00"
 }

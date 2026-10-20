@@ -1,0 +1,68 @@
+{
+  "task": "bpmn-io__bpmn-js-1638",
+  "run_at": "2026-10-20T14:47:03.469352+00:00",
+  "graded_at": "2026-10-20T14:47:03.469377+00:00",
+  "row_sha256": "674ae133fc453ae3da67ad69bd0439e7e2743eaaa03e86c931c64dee941fea3d",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+  "image_id": "sha256:deb46c6a796fa29b2a71bd0461d6192924f3b3dd589ea05349c28934dfd9b2d9",
+  "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+  "fix_patch_sha256": "7baada9e115ae2c88bfd665a43e5d5c537ebeedc4a3ede0fbe070d09b06ff94f",
+  "test_patch_sha256": "f44570973e2cdd8c556c5ef7550045288aa592d3e588574b74e100e2b61754eb",
+  "upstream_eval_sha256": "72a9987c402ca50cf5bcba885f05ade616e1fe971fd27a0efc307826f591140a",
+  "executed_eval_sha256": "c9cc4599bc4dfad5c9f116b844cdcd3a20d40f29f5e1e911670a3c8ad8e18138",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1772,
+      "discovered": 1779,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1771 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "574a674381d6449b509396b6d17c4ca94674ea1c",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/modeling - update label embedded labels should delete label of task FAILED\n\tAssertionError: expected { Object ($type, id, ...) } to not have property 'label'\n\t    at eval (webpack-internal:///./test/spec/features/modeling/UpdateLabelSpec.js:251:37)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features/modeling - update label embedded labels should delete label of task ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/modeling - update label embedded labels should delete label of task FAILED\n\tAssertionError: expected { Object ($type, id, ...) } to not have property 'label'\n\t    at eval (webpack-internal:///./test/spec/features/modeling/UpdateLabelSpec.js:251:37)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "14702ed4977a8b1ffc549ac00c2bfb1cb2469d09a451989e6bd0f69930d9ee80",
+      "raw_log_sha256": "230de3e0e22b739758f291ead484d16ab8d46095a20192e49c9a392dac78c038"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1772,
+      "discovered": 1779,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1772 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "574a674381d6449b509396b6d17c4ca94674ea1c",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/modeling - update label embedded labels should delete label of task ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "8746b18ad864ae99af45cba80caa97a692aec2a53316020d6a89e34003755a7f",
+      "raw_log_sha256": "b08213c5aef69b185481cb9d0d9a3f6406ac32993fe87745972d3bd6e3e48e11"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1638/logs"
+}

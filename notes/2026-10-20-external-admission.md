@@ -50,6 +50,13 @@ uv run svh eval-gate --annotations evals/annotations --output notes/runs/m0-gate
 alive; a quiet process is not evidence of a hang. The batch handles one task at
 a time and preserves at least 15 GiB of free disk before further pulls.
 
+[RUN/CODE] A resume bug affected pilot 1655: its original logs live in
+`pilot-logs`, while newer cases use per-case folders. The batch now reads a saved
+report's `raw_logs` field when regrading. Direct regrade against `pilot-logs`
+succeeded (same 1777 executed tests, pre assertion failure, post all passing);
+the frozen admitted proof was unaffected. The old live process cannot hot-load
+the correction and records this as a curation error until the next resume.
+
 ## Reproduce from a new clone
 
 [CODE] Raw media, rows and execution logs are deliberately absent from Git. A

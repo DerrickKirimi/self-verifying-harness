@@ -10,6 +10,11 @@ evaluation-first order remain in force. Reference projects are replaceable;
 the candidate M1 stack below is a hypothesis to evaluate, not a dependency list
 (decisions D11/D15/D16). [SRC/INF]
 
+**Prospective acceptance protocol.** `evals/PROTOCOL.md` fixes M1–M3 thresholds,
+information boundaries, comparison conditions and shipping evidence before any
+model run. These make the table's measurement gates actionable; they do not
+turn supplied-oracle curation into agent success or waive audio scope. [INF]
+
 **M0 sourcing update (D18).** Vetted public video/task pairs may substitute for
 owner-recorded cases in the visual track. They need reuse permission, privacy
 screening, timestamp annotations and our own pre-fix/post-fix oracle evidence.

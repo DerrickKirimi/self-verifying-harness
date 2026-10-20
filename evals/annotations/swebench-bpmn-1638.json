@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1638",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1638",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1638.json",
+    "row_sha256": "674ae133fc453ae3da67ad69bd0439e7e2743eaaa03e86c931c64dee941fea3d"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "fix_patch_sha256": "7baada9e115ae2c88bfd665a43e5d5c537ebeedc4a3ede0fbe070d09b06ff94f",
+    "test_patch_sha256": "f44570973e2cdd8c556c5ef7550045288aa592d3e588574b74e100e2b61754eb",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1638/media.gif",
+    "sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
+    "source_url": "https://user-images.githubusercontent.com/21984219/164674929-c8e344a5-71d1-4cab-8611-b4cd5ef87a02.gif",
+    "duration_s": 3.12,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 0.5,
+      "t_end_s": 3.12,
+      "text": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/modeling - update label embedded labels should delete label of task "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1638-b9f9c5298327c560.json",
+    "report_sha256": "b9f9c5298327c56083968f2b82fb8bf4185752db6358d65c8bf9d2cae82a9cbd"
+  }
+}
