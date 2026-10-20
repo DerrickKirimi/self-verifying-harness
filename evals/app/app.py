@@ -1,6 +1,6 @@
 """Owner-controlled, deterministic issue board for recording M0 walkthroughs.
 
-This initial revision intentionally contains three bugs. Git history is the fixture;
+Revision 426a532 intentionally contains three bugs. Git history is the fixture;
 there is no runtime switch that can make a reproduction pass.
 """
 
@@ -19,11 +19,12 @@ ISSUES = [
 
 
 def select_issues(query="", status="all", sort="id"):
-    issues = [issue for issue in ISSUES if query in issue["title"]]
+    issues = [issue for issue in ISSUES if query.casefold() in issue["title"].casefold()]
     if status != "all":
-        issues = [issue for issue in issues if issue["status"] == "open"]
+        issues = [issue for issue in issues if issue["status"] == status]
     if sort == "priority":
-        issues.sort(key=lambda issue: issue["priority"])
+        order = {"high": 0, "medium": 1, "low": 2}
+        issues.sort(key=lambda issue: order[issue["priority"]])
     return issues
 
 

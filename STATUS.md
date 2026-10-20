@@ -9,6 +9,8 @@ Update this file at the end of every working session: what changed, gate results
 - [RUN] All three reproductions observed failing by assertion on `426a532`, before any
   app fix was applied. Raw pytest/JUnit output: `notes/runs/pre-fix.json`.
 - No post-fix results or owner recordings yet; M0 has not passed.
+- [CODE] Applied fixes to case-insensitive search, status filtering and semantic
+  priority ordering; the oracle runner will now compare immutable revisions.
 
 ## Log
 
