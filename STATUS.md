@@ -69,7 +69,9 @@ claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
    `notes/2026-10-20-m1-complete.md`; selected report
    `notes/runs/m1-selected-retrieval.json`. Runtime policy selects the measured
    local method; read-only MCP needs no Gemini key.
-2. Start M2 by building its frozen scoring/attempt artifacts before features.
+2. M2 scoring contract is implemented before generation: `evals/m2-rubric.json`,
+   `svh.claims.score`, three passing integrity tests; details in
+   `notes/2026-10-20-m2-scoring-protocol.md`. No M2 generation yet.
    Extract claims under matched issue-only/temporal-media conditions, without
    passing gold claims, test names, test/source patches or grader scripts to the
    model. Use the existing deepagents loop for the codebase checkpoint.

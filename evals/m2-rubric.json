@@ -1,0 +1,16 @@
+{
+  "format": "svh.m2-rubric.v1",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "conditions": ["issue-only", "issue+media"],
+  "model": "gemini-3.5-flash-lite",
+  "output_cap": 4096,
+  "minimum_artifacts": 10,
+  "precision_wilson_lower": 0.5,
+  "recall_wilson_lower": 0.5,
+  "maximum_span_gap_s": 2.0,
+  "maximum_extra_span_width_s": 5.0,
+  "judgment": "Human review of symptom, expected behavior and actual source support, without correcting model outputs; match each gold claim at most once.",
+  "issue_only_control": "Report semantic content separately; absent video timestamps cannot establish temporal grounding.",
+  "code_checkpoint": "Use the existing harness against a Docker-only buggy checkout with history removed. Record inspected supporting source locations and distinguish hypotheses. No fixes before frozen reproduction failure.",
+  "privacy": "Only problem_statement plus registered media may reach extraction. No gold claims, supplied tests, gold source/test patches, grader scripts or gold-derived notes."
+}
