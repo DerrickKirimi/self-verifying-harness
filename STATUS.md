@@ -2,7 +2,11 @@
 
 Update this file at the end of every working session: what changed, gate results with their numbers, and the next concrete step.
 
-## Current milestone: M0 (eval set), not started
+## Current milestone: M0 (eval set), in progress
+
+- [CODE] First local issue-board fixture and three pytest HTTP reproductions prepared.
+  The initial app revision deliberately contains search, closed-filter and priority-sort bugs.
+- No oracle results or owner recordings yet; M0 has not passed.
 
 ## Log
 

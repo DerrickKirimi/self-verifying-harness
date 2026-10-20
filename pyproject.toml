@@ -1,0 +1,16 @@
+[project]
+name = "self-verifying-harness"
+version = "0.1.0"
+description = "Fail-before/pass-after evidence for recording-grounded software claims"
+requires-python = ">=3.11"
+dependencies = ["jsonschema>=4.23,<5", "pytest>=8,<9"]
+
+[project.scripts]
+svh = "svh.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
