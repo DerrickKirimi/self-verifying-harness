@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+  "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+  "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+  "initial_source_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+  "checks": {
+    "fresh_history": true,
+    "host_file_hidden": true,
+    "host_environment_hidden": true,
+    "root_read_only": true,
+    "working_directory": true,
+    "network_unreachable": true,
+    "file_roundtrip_and_output_bound": true,
+    "timeout_destroys_execution_domain": true
+  },
+  "cleanup": "container absent",
+  "generated_code_executed_on_host": false
+}

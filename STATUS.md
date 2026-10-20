@@ -75,11 +75,11 @@ claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
    Extract claims under matched issue-only/temporal-media conditions, without
    passing gold claims, test names, test/source patches or grader scripts to the
    model. Use the existing deepagents loop for the codebase checkpoint.
-3. Configure the selected harness profile to disable its auto-added general
-   purpose subagent (subagents=[] alone is insufficient). Implement and verify
-   a Docker-only backend before any agent-generated command executes. Start
-   each permitted code view at the known buggy commit with solution history
-   removed, no owner paths/credentials mounted and network disabled.
+3. Docker-only backend and no-delegation harness profile are implemented and
+   tested. Actual isolation/transfer/output/timeout/source-fingerprint smoke
+   passes; `notes/2026-10-20-docker-harness.md`. No model-generated command has
+   executed yet. Use this backend for every code checkpoint/reproduction/fix;
+   preserve source fingerprints during read-only M2 inspection.
 4. Then measure M2 and proceed to M3 generated reproduction/fix, frozen observed
    fail/pass, independent native regressions, wrong-fix controls and real Harbor
    nop/oracle trials. Preserve prospective gates in `evals/PROTOCOL.md`.
