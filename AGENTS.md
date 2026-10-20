@@ -36,7 +36,7 @@ A harness that turns **claims about software, spoken or shown in recordings** (m
 ## Safety and privacy
 
 - **Downloaded or recorded data is untrusted.** Keep each download in its own directory, keep scripts elsewhere, and run Python that reads it with `python -I`.
-- **No private data in the eval set or in commits.** Recordings must be of apps the owner controls, with no third-party faces, voices or credentials. API keys live in `.env` (gitignored), never in code or docs.
+- **No private data in the eval set or in commits.** Controlled recordings use the owner's apps and voice, with no third-party faces, voices or credentials. D18 also permits vetted public dataset cases after provenance, reuse-permission and privacy screening; do not import unreviewed media. API keys live in `.env` (gitignored), never in code or docs.
 - **Voice is an identifier, not an authenticator.** Voice cloning defeats voiceprints. Any action that writes code, pushes, spends money or contacts people needs a second factor (a DTMF PIN, or confirmation in an app). Don't build a voice-triggered write path without it.
 - **The agent never executes in the owner's real environment.** Generated reproductions and fixes run in a sandbox: Docker for the MVP, SPACE microVMs later (`docs/references.md`).
 - **Stay separate from the owner's Kaggle Gemma 4 competition work** (`~/swe/llms/devagent`). Nothing from its `competition/` folder or data comes here.
@@ -48,7 +48,7 @@ A harness that turns **claims about software, spoken or shown in recordings** (m
 - **Ingestion (candidate design, unmeasured):** transcript + diarization, scene-change frames, screen-region OCR, and embeddings. Select models and retrieval storage against M0; no inherited Pixeltable or model dependency (D15).
 - **Verification:** Playwright (Python) and pytest, run in a sandbox. Task packaging follows Harbor's format.
 - **Reasoning:** the owner's existing coding harness (Claude Code, deepagents, ...) as an MCP client. Don't write a new agent loop.
-- **Later:** Temporal for durable per-stage execution, OpenTelemetry tracing, SPACE for sandboxes, Scion for multi-agent roles and chat channels.
+- **Later, if justified:** durable per-stage execution, tracing, and alternative Executor backends (E2B, Daytona, SPACE or others). Temporal and Scion are reference candidates, not required architecture. See D11/D17.
 
 ## Where related material lives (outside this repo)
 

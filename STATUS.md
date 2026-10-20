@@ -15,6 +15,9 @@ Update this file at the end of every working session: what changed, gate results
   No owner recordings are present. **M0 has not passed; the full MVP is not shipped.**
 - [SRC] Owner clarified that reference projects must not become inherited constraints.
   D11–D16 in `docs/decisions.md` record this; retrieval/SDK choices remain open.
+- [SRC] Docker is the current backend; E2B/Daytona or other backends can be added
+  later (D17). Public video/task pairs are now candidates for M0 (D18), so owner
+  narration no longer blocks the visual path. No external case has been verified.
 
 ## Log
 
@@ -40,16 +43,23 @@ Update this file at the end of every working session: what changed, gate results
     the truth of spoken content. Fixture reports do not fill `observed` fields.
   - [SRC] Checked the current MCP specification and Claude Code HTTP MCP docs;
     Claude Code is a provisional first client, not a required runtime dependency.
+  - [RUN/SRC] Audited public candidates: E2E Tests Dataset has 10 MP4s across
+    five documented regression cases at the inspected revision; CodeV's video-only
+    subset has one task with fix/test patches. Full findings, pinned revisions,
+    current limitations and source URLs: `notes/2026-10-20-public-dataset-audit.md`.
 
 ## Next step
 
-Owner: record and annotate the first three walkthroughs using
-`docs/recording-guide.md` (or identify a preferred existing app). Only the owner
-can supply the required voice. Keep recordings local and out of commits.
+Next single unit: establish reuse permission and pilot CodeV's
+`matplotlib__matplotlib-25631` video task in Docker against its base revision and
+gold patch. Observe the supplied tests failing/passing ourselves; do not count
+dataset metadata as verification. If unsuitable, pilot an E2E browser case.
+See the public-dataset audit for exact source revisions and remaining checks.
 
-Next implementation unit: connect validated annotations and recording hashes to
-oracle reports, then expand the app/eval set to the required 10–20 bugs and
-measure the complete M0 gate. Do not begin M1 ingestion before that gate passes.
+Then bind annotations and recording hashes to oracle reports and assemble the
+10–20-bug M0 set from accepted public cases and/or controlled recordings.
+Owner clips in `docs/recording-guide.md` remain an option, especially for the
+speech path, rather than a blocker. Do not begin M1 ingestion before M0 passes.
 The harness-client question is still pending; it does not affect these fixtures.
 
 ## Gate results

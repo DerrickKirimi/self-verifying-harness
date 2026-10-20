@@ -44,3 +44,16 @@ Local clones live in `~/swe/llms/<repo>`. Commits are as read on the date shown.
   Read HTTP transport configuration and project/client integration sections. [SRC]
   Used only to establish the provisional first client's MCP integration path,
   not to claim comparative harness quality or successful local integration.
+
+## Public evaluation candidates (read 2026-10-20)
+
+No external candidate has passed our oracle yet. [RUN] Detailed inspection scope
+and local temporary download locations are in
+`notes/2026-10-20-public-dataset-audit.md`.
+
+| Source | Revision / inspection | Potential use |
+|---|---|---|
+| [E2E Tests Dataset](https://github.com/e2e-tests-dataset/e2e-tests-dataset), [paper](https://doi.org/10.1007/s11219-021-09566-x) | `cfc3aa4641ee2083a5bd9309e7ba860966e9771b`; repository tree, selected case README, Docker README, submodules, one video metadata | Browser recordings linked to bug/fix tags and e2e tests; legacy runtime and reuse permission unverified. [SRC/CODE] |
+| [CodeV / Visual SWE-bench](https://github.com/luolin101/CodeV) | `46a6b65bf57f24cd33eddbc2445583939207df37`; README, tree and video-only JSON | One video task with base revision, fix/test patches and test identifiers; execution and reuse permission unverified. [CODE/RUN] |
+| [SWE-bench Multimodal](https://huggingface.co/datasets/SWE-bench/SWE-bench_Multimodal/blob/main/README.md) | README last-listed revision `4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5`; card and file listing, not task rows | Filter mixed visual assets for video-bearing tasks with runnable oracles. [SRC/INF] |
+| [TANGO](https://two-to-tango.github.io/tango/) | Overview read; no archive downloaded | Bug videos for duplicate detection; repair oracle not established by the overview. [SRC] |

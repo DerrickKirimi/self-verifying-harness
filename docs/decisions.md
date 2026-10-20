@@ -41,3 +41,13 @@ Sources for D13/D16: [Claude Code MCP](https://code.claude.com/docs/en/mcp),
 [MCP specification](https://modelcontextprotocol.io/specification/2026-07-28), read 2026-10-20.
 The owner's written instruction to implement and ship, together with the supplied
 AGENTS.md commit/push instruction, authorizes the repository pushes for this work. [SRC]
+
+## Decisions (20 Oct 2026, public datasets and execution backends)
+
+| # | Decision | Why / evidence |
+|---|---|---|
+| D17 | **Docker now; interchangeable execution backends later as needed.** Supersedes the SPACE-specific evaluation commitment in D7. | Owner explicitly named E2B and Daytona as future options. [SRC] Keep task identity, immutable source/test inputs and evidence reports independent of the backend. The current runner invokes Docker directly; an Executor interface and cloud implementations are not yet built. [CODE/INF] |
+| D18 | **Owner narration is not a prerequisite for the visual verification path.** M0 can use vetted public video/task pairs alongside controlled local fixtures. | The project accepts claims spoken **or shown**. [SRC] The public-dataset audit found concrete video + code + test candidates. Public cases require provenance, reuse permission, privacy screening and our own failing/passing runs before acceptance. Speech/STT performance must be measured separately on appropriate audio. [INF] |
+
+Evidence and candidate revisions: `notes/2026-10-20-public-dataset-audit.md`.
+No public candidate is verified or included in M0 yet. [RUN]

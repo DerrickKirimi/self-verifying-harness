@@ -10,6 +10,16 @@ evaluation-first order remain in force. Reference projects are replaceable;
 the candidate M1 stack below is a hypothesis to evaluate, not a dependency list
 (decisions D11/D15/D16). [SRC/INF]
 
+**M0 sourcing update (D18).** Vetted public video/task pairs may substitute for
+owner-recorded cases in the visual track. They need reuse permission, privacy
+screening, timestamp annotations and our own pre-fix/post-fix oracle evidence.
+Narration/STT coverage is a separate requirement for the speech track; visual-only
+success does not establish it. The 10–20-bug M0 target remains. [INF]
+
+**Execution update (D17).** Docker is the initial backend. M4's SPACE experiment
+below is optional; E2B, Daytona or another backend may be evaluated instead when
+there is a concrete need. No provider migration is committed. [SRC/INF]
+
 | M | Build | Gate | Est. |
 |---|---|---|---|
 | **M0** | **Eval set first.** A small web app the owner controls, with 10–20 planted or real bugs. For each bug: a short screen recording with narration (the owner's voice only), annotated with the claim timestamps, the claim text, the commits before and after the fix, and a hand-written reproduction test. Schema in `evals/schema/` | Every reproduction **fails on the pre-fix commit and passes on the post-fix commit** (the oracle/nop check), run and logged | 1 week |
