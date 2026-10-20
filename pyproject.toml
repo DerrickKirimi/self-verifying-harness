@@ -9,6 +9,11 @@ dependencies = ["jsonschema>=4.23,<5", "pytest>=9.0.3,<10"]
 svh = "svh.cli:main"
 
 [project.optional-dependencies]
+agent = [
+    "deepagents==0.7.28",
+    "langchain-google-genai==4.4.2",
+    "mcp==2.3.0",
+]
 datasets = [
     "pyarrow>=26.0.0",
 ]

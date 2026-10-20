@@ -26,10 +26,21 @@ def main():
     freeze = commands.add_parser("freeze-eval", help="freeze a passing M0 corpus for later model evaluation")
     freeze.add_argument("--annotations", type=Path, default=Path("evals/annotations"))
     freeze.add_argument("--output", type=Path, default=Path("evals/frozen-m0.json"))
+    mcp = commands.add_parser("mcp", help="serve authenticated, read-only recording evidence over MCP HTTP")
+    mcp.add_argument("--corpus", type=Path, default=Path("evals/frozen-m0.json"))
+    mcp.add_argument("--token-file", type=Path, default=Path("data/runtime/mcp.token"))
+    mcp.add_argument("--port", type=int, default=8765)
     serve = commands.add_parser("serve", help="run an archived fixture for recording")
     serve.add_argument("--revision", choices=["pre", "post"], default="pre")
     args = parser.parse_args()
     args.root = args.root.resolve()
+    if args.command == "mcp":
+        from svh.mcp_server import serve as serve_mcp
+
+        if not 1024 <= args.port <= 65535:
+            parser.error("MCP port must be between 1024 and 65535")
+        serve_mcp(args.root, args.corpus, args.token_file, args.port)
+        return
     if args.command == "validate":
         path = args.root / args.annotation
         if json.loads(path.read_text()).get("format") == "svh.external.v1":

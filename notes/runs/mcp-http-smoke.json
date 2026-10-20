@@ -1,0 +1,43 @@
+{
+  "run_at": "2026-10-20T18:16:05.888035+00:00",
+  "passed": true,
+  "scope": "Actual MCP CLI + HTTP SDK + frozen public media; no model inference or retrieval evaluation",
+  "versions": {
+    "mcp": "2.3.0",
+    "deepagents": "0.7.28",
+    "langchain-google-genai": "4.4.2"
+  },
+  "protocol_version": "2026-07-28",
+  "unauthorized_status": 401,
+  "provenance": {
+    "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+    "recordings": 11,
+    "version": "0.1.0"
+  },
+  "tools": [
+    "get_recording",
+    "get_frames",
+    "get_transcript"
+  ],
+  "resources": [
+    "svh://recordings",
+    "svh://provenance"
+  ],
+  "prompts": [
+    "inspect_recording_v1"
+  ],
+  "recording_id": "swebench-bpmn-1655",
+  "frame_timestamps_s": [
+    5.45,
+    6.35
+  ],
+  "frame_mime_types": [
+    "image/png",
+    "image/png"
+  ],
+  "frame_base64_sizes": [
+    52040,
+    47088
+  ],
+  "transcript_status": "no_audio"
+}

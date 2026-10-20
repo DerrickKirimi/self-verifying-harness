@@ -4,8 +4,9 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 
 ## Current milestone: M1 (ingestion and MCP), starting
 
-**M0 has passed; the full MVP is not shipped.** No model calls, ingestion,
-agent-generated reproductions/fixes or Harbor trials have been measured. [RUN]
+**M0 has passed; the full MVP is not shipped.** MCP HTTP evidence access works.
+No paid model calls, model ingestion, agent-generated reproductions/fixes or
+Harbor trials have been measured. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
   10–20-case and lower-bound >=0.70 gate. Proof: `notes/runs/m0-gate.json`.
@@ -46,17 +47,23 @@ agent-generated reproductions/fixes or Harbor trials have been measured. [RUN]
 - [INF] M1–M3 prospective acceptance and shipping evidence are fixed before model
   measurements in `evals/PROTOCOL.md` (D26). Reference projects, embedders and
   storage choices are replaceable. Docker is current; no cloud migration needed.
+- [CODE/RUN] MCP HTTP boundary now works with the frozen corpus: authenticated
+  loopback access, registered metadata, bounded PNG frames, silent-media status,
+  resources and a versioned prompt. Actual SDK protocol: 2026-07-28. Thin tool
+  bridge preserves structured/image evidence; deepagents tool flow tested with a
+  deterministic test model. Actual CLI smoke on public video passed:
+  `notes/runs/mcp-http-smoke.json`. All **57 tests pass**, including auth/origin,
+  trusted-input and image-bridge checks. `notes/2026-10-20-mcp-boundary.md`.
 
 ## Next concrete steps
 
 1. Curation is complete and frozen. Do not restart either terminal Docker batch.
    M0 now passes on all eleven admitted cases; use the frozen manifest in M1.
-2. Install/pin the selected MCP/deepagents/Gemini stack. Demonstrate HTTP tools,
-   resources, prompts, structured/image results and server-owned trusted inputs.
-3. Cover the complete model transport, including implicit middleware calls, with
+2. The selected stack is installed and its HTTP boundary is demonstrated. Cover
+   the complete model transport, including implicit middleware calls, with
    the persistent cost guard. Disable retries/delegation for the first baseline.
    Verify sandbox boundaries before generated code or paid model use.
-4. Build ingestion/retrieval and measure M1 against the fixed-frame baseline,
+3. Build ingestion/retrieval and measure M1 against the fixed-frame baseline,
    then proceed through M2 claims/checkpoints and M3 generated check/fix, held-out
    regressions, wrong-fix controls and actual Harbor oracle/nop trials.
 
