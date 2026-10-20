@@ -1,0 +1,29 @@
+{
+  "complete": true,
+  "errors": [],
+  "results": [
+    {
+      "name": "svh smoke observes assertion",
+      "success": false,
+      "skipped": false,
+      "log": [
+        "AssertionError: expected 1 to equal 2\n    at Context.eval (webpack-internal:///./test/SvhGeneratedSpec.js:1:81)"
+      ]
+    }
+  ],
+  "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+  "disconnected": false,
+  "total": 1,
+  "skipped": 0,
+  "exit_code": 1,
+  "timed_out": false,
+  "check_sha256": "ad5eaf57e5025af016e02e1761a493dbb2c7499ded23986295b2e2789b71abd6",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+  "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+  "source_is_base": true,
+  "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+  "baseline_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+  "source_files_sha256": {},
+  "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+  "console_sha256": "88000b9d627edf85184f859ac2a2d96f5c46d0c5769b508082aac2764420d24f"
+}

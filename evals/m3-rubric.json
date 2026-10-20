@@ -1,0 +1,16 @@
+{
+  "format": "svh.m3.rubric.v1",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "minimum_artifacts": 10,
+  "valid_reproduction_wilson_lower": 0.20,
+  "minimum_full_generated_repairs": 1,
+  "require_all_exported_harbor_nop_oracle": true,
+  "max_candidates_per_case": 2,
+  "max_agent_steps_per_stage": 30,
+  "output_cap": 8192,
+  "source_fix_allowlist": "lib/**/*.js",
+  "test_path": "test/SvhGeneratedSpec.js",
+  "failure_requirement": "completed real-browser run with at least one assertion failure; no setup/runtime/timeout qualification",
+  "valid_reproduction_requirement": "frozen check assertion fails on base and same bytes pass after generated source-only fix",
+  "full_repair_requirement": "valid reproduction and independent held-out native regression suite passes unchanged coverage/skips"
+}

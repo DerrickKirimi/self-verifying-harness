@@ -28,6 +28,7 @@ def main():
     freeze.add_argument("--output", type=Path, default=Path("evals/frozen-m0.json"))
     mcp = commands.add_parser("mcp", help="serve authenticated, read-only recording evidence over MCP HTTP")
     mcp.add_argument("--corpus", type=Path, default=Path("evals/frozen-m0.json"))
+    mcp.add_argument("--task-manifest", type=Path, help="ordinary registered task without benchmark gold")
     mcp.add_argument("--token-file", type=Path, default=Path("data/runtime/mcp.token"))
     mcp.add_argument("--port", type=int, default=8765)
     ingest = commands.add_parser("ingest", help="budgeted timestamped ingestion of registered corpus recordings")
@@ -51,7 +52,7 @@ def main():
 
         if not 1024 <= args.port <= 65535:
             parser.error("MCP port must be between 1024 and 65535")
-        serve_mcp(args.root, args.corpus, args.token_file, args.port)
+        serve_mcp(args.root, args.corpus, args.token_file, args.port, task_manifest=args.task_manifest)
         return
     if args.command == "validate":
         path = args.root / args.annotation

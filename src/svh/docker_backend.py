@@ -45,6 +45,7 @@ class DockerSandbox(BaseSandbox):
             "--shm-size=512m", "--log-driver=none",
             "--tmpfs", "/workspace:rw,nosuid,size=1536m",
             "--tmpfs", "/tmp:rw,nosuid,size=512m",
+            "--tmpfs", "/home/chromeuser:rw,nosuid,size=64m,mode=1777",
             "--tmpfs", "/testbed/.git:rw,noexec,nosuid,size=1m",
             "--tmpfs", "/testbed/node_modules/.cache:rw,nosuid,size=256m",
             "--workdir", "/workspace", "--entrypoint", "/bin/sleep", self.image, "infinity"]

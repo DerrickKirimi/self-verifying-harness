@@ -124,10 +124,14 @@ def build_app(evidence: Evidence, token: str):
     return AuthenticatedApp(app, token)
 
 
-def serve(root, corpus, token_file, port):
+def serve(root, corpus, token_file, port, *, task_manifest=None):
     import uvicorn
 
-    evidence = Evidence.from_corpus(root, corpus)
+    if task_manifest is not None:
+        from svh.tasks import load_task
+        _, _, evidence = load_task(root, task_manifest)
+    else:
+        evidence = Evidence.from_corpus(root, corpus)
     token = private_token(root / token_file)
     print(f"MCP evidence at http://127.0.0.1:{port}/mcp; token file: {token_file}", flush=True)
     uvicorn.run(build_app(evidence, token), host="127.0.0.1", port=port,

@@ -12,7 +12,7 @@ from svh.mcp_client import connect
 
 
 @asynccontextmanager
-async def evidence_client(root, corpus, log_path):
+async def evidence_client(root, corpus, log_path, *, task_manifest=None):
     token_file = root / "data/runtime/mcp.token"
     token = private_token(token_file)
     with socket.socket() as sock:
@@ -22,7 +22,7 @@ async def evidence_client(root, corpus, log_path):
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open("w") as log:
         process = subprocess.Popen([sys.executable, "-I", "-m", "svh.cli", "--root", str(root),
-            "mcp", "--corpus", str(corpus), "--port", str(port)], cwd=root,
+            "mcp", *( ["--task-manifest", str(task_manifest)] if task_manifest is not None else ["--corpus", str(corpus)] ), "--port", str(port)], cwd=root,
             env={"PATH": os.environ["PATH"], "LANG": "C.UTF-8", "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"},
             stdout=log, stderr=subprocess.STDOUT)
         try:
