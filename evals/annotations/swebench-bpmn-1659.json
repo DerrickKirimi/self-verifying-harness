@@ -1,0 +1,52 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1659",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1659",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1659.json",
+    "row_sha256": "ed399d582f888b8909f4a4e87dcc165df378f5c0e33d2b079463c895a5e5f356"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "9737708a581560baca444e5bcbab1ecfee7acd39",
+    "fix_patch_sha256": "be840050937180790b86ec8c98de49de1cd624981d710e6d3c5e1a9b9492436f",
+    "test_patch_sha256": "1858acc2a159062f280823e4345c69cbbe922735d1ee0780972f2f0b0602c961",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1659@sha256:bbd5d87428577de9c0f1d70bec0b2a462b80d535279dd8e116f29f83ebb0b189"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1659/media.gif",
+    "sha256": "1661275794ac56cc1bde7e3790f7233de817170995336da12089c336363e9998",
+    "source_url": "https://user-images.githubusercontent.com/21984219/169510262-f80040f3-b078-481b-b62b-a934ca55b106.gif",
+    "duration_s": 10.08,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 6.0,
+      "t_end_s": 9.0,
+      "text": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "behavior - LabelBehavior move label connection labels should center position visible ",
+        "behavior - LayoutConnectionBehavior incomming association should reconnect on waypoint update ",
+        "behavior - LayoutConnectionBehavior outgoing association should reconnect on waypoint update "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1659-8b353ac41364bc36.json",
+    "report_sha256": "8b353ac41364bc361672e67a6e289e654db3ff33440c28fc93ef9f51114eeeac"
+  }
+}

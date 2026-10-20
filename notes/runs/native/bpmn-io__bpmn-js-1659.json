@@ -1,0 +1,92 @@
+{
+  "task": "bpmn-io__bpmn-js-1659",
+  "run_at": "2026-10-20T14:51:18.918362+00:00",
+  "graded_at": "2026-10-20T14:51:18.918386+00:00",
+  "row_sha256": "ed399d582f888b8909f4a4e87dcc165df378f5c0e33d2b079463c895a5e5f356",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1659@sha256:bbd5d87428577de9c0f1d70bec0b2a462b80d535279dd8e116f29f83ebb0b189",
+  "image_id": "sha256:a9257a7a1a12cc7143f83b9457e86b011641844179a2b17afc45871230c5d8f4",
+  "base_commit": "9737708a581560baca444e5bcbab1ecfee7acd39",
+  "fix_patch_sha256": "be840050937180790b86ec8c98de49de1cd624981d710e6d3c5e1a9b9492436f",
+  "test_patch_sha256": "1858acc2a159062f280823e4345c69cbbe922735d1ee0780972f2f0b0602c961",
+  "upstream_eval_sha256": "16238daea2066295daf1641ef7174512fcf373e8ad4c7550c280b109cccd7c6d",
+  "executed_eval_sha256": "9f9db01278c2ff2901bf57659df500bfc3ba13bd55a903fadbed648f454821f2",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1788,
+      "discovered": 1795,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "3 FAILED, 1785 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "9737708a581560baca444e5bcbab1ecfee7acd39",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) behavior - LabelBehavior move label connection labels should center position visible FAILED\n\tAssertionError: expected 98 to be close to 178 +/- 1\n\t    at eval (webpack-internal:///./test/spec/features/modeling/behavior/LabelBehaviorSpec.js:406:56)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "behavior - LabelBehavior move label connection labels should center position visible ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) behavior - LabelBehavior move label connection labels should center position visible FAILED\n\tAssertionError: expected 98 to be close to 178 +/- 1\n\t    at eval (webpack-internal:///./test/spec/features/modeling/behavior/LabelBehaviorSpec.js:406:56)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "behavior - LayoutConnectionBehavior incomming association should reconnect on waypoint update ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) behavior - LayoutConnectionBehavior incomming association should reconnect on waypoint update FAILED\n\tAssertionError: expected 150 to be close to 300 +/- 1\n\t    at expectApproximateWaypoints (webpack-internal:///./test/spec/features/modeling/behavior/LayoutConnectionBehaviorSpec.js:209:40)\n\t    at eval (webpack-internal:///./test/spec/features/modeling/behavior/LayoutConnectionBehaviorSpec.js:92:7)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "behavior - LayoutConnectionBehavior outgoing association should reconnect on waypoint update ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) behavior - LayoutConnectionBehavior outgoing association should reconnect on waypoint update FAILED\n\tAssertionError: expected 150 to be close to 300 +/- 1\n\t    at expectApproximateWaypoints (webpack-internal:///./test/spec/features/modeling/behavior/LayoutConnectionBehaviorSpec.js:209:40)\n\t    at eval (webpack-internal:///./test/spec/features/modeling/behavior/LayoutConnectionBehaviorSpec.js:168:7)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "b48400a5d0cc9258cdcbeae771f4588c89e3e64ddb3aa2ee2c98e7c07fba84bd",
+      "raw_log_sha256": "ee86f1848ef7047f99b6c862bfcd2cf0e65693d9c6dffd138cf078b2a7be4623"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1788,
+      "discovered": 1795,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1788 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "9737708a581560baca444e5bcbab1ecfee7acd39",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "behavior - LabelBehavior move label connection labels should center position visible ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "behavior - LayoutConnectionBehavior incomming association should reconnect on waypoint update ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "behavior - LayoutConnectionBehavior outgoing association should reconnect on waypoint update ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "c94894b78a07d8ae74965e45509c4131c2ff5621ae847d3a3afa7ecd4a9e44dc",
+      "raw_log_sha256": "a149af53a194d5646f931246c5866847273bf6489ad4361bbbbeceb3efc3f8e6"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1659/logs"
+}

@@ -46,13 +46,15 @@ Update this file at the end of every working session: what changed, gate results
   suite: **49 passed**. No model transport is wired to it yet and no metered
   calls have been made. Private local configuration is capped below the supplied
   prepaid balance; no key or billing screenshot is committed.
-- [RUN] Current external admission gate: **6/6 admitted annotations, Wilson 95%
-  [60.97%, 100%]**, below the required sample size and lower bound. This is
+- [RUN] Current external admission gate: **7/7 admitted annotations, Wilson 95%
+  [64.57%, 100%]**, below the required sample size and lower bound. This is
   `notes/runs/m0-gate.json`, not model performance. Cases 1557, 1570 and 1655
-  plus 1610, 1623 and 1638 pass; 1567 was rejected because its target failure is a runtime exception.
+  plus 1610, 1623, 1638 and 1659 pass; 1567 was rejected because its target failure is a runtime exception.
   Case 1578 passed its native oracle but was subsequently excluded for insufficient
   oracle-to-claim alignment (D24); its historical proof remains. Candidate 1610
-  has passed, as have 1623/1638; candidate 1659's post-fix run is live. Two additional reviewed
+  has passed, as have 1623/1638/1659; candidate 1677's post-fix run is live.
+  Its observed pre-fix target failure is a runtime exception without an assertion,
+  so it cannot enter the strict admission gate. Two additional reviewed
   candidates, 1640 and 1928, are queued for
   a subsequent batch resume after the currently live 12-case process finishes.
 - [CODE/RUN] Fresh-clone source preparation now downloads and hash-verifies both

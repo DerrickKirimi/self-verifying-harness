@@ -52,9 +52,15 @@
     "bpmn-io__bpmn-js-1659": {
       "report": "notes/runs/native/bpmn-io__bpmn-js-1659.json",
       "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1659.json",
-      "state": "running-oracle",
+      "state": "oracle-passed",
       "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1659@sha256:bbd5d87428577de9c0f1d70bec0b2a462b80d535279dd8e116f29f83ebb0b189"
+    },
+    "bpmn-io__bpmn-js-1677": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1677.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1677.json",
+      "state": "running-oracle",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1677@sha256:d477e0dd37cd6ddc58de258af69c95b86e085336e66f1be4325b03e400e9401d"
     }
   },
-  "updated_at": "2026-10-20T14:48:11.893334+00:00"
+  "updated_at": "2026-10-20T14:52:31.408245+00:00"
 }
