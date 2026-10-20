@@ -78,14 +78,18 @@ and Harbor trials have not been measured. [RUN]
 3. Normal task input must work without supplied gold fixes/tests or prior corpus
    admission; see `notes/2026-10-21-mvp-completion-audit.md`. Export every fully
    verified claim and execute actual Harbor nop/oracle trials. MVP is incomplete.
-4. M3 prospective rubric/scorer and controller-owned Karma/Chrome runner are
-   implemented. Actual Chrome assertion smoke passed (plumbing only, not a
-   claim reproduction); normal manifest/MCP input needs no gold or admission.
-   First paid generated reproduction: exec82964, generated-v1, case1655 candidate1.
-   Poll this handle, do not duplicate. Full suite after additions: 91 passed.
-   New protocol note: `notes/2026-10-21-m3-prospective-gate.md`.
-5. Budget after terminal checkpoint batch: $1.940127 settled, $2.059873 available,
-   zero unsettled reservations. Cap remains $4.00. Last full suite: 87 passed.
+4. M3 gate/Chrome runner and ordinary-task workflow are implemented. No valid
+   generated reproduction/fix yet: 1655 and 1638 exhaust their two candidates with
+   setup/alignment or graph-limit failures, all retained. 1570 candidate1 passes
+   on buggy code (rejected); candidate2 is active in **exec61955**. Poll it; do not
+   start another paid worker. See `notes/2026-10-21-m3-development-attempts.md`.
+   `docs/mvp-usage.md` describes ordinary input without benchmark gold/admission.
+5. Harbor 0.24.0 is installed separately; exporter integrity unit test passes,
+   but no task is exported and no real nop/oracle trial has run. Last full suite:
+   93 passed, plus one new denominator test passing separately.
+6. Budget before active 1570 candidate2: $2.338882 settled, $1.661118 available,
+   zero unsettled requests; cap $4.00. Current in-flight reservation is additional
+   until metered usage settles. No source fix has yet been generated.
 
 ## Evidence and history
 

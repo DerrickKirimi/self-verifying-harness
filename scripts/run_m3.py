@@ -15,7 +15,8 @@ from svh.mcp_process import evidence_client
 from svh.verification import browser_verdict, digest, verified_check
 
 p=argparse.ArgumentParser()
-p.add_argument('--only',required=True)
+p.add_argument('--only')
+p.add_argument('--task-manifest',type=Path)
 p.add_argument('--stage',choices=['reproduce','repair'],required=True)
 p.add_argument('--run-name',required=True)
 p.add_argument('--candidate',type=int,choices=[1,2],default=1)
@@ -24,7 +25,13 @@ a=p.parse_args()
 if not re.fullmatch('[A-Za-z0-9_-]{1,64}',a.run_name):raise SystemExit('Invalid run name')
 root=Path(__file__).resolve().parents[1]
 corpus=root/'evals/frozen-m0.json'
-corpus_sha,tasks=public_tasks(root,corpus)
+if a.task_manifest:
+    from svh.tasks import load_task
+    corpus_sha,normal_task,normal_evidence=load_task(root,a.task_manifest)
+    tasks=[normal_task]
+    if a.only is None:a.only=normal_task['id']
+else:
+    corpus_sha,tasks=public_tasks(root,corpus)
 if a.only not in {t['id'] for t in tasks}:raise SystemExit('Unknown task')
 work=root/'data/runtime/m3'/a.run_name;work.mkdir(parents=True,exist_ok=True)
 lock=(root/'data/runtime/m3/worker.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -33,11 +40,13 @@ report=json.loads(rpath.read_text()) if rpath.exists() else {'corpus_sha256':cor
 if report['corpus_sha256']!=corpus_sha:raise SystemExit('Different corpus')
 task=next(t for t in tasks if t['id']==a.only)
 row=next(t for t in report['cases'] if t['id']==a.only)
-claims=json.loads((root/'notes/runs/m2-checkpoints-media.json').read_text())
-claim=next(c for c in claims['cases'] if c['id']==a.only)
-# This copies only model-produced claims/hypotheses/citations, never scorer/gold.
-claim={k:claim[k] for k in ('refined_predictions','code_evidence','hypotheses','questions')}
-model=configured_model(root,name=a.model,output_cap=8192);model.reasoning_effort='low'
+claim=None
+if not a.task_manifest:
+    claims=json.loads((root/'notes/runs/m2-checkpoints-media.json').read_text())
+    claim=next(c for c in claims['cases'] if c['id']==a.only)
+    # Copy only model outputs, never scorer/gold.
+    claim={k:claim[k] for k in ('refined_predictions','code_evidence','hypotheses','questions')}
+model=configured_model(root,name=a.model,output_cap=8192);model.reasoning_effort='medium'
 casepath=work/task['id']/str(a.candidate);casepath.mkdir(parents=True,exist_ok=True)
 
 
@@ -47,6 +56,19 @@ def save():
 
 
 async def run():
+    global claim
+    if a.task_manifest:
+        checkpoint_path=work/'checkpoint.json'
+        if checkpoint_path.exists():
+            claim=json.loads(checkpoint_path.read_text())
+        else:
+            from svh.extract import extract_claims
+            from svh.checkpoint import inspect_code
+            first=extract_claims(normal_evidence,task,'issue+media',model,work/'extraction.json')
+            async with evidence_client(root,None,work/'mcp.log',task_manifest=a.task_manifest) as client:
+                with sandbox(task['image'],task['base_commit']) as backend:
+                    claim=await inspect_code(task,first,model,backend,client,work/'checkpoint-trace.json')
+            checkpoint_path.write_text(json.dumps(claim,indent=2)+'\n')
     index=a.candidate-1
     if a.stage=='reproduce':
         if len(row['candidates'])!=index:raise ValueError('Candidate already recorded or earlier candidate missing')
@@ -56,13 +78,22 @@ async def run():
         candidate=row['candidates'][index]
         if candidate.get('status')!='observed_base_assertion':raise ValueError('No fresh frozen base assertion permits repair')
         review=json.loads((casepath/'alignment-review.json').read_text())
+        candidate['alignment_review']=review
         if review.get('check_sha256')!=candidate['pre']['check_sha256'] or review.get('aligned') is not True:
             raise ValueError('An explicit claim-alignment review must bind the frozen check')
     try:
         if a.stage=='reproduce':
-            async with evidence_client(root,corpus,casepath/'mcp.log') as client:
+            async with evidence_client(root,corpus,casepath/'mcp.log',task_manifest=a.task_manifest) as client:
                 with sandbox(task['image'],task['base_commit']) as backend:
-                    output=await generate(task,claim,model,backend,client,casepath/'reproduce-trace.json')
+                    feedback=None
+                    if a.candidate>1:
+                        previous=work/task['id']/str(a.candidate-1)
+                        feedback={'candidate':json.loads((previous/'candidate.json').read_text()),
+                                  'observation':json.loads((previous/'pre/observation.json').read_text()),
+                                  'alignment_review':json.loads((previous/'alignment-review.json').read_text()) if (previous/'alignment-review.json').exists() else None,
+                                  'console':(previous/'pre/console.log').read_text()[-16000:],
+                                  'instruction':'Correct setup/API mistakes before any source fix. Put rendered DOM assertions before internal DI assertions so the observed failure checks the visible symptom. Preserve general coverage; inspect actual fixture identifiers.'}
+                    output=await generate(task,claim,model,backend,client,casepath/'reproduce-trace.json',feedback=feedback)
             (casepath/'candidate.json').write_text(json.dumps(output,indent=2)+'\n')
             check=output['check_javascript'].encode();(casepath/'check.js').write_bytes(check)
             candidate['check_sha256']=digest(check)
@@ -80,18 +111,27 @@ async def run():
             candidate['post']=observe(task['image'],task['base_commit'],check,casepath/'post',source_files=files)
             candidate['status']='generated_check_passed' if verified_check(candidate['pre'],candidate['post']) else 'repair_failed'
             if candidate['status']=='generated_check_passed':
-                annotation=json.loads((root/'evals/annotations'/(task['id']+'.json')).read_text())
-                source=json.loads((root/annotation['source']['row_path']).read_text())
-                native=observe(task['image'],task['base_commit'],check,casepath/'native',source_files=files,native_test_patch=source['test_patch'].encode())
-                oracle=json.loads((root/annotation['oracle']['report_path']).read_text())['results']['post']
-                passed=(native.get('complete') and native['exit_code']==0 and not native['errors'] and native.get('browser') and not native['disconnected']
+                if a.task_manifest:
+                    baseline=observe(task['image'],task['base_commit'],check,casepath/'native-baseline',native=True)
+                    native=observe(task['image'],task['base_commit'],check,casepath/'native',source_files=files,native=True)
+                    oracle={'discovered':baseline['total'],'skipped':baseline['skipped'],
+                            'executed':sum(not r.get('skipped') for r in baseline['results'])}
+                    baseline_ok=bool(baseline['complete'] and baseline['exit_code']==0 and not baseline['errors'] and baseline['total']>0)
+                else:
+                    annotation=json.loads((root/'evals/annotations'/(task['id']+'.json')).read_text())
+                    source=json.loads((root/annotation['source']['row_path']).read_text())
+                    native=observe(task['image'],task['base_commit'],check,casepath/'native',source_files=files,native_test_patch=source['test_patch'].encode())
+                    oracle=json.loads((root/annotation['oracle']['report_path']).read_text())['results']['post']
+                    baseline_ok=True
+                passed=(baseline_ok and native.get('complete') and native['exit_code']==0 and not native['errors'] and native.get('browser') and not native['disconnected']
                         and native['total']==oracle['discovered'] and native['skipped']==oracle['skipped']
                         and sum(not r.get('skipped') for r in native['results'])==oracle['executed']
                         and all(r.get('skipped') or r.get('success') for r in native['results']))
                 candidate.update(native_regressions_passed=bool(passed),native_observation_sha256=digest((casepath/'native/observation.json').read_bytes()))
                 candidate['status']='full_generated_repair' if passed else 'native_regressions_failed'
     except Exception as error:
-        candidate.update(status='error',error_type=type(error).__name__)
+        candidate.update(status='error',error_type=type(error).__name__,
+            nested_error_types=[type(e).__name__ for e in getattr(error,'exceptions',[])])
         # Exceptions can contain provider request data: retain no arbitrary exception text.
     save();print(json.dumps({'id':task['id'],'stage':a.stage,'status':candidate['status'],'budget':report['budget']}),flush=True)
 

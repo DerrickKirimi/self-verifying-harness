@@ -54,7 +54,7 @@ def extract_claims(evidence, task, condition, model, destination):
     record = evidence.recording(task["id"])
     identity = {"corpus_sha256": evidence.corpus_sha256, "recording_id": record.id,
                 "media_sha256": record.sha256, "issue_sha256": task["issue_sha256"],
-                "condition": condition, "model": model.model, "output_cap": 4096,
+                "condition": condition, "model": model.model, "output_cap": model._output_cap,
                 "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest(),
                 "sampler": "preceding_pts_v1", "frames": 45 if condition == "issue+media" else 0}
     if destination.exists():
@@ -66,8 +66,9 @@ def extract_claims(evidence, task, condition, model, destination):
                     + "\nQuoted issue: " + json.dumps(task["problem_statement"])}]
         if condition == "issue+media":
             for index in range(45):
-                start = index * record.duration_s / 45
-                end = min(record.duration_s, (index + 1) * record.duration_s / 45)
+                midpoint = (index + 0.5) * record.duration_s / 45
+                width = min(record.duration_s / 45, 30)
+                start, end = max(0, midpoint - width / 2), min(record.duration_s, midpoint + width / 2)
                 timestamp, png = evidence.frames(record.id, start, end, 1)[0]
                 content.extend([{"type": "text", "text": f"Frame {index}, time {timestamp:.6f}s"},
                     {"type": "image_url", "image_url": {"url": "data:image/png;base64," + base64.b64encode(png).decode()}}])

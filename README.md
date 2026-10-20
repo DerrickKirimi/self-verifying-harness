@@ -12,7 +12,9 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
 
 **Status:** M0 passed on eleven reviewed temporal cases with observed supplied
 test failures before and passes after their reference fixes. The visual corpus
-is frozen; M1 ingestion and MCP integration are starting. The MVP is incomplete.
+is frozen; M1 and refined numerical M2 checks are measured. M3 generated checks
+are under evaluation; the MVP remains incomplete. Independent human claim
+adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
 See [`STATUS.md`](STATUS.md).
 
 ## Run the first checkpoint

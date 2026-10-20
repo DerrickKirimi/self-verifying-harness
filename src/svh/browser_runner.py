@@ -51,7 +51,7 @@ def allowed_source(files):
             raise ValueError('Fixes may contain only bounded lib JavaScript file bytes')
 
 
-def observe(image, base_commit, check, directory, *, source_files=None, native_test_patch=None):
+def observe(image, base_commit, check, directory, *, source_files=None, native_test_patch=None, native=False):
     """Fresh sandbox for each observation; no model has access to the reporter."""
     directory.mkdir(parents=True, exist_ok=False)
     if not isinstance(check, bytes) or not 1 <= len(check) <= 128*1024:
@@ -70,7 +70,7 @@ def observe(image, base_commit, check, directory, *, source_files=None, native_t
             applied=backend.execute('git apply --check /tmp/svh-native.diff && git apply /tmp/svh-native.diff')
             if applied.exit_code != 0:
                 raise ValueError('Held-out native test patch does not apply')
-        command=('SVH_NATIVE=1 ' if native_test_patch is not None else '') + "su chromeuser -c './node_modules/.bin/karma start /tmp/svh-karma.cjs --no-colors'"
+        command=('SVH_NATIVE=1 ' if native or native_test_patch is not None else '') + "su chromeuser -c './node_modules/.bin/karma start /tmp/svh-karma.cjs --no-colors'"
         run=backend.execute(command,timeout=300)
         (directory/'console.log').write_text(run.output)
         downloaded=[] if backend.closed else backend.download_files(['/tmp/svh-results.json','/workspace/'+CHECK_PATH])

@@ -40,6 +40,7 @@ def test_matched_extraction_inputs_resume_and_timestamp_contract(tmp_path, condi
             return [((start + end) / 2, b"controlled-image")]
     class Model:
         model = "controlled"
+        _output_cap = 4096
         def invoke(self, messages):
             calls.append(messages)
             prediction = {"id": "claim-1", "symptom": "a visible issue", "expected_behavior": "expected result",

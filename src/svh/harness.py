@@ -26,7 +26,7 @@ class NoDelegation(AgentMiddleware):
         return denied if denied is not None else await handler(request)
 
 
-def create_harness(model, backend, *, tools=(), system_prompt, response_format=None):
+def create_harness(model, backend, *, tools=(), system_prompt, response_format=None, middleware=()):
     if not isinstance(backend, DockerSandbox):
         raise ValueError("Generated commands require the Docker sandbox backend")
     if backend.closed:
@@ -39,4 +39,4 @@ def create_harness(model, backend, *, tools=(), system_prompt, response_format=N
         excluded_tools=frozenset({"task"}),
     ))
     return create_deep_agent(model=model, backend=backend, tools=list(tools), subagents=[],
-        middleware=[NoDelegation()], system_prompt=system_prompt, response_format=response_format)
+        middleware=[NoDelegation(), *middleware], system_prompt=system_prompt, response_format=response_format)

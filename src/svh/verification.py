@@ -27,7 +27,11 @@ def verified_check(pre, post):
     return (pre.get('check_sha256') == post.get('check_sha256')
         and bool(pre.get('check_sha256')) and pre.get('image') == post.get('image')
         and pre.get('base_commit') == post.get('base_commit')
-        and pre.get('source_is_base') is True
+        and bool(pre.get('image')) and bool(pre.get('base_commit'))
+        and pre.get('runner_sha256') == post.get('runner_sha256') and bool(pre.get('runner_sha256'))
+        and pre.get('source_archive_sha256') == post.get('source_archive_sha256')
+        and pre.get('source_is_base') is True and post.get('source_is_base') is False
+        and bool(post.get('source_files_sha256'))
         and browser_verdict(pre, assertion_failure=True) and browser_verdict(post)
         and pre['total'] == post['total']
         and [r['name'] for r in pre['results']] == [r['name'] for r in post['results']])
@@ -36,10 +40,14 @@ def verified_check(pre, post):
 def score(attempts, rubric, expected_ids):
     if len(attempts) != len(expected_ids) or {a['id'] for a in attempts} != set(expected_ids):
         raise ValueError('Keep all frozen cases, including abstentions and exhausted budgets')
-    valid = sum(any(verified_check(c.get('pre', {}), c.get('post', {})) for c in a.get('candidates', [])) for a in attempts)
-    repaired = sum(any(verified_check(c.get('pre', {}), c.get('post', {})) and c.get('native_regressions_passed') is True
+    def aligned(c):
+        review=c.get('alignment_review', {})
+        return review.get('aligned') is True and review.get('check_sha256') == c.get('pre',{}).get('check_sha256')
+    valid = sum(any(aligned(c) and verified_check(c.get('pre', {}), c.get('post', {})) for c in a.get('candidates', [])) for a in attempts)
+    repaired = sum(any(aligned(c) and verified_check(c.get('pre', {}), c.get('post', {})) and c.get('native_regressions_passed') is True
                        for c in a.get('candidates', [])) for a in attempts)
     n=len(attempts)
-    return {'artifacts': n, 'valid_reproductions': {'successes': valid, 'n': n, 'wilson95': wilson(valid,n)},
+    attempted=sum(a.get('status') != 'not_attempted' for a in attempts)
+    return {'artifacts': n, 'attempted_artifacts': attempted, 'valid_reproductions': {'successes': valid, 'n': n, 'wilson95': wilson(valid,n)},
             'full_generated_repairs': {'successes': repaired, 'n': n, 'wilson95': wilson(repaired,n)},
-            'generated_verification_gate_passed': n >= rubric['minimum_artifacts'] and wilson(valid,n)[0] >= rubric['valid_reproduction_wilson_lower'] and repaired >= rubric['minimum_full_generated_repairs']}
+            'generated_verification_gate_passed': attempted == n and n >= rubric['minimum_artifacts'] and wilson(valid,n)[0] >= rubric['valid_reproduction_wilson_lower'] and repaired >= rubric['minimum_full_generated_repairs']}

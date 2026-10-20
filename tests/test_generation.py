@@ -13,3 +13,21 @@ def test_source_transfer_ignores_agent_git_and_restricts_paths():
         with pytest.raises(ValueError):allowed_source({path:b'bad'})
     with pytest.raises(ValueError):apply_edits(Backend(),[{'path':'lib/a.js','old':'missing','new':'changed'}])
     with pytest.raises(ValueError):apply_edits(Backend(),[])
+
+
+def test_inspection_requires_media_first_and_exhausts_reads_without_removing_final_schema():
+    from svh.generation import BoundedInspection
+    from langchain_core.messages import ToolMessage,SystemMessage
+    class Request:
+        tools=[SimpleNamespace(name=n) for n in ['get_recording','get_frames','read_file','execute','edit_file']]
+        messages=[]
+        system_message=SystemMessage(content='Generate a check')
+        response_format='preserved-by-sdk'
+        def override(self,**kwargs):return SimpleNamespace(response_format=self.response_format,**kwargs)
+    request=Request();limiter=BoundedInspection(require_media=True,limit=3)
+    assert {t.name for t in limiter.narrow(request).tools}=={'get_recording','get_frames'}
+    request.messages=[ToolMessage(content='ok',name=n,tool_call_id=n) for n in ['get_recording','get_frames']]
+    assert [t.name for t in limiter.narrow(request).tools]==['read_file']
+    request.messages.append(ToolMessage(content='ok',name='read_file',tool_call_id='read'))
+    narrowed=limiter.narrow(request)
+    assert narrowed.tools==[] and narrowed.response_format=='preserved-by-sdk'
