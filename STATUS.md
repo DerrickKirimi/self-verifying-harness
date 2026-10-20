@@ -71,7 +71,10 @@ claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
    local method; read-only MCP needs no Gemini key.
 2. M2 scoring contract is implemented before generation: `evals/m2-rubric.json`,
    `svh.claims.score`, three passing integrity tests; details in
-   `notes/2026-10-20-m2-scoring-protocol.md`. No M2 generation yet.
+   `notes/2026-10-20-m2-scoring-protocol.md`. Matched M2 extraction is running sequentially in exec session 38364; do not
+   restart it while active. Pilot outputs exist in both conditions and remain
+   unscored. `notes/2026-10-20-m2-extraction.md`. After completion, freeze and
+   review outputs, then run the Docker/MCP code checkpoints.
    Extract claims under matched issue-only/temporal-media conditions, without
    passing gold claims, test names, test/source patches or grader scripts to the
    model. Use the existing deepagents loop for the codebase checkpoint.
