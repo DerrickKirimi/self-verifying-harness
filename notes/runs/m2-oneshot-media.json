@@ -1,0 +1,595 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "rubric_sha256": "57283e256f6ece27d3266806d46a31de4471478f91bf247897feece900017d2e",
+  "condition": "issue+media",
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "An uncaught TypeError is thrown in the console when a DataStoreReference located outside of a pool is morphed into a DataObjectReference.",
+          "expected_behavior": "One of: Don't allow to morph to DataObjectReference outside of Pool, or Allow morph, but don't break.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.61,
+            "end_s": 6.27
+          },
+          "observations": [
+            {
+              "timestamp_s": 5.61,
+              "detail": "A DataStoreReference icon is selected outside the pool."
+            },
+            {
+              "timestamp_s": 5.83,
+              "detail": "Morph option for Data Object Reference is selected from the popup menu."
+            },
+            {
+              "timestamp_s": 6.05,
+              "detail": "Red error stack trace appears in the browser console."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "ebdff54370867f1c66e2e29a1c958d354c8d7a2f4470ede8620fac69b875fd2f",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1557",
+        "media_sha256": "29ef13593291739b2e19bb76ca0dc4acc7eb0cc9491b84997cac4a8b7a362815",
+        "issue_sha256": "7b66d1ba8ebb1ed60d5bb8786fa7b3e4933c033657f58d7920bcbcd5a6e01eef",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 50419,
+        "output_tokens": 193,
+        "total_tokens": 50612,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "The diagram jumps / shifts position within the viewport when wrapping a process in a pool.",
+          "expected_behavior": "Diagram stays in current viewport.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 1.443,
+            "end_s": 3.441
+          },
+          "observations": [
+            {
+              "timestamp_s": 1.443,
+              "detail": "Cursor hovers over the pool tool icon in the left palette."
+            },
+            {
+              "timestamp_s": 1.665,
+              "detail": "A blue pool boundary is drawn around the diagram, causing the viewport/diagram to jump or shift position."
+            },
+            {
+              "timestamp_s": 3.441,
+              "detail": "The diagram is shown enclosed inside a pool with dotted selection borders and context menu icons."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "f625b39f3f7c4f6bd37ad09e3dd1c6f760287a13a9b0b38c060cda8d3da4a214",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1570",
+        "media_sha256": "74a72f40dc46e662419b7b0af6da58a5ec6a55eb674020781226487209b1e091",
+        "issue_sha256": "5951935498c688fc1de71abd729861b09e5507bc132eeca2d88a441a32007965",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 50758,
+        "output_tokens": 278,
+        "total_tokens": 51036,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When switching planes with direct editing active on an element inside a sub-process, the direct editing box or overlay remains open after navigation.",
+          "expected_behavior": "Direct editing is canceled on plane switch.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.217,
+            "end_s": 9.879
+          },
+          "observations": [
+            {
+              "timestamp_s": 5.217,
+              "detail": "User clicks the sub-process expansion button on 'choose recipe'."
+            },
+            {
+              "timestamp_s": 7.659,
+              "detail": "Direct editing text box is open inside the sub-process plane."
+            },
+            {
+              "timestamp_s": 8.325,
+              "detail": "User clicks 'Process_1' breadcrumb link to navigate back to the parent plane."
+            },
+            {
+              "timestamp_s": 9.213,
+              "detail": "The main diagram is shown with the sub-process collapsed, but an orphaned direct editing box remains visible below it."
+            }
+          ],
+          "uncertainty": ""
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "7b44c0c601c22d2c4853987ec0231bff43d799cac64974dc8c5ff835f7242af7",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1610",
+        "media_sha256": "4f5f5b423fedc1e16aca0f2651b63322b81d9055cc71540786b88fc6499a8e53",
+        "issue_sha256": "8c3021f3fba32dae2e2ece6a91843588feac6c670dd3f7c37b1624b7de1f5e6b",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 50487,
+        "output_tokens": 332,
+        "total_tokens": 50819,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "The deep linking overlay for the subprocess is lost after navigating into a subprocess diagram.",
+          "expected_behavior": "The deep linking functionality and navigation between multiple processes and subprocesses should work together without losing overlays.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 2.932,
+            "end_s": 6.541
+          },
+          "observations": [
+            {
+              "timestamp_s": 2.932,
+              "detail": "The view switches to the subprocess diagram (Activity_019fqik), and the deep linking overlay button is no longer visible on the subprocess element."
+            },
+            {
+              "timestamp_s": 6.541,
+              "detail": "Returning to the root process shows the subprocess element without the deep linking overlay."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "26a3240a894b6ff605b978dc51d93f8fcd21377c4cccd36abec1b1822a2bb499",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1623",
+        "media_sha256": "d5e89fad422e9d16286260a3d7befcabb9901f8987f2a5f650868f7a67b14236",
+        "issue_sha256": "a674a6b699bc8b15ee5e943303e83c7c58ee3b9dab143562290acc10fa8b8876",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 50193,
+        "output_tokens": 259,
+        "total_tokens": 50452,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When a task's label is removed, its di object retains a label property with a null value instead of removing the property entirely.",
+          "expected_behavior": "di.label does not exist",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 0.0,
+            "end_s": 2.392
+          },
+          "observations": [
+            {
+              "timestamp_s": 1.144,
+              "detail": "User edits and deletes text inside task 'a', leaving the task label empty."
+            },
+            {
+              "timestamp_s": 1.629,
+              "detail": "Linter integration runs and outputs multiple error messages in the console panel."
+            },
+            {
+              "timestamp_s": 1.768,
+              "detail": "Console shows TypeError stack traces related to reading properties of null."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "dbf2c7bc1eff0f302649e8dd1c66f4b9e192bd3048696ead90d1da38b38c1f13",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1638",
+        "media_sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
+        "issue_sha256": "83e72a696f9ddc283c25b8af5dc28a8d755ff728a8e8886c02c298701162cc53",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 51095,
+        "output_tokens": 278,
+        "total_tokens": 51373,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When changing a sub-process's multi-instance setting from parallel to sequential, configured multi-instance properties (such as loop cardinality and completion condition) are cleared or lost.",
+          "expected_behavior": "Multi-instance properties are not lost when changing between parallel and sequential.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.5,
+            "end_s": 8.5
+          },
+          "observations": [
+            {
+              "timestamp_s": 5.9,
+              "detail": "User clicks the tool icon on the subprocess to change multi-instance type."
+            },
+            {
+              "timestamp_s": 7.9,
+              "detail": "User selects sequential multi-instance, and the properties panel fields (Loop Cardinality, Collection, Completion Condition) become empty with a validation warning."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "63bb7b12d0547df2309b6a396b54c164c1b0ed04d31d3a7e6ec730ca031b266b",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1640",
+        "media_sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+        "issue_sha256": "8d66996bdf3fb69bca9b6162f4ca4025ae5fa6d2682f6a6452162d4d30b98e6d",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 49987,
+        "output_tokens": 264,
+        "total_tokens": 50251,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When setting the color of elements with external labels (such as a Start Event), the external label text is set to the fill color instead of the stroke color, making it appear very light.",
+          "expected_behavior": "External labels should be set to the \"stroke\" color, as seen in embedded labels.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.07463,
+            "end_s": 6.740926
+          },
+          "observations": [
+            {
+              "timestamp_s": 5.07463,
+              "detail": "User selects Orange from the Set Color menu for the selected Start Event element and its external label."
+            },
+            {
+              "timestamp_s": 5.226111,
+              "detail": "The Start Event's circle fill turns light orange, and the external label text 'Start Event' turns light orange."
+            },
+            {
+              "timestamp_s": 6.740926,
+              "detail": "The Start Event circle has a darker orange stroke border, but the external label text remains in a very light orange fill color."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "b754e755ff0f8b227a30df8f9f7d1972f05b0a56d54d5b3db65b1bedfe4a92ca",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1655",
+        "media_sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
+        "issue_sha256": "28ff1709564a5f62610bda67e69697771b53e7b0b688acde55b9b25a2acb662d",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 50460,
+        "output_tokens": 341,
+        "total_tokens": 50801,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When a Sub Process shape is resized or its connected connection is re-laid out, the connected sequence flow label and text association fail to reposition correctly along with the connection/shape and remain detached or hanging in place.",
+          "expected_behavior": "Label and Association are moved with it",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 0.112,
+            "end_s": 9.968
+          },
+          "observations": [
+            {
+              "timestamp_s": 0.112,
+              "detail": "Initial diagram shows Sub Process 1 connected to End Event with sequence flow, a bendpoint, and text annotation/label positioned near the flow line."
+            },
+            {
+              "timestamp_s": 4.592,
+              "detail": "Sub Process 1 is resized and moved downwards, causing the sequence flow waypoints to recalculate and route down and across."
+            },
+            {
+              "timestamp_s": 9.072,
+              "detail": "The 'LAbel' text and text annotation remain stranded far above the re-routed sequence flow line after resizing and re-layout."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "691df5a7cff5c30ae011de2d89c60e3b55a4d541175bd0319f602f1b92d057de",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1659",
+        "media_sha256": "1661275794ac56cc1bde7e3790f7233de817170995336da12089c336363e9998",
+        "issue_sha256": "f660043d5c6f54631d9641876375464e856e5fbc308a271eb66f8acc515dec96",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 49319,
+        "output_tokens": 243,
+        "total_tokens": 49562,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When toggling loop multi-instance and parallel or sequential properties on a task, the generated XML label remains <bpmn:standardLoopCharacteristics /> and does not update to reflect multi-instance loop characteristics.",
+          "expected_behavior": "XML label: <bpmn:multiInstanceLoopCharacteristics /> or <bpmn:multiInstanceLoopCharacteristics isSequential=\"true\" />",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 14.49,
+            "end_s": 18.69
+          },
+          "observations": [
+            {
+              "timestamp_s": 14.49,
+              "detail": "Text editor displays the generated BPMN XML containing <bpmn:standardLoopCharacteristics />."
+            },
+            {
+              "timestamp_s": 17.01,
+              "detail": "Selected text in the editor highlights <bpmn:standardLoopCharacteristics />."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "1c174a0243dfcb56e07aa174b072c754a7108b14b8ae6c635368d015156fbeec",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1679",
+        "media_sha256": "be1925039dea24dd160978f40e52df53caa2f30eadb4826b74de192d952a4bd3",
+        "issue_sha256": "bf681e838a04a5dcf529d81d09948e35dc9cd4bf1f4287b57ec56e8c9c87c7a4",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 49901,
+        "output_tokens": 280,
+        "total_tokens": 50181,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When an expanded sub process containing start, task, and end events with labels is changed to a collapsed sub process, internal labels such as the start event label remain visible and misplaced outside the collapsed sub process.",
+          "expected_behavior": "Hide the label inside the sub process.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 30.0,
+            "end_s": 34.5
+          },
+          "observations": [
+            {
+              "timestamp_s": 30.185,
+              "detail": "Expanded sub process containing start event with label 'start', task, and end event is selected."
+            },
+            {
+              "timestamp_s": 32.303,
+              "detail": "Sub process is changed to collapsed via menu."
+            },
+            {
+              "timestamp_s": 34.421,
+              "detail": "Collapsed sub process is displayed while the label 'start' remains visible outside and to the left of the sub process."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "829e63884ccf9f2b52d7f21b4bcfc18b1403cdfab6f3ac8dd105665440e6dff5",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1719",
+        "media_sha256": "60563d817e9beecd50ee38f774ad0aa339a348b3efc4f879e4058e872406e917",
+        "issue_sha256": "f0e19da6680e6dacb5630d867184e21484d6d9a172fd3c23802049c0c005a3ea",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 50102,
+        "output_tokens": 305,
+        "total_tokens": 50407,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "An empty pool gets resized vertically when using the space tool on top of it.",
+          "expected_behavior": "Empty pool does not resize (vertically).",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 7.8,
+            "end_s": 8.9
+          },
+          "observations": [
+            {
+              "timestamp_s": 8.1,
+              "detail": "The lower empty pool's bottom border is being dragged downward, vertically expanding its height while selected with blue handles."
+            },
+            {
+              "timestamp_s": 8.7,
+              "detail": "The pool height is fully expanded vertically before releasing the mouse."
+            }
+          ],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "b9e5ddd5f7f49e6b2e2240f73a78d6c91e3e23713418e825fe3d4c6664831032",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1928",
+        "media_sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+        "issue_sha256": "cd34425fb3dc38198618b948bd7af0c6c120b384f0f572c776da9fc314cafd5f",
+        "condition": "issue+media",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 45
+      },
+      "usage": {
+        "input_tokens": 49202,
+        "output_tokens": 231,
+        "total_tokens": 49433,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    }
+  ],
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 643397,
+    "available_microdollars": 3356603,
+    "unsettled_requests": 0
+  }
+}

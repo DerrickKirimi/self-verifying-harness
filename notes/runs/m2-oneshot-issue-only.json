@@ -1,0 +1,431 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "rubric_sha256": "57283e256f6ece27d3266806d46a31de4471478f91bf247897feece900017d2e",
+  "condition": "issue-only",
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Uncaught TypeError: Cannot read properties of undefined (reading 'get') at Oh.updateDiParent (BpmnUpdater.js:408) when morphing a DataStoreReference to a DataObjectReference outside of a pool.",
+          "expected_behavior": "Don't allow to morph to DataObjectReference outside of Pool or allow morph, but don't break.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "781669e82f9468c4bccb5de96cce6948e38460fead3785046961bc771af8eacf",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1557",
+        "media_sha256": "29ef13593291739b2e19bb76ca0dc4acc7eb0cc9491b84997cac4a8b7a362815",
+        "issue_sha256": "7b66d1ba8ebb1ed60d5bb8786fa7b3e4933c033657f58d7920bcbcd5a6e01eef",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 1199,
+        "output_tokens": 165,
+        "total_tokens": 1364,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Diagram jumps when wrapping a process in a pool.",
+          "expected_behavior": "Diagram stays in current viewport.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "87abb71af84263f2e36ba4e2ca23d3264f59dabb35d690f3cda1318e76222a83",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1570",
+        "media_sha256": "74a72f40dc46e662419b7b0af6da58a5ec6a55eb674020781226487209b1e091",
+        "issue_sha256": "5951935498c688fc1de71abd729861b09e5507bc132eeca2d88a441a32007965",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 548,
+        "output_tokens": 110,
+        "total_tokens": 658,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When switching planes while direct editing is active inside a sub-process plane, the direct editing box remains open even though the element is no longer visible.",
+          "expected_behavior": "Direct editing is canceled on plane switch.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "f6aadef9681f82ff5c78258acb35e12ece5eea5ed3d1c7ccf65f44261eb34c31",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1610",
+        "media_sha256": "4f5f5b423fedc1e16aca0f2651b63322b81d9055cc71540786b88fc6499a8e53",
+        "issue_sha256": "8c3021f3fba32dae2e2ece6a91843588feac6c670dd3f7c37b1624b7de1f5e6b",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 637,
+        "output_tokens": 132,
+        "total_tokens": 769,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "The deep linking overlay for the subprocess is lost when using the multi-diagram plugin alongside deep linking functionality in bpmn-js and Camunda Modeler 5.0.",
+          "expected_behavior": "The multi-diagram plugin and deep linking functionalities should work together, allowing navigation between multiple processes and subprocesses inside the same BPMN.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "45b94894a8c741890b5ae4ee32c5dd09dc7d139050213a26b99ea978fe275490",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1623",
+        "media_sha256": "d5e89fad422e9d16286260a3d7befcabb9901f8987f2a5f650868f7a67b14236",
+        "issue_sha256": "a674a6b699bc8b15ee5e943303e83c7c58ee3b9dab143562290acc10fa8b8876",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 860,
+        "output_tokens": 156,
+        "total_tokens": 1016,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When the label of a Task is removed, the DI object still retains the `label` property with a value of `null` (`di.label` exists as `null`).",
+          "expected_behavior": "The `label` property (`di.label`) should not exist on the DI object after clearing the name.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "5315c68848ed700f64387874247a053886b48af680259a24a7d054d71dfe8ba1",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1638",
+        "media_sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
+        "issue_sha256": "83e72a696f9ddc283c25b8af5dc28a8d755ff728a8e8886c02c298701162cc53",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 705,
+        "output_tokens": 153,
+        "total_tokens": 858,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Multi-instance properties are lost when changing between parallel and sequential settings.",
+          "expected_behavior": "Multi-instance properties should not be lost.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "60fd981d7c14be23bd326c990d828ed3d8c347f8f68458df68799784f81d258b",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1640",
+        "media_sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+        "issue_sha256": "8d66996bdf3fb69bca9b6162f4ca4025ae5fa6d2682f6a6452162d4d30b98e6d",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 611,
+        "output_tokens": 117,
+        "total_tokens": 728,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When applying color specifically to an external label using `modeling.setColor`, the external label is set to the \"fill\" color instead of the \"stroke\" color.",
+          "expected_behavior": "External labels should always be set to the \"stroke\" color, matching the behavior of embedded labels.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "04ae1aaef73257d350f1eb23274c14bcad8c0ab7a584442dc8dabe6de61f1797",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1655",
+        "media_sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
+        "issue_sha256": "28ff1709564a5f62610bda67e69697771b53e7b0b688acde55b9b25a2acb662d",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 790,
+        "output_tokens": 147,
+        "total_tokens": 937,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When a connection is re-laid out after a connected shape is resized, labels and associations are not moved with it and are left hanging.",
+          "expected_behavior": "Labels and associations are moved along with the connection/shape when resized.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "c0ec22cccc1787e0fd9f23245ff3e0dcb31fc72e55c832b2adde9841596f5699",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1659",
+        "media_sha256": "1661275794ac56cc1bde7e3790f7233de817170995336da12089c336363e9998",
+        "issue_sha256": "f660043d5c6f54631d9641876375464e856e5fbc308a271eb66f8acc515dec96",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 639,
+        "output_tokens": 136,
+        "total_tokens": 775,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Toggling Parallel or Sequential in a multi-instance loop does not update the XML label accordingly.",
+          "expected_behavior": "XML label updates to either <bpmn:multiInstanceLoopCharacteristics /> or <bpmn:multiInstanceLoopCharacteristics isSequential=\"true\" />.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "176a24c11d5b03dba896418581a0f5a2077078a50994212aa853fc2cb73cd79c",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1679",
+        "media_sha256": "be1925039dea24dd160978f40e52df53caa2f30eadb4826b74de192d952a4bd3",
+        "issue_sha256": "bf681e838a04a5dcf529d81d09948e35dc9cd4bf1f4287b57ec56e8c9c87c7a4",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 570,
+        "output_tokens": 143,
+        "total_tokens": 713,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Labels of elements (start, task, and end events) inside a sub process remain visible after changing the sub process to collapsed.",
+          "expected_behavior": "Hide the label inside the sub process.",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "4a22bdeaa3e03bfe2df6a9e5f4cbc6a8fa8447f0c20f51947d369ac1a75bbd0e",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1719",
+        "media_sha256": "60563d817e9beecd50ee38f774ad0aa339a348b3efc4f879e4058e872406e917",
+        "issue_sha256": "f0e19da6680e6dacb5630d867184e21484d6d9a172fd3c23802049c0c005a3ea",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 756,
+        "output_tokens": 128,
+        "total_tokens": 884,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Using the space tool on top of an empty pool causes the empty pool to be resized vertically.",
+          "expected_behavior": "Empty pool does not resize (vertically).",
+          "expected_source": "issue",
+          "span": null,
+          "observations": [],
+          "uncertainty": null
+        }
+      ],
+      "questions": [],
+      "abstain_reason": null,
+      "response_sha256": "8036f1e9f463122dd3fd4809b6a17193bb2c54bdbc55634d80fef61fef3040da",
+      "identity": {
+        "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+        "recording_id": "swebench-bpmn-1928",
+        "media_sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+        "issue_sha256": "cd34425fb3dc38198618b948bd7af0c6c120b384f0f572c776da9fc314cafd5f",
+        "condition": "issue-only",
+        "model": "gemini-3.5-flash-lite",
+        "output_cap": 4096,
+        "prompt_sha256": "e589a450088f62ab41e54d35e7a22421e978b02cfc2a31916cac8590b2e15207",
+        "sampler": "preceding_pts_v1",
+        "frames": 0
+      },
+      "usage": {
+        "input_tokens": 612,
+        "output_tokens": 123,
+        "total_tokens": 735,
+        "input_token_details": {
+          "cache_read": 0
+        }
+      }
+    }
+  ],
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 486293,
+    "available_microdollars": 3513707,
+    "unsettled_requests": 0
+  }
+}

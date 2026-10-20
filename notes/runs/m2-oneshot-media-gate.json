@@ -1,0 +1,41 @@
+{
+  "artifacts": 11,
+  "content_precision": {
+    "successes": 9,
+    "n": 11,
+    "wilson95": [
+      0.523019438039156,
+      0.9486323102539149
+    ]
+  },
+  "content_recall": {
+    "successes": 9,
+    "n": 11,
+    "wilson95": [
+      0.523019438039156,
+      0.9486323102539149
+    ]
+  },
+  "grounded_precision": {
+    "successes": 7,
+    "n": 11,
+    "wilson95": [
+      0.35380117450784887,
+      0.8483352890463243
+    ]
+  },
+  "grounded_recall": {
+    "successes": 7,
+    "n": 11,
+    "wilson95": [
+      0.35380117450784887,
+      0.8483352890463243
+    ]
+  },
+  "claim_gate_passed": false,
+  "prediction_sha256": "c820cdeeb8a3a94d91156cdf3b1a7b23db6b39179b29cbfd5bfd26fec41aa99c",
+  "scorer": "Codex (AI), manual visual/source review; not independently human-adjudicated",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "code_checkpoint_passed": false,
+  "m2_gate_passed": false
+}

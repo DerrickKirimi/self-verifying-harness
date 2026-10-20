@@ -1,0 +1,260 @@
+{
+  "condition": "issue+media",
+  "prediction_sha256": "c820cdeeb8a3a94d91156cdf3b1a7b23db6b39179b29cbfd5bfd26fec41aa99c",
+  "scorer": "Codex (AI), manual visual/source review; not independently human-adjudicated",
+  "predictions": [
+    {
+      "recording_id": "swebench-bpmn-1557",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": false,
+      "source_support": true,
+      "reason": "The issue and prediction leave two alternative policies unresolved; the frozen claim requires preventing the invalid replacement. No clarifying question selects that behavior.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1557",
+        "prediction_id": "claim-1",
+        "response_sha256": "ebdff54370867f1c66e2e29a1c958d354c8d7a2f4470ede8620fac69b875fd2f",
+        "media_sha256": "29ef13593291739b2e19bb76ca0dc4acc7eb0cc9491b84997cac4a8b7a362815",
+        "timestamps_s": [
+          5.3175,
+          5.7325,
+          6.1475,
+          6.5625
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1557-claim-1.png",
+        "sha256": "49b3973bad73968bbe0d71d437616f8634d2d745213406ad9c39bc3b1c1d0d79"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1570",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed frames show wrapping followed by a viewport jump; expected viewport preservation matches the frozen claim.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1570",
+        "prediction_id": "claim-1",
+        "response_sha256": "f625b39f3f7c4f6bd37ad09e3dd1c6f760287a13a9b0b38c060cda8d3da4a214",
+        "media_sha256": "74a72f40dc46e662419b7b0af6da58a5ec6a55eb674020781226487209b1e091",
+        "timestamps_s": [
+          1.31775,
+          2.06725,
+          2.81675,
+          3.5662499999999997
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1570-claim-1.png",
+        "sha256": "47e085f54ff8cb31f003ff16da1f0c040330be976aed072929494e8d257a199c"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1610",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed final frames show the parent plane with the old editing overlay left below the subprocess; expected cancel-on-switch matches.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1610",
+        "prediction_id": "claim-1",
+        "response_sha256": "7b44c0c601c22d2c4853987ec0231bff43d799cac64974dc8c5ff835f7242af7",
+        "media_sha256": "4f5f5b423fedc1e16aca0f2651b63322b81d9055cc71540786b88fc6499a8e53",
+        "timestamps_s": [
+          5.376125,
+          6.694375,
+          8.012625,
+          9.330874999999999
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1610-claim-1.png",
+        "sha256": "262e4c77a33e8f573757e40d19f80791be9524d55cc1591d3d73f93b1f303631"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1623",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": false,
+      "expected_match": true,
+      "source_support": false,
+      "reason": "The generated trigger is early subprocess navigation. Its cited 3-6s frames show the return overlay still present; the annotated missing overlay follows later diagram switching.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1623",
+        "prediction_id": "claim-1",
+        "response_sha256": "26a3240a894b6ff605b978dc51d93f8fcd21377c4cccd36abec1b1822a2bb499",
+        "media_sha256": "d5e89fad422e9d16286260a3d7befcabb9901f8987f2a5f650868f7a67b14236",
+        "timestamps_s": [
+          3.0081249999999997,
+          4.160375,
+          5.312625000000001,
+          6.464874999999999
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1623-claim-1.png",
+        "sha256": "4932bb939f77d03408cb92119b02432ba68be73cf3637e92f833bb08562fd9ae"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1638",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "The issue supplies the internal null-label allegation and removal requirement; reviewed frames independently show label clearing followed by null-related linter errors. The internal property is not visually proven.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1638",
+        "prediction_id": "claim-1",
+        "response_sha256": "dbf2c7bc1eff0f302649e8dd1c66f4b9e192bd3048696ead90d1da38b38c1f13",
+        "media_sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
+        "timestamps_s": [
+          0.3615,
+          1.0845,
+          1.8074999999999999,
+          2.5305
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1638-claim-1.png",
+        "sha256": "947d022b3d754e2fa5f863662d24f01dec44ee690ad27d357dede96d106bb58f"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1640",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed frames show cardinality/completion values before mode change and empty fields plus an error afterward; expected property preservation matches.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1640",
+        "prediction_id": "claim-1",
+        "response_sha256": "63bb7b12d0547df2309b6a396b54c164c1b0ed04d31d3a7e6ec730ca031b266b",
+        "media_sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+        "timestamps_s": [
+          5.5,
+          6.5,
+          7.5,
+          8.5
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1640-claim-1.png",
+        "sha256": "22f1b9e2e5375dc9eb96ab9745d042f9e4da27c0ba614fb62a6d89176c84cb79"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1655",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "external-label-stroke-color",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed orange label text follows the pale fill while the circle border is darker. Stroke-color expectation is explicitly sourced to the issue.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1655",
+        "prediction_id": "claim-1",
+        "response_sha256": "b754e755ff0f8b227a30df8f9f7d1972f05b0a56d54d5b3db65b1bedfe4a92ca",
+        "media_sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
+        "timestamps_s": [
+          4.854884625,
+          5.4153938749999995,
+          5.975903125,
+          6.536412374999999
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1655-claim-1.png",
+        "sha256": "f61ed7c102c3448bcca3dd3d6d1b5b19592f7014527d2eb8349c1b3b88ce6793"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1659",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed frames show the sequence-flow label/association left behind after resizing. The generated interval covers nearly the whole clip and exceeds the fixed extra-width bound.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1659",
+        "prediction_id": "claim-1",
+        "response_sha256": "691df5a7cff5c30ae011de2d89c60e3b55a4d541175bd0319f602f1b92d057de",
+        "media_sha256": "1661275794ac56cc1bde7e3790f7233de817170995336da12089c336363e9998",
+        "timestamps_s": [
+          1.26,
+          3.7800000000000002,
+          6.3,
+          8.82
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1659-claim-1.png",
+        "sha256": "83966a9c905c70bbb8868748dfab51d561d8effaec6195fad032e68332f3c4a3"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1679",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed frames show a parallel marker while the visible exported XML retains standardLoopCharacteristics; expected serialization matches.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1679",
+        "prediction_id": "claim-1",
+        "response_sha256": "1c174a0243dfcb56e07aa174b072c754a7108b14b8ae6c635368d015156fbeec",
+        "media_sha256": "be1925039dea24dd160978f40e52df53caa2f30eadb4826b74de192d952a4bd3",
+        "timestamps_s": [
+          14.60375,
+          15.831249999999999,
+          17.05875,
+          18.28625
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1679-claim-1.png",
+        "sha256": "3ad7e6980a297252b75c541601afc83c9114fcb5cd0b68739a917771111bb3c7"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1719",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": true,
+      "reason": "Reviewed frames show collapse followed by the start label remaining outside the collapsed subprocess; expected hiding matches.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1719",
+        "prediction_id": "claim-1",
+        "response_sha256": "829e63884ccf9f2b52d7f21b4bcfc18b1403cdfab6f3ac8dd105665440e6dff5",
+        "media_sha256": "60563d817e9beecd50ee38f774ad0aa339a348b3efc4f879e4058e872406e917",
+        "timestamps_s": [
+          30.1875,
+          31.5625,
+          32.9375,
+          34.3125
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1719-claim-1.png",
+        "sha256": "55648adf2dd2c446f8e0d15830f3ae635a36ca3c9d826eeb1bbdd29024f9eccf"
+      }
+    },
+    {
+      "recording_id": "swebench-bpmn-1928",
+      "prediction_id": "claim-1",
+      "gold_claim_id": "visual-claim",
+      "symptom_match": true,
+      "expected_match": true,
+      "source_support": false,
+      "reason": "The cited interval includes a selected pool and resize handles before a later space-tool guide. The prediction describes border dragging; the space-tool-specific trigger is not confirmed in that cited interval.",
+      "review_source": {
+        "recording_id": "swebench-bpmn-1928",
+        "prediction_id": "claim-1",
+        "response_sha256": "b9e5ddd5f7f49e6b2e2240f73a78d6c91e3e23713418e825fe3d4c6664831032",
+        "media_sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+        "timestamps_s": [
+          7.5625,
+          8.0875,
+          8.6125,
+          9.1375
+        ],
+        "path": "data/runtime/m2/review-frames/swebench-bpmn-1928-claim-1.png",
+        "sha256": "8e5fce819650d3667e874947ad02e02b920f440bf83f2f4e9c81b43879e1a21b"
+      }
+    }
+  ]
+}

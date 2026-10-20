@@ -5,8 +5,9 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 ## Current milestone: M2 (claims and codebase checkpoint), starting
 
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
-retrieval, authenticated MCP HTTP and the synthetic audio path work. Generated
-claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
+retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
+claims failed M2; checkpoint/refinement is pending. Generated reproductions/fixes
+and Harbor trials have not been measured. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
   10–20-case and lower-bound >=0.70 gate. Proof: `notes/runs/m0-gate.json`.
@@ -71,17 +72,20 @@ claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
    local method; read-only MCP needs no Gemini key.
 2. M2 scoring contract is implemented before generation: `evals/m2-rubric.json`,
    `svh.claims.score`, three passing integrity tests; details in
-   `notes/2026-10-20-m2-scoring-protocol.md`. Matched M2 extraction is running sequentially in exec session 38364; do not
-   restart it while active. Pilot outputs exist in both conditions and remain
-   unscored. `notes/2026-10-20-m2-extraction.md`. After completion, freeze and
-   review outputs, then run the Docker/MCP code checkpoints.
+   `notes/2026-10-20-m2-scoring-protocol.md`. Matched M2 extraction (exec38364) is terminal: 11 cases in both conditions.
+   The AI-assisted manual source review yields grounded precision/recall 7/11
+   [35.38%,84.83%], so the one-shot gate fails. Outputs and exact judgments are
+   frozen: `notes/2026-10-20-m2-oneshot-baseline.md`. No independent human
+   adjudication is claimed. Total settled cost $0.643397, remaining $3.356603;
+   no unsettled reservations. Next: matched code checkpoints with independent
+   media reinspection/refinement, retaining the failed baseline unchanged.
    Extract claims under matched issue-only/temporal-media conditions, without
    passing gold claims, test names, test/source patches or grader scripts to the
    model. Use the existing deepagents loop for the codebase checkpoint.
 3. Docker-only backend and no-delegation harness profile are implemented and
    tested. Actual isolation/transfer/output/timeout/source-fingerprint smoke
-   passes; `notes/2026-10-20-docker-harness.md`. No model-generated command has
-   executed yet. Use this backend for every code checkpoint/reproduction/fix;
+   passes; `notes/2026-10-20-docker-harness.md`. The matched pilot checkpoint is running in exec57257; poll it before any
+   additional paid worker. Use this backend for every code checkpoint/reproduction/fix;
    preserve source fingerprints during read-only M2 inspection.
 4. Then measure M2 and proceed to M3 generated reproduction/fix, frozen observed
    fail/pass, independent native regressions, wrong-fix controls and real Harbor
@@ -106,5 +110,5 @@ claims, reproductions/fixes and Harbor trials have not been measured. [RUN]
 |---|---|
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
-| M2 grounded claims/code checkpoint | Not measured |
+| M2 grounded claims/code checkpoint | One-shot grounded precision/recall 7/11 [35.38%,84.83%], AI-assisted review; checkpoint/refinement pending |
 | M3 generated verification/fix/Harbor | Not measured; MVP incomplete |

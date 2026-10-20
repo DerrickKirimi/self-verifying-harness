@@ -1,0 +1,78 @@
+{
+  "scope": "One-shot baseline; AI-assisted manual judgments, not independent human adjudication; code checkpoints not yet run",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "conditions": {
+    "issue-only": {
+      "artifacts": 11,
+      "content_precision": {
+        "successes": 10,
+        "n": 11,
+        "wilson95": [
+          0.6226415635484043,
+          0.9837678271141151
+        ]
+      },
+      "content_recall": {
+        "successes": 10,
+        "n": 11,
+        "wilson95": [
+          0.6226415635484043,
+          0.9837678271141151
+        ]
+      },
+      "grounded_precision": {
+        "successes": 0,
+        "n": 11,
+        "wilson95": [
+          0.0,
+          0.2588329669680317
+        ]
+      },
+      "grounded_recall": {
+        "successes": 0,
+        "n": 11,
+        "wilson95": [
+          0.0,
+          0.2588329669680317
+        ]
+      },
+      "claim_gate_passed": false
+    },
+    "issue+media": {
+      "artifacts": 11,
+      "content_precision": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "content_recall": {
+        "successes": 9,
+        "n": 11,
+        "wilson95": [
+          0.523019438039156,
+          0.9486323102539149
+        ]
+      },
+      "grounded_precision": {
+        "successes": 7,
+        "n": 11,
+        "wilson95": [
+          0.35380117450784887,
+          0.8483352890463243
+        ]
+      },
+      "grounded_recall": {
+        "successes": 7,
+        "n": 11,
+        "wilson95": [
+          0.35380117450784887,
+          0.8483352890463243
+        ]
+      },
+      "claim_gate_passed": false
+    }
+  }
+}
