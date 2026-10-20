@@ -1,0 +1,249 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "condition": "issue-only",
+  "origin_extraction_sha256": "ec3eaa23871c3d4fd255c755365243089e7c00fe5a7d49390b91eb4f4910ac08",
+  "checkpoint_sha256": "b88702dd4683e35ba4b38a04f4ec22dc92ab8c26f622404a3ccb6f6bb99bd6f2",
+  "checkpoint_model": "gemini-3.8-flash",
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 1940127,
+    "available_microdollars": 2059873,
+    "unsettled_requests": 0
+  },
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Uncaught TypeError: Cannot read properties of undefined (reading 'get') at updateDiParent in BpmnUpdater.js when morphing a DataStoreReference to a DataObjectReference outside of a pool.",
+          "expected_behavior": "Either disallow morphing DataStoreReference to DataObjectReference outside of a pool, or allow the morph operation to succeed without error.",
+          "expected_source": "issue",
+          "uncertainty": "The issue presents two alternative resolutions (disallow morphing vs allow morph without error); clarification is required to determine the desired design policy.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should morphing a DataStoreReference to a DataObjectReference outside of a Pool be disallowed (e.g. via replace rules), or should the morph operation be allowed and handled without throwing an error?"
+      ],
+      "response_sha256": "c8f979b6faa0e890aeaa7d16c1eb623b76136094848b354c9b114752f8e5135b",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Diagram jumps when wrapping a process in a pool.",
+          "expected_behavior": "Diagram stays in current viewport.",
+          "expected_source": "issue",
+          "uncertainty": "Whether the jump is caused by canvas root element replacement in makeCollaboration, canvas auto-scroll during moveElements, or diagram-js viewbox recalculation on root change.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should the canvas viewbox/scroll position be preserved explicitly across modeling.makeCollaboration(), or should canvas.scrollToElement / canvas.viewbox restore the prior viewport state?"
+      ],
+      "response_sha256": "7cc369319a44f0d11faa31535cf9cccf79dc2b9fb1b8961b1fcf629e1c3bc3fe",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When switching planes while direct editing is active inside a sub-process plane, the direct editing box remains open even though the element is no longer visible.",
+          "expected_behavior": "Direct editing is canceled or completed when switching planes.",
+          "expected_source": "issue",
+          "uncertainty": "The issue requests cancel on plane switch, but completing vs canceling on root change may have differing design implications.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should switching planes cancel direct editing (discarding unsaved changes) or complete direct editing (committing current input before changing root)?"
+      ],
+      "response_sha256": "2b36683a4b2b300073601f69b332c257aafc3e59d7b4495b9b64f314ca196e97",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "The deep linking overlay for the subprocess is lost when using the multi-diagram plugin alongside deep linking functionality in bpmn-js and Camunda Modeler 5.0.",
+          "expected_behavior": "Drilldown overlays for subprocesses should persist or be restored when navigating between different processes/diagrams and subprocesses within the same BPMN file.",
+          "expected_source": "issue",
+          "uncertainty": "Unclear whether multi-diagram navigation is intended to be supported as core bpmn-js behavior or if root change event hooks should be exposed/handled for drilldown overlays.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "How does the multi-diagram plugin perform process/diagram switching (e.g., does it call canvas.setRootElement or swap entire definitions/diagram instances)?",
+        "Should DrilldownOverlayBehavior re-evaluate and re-add drilldown overlays on root element changes (e.g., 'root.set') rather than only on 'import.done'?"
+      ],
+      "response_sha256": "2d804164502dc281523a3f37398ef9de9533f1568a7b0d4ed5d627953571daab",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When the label of a Task is removed, the DI object still retains the `label` property with a value of `null` (`di.label` exists as `null`).",
+          "expected_behavior": "The `label` property (`di.label`) does not exist on the DI object after clearing the label/name.",
+          "expected_source": "issue",
+          "uncertainty": "Whether deleting the property via `delete di.label` or setting it to undefined is the preferred convention across the codebase.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should `di.label` be explicitly deleted (`delete di.label`) or set to `undefined` when the label text is cleared, and does moddle or the XML exporter require specific handling for removed DI attributes?"
+      ],
+      "response_sha256": "a53ccaf58c4ea969c52c86a681cf9abad5264423130fbc3cba16688ec86a3c31",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Multi-instance properties are lost when changing between parallel and sequential settings.",
+          "expected_behavior": "Multi-instance properties (such as loopCardinality) should be retained when toggling between parallel and sequential multi-instance.",
+          "expected_source": "issue",
+          "uncertainty": "Whether properties should be preserved via in-place mutation of isSequential or copying properties between instances when changing loop types.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "When switching between parallel and sequential MultiInstanceLoopCharacteristics, should existing properties (e.g. loopCardinality, isSequential, completionCondition) be preserved on the existing instance by just updating `isSequential`, or should a new object clone existing properties?",
+        "When switching from StandardLoopCharacteristics to MultiInstanceLoopCharacteristics (or vice versa), which properties, if any, should be retained or reset?"
+      ],
+      "response_sha256": "bfbd6e4b00ed4bd18053eb46d25b1731263bcea677a536c9687f66e2a3c9fa94",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When applying color specifically to an external label using `modeling.setColor`, the external label is set to the \"fill\" color instead of the \"stroke\" color.",
+          "expected_behavior": "External labels should be set to the \"stroke\" color, matching the behavior of embedded labels.",
+          "expected_source": "issue",
+          "uncertainty": "Whether 'stroke' should be strictly used or if fallback to 'fill' is expected when only 'fill' is provided in colors.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should external label color prioritize 'border-color' (stroke) when both fill and stroke are provided, or fall back to 'background-color' if only fill is specified?"
+      ],
+      "response_sha256": "2b168c1bf65c970d1e598ef44354aba2de185c4745ccba1eee5a693a813b261c",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When a connection is re-laid out after a connected shape is resized, labels and associations are not moved with it and are left hanging.",
+          "expected_behavior": "Labels and associations connected to a connection should be repositioned or reconnected when the connection is re-laid out following a shape resize.",
+          "expected_source": "issue",
+          "uncertainty": "Whether the reconnection/movement should apply to all connection types and all attached elements (both labels and text annotations/associations) uniformly.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should connection labels and connected associations be updated automatically via connection.layout / connection.updateWaypoints interceptors, or should shape.resize explicitly trigger layout/adjustment for incoming and outgoing connections and their attached elements?"
+      ],
+      "response_sha256": "43f7472fe098e3e81fe4baf1e2fde917ebeeaf39c417ef7c4117270b4ac0c5f7",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Toggling Parallel or Sequential in a multi-instance loop does not update the XML label accordingly.",
+          "expected_behavior": "Toggling between Parallel and Sequential Multi Instance updates the loop characteristics' isSequential property and reflects the change in the underlying XML definition.",
+          "expected_source": "issue",
+          "uncertainty": "The issue title and description say 'XML label', which refers to the XML element attribute isSequential in bpmn:multiInstanceLoopCharacteristics, but whether updateProperties triggers command changes or if updateModdleProperties is required remains to be confirmed.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should updateModdleProperties be used to update `isSequential` on the existing loopCharacteristics moddle element, or should a new loopCharacteristics moddle element be instantiated on every toggle?"
+      ],
+      "response_sha256": "f6de453c114cd7b4557392128c2b4110ab2c239675d244da0f77b121913d81c3",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Labels of elements (start, task, and end events) inside a sub process remain visible after changing the sub process to collapsed.",
+          "expected_behavior": "Hide the label inside the sub process.",
+          "expected_source": "issue",
+          "uncertainty": "Whether all label types (internal text vs external label shapes) or only external labels (like start/end event labels) remain visible and fail to hide when the sub process is collapsed.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "Should external labels of children inside a collapsed sub process be explicitly hidden along with their label targets, or should label shapes be moved together with their targets into the plane?"
+      ],
+      "response_sha256": "408d59b583468bd00310b885bfef37c65766a41d08e5496f9723c5fda1054fd0",
+      "abstain_reason": null,
+      "source_unchanged": true
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "completed",
+      "predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Using the space tool on top of an empty pool causes the empty pool to be resized vertically.",
+          "expected_behavior": "Empty pool does not resize (vertically).",
+          "expected_source": "issue",
+          "uncertainty": "Need to confirm exact criteria for empty pool and whether horizontal resizing should still be permitted.",
+          "span": null,
+          "observations": []
+        }
+      ],
+      "questions": [
+        "How is an empty pool defined in the codebase (e.g., participant without processRef, empty children/lanes, or collapsed participant/isExpanded check)?",
+        "Should an empty pool be completely prevented from vertical resizing in calculateAdjustments (like TextAnnotation), or should space tool handle it via min/max dimension constraints?"
+      ],
+      "response_sha256": "bfaee8113de8267477c95a5e3613305b4f98b0c4f2a32dd24f9beb72640c9d61",
+      "abstain_reason": null,
+      "source_unchanged": true
+    }
+  ]
+}

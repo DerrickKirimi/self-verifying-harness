@@ -2,11 +2,12 @@
 
 Update this file at every session checkpoint. Read AGENTS.md first.
 
-## Current milestone: M2 (claims and codebase checkpoint), starting
+## Current milestone: M3 (generated self-verification), starting
 
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
 retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
-claims failed M2; checkpoint/refinement is pending. Generated reproductions/fixes
+claims failed M2; refined numerical M2 gates now pass under AI-assisted review.
+Independent human adjudication remains outstanding. Generated reproductions/fixes
 and Harbor trials have not been measured. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
@@ -64,35 +65,21 @@ and Harbor trials have not been measured. [RUN]
 
 ## Next concrete steps
 
-1. M0 and M1 have passed their measured gates. All visual batches and embedding
-   batch exec 38031 are terminal; do not restart them. Selected-method HTTP smoke
-   also completed. Full suite: **74 passed**. M1 details and replay commands:
-   `notes/2026-10-20-m1-complete.md`; selected report
-   `notes/runs/m1-selected-retrieval.json`. Runtime policy selects the measured
-   local method; read-only MCP needs no Gemini key.
-2. M2 scoring contract is implemented before generation: `evals/m2-rubric.json`,
-   `svh.claims.score`, three passing integrity tests; details in
-   `notes/2026-10-20-m2-scoring-protocol.md`. Matched M2 extraction (exec38364) is terminal: 11 cases in both conditions.
-   The AI-assisted manual source review yields grounded precision/recall 7/11
-   [35.38%,84.83%], so the one-shot gate fails. Outputs and exact judgments are
-   frozen: `notes/2026-10-20-m2-oneshot-baseline.md`. No independent human
-   adjudication is claimed. Total settled cost $0.643397, remaining $3.356603;
-   no unsettled reservations. Next: matched code checkpoints with independent
-   media reinspection/refinement, retaining the failed baseline unchanged.
-   Extract claims under matched issue-only/temporal-media conditions, without
-   passing gold claims, test names, test/source patches or grader scripts to the
-   model. Use the existing deepagents loop for the codebase checkpoint.
-3. Docker-only backend and no-delegation harness profile are implemented and
-   tested. Actual isolation/transfer/output/timeout/source-fingerprint smoke
-   passes; `notes/2026-10-20-docker-harness.md`. The original and bounded pilots are terminal and failed; retained evidence
-   is in `notes/runs/m2-checkpoint-failed-pilots.json`. Typed Flash pilots now
-   complete with source unchanged. Full matched checkpoint batch is running
-   sequentially in exec93013 (media-v3 then issue-only-v4); poll this handle and
-   do not start another paid worker. `notes/2026-10-21-m2-checkpoint-integration.md`. Use this backend for every code checkpoint/reproduction/fix;
-   preserve source fingerprints during read-only M2 inspection.
-4. Then measure M2 and proceed to M3 generated reproduction/fix, frozen observed
-   fail/pass, independent native regressions, wrong-fix controls and real Harbor
-   nop/oracle trials. Preserve prospective gates in `evals/PROTOCOL.md`.
+1. M0/M1 passed. M2 sequential exec93013 is terminal: all eleven cases in both
+   conditions completed with source unchanged. Refined media grounded precision
+   and recall: **10/11 [62.26%,98.38%]**; issue-only content **9/11
+   [52.30%,94.86%]**. Numerical gate passes, but the protocol's independent human
+   scoring remains outstanding: judgments are explicitly AI-assisted.
+   `notes/2026-10-21-m2-refined-results.md` contains exact artifact pointers.
+2. Build M3's prospective measurement before its features. Generate checks on
+   buggy source, freeze and observe assertion failure, then generate source-only
+   fixes, rerun unchanged checks and independent native regressions. Attempt all
+   eleven, retain budget exhaustion. Use Docker and the existing deepagents loop.
+3. Normal task input must work without supplied gold fixes/tests or prior corpus
+   admission; see `notes/2026-10-21-mvp-completion-audit.md`. Export every fully
+   verified claim and execute actual Harbor nop/oracle trials. MVP is incomplete.
+4. Budget after terminal checkpoint batch: $1.940127 settled, $2.059873 available,
+   zero unsettled reservations. Cap remains $4.00. Last full suite: 87 passed.
 
 ## Evidence and history
 
@@ -113,5 +100,5 @@ and Harbor trials have not been measured. [RUN]
 |---|---|
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
-| M2 grounded claims/code checkpoint | One-shot grounded precision/recall 7/11 [35.38%,84.83%], AI-assisted review; checkpoint/refinement pending |
+| M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
 | M3 generated verification/fix/Harbor | Not measured; MVP incomplete |

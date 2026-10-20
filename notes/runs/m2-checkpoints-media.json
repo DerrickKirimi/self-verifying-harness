@@ -1,0 +1,708 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "extraction_sha256": "c820cdeeb8a3a94d91156cdf3b1a7b23db6b39179b29cbfd5bfd26fec41aa99c",
+  "condition": "issue+media",
+  "checkpoint_prompt_sha256": "dbacb06b99c1e5a2f0d27bc363805c1df7f1e8be157332abd991a83945613a58",
+  "model": "gemini-3.8-flash",
+  "thinking_level": "low",
+  "step_cap": 30,
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "2dbd1f03ae63cfd25df60574fef49692e43b29c1a9703af2c837087b47db65a7",
+      "source_fingerprint": "4675957f5bdb1faea4f463d389bc822e3fd0c88f6f4059c98ec158eff42a6e05",
+      "trace_sha256": "46c8820537889a737c645e374ab6317320fa9f351147c27a8e8f446e751109e4",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/modeling/BpmnUpdater.js",
+          "line": 414,
+          "observation": "In BpmnUpdater.prototype.updateDiParent, (parentDi || di.$parent).get('planeElement') is called; when di.$parent is undefined and parentDi is falsy (e.g. during removal/re-parenting of shapes outside a container or pool), accessing .get on undefined throws Cannot read properties of undefined (reading 'get').",
+          "file_sha256": "eeb6876fdd43daf02f03143db1d3ac635ab5117d82bc165f38293b36b39c771b",
+          "actual_line": "",
+          "context_start_line": 409,
+          "source_context": [
+            "  if (di.$parent === parentDi) {",
+            "    return;",
+            "  }",
+            "",
+            "  var planeElements = (parentDi || di.$parent).get('planeElement');",
+            "",
+            "  if (parentDi) {",
+            "    planeElements.push(di);",
+            "    di.$parent = parentDi;",
+            "  } else {",
+            "    collectionRemove(planeElements, di);"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When replacing/morphing a DataStoreReference into a DataObjectReference outside of a pool, parentDi and/or di.$parent may be undefined during removal or parent updating, causing `(parentDi || di.$parent).get('planeElement')` in `updateDiParent` to throw a TypeError.",
+        "Alternatively or additionally, DataObjectReferences may be constrained by modeling rules regarding whether they are allowed to exist directly on a collaboration root outside of a pool/process."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "An uncaught TypeError is thrown in the console when a DataStoreReference located outside of a pool is morphed into a DataObjectReference.",
+          "expected_behavior": "One of: Don't allow to morph to DataObjectReference outside of Pool, or Allow morph, but don't break.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.61,
+            "end_s": 6.84
+          },
+          "observations": [
+            {
+              "timestamp_s": 4.38,
+              "detail": "A DataStoreReference icon is located outside the pool on the canvas and selected."
+            },
+            {
+              "timestamp_s": 5.61,
+              "detail": "The replace/morph menu option 'Data Object Reference' is clicked."
+            },
+            {
+              "timestamp_s": 6.84,
+              "detail": "A red uncaught TypeError stack trace appears in the browser console."
+            }
+          ],
+          "uncertainty": "Whether the desired solution is to restrict replace options in the menu outside of pools or to ensure updateDiParent handles or resolves the missing DI plane gracefully without throwing."
+        }
+      ],
+      "questions": [
+        "Should DataObjectReferences be disallowed from existing outside of a pool in collaborations (e.g. via rules/ReplaceMenuProvider), or should morphing be permitted by properly resolving or guarding the DI parent/planeElement?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "e40b6a189074b14544d261e32f3006ec0657ca0afa300849e8d7675d58b2bcfd",
+      "source_fingerprint": "279ffefd78f2ffacb8eff0f2cd7be111d074bf9e026bee140e90b2ec4ec1081f",
+      "trace_sha256": "be2c8f5e61cca5b44c81e1d2860976aa290d6384d91ede356bdeecbe67d329e3",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/palette/PaletteProvider.js",
+          "line": 98,
+          "observation": "createParticipant initiates creation of a participant shape via create.start(event, elementFactory.createParticipantShape())",
+          "file_sha256": "02200d7e619e249047dc280e0591274c8b37d7b1a855a83e15ba9146a9835054",
+          "actual_line": "  function createParticipant(event) {",
+          "context_start_line": 93,
+          "source_context": [
+            "        autoSelect: [ subProcess ]",
+            "      }",
+            "    });",
+            "  }",
+            "",
+            "  function createParticipant(event) {",
+            "    create.start(event, elementFactory.createParticipantShape());",
+            "  }",
+            "",
+            "  assign(actions, {",
+            "    'hand-tool': {"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When placing or dropping a participant shape to wrap an existing process, the viewport auto-scroll/canvas view or element repositioning adjusts canvas bounds or viewbox causing an unexpected diagram jump."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Diagram jumps / shifts position within the viewport when wrapping a process in a pool.",
+          "expected_behavior": "Diagram stays in current viewport.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 3.0,
+            "end_s": 3.5
+          },
+          "observations": [
+            {
+              "timestamp_s": 1.125,
+              "detail": "User hovers over and clicks the Create Pool/Participant icon in the left palette."
+            },
+            {
+              "timestamp_s": 1.875,
+              "detail": "Blue participant preview outline wraps the existing process diagram."
+            },
+            {
+              "timestamp_s": 3.375,
+              "detail": "Upon dropping or placing the pool around the process between 3.125s and 3.375s, the diagram abruptly jumps upward and to the left in the viewport."
+            }
+          ],
+          "uncertainty": "The exact underlying canvas viewbox or auto-scroll logic handling pool placement around existing processes may reside in diagram-js or bpmn-js modeling rules."
+        }
+      ],
+      "questions": [
+        "Should the canvas preserve the exact viewbox/scroll position when wrapping an existing process in a participant pool, or adjust the viewbox smoothly/conditionally only if elements fall outside?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "098b95be7c6d21231475901c1fad8dcad255aa98340cafbe836078c3adab4f2a",
+      "source_fingerprint": "5a41c038b38548bc2ff724d1fa2994b8c21b7008c597aa9fc6c035288e3729e6",
+      "trace_sha256": "16d488d29d39e5ed27ec1fd099e966aee122e31f5c65bfaf695284bcc583b57e",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/label-editing/LabelEditingProvider.js",
+          "line": 59,
+          "observation": "LabelEditingProvider cancels or completes direct editing on events like 'commandStack.changed', 'canvas.viewbox.changing', etc., but does not listen for root/plane change events (such as 'root.set').",
+          "file_sha256": "7b488ce8eb36f742c85752bde7eec3987a89d394257273c75cbce50ce39f2f24",
+          "actual_line": "  // cancel on command stack changes",
+          "context_start_line": 54,
+          "source_context": [
+            "    if (directEditing.isActive()) {",
+            "      directEditing.complete();",
+            "    }",
+            "  });",
+            "",
+            "  // cancel on command stack changes",
+            "  eventBus.on([ 'commandStack.changed' ], function(e) {",
+            "    if (directEditing.isActive()) {",
+            "      directEditing.cancel();",
+            "    }",
+            "  });"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When switching planes (e.g. via breadcrumbs or drilldown navigation triggering root.set), the directEditing instance is not canceled or completed, leaving the active editing overlay mounted on the canvas."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When switching planes with direct editing active on an element inside a sub-process, the direct editing box or overlay remains open after navigation.",
+          "expected_behavior": "Direct editing is canceled on plane switch.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 6.87125,
+            "end_s": 9.879
+          },
+          "observations": [
+            {
+              "timestamp_s": 6.87125,
+              "detail": "User drills down into collapsed sub-process 'choose recipe' and direct edits an element."
+            },
+            {
+              "timestamp_s": 8.11875,
+              "detail": "User clicks 'Process_1' breadcrumb link to navigate back to parent plane."
+            },
+            {
+              "timestamp_s": 9.36625,
+              "detail": "Parent plane is displayed with collapsed sub-process, but an orphaned direct editing input box remains visible on the canvas."
+            }
+          ],
+          "uncertainty": "Whether switching planes should cancel or complete direct editing."
+        }
+      ],
+      "questions": [
+        "Should direct editing be canceled (discarding uncommitted edits) or completed (committing current text) when switching planes / root elements?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "891fedde591953763076e20a11c8b28664680a7aefaed62e76fe6711fd23b16a",
+      "source_fingerprint": "c65da6dcf30c5f0a5f79a32776ea54cb5446396abdf3ad207e4bb76ad113bf20",
+      "trace_sha256": "1efcf971894d62a1d55d687dd2021adb3cef256e8e57b5580799a3b72cdeac21",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/drilldown/DrilldownOverlayBehavior.js",
+          "line": 79,
+          "observation": "DrilldownOverlayBehavior only populates drilldown overlays on 'import.done' and reacts to shape toggleCollapse / shape create / shape move / shape delete commands, but does not listen to canvas root changes (e.g. root.set) or re-attach overlays when switching between different planes/diagrams",
+          "file_sha256": "06d7e8c07c516d9545938b5e8e2ab2fef4f7d4e6f4ef5981fe203db75526ef8f",
+          "actual_line": "      self.updateDrilldownOverlay(shape);",
+          "context_start_line": 74,
+          "source_context": [
+            "        self.addOverlay(shape);",
+            "      }",
+            "",
+            "      self.updateDrilldownOverlay(oldParent);",
+            "      self.updateDrilldownOverlay(newParent);",
+            "      self.updateDrilldownOverlay(shape);",
+            "    }, true);",
+            "",
+            "",
+            "  eventBus.on('import.done', function() {",
+            "    elementRegistry.filter(function(e) {"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "Drilldown overlays are attached to elements upon initial import or shape commands, but when external diagram navigation or canvas root switching occurs (such as via multi-diagram plugins or switching root planes), overlays attached to elements on previous planes may be cleared or not restored upon returning to root."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "The deep linking overlay for the subprocess is lost after navigating between diagrams using the multi-diagram plugin.",
+          "expected_behavior": "The deep linking overlay button on collapsed subprocess elements should remain visible or be restored when navigating between diagrams/roots.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 13.75,
+            "end_s": 17.613
+          },
+          "observations": [
+            {
+              "timestamp_s": 1.875,
+              "detail": "At t=0.625s to 1.875s, the subprocess element has a visible blue drilldown overlay button in the root diagram."
+            },
+            {
+              "timestamp_s": 3.125,
+              "detail": "At t=3.125s, clicking the drilldown overlay switches the canvas view into the subprocess (Activity_019fqik)."
+            },
+            {
+              "timestamp_s": 6.25,
+              "detail": "At t=6.25s, navigating back to Root via breadcrumbs shows the drilldown overlay still present."
+            },
+            {
+              "timestamp_s": 16.538,
+              "detail": "At t=13.75s to 16.538s, opening the multi-diagram menu and navigating between diagrams causes the drilldown overlay to be missing when returning to Root."
+            }
+          ],
+          "uncertainty": "It is uncertain whether the loss of overlay is triggered specifically by the third-party multi-diagram plugin's diagram replacement or by missing root-change event handlers in bpmn-js drilldown."
+        }
+      ],
+      "questions": [
+        "Should drilldown overlays be managed and restored dynamically on canvas root changes ('root.set') across multiple root elements or multi-diagram switches?",
+        "Does bpmn-js officially support third-party multi-diagram plugins switching roots directly, or is drilldown expected to handle arbitrary rootElement switching?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+      "source_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+      "trace_sha256": "26cae10ce89bae674c022793c925e65aaeeb466a99d00f640a178a7b5b0404f5",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/label-editing/cmd/UpdateLabelHandler.js",
+          "line": 47,
+          "observation": "In ensureInternalLabelDi, when !text && di.label, di.label is assigned null (`di.label = null;`) instead of deleting or unsetting the property or setting it to undefined/removing it from the DI object.",
+          "file_sha256": "4b15c08231c85785c1f2540afd2a4a01d28c01635c9547fbb4c0dc6489d0514f",
+          "actual_line": "      di.label = null;",
+          "context_start_line": 42,
+          "source_context": [
+            "    if (text && !di.label) {",
+            "      di.label = bpmnFactory.create('bpmndi:BPMNLabel');",
+            "    }",
+            "",
+            "    if (!text && di.label) {",
+            "      di.label = null;",
+            "    }",
+            "  }",
+            "",
+            "",
+            "  /**"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "Setting di.label = null in UpdateLabelHandler.js leaves the label property present with a null value on the DI model object, causing downstream consumers and linters expecting di.label to be either an object or undefined to fail with TypeErrors (e.g., reading properties of null). Removing the property (e.g. delete di.label or setting di.label = undefined) when text is empty may be needed."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When a task's label is removed, its di object retains a label property with a null value instead of removing the property entirely.",
+          "expected_behavior": "di.label does not exist",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 0.9375,
+            "end_s": 2.1075
+          },
+          "observations": [
+            {
+              "timestamp_s": 1.3125,
+              "detail": "User double clicks task 'a', clears the label text, and clicks outside to commit the empty label."
+            },
+            {
+              "timestamp_s": 1.7025,
+              "detail": "Linting integration runs immediately after label removal and logs multiple rule failures in the console."
+            },
+            {
+              "timestamp_s": 2.1075,
+              "detail": "Console displays TypeError: Cannot read properties of null (reading '$instanceOf') originating from linter traversing di.label."
+            }
+          ],
+          "uncertainty": "Whether di.label should be deleted or set to undefined according to moddle schema expectations."
+        }
+      ],
+      "questions": [
+        "Should clearing internal labels delete the `label` property entirely from `di` (or set it to `undefined`), and are there any moddle / command stack undo-redo semantics or other handlers (such as BpmnUpdater or LabelBehavior) that also need to align with this behavior?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+      "source_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+      "trace_sha256": "18e55628fb904c0dd737ea26892d75db2cadcf1b590099cc1aefdf020a15e435",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/popup-menu/ReplaceMenuProvider.js",
+          "line": 433,
+          "observation": "In toggleLoopEntry, if switching loop entries when an entry is not active, a brand-new loopCharacteristics element is created via self._moddle.create(entry.options.loopCharacteristics) and updated on the element, discarding any existing loopCharacteristics properties (such as loopCardinality, completionCondition, collection, etc.) from the previous MultiInstanceLoopCharacteristics instance.",
+          "file_sha256": "e89b2ce78c8f8cc556a7521005181e88499d296cfb75e73cb8937922156c870f",
+          "actual_line": "    } else {",
+          "context_start_line": 428,
+          "source_context": [
+            "  function toggleLoopEntry(event, entry) {",
+            "    var loopCharacteristics;",
+            "",
+            "    if (entry.active) {",
+            "      loopCharacteristics = undefined;",
+            "    } else {",
+            "      loopCharacteristics = self._moddle.create(entry.options.loopCharacteristics);",
+            "",
+            "      if (entry.options.isSequential) {",
+            "        loopCharacteristics.isSequential = entry.options.isSequential;",
+            "      }"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When toggling between parallel and sequential multi-instance (both represented by bpmn:MultiInstanceLoopCharacteristics), ReplaceMenuProvider creates a fresh moddle element instead of updating or retaining the existing MultiInstanceLoopCharacteristics object's existing properties/children and merely toggling isSequential."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When changing a sub-process's multi-instance setting from parallel to sequential, configured multi-instance properties (such as loop cardinality and completion condition) are lost.",
+          "expected_behavior": "Multi-instance properties (such as loop cardinality, collection, and completion condition) are preserved when switching between parallel and sequential multi-instance.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.5,
+            "end_s": 8.5
+          },
+          "observations": [
+            {
+              "timestamp_s": 5.25,
+              "detail": "SubProcess has parallel multi-instance with Loop Cardinality '1' and Completion Condition '${foo}'. User opens the replace popup menu."
+            },
+            {
+              "timestamp_s": 6.75,
+              "detail": "User selects 'Sequential Multi Instance' in the popup menu."
+            },
+            {
+              "timestamp_s": 8.25,
+              "detail": "SubProcess marker changes to sequential multi-instance, but properties panel Multi Instance fields (Loop Cardinality, Completion Condition) are cleared and a validation error appears ('Must provide either loop cardinality or collection')."
+            }
+          ],
+          "uncertainty": "null"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+      "source_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+      "trace_sha256": "899151c9f721603823fa64bfd984471ee98aa14f17f7b4c372f0410147c023e1",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/modeling/cmd/SetColorHandler.js",
+          "line": 78,
+          "observation": "SetColorHandler sets the external label's bpmndi:BPMNLabel color property to di['background-color'] (the fill color) instead of stroke/border-color.",
+          "file_sha256": "b569a8f13738c930fc6fa8e581b5887f6bcab34610cc6b033146d8bba31e64a1",
+          "actual_line": "      });"
+        }
+      ],
+      "hypotheses": [
+        "In SetColorHandler.prototype.postExecute, when updating moddle properties for an element with labelTarget, the label's color property is assigned di['background-color'] (the fill color) rather than di['border-color'] (the stroke color)."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When setting the color of elements with external labels, the external label text is set to the fill color instead of the stroke color, making the text appear very light.",
+          "expected_behavior": "External labels should have their color set to the stroke color (di['border-color']) instead of the fill color (di['background-color']).",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 4.74,
+            "end_s": 6.39
+          },
+          "observations": [
+            {
+              "timestamp_s": 4.74,
+              "detail": "User lasso-selects the Start Event and its external label and navigates to Edit -> Set Color -> Orange."
+            },
+            {
+              "timestamp_s": 5.56,
+              "detail": "The Set Color menu action triggers; the Start Event body fills with light orange and stroke is dark orange, but the external label 'Start Event' text turns light orange (the fill color) rather than dark orange (the stroke color)."
+            },
+            {
+              "timestamp_s": 6.39,
+              "detail": "After menu closes and selection is cleared, external label text remains rendered in light orange fill color with low contrast."
+            }
+          ],
+          "uncertainty": "Whether the stroke color fallback should apply if colors.stroke is not explicitly specified or undefined."
+        }
+      ],
+      "questions": []
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "b3372a049227b4a3c91ab2a59efdfbaf164a1a2e91e45523b0e464cd153ddb4d",
+      "source_fingerprint": "b74bba473848081261134da406b36f67d7cc8039a1e24e50d3ca84ae157b3e18",
+      "trace_sha256": "876d47311a0030d5f8e454de987065024ac98bbdd115298037f4330d0bcc9d08",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/modeling/behavior/LayoutConnectionBehavior.js",
+          "line": 43,
+          "observation": "LayoutConnectionBehavior intercepts 'connection.layout' and 'connection.updateWaypoints' to adjust endpoints for incoming and outgoing connections (such as associations), but does not reposition labels (connection.label or connection.labels) when connection waypoints change.",
+          "file_sha256": "fa81b7dcc4adb7851e23694e0bb3c9c7b90b83d67ac72020c34b5ac9bb012848",
+          "actual_line": "  this.postExecute([",
+          "context_start_line": 38,
+          "source_context": [
+            "    }",
+            "",
+            "    return getConnectionAnchorPoint(point, newWaypoints, oldWaypoints, hints);",
+            "  }",
+            "",
+            "  this.postExecute([",
+            "    'connection.layout',",
+            "    'connection.updateWaypoints'",
+            "  ], function(event) {",
+            "    var context = event.context;",
+            ""
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When a connected shape is resized or a connection is re-laid out (triggering connection.layout / connection.updateWaypoints), LayoutConnectionBehavior updates connection anchor points for associations but does not reposition the connection's own label(s) or adjust associations when hints/waypoints change under certain layout conditions."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When a Sub Process shape is resized or its connected connection is re-laid out, the connected sequence flow label and text association fail to reposition correctly along with the connection/shape and remain detached or hanging in place.",
+          "expected_behavior": "Label and Association are moved with it",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 5.0,
+            "end_s": 7.5
+          },
+          "observations": [
+            {
+              "timestamp_s": 0.375,
+              "detail": "Initial diagram shows Sub Process 1 connected to End Event with sequence flow, bendpoint, and text annotation/label positioned near the flow line."
+            },
+            {
+              "timestamp_s": 6.5,
+              "detail": "Sub Process 1 bottom edge is resized/dragged down (around t=5.6s - 6.5s), causing the sequence flow to re-route straight horizontally from the middle of Sub Process 1 to End Event."
+            },
+            {
+              "timestamp_s": 8.5,
+              "detail": "The label 'LAbel' and the text annotation remain stranded downwards / disconnected from the newly routed straight sequence flow line."
+            }
+          ],
+          "uncertainty": "LayoutConnectionBehavior currently handles associations on connection.layout and connection.updateWaypoints, but does not move connection labels, and association anchor recalculation may not handle all layout recalculations during shape resizing."
+        }
+      ],
+      "questions": [
+        "Should connection labels be automatically updated/re-anchored inside LayoutConnectionBehavior or via a dedicated label layout/reconnection behavior?",
+        "When the sequence flow is re-routed drastically due to shape resizing, should the text annotation association re-anchor to the closest segment or preserve relative waypoint distance?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+      "source_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+      "trace_sha256": "76ebea9b61d9a3b6123d087e54a3878a036c58c2e12142ae910a0b02b39a98ac",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/popup-menu/ReplaceMenuProvider.js",
+          "line": 441,
+          "observation": "In toggleLoopEntry, if loopCharacteristics exists on the businessObject, moddle.create is only called when isUndefined(entry.options.isSequential) or !loopCharacteristics; when toggling from standard loop characteristics to parallel/sequential multi-instance, entry.options.isSequential is defined and loopCharacteristics already exists, so it mutates isSequential on the existing StandardLoopCharacteristics instead of creating a MultiInstanceLoopCharacteristics instance.",
+          "file_sha256": "14d64e6aa9fd92f6a830f3fc7f5d30c60d1a5b73123e77ff0284b59d7e04066f",
+          "actual_line": "    self._modeling.updateProperties(element, { loopCharacteristics: loopCharacteristics });",
+          "context_start_line": 436,
+          "source_context": [
+            "        loopCharacteristics = self._moddle.create(entry.options.loopCharacteristics);",
+            "      }",
+            "",
+            "      loopCharacteristics.isSequential = entry.options.isSequential;",
+            "    }",
+            "    self._modeling.updateProperties(element, { loopCharacteristics: loopCharacteristics });",
+            "  }",
+            "",
+            "  var businessObject = getBusinessObject(element),",
+            "      loopCharacteristics = businessObject.loopCharacteristics;",
+            ""
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When transitioning from bpmn:StandardLoopCharacteristics to parallel/sequential multi-instance, toggleLoopEntry reuses the existing StandardLoopCharacteristics object and sets isSequential on it rather than creating a new bpmn:MultiInstanceLoopCharacteristics element, leaving the XML tag as <bpmn:standardLoopCharacteristics />."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When toggling loop multi-instance and parallel or sequential properties on a task, the generated XML label remains <bpmn:standardLoopCharacteristics /> and does not update to reflect multi-instance loop characteristics.",
+          "expected_behavior": "XML label: <bpmn:multiInstanceLoopCharacteristics /> or <bpmn:multiInstanceLoopCharacteristics isSequential=\\\"true\\\" />",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 14.49,
+            "end_s": 18.69
+          },
+          "observations": [
+            {
+              "timestamp_s": 6.25,
+              "detail": "Task has loop marker added then switched to parallel multi-instance in replace menu."
+            },
+            {
+              "timestamp_s": 15.94,
+              "detail": "Diagram XML is opened in text editor showing <bpmn:standardLoopCharacteristics /> on the task."
+            },
+            {
+              "timestamp_s": 17.91,
+              "detail": "Text in editor highlights <bpmn:standardLoopCharacteristics /> instead of multiInstanceLoopCharacteristics."
+            }
+          ],
+          "uncertainty": "null"
+        }
+      ],
+      "questions": []
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "27263f2691d7543139e6dacce12731a7635e400ef613f25f0fb19005618c0128",
+      "source_fingerprint": "83b81bf340ee787023918c8d19c2a5a10b449909e499a9908642c12e23f7bd54",
+      "trace_sha256": "b6d85ce89633ce547c1e1e539c76b067f81a5939d7a8f0ce849de512a8272844",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/modeling/behavior/SubProcessPlaneBehavior.js",
+          "line": 457,
+          "observation": "_showRecursively sets element.hidden on children and recursively on element.children, but external/attached labels (element.label) are not elements of shape.children directly or their hidden state is not managed/synchronized when transitioning between expanded subprocess and collapsed subprocess planes",
+          "file_sha256": "bf62fc492d19b0ce811ca0c0fa0fb047925d670f9c0ed8acd0acdb278e24a88b",
+          "actual_line": "SubProcessPlaneBehavior.prototype._showRecursively = function(elements, hidden) {",
+          "context_start_line": 452,
+          "source_context": [
+            " *",
+            " * @param {Array} elements",
+            " * @param {Boolean} [hidden]",
+            " * @returns {Array} all child elements",
+            " */",
+            "SubProcessPlaneBehavior.prototype._showRecursively = function(elements, hidden) {",
+            "  var self = this;",
+            "",
+            "  var result = [];",
+            "  elements.forEach(function(element) {",
+            "    element.hidden = !!hidden;"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "When collapsing a sub process, SubProcessPlaneBehavior hides and moves child elements between planes using shape.children and _showRecursively, but does not account for external label shapes (element.label) of those child elements (such as the start event's external label), leaving the label unhidden and positioned outside on the parent canvas."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "When an expanded sub process containing start, task, and end events with labels is changed to a collapsed sub process, internal labels such as the start event label remain visible and misplaced outside the collapsed sub process.",
+          "expected_behavior": "Hide the label inside the sub process.",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 30.5,
+            "end_s": 36.0
+          },
+          "observations": [
+            {
+              "timestamp_s": 30.5,
+              "detail": "Expanded sub process contains start event with external label 'start', task, and end event."
+            },
+            {
+              "timestamp_s": 31.875,
+              "detail": "Sub process is toggled to collapsed via the replace/context menu."
+            },
+            {
+              "timestamp_s": 35.625,
+              "detail": "Collapsed sub process is displayed with drill-down icon, but the 'start' label remains visible on the canvas outside the collapsed sub process."
+            }
+          ],
+          "uncertainty": "Whether labels should also be moved along with elements when transitioning planes or simply hidden when the parent sub process is collapsed."
+        }
+      ],
+      "questions": [
+        "Should external label shapes of child elements be moved together with their parent element and have their hidden state synchronized, or should they be hidden and restored with the plane?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "completed",
+      "source_unchanged": true,
+      "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+      "source_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+      "trace_sha256": "9074b41cbe55d10733506c363e0d401a1f097dd978629435bffe59153da79f6e",
+      "code_evidence": [
+        {
+          "path": "/workspace/lib/features/modeling/behavior/SpaceToolBehavior.js",
+          "line": 44,
+          "observation": "SpaceToolBehavior handles bpmn:Participant elements during vertical space adjustments by setting minDimensions with height from getParticipantMinHeight(), but does not distinguish collapsed/empty (fixed-height) pools or prevent them from being resized vertically.",
+          "file_sha256": "8fee1dde1f7cc0fb021ff7b3532ee64b77d17477861a765e512d3f0f33783953",
+          "actual_line": "            width: PARTICIPANT_MIN_DIMENSIONS.width,",
+          "context_start_line": 39,
+          "source_context": [
+            "",
+            "        if (isHorizontal(axis)) {",
+            "          minDimensions[ id ] = PARTICIPANT_MIN_DIMENSIONS;",
+            "        } else {",
+            "          minDimensions[ id ] = {",
+            "            width: PARTICIPANT_MIN_DIMENSIONS.width,",
+            "            height: getParticipantMinHeight(shape, start)",
+            "          };",
+            "        }",
+            "",
+            "      }"
+          ]
+        }
+      ],
+      "hypotheses": [
+        "SpaceToolBehavior (or space tool adjustment calculation) treats empty/collapsed bpmn:Participant pools like expanded pools, allowing vertical resizing when space tool interactions occur across them rather than disallowing vertical resizing or preserving their fixed height."
+      ],
+      "refined_predictions": [
+        {
+          "id": "claim-1",
+          "symptom": "Space tool resizes empty pool vertically",
+          "expected_behavior": "Empty pool does not resize (vertically).",
+          "expected_source": "issue",
+          "span": {
+            "start_s": 3.1,
+            "end_s": 8.5
+          },
+          "observations": [
+            {
+              "timestamp_s": 3.1,
+              "detail": "A horizontal space line is clicked near the lower empty pool's border to activate the space tool."
+            },
+            {
+              "timestamp_s": 4.4,
+              "detail": "Dragging downward extends the space tool guide and expands the empty pool's bottom border downward."
+            },
+            {
+              "timestamp_s": 7.5,
+              "detail": "Upon mouse release, the empty pool has been vertically expanded to a large height."
+            }
+          ],
+          "uncertainty": "Whether the space tool should move empty pools instead of resizing them vertically, or lock their vertical dimensions while allowing horizontal adjustments."
+        }
+      ],
+      "questions": [
+        "Should empty pools be excluded entirely from vertical resizing by the space tool (e.g., only allowing movement / horizontal resizing), or should their min/max dimensions lock height during vertical space adjustments?"
+      ]
+    }
+  ],
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 1702493,
+    "available_microdollars": 2297507,
+    "unsettled_requests": 0
+  }
+}
