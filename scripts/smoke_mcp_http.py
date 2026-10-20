@@ -54,6 +54,10 @@ async def main():
             assert len(images) == 2 and all(block.mime_type == "image/png" for block in images)
             transcript = await client.call_tool("get_transcript", {"recording_id": "swebench-bpmn-1655", "t0": 0, "t1": 6.8})
             assert transcript.structured_content["status"] == "no_audio"
+            moments = await client.call_tool("find_moment", {"recording_id": "swebench-bpmn-1655", "query": "orange label"})
+            assert not moments.is_error and moments.structured_content["matches"]
+            screen = await client.call_tool("get_screen_text", {"recording_id": "swebench-bpmn-1655", "t0": 5, "t1": 6.8})
+            assert not screen.is_error and screen.structured_content["frames"]
             resource = await client.read_resource("svh://provenance")
             provenance = json.loads(resource.contents[0].text)
             frozen = json.loads((root / "evals/frozen-m0.json").read_text())
@@ -62,7 +66,9 @@ async def main():
             resources = [str(item.uri) for item in (await client.list_resources()).resources]
             prompts = [item.name for item in (await client.list_prompts()).prompts]
             report = {"run_at": datetime.now(timezone.utc).isoformat(), "passed": True,
-                "scope": "Actual MCP CLI + HTTP SDK + frozen public media; no model inference or retrieval evaluation",
+                "scope": "Actual MCP CLI + HTTP SDK + frozen public media/index; no live model inference or retrieval quality claim",
+                "retrieval_timestamps_s": [match["timestamp_s"] for match in moments.structured_content["matches"]],
+                "screen_text_samples": len(screen.structured_content["frames"]),
                 "versions": {name: version(name) for name in ("mcp", "deepagents", "langchain-google-genai")},
                 "protocol_version": client.protocol_version, "unauthorized_status": response.status_code,
                 "provenance": provenance, "tools": tools, "resources": resources, "prompts": prompts,

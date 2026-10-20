@@ -1,6 +1,8 @@
 """Measure frozen retrieval gates separately from model-visible ingestion."""
 import hashlib
 import json
+from datetime import datetime, timezone
+from importlib.metadata import version
 from pathlib import Path
 
 from svh.corpus import load_frozen_corpus
@@ -10,12 +12,15 @@ from svh.oracle import wilson
 root = Path(__file__).resolve().parents[1]
 manifest, annotations = load_frozen_corpus(root, Path("evals/frozen-m0.json"))
 results = {method: [] for method in ("fixed45", "temporal3", "midpoint")}
+provenance = []
 for annotation in annotations:
     path = root / "data/runtime/visual-index" / (annotation["id"] + ".json")
     index = json.loads(path.read_text()) if path.exists() else None
     if index and (index["identity"]["corpus_sha256"] != manifest["corpus_sha256"]
                   or index["identity"]["media_sha256"] != annotation["media"]["sha256"]):
         raise ValueError("Index belongs to different frozen evidence")
+    provenance.append({"id": annotation["id"], "identity": index["identity"] if index else None,
+                       "usage": index["usage"] if index else None})
     claim = annotation["claims"][0]
     start, end = claim["t_start_s"], claim["t_end_s"]
     for method in results:
@@ -44,7 +49,14 @@ if (summary["temporal3"]["strict1"]["successes"] > summary["fixed45"]["strict1"]
     and all(summary["temporal3"][key]["successes"] >= summary["fixed45"][key]["successes"] for key in ("hit1", "hit5"))):
     selected = "temporal3"
 metrics = summary[selected]
-report = {"corpus_sha256": manifest["corpus_sha256"], "selected": selected,
+common = {(entry["identity"]["model"], entry["identity"]["prompt_sha256"], entry["identity"]["sampler"])
+          for entry in provenance if entry["identity"]}
+if len(common) > 1:
+    raise ValueError("Do not mix caption runs with different model/prompt/sampler identities")
+report = {"run_at": datetime.now(timezone.utc).isoformat(),
+          "versions": {name: version(name) for name in ("deepagents", "mcp", "google-genai", "langchain-google-genai")},
+          "index_provenance": provenance,
+          "corpus_sha256": manifest["corpus_sha256"], "selected": selected,
           "passed": len(annotations) >= 10 and metrics["hit1"]["wilson95"][0] >= .5 and metrics["hit5"]["wilson95"][0] >= .7,
           "summary": summary, "cases": results,
           "limitations": ["Curated short clips, one application, silent media", "Gold claim text used only as evaluation query", "Common caption budget across methods"]}

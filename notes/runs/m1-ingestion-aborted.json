@@ -1,0 +1,13 @@
+{
+  "status": "aborted-before-retrieval-measurement",
+  "reason": "MAX_TOKENS on repeated developer-console text; incomplete JSON retained; no automatic retry",
+  "completed_recordings": 4,
+  "failed_recording": "swebench-bpmn-1638",
+  "new_run": "same 45-frame grid and retrieval methods; prompt bounds caption/OCR length; all eleven start fresh",
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 226993,
+    "available_microdollars": 3773007,
+    "unsettled_requests": 0
+  }
+}

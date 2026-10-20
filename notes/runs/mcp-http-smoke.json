@@ -1,7 +1,15 @@
 {
-  "run_at": "2026-10-20T18:16:05.888035+00:00",
+  "run_at": "2026-10-20T18:36:21.563702+00:00",
   "passed": true,
-  "scope": "Actual MCP CLI + HTTP SDK + frozen public media; no model inference or retrieval evaluation",
+  "scope": "Actual MCP CLI + HTTP SDK + frozen public media/index; no live model inference or retrieval quality claim",
+  "retrieval_timestamps_s": [
+    3.7112964777777777,
+    3.4083335,
+    3.8627779666666666,
+    3.5598149888888893,
+    3.2568520111111106
+  ],
+  "screen_text_samples": 12,
   "versions": {
     "mcp": "2.3.0",
     "deepagents": "0.7.28",
@@ -17,7 +25,9 @@
   "tools": [
     "get_recording",
     "get_frames",
-    "get_transcript"
+    "get_transcript",
+    "find_moment",
+    "get_screen_text"
   ],
   "resources": [
     "svh://recordings",

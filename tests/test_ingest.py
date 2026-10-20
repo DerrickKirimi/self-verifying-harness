@@ -45,6 +45,8 @@ def test_caption_grid_stays_inside_media_and_resume_never_calls_model(tmp_path):
     result = caption_recording(FakeEvidence(), "id", FakeModel(), destination)
     assert len(result["frames"]) == 45
     assert caption_recording(FakeEvidence(), "id", FakeModel(), destination) == result
+    destination.unlink()  # Crash after storing metered response, before final index.
+    assert caption_recording(FakeEvidence(), "id", FakeModel(), destination) == result
     assert len(calls) == 1
 
 

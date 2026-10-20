@@ -5,8 +5,9 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 ## Current milestone: M1 (ingestion and MCP), starting
 
 **M0 has passed; the full MVP is not shipped.** MCP HTTP evidence access works.
-Paid visual ingestion is running; retrieval gates, agent-generated reproductions/
-fixes and Harbor trials have not been measured. [RUN]
+Paid visual ingestion and synthetic audio smoke are complete. The lexical
+retrieval comparison failed M1; generated reproductions/fixes and Harbor trials
+have not been measured. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
   10–20-case and lower-bound >=0.70 gate. Proof: `notes/runs/m0-gate.json`.
@@ -65,13 +66,19 @@ fixes and Harbor trials have not been measured. [RUN]
    now 72 passed including visual timeline/retrieval/audio and HTTP checks. See `notes/2026-10-20-budgeted-gemini.md`.
    Disable delegation through the selected harness profile and verify Docker
    boundaries before executing any generated code.
-3. Corrected 45-frame ingestion is running sequentially in exec session 34917.
-   Do not launch another batch; poll it and resume only after termination.
-   Prior seek-based outputs are archived and their costs retained. Current
-   design/commands: `notes/2026-10-20-m1-ingestion-design.md`. After completion,
-   run retrieval evaluation and synthetic audio smoke to finish M1;
-      then proceed through M2 claims/checkpoints and M3 generated check/fix, held-out
-   regressions, wrong-fix controls and actual Harbor oracle/nop trials.
+3. Visual ingestion batch 6879 is terminal: all eleven corrected 45-frame indexes
+   exist. Do not restart it. The lexical baseline fails M1 (hit@1 8/11, hit@5
+   9/11); temporal windows fail too. Frozen reports:
+   `notes/runs/m1-lexical-baseline.json`, `notes/runs/m1-retrieval.json`.
+   Audio functional and updated actual MCP smoke pass. Total settled cost
+   $0.464144 including abandoned runs; no unsettled requests at this checkpoint.
+   See `notes/2026-10-20-m1-ingestion-design.md`.
+4. Evaluate pinned local EmbeddingGemma 2 text-only semantic retrieval on the
+   unchanged captions, preserving the failed lexical baseline and fixed gate.
+   CPU-only optional dependencies and safe-weight downloads are being prepared;
+   no semantic inference or improvement has been measured yet. M2/M3 features
+   wait for M1: then claims/checkpoints, generated check/fix, held-out regressions,
+   wrong-fix controls and actual Harbor oracle/nop trials.
 
 ## Evidence and history
 
@@ -91,6 +98,6 @@ fixes and Harbor trials have not been measured. [RUN]
 | Gate | Current evidence |
 |---|---|
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
-| M1 ingestion/retrieval/MCP | Not measured |
+| M1 ingestion/retrieval/MCP | Lexical retrieval gate failed; audio functional and MCP smoke passed |
 | M2 grounded claims/code checkpoint | Not measured |
 | M3 generated verification/fix/Harbor | Not measured; MVP incomplete |

@@ -10,10 +10,15 @@ test covers both temporal ordering and the final hold. The full suite passes
 [RUN] An initial seek-based pilot and one additional caption response were
 archived under ignored `data/runtime/visual-index-seek-baseline-abandoned/`.
 Another input failed in local decoding before a generation request. These costs
-remain in the shared ledger. The corrected batch is running sequentially in
-exec session 34917; do not restart it while active. Its script was loaded before
-the later process-lock addition. No other ingestion process should run until
-it terminates. Outputs bind media/corpus/prompt/model/sampler identities.
+remain in the shared ledger. The first exact-timestamp batch (exec 34917, now terminal) then
+hit MAX_TOKENS on repeated console OCR in 1638. Four completed indexes plus
+the incomplete metered response are archived under ignored
+`data/runtime/visual-index-unbounded-captions-abandoned/`; summary in
+`notes/runs/m1-ingestion-aborted.json`. The bounded-caption baseline reruns all
+eleven cases under one consistent prompt, before any retrieval measurements.
+The bounded sequential batch (exec 6879) is terminal: all eleven indexes
+were produced. No visual ingestion batch should be restarted.
+Outputs bind media/corpus/prompt/model/sampler identities.
 
 [CODE/INF] The prospective comparison uses the same 45 captions, query and
 caption budget for both methods: fixed45 searches individual caption/screen-text
@@ -53,5 +58,21 @@ uv run --all-extras svh mcp
 .venv/bin/python -I scripts/smoke_audio_ingest.py
 ```
 
-[INF] M1 is not yet passed. Retrieval measurements and the actual audio
-functional path are still pending; do not infer their outcome from unit tests.
+[RUN] The eleven-case lexical comparison failed the fixed M1 gate. Fixed45:
+hit@1 8/11, Wilson 95% [43.44%,90.25%]; hit@5 9/11 [52.30%,94.86%].
+Temporal3: hit@1 and hit@5 9/11 [52.30%,94.86%]. Strict hit@1 is 3/11
+[9.75%,56.56%] for both, equal to midpoint. Strict hit@5 is 7/11
+[35.38%,84.83%] for fixed45, 5/11 [21.27%,71.99%] for temporal3 and 3/11
+[9.75%,56.56%] for midpoint. The prospective simplicity rule retains fixed45;
+neither method passes. Complete results: `notes/runs/m1-lexical-baseline.json`.
+No gold corpus, threshold, caption prompt or frame sample is changed in response
+to these retrieval measurements. A local semantic candidate will use the same
+frozen caption evidence and be measured separately; no improvement is claimed.
+
+[RUN] Audio smoke passed: one synthetic sentence transcribed exactly with one
+bounded segment, no speaker identity claim. `notes/runs/audio-ingest-smoke.json`.
+Updated actual CLI/HTTP smoke also passed find_moment and get_screen_text:
+`notes/runs/mcp-http-smoke.json`. Total settled API cost, including every
+abandoned attempt and audio smoke: $0.464144; no unsettled requests at that
+checkpoint. Model outputs/raw captions remain ignored, with hashes and usage
+recorded in reports. M1 remains incomplete because its retrieval gate failed.
