@@ -6,3 +6,8 @@ M0 evaluation set: annotated bug walkthroughs (`docs/roadmap.md`).
 - `recordings/`: the video files. Gitignored; keep them local or use Git LFS. The owner's voice and apps only.
 - `reproductions/`: one Playwright or pytest file per claim.
 - The `observed` fields are written by the oracle/nop runner, never by hand. A claim counts only when `fails_on_pre_fix` and `passes_on_post_fix` are both true.
+
+The first three fixtures are configured separately in `fixtures.json` and can be
+checked with `uv run svh verify`. This fixture runner records evidence under
+`notes/runs/`; it does not yet populate annotated walkthrough `observed` fields.
+See [the recording guide](../docs/recording-guide.md) to produce the actual M0 clips.

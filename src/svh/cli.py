@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import subprocess
 import tempfile
+import uuid
 
 from svh.annotations import validate_annotation
 from svh.oracle import git, snapshot, verify
@@ -34,16 +35,21 @@ def main():
             app.chmod(0o755)
             snapshot(args.root, commit, app)
             print(f"Recording fixture {commit} at http://127.0.0.1:8080", flush=True)
-            process = subprocess.run([
-                "docker", "run", "--rm", "--init", "--read-only", "--cap-drop=ALL",
-                "--security-opt=no-new-privileges", "--memory=256m", "--cpus=1", "--pids-limit=64",
-                "--publish", "127.0.0.1:8080:8080", "--mount", f"type=bind,src={app},dst=/app,readonly",
-                "--entrypoint", "python", "svh-eval:local", "-I", "/app/evals/app/app.py",
-                "--host", "0.0.0.0",
-            ])
+            name = "svh-recording-" + uuid.uuid4().hex
+            try:
+                process = subprocess.run([
+                    "docker", "run", "--rm", "--name", name, "--pull=never", "--init",
+                    "--read-only", "--cap-drop=ALL", "--security-opt=no-new-privileges",
+                    "--memory=256m", "--cpus=1", "--pids-limit=64",
+                    "--publish", "127.0.0.1:8080:8080", "--mount", f"type=bind,src={app},dst=/app,readonly",
+                    "--entrypoint", "python", "svh-eval:local", "-I", "/app/evals/app/app.py",
+                    "--host", "0.0.0.0",
+                ])
+            finally:
+                subprocess.run(["docker", "rm", "-f", name], capture_output=True, timeout=15)
             raise SystemExit(process.returncode)
         return
-    report = verify(args.root.resolve(), args.manifest, args.output, args.image)
+    report = verify(args.root, args.root / args.manifest, args.root / args.output, args.image)
     print(json.dumps(report["summary"], indent=2))
     raise SystemExit(0 if report["claims"] and all(item["verified"] for item in report["claims"]) else 1)
 

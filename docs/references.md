@@ -33,3 +33,14 @@ Local clones live in `~/swe/llms/<repo>`. Commits are as read on the date shown.
 ## To add
 
 - Anthropic's "Sion" (named by the owner; no source on disk yet).
+
+## Current integration sources (read 2026-10-20)
+
+- [MCP specification, current latest](https://modelcontextprotocol.io/specification/2026-07-28).
+  The `latest` URL redirected to this revision. Read the overview: core features,
+  per-request capability negotiation, utilities and opt-in extensions. [SRC]
+  SDK/client implementation support has not yet been checked; selecting it is M1 work.
+- [Claude Code MCP documentation](https://code.claude.com/docs/en/mcp).
+  Read HTTP transport configuration and project/client integration sections. [SRC]
+  Used only to establish the provisional first client's MCP integration path,
+  not to claim comparative harness quality or successful local integration.

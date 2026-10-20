@@ -96,6 +96,10 @@ def run_check(image, app, checks, test):
 
 def verify(root, manifest_path, output, image="svh-eval:local"):
     manifest = json.loads(manifest_path.read_text())
+    claims = manifest["claims"]
+    if (not claims or len({claim["id"] for claim in claims}) != len(claims)
+            or len({claim["test"] for claim in claims}) != len(claims)):
+        raise ValueError("fixture claims must be nonempty with unique IDs and tests")
     # Resolve the mutable local tag once; both sides must run the same image ID.
     image_id = subprocess.check_output(
         ["docker", "image", "inspect", image, "--format", "{{.Id}}"], text=True,

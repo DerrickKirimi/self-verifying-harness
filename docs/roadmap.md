@@ -4,6 +4,12 @@ Each milestone has a **gate**: a measured result, with sample size and interval,
 
 **Timing.** The owner's study plan (`~/Desktop/CLAUDE-DOCS/study-series/md/career_and_reading_plan.md` §5) reserves Nov–mid-Jan for the Gemma paper track, interviews and the Harbor RL practice project. Only M0 is lightweight enough to start before mid-January. M1 onwards is for after that, unless the owner re-plans.
 
+**2026-10-20 update.** The owner explicitly requested starting implementation now.
+That supersedes the calendar assumption above, while the milestone gates and
+evaluation-first order remain in force. Reference projects are replaceable;
+the candidate M1 stack below is a hypothesis to evaluate, not a dependency list
+(decisions D11/D15/D16). [SRC/INF]
+
 | M | Build | Gate | Est. |
 |---|---|---|---|
 | **M0** | **Eval set first.** A small web app the owner controls, with 10–20 planted or real bugs. For each bug: a short screen recording with narration (the owner's voice only), annotated with the claim timestamps, the claim text, the commits before and after the fix, and a hand-written reproduction test. Schema in `evals/schema/` | Every reproduction **fails on the pre-fix commit and passes on the post-fix commit** (the oracle/nop check), run and logged | 1 week |

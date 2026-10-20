@@ -1,0 +1,14 @@
+[
+  {
+    "revision": "pre",
+    "http_status": 200,
+    "expected_page_text": "0 issues",
+    "observed": true
+  },
+  {
+    "revision": "post",
+    "http_status": 200,
+    "expected_page_text": "1 issues",
+    "observed": true
+  }
+]

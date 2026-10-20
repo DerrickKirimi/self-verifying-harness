@@ -10,7 +10,35 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
             embeddings                    ask in the meeting
 ```
 
-**Status:** bootstrapping. No code yet; the first milestone is the evaluation set (M0). See [`STATUS.md`](STATUS.md).
+**Status:** M0 in progress. A Docker oracle runner and three planted issue-board
+bugs are executable. Owner-narrated recordings and the full eval set are still
+needed before ingestion work. See [`STATUS.md`](STATUS.md).
+
+## Run the first checkpoint
+
+Requires Python 3.11+, `uv` and access to a running Docker daemon. No model API
+key is needed.
+
+```sh
+uv sync --locked
+docker build -t svh-eval:local sandbox
+uv run svh verify
+uv run svh serve --revision pre
+```
+
+The last command serves the recording fixture at `http://127.0.0.1:8080`.
+See the [recording guide](docs/recording-guide.md) for the three walkthroughs.
+Run the runner's own tests with `uv run python -I -m pytest`.
+
+The fixture oracle freezes the same tests for both Git revisions, runs each
+inside restricted Docker containers, rejects setup errors as evidence, and
+writes commit IDs, image ID, test hashes, logs and a Wilson interval to
+`notes/runs/fixture-oracle.json`. This is a fixture check, not the M0 completion
+gate or a Harbor oracle/nop run.
+
+Reference projects inform decisions; none is a required base. The M0 runner
+has no MCP, Pixeltable, embedding-model or agent-loop dependency. Current
+integration and retrieval decisions are in [the decision log](docs/decisions.md).
 
 ## Why
 

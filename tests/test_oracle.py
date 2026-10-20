@@ -1,6 +1,7 @@
 import pytest
+import json
 
-from svh.oracle import classify, contained, wilson
+from svh.oracle import classify, contained, verify, wilson
 
 
 @pytest.mark.parametrize("code,xml,status", [
@@ -30,3 +31,15 @@ def test_small_sample_uncertainty():
     assert 0.43 < low < 0.44
     assert high == 1.0
     assert wilson(0, 0) == [0.0, 1.0]
+
+
+@pytest.mark.parametrize("claims", [
+    [],
+    [{"id": "a", "test": "one.py"}, {"id": "a", "test": "two.py"}],
+    [{"id": "a", "test": "one.py"}, {"id": "b", "test": "one.py"}],
+])
+def test_duplicate_or_empty_samples_are_rejected(tmp_path, claims):
+    manifest = tmp_path / "fixtures.json"
+    manifest.write_text(json.dumps({"claims": claims}))
+    with pytest.raises(ValueError, match="unique"):
+        verify(tmp_path, manifest, tmp_path / "report.json")

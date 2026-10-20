@@ -1,0 +1,9 @@
+{
+  "pre_fix_commit": "426a532c59194764244a8635781f28a1ac41a8df",
+  "post_fix_commit": "eee15ebbb2e6a06419bbca30899e589ad644fb30",
+  "claims": [
+    {"id": "search-case", "test": "test_search.py"},
+    {"id": "closed-filter", "test": "test_closed.py"},
+    {"id": "priority-order", "test": "test_priority.py"}
+  ]
+}
