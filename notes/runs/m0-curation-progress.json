@@ -58,9 +58,21 @@
     "bpmn-io__bpmn-js-1677": {
       "report": "notes/runs/native/bpmn-io__bpmn-js-1677.json",
       "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1677.json",
-      "state": "running-oracle",
+      "state": "oracle-rejected",
       "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1677@sha256:d477e0dd37cd6ddc58de258af69c95b86e085336e66f1be4325b03e400e9401d"
+    },
+    "bpmn-io__bpmn-js-1679": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1679.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1679.json",
+      "state": "oracle-passed",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c"
+    },
+    "bpmn-io__bpmn-js-1719": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1719.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1719.json",
+      "state": "running-oracle",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1719@sha256:1961091a8de6b8c388cb83277f78875a0e9eec425ffee1c128977ba3254dd297"
     }
   },
-  "updated_at": "2026-10-20T14:52:31.408245+00:00"
+  "updated_at": "2026-10-20T15:01:05.039987+00:00"
 }

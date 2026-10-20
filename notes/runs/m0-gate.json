@@ -34,12 +34,17 @@
       "annotation": "evals/annotations/swebench-bpmn-1659.json",
       "id": "swebench-bpmn-1659",
       "accepted": true
+    },
+    {
+      "annotation": "evals/annotations/swebench-bpmn-1679.json",
+      "id": "swebench-bpmn-1679",
+      "accepted": true
     }
   ],
-  "accepted": 7,
-  "total": 7,
+  "accepted": 8,
+  "total": 8,
   "wilson_95": [
-    0.6456695649333126,
+    0.6755924351161198,
     1.0
   ],
   "required_wilson_lower": 0.7,

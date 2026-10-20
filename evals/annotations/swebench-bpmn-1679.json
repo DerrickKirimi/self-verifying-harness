@@ -1,0 +1,51 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1679",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1679",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1679.json",
+    "row_sha256": "790e12fb5b0eddbaa5d46226d04f17450a6d9b1f731e3a5668fa3937fac52838"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+    "fix_patch_sha256": "5b97e165e6788a68802845d667c12db747ee8bbff58755d971d108e0c574801e",
+    "test_patch_sha256": "0784ca6bdbdbce42c762ed7e580a999e1c231aab0e8cd5ed7175bd313b2f7832",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1679/media.gif",
+    "sha256": "be1925039dea24dd160978f40e52df53caa2f30eadb4826b74de192d952a4bd3",
+    "source_url": "https://user-images.githubusercontent.com/61787903/172374025-61f23e34-b199-4e67-bddd-ec7a3aafdb92.gif",
+    "duration_s": 18.9,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 14.0,
+      "t_end_s": 18.9,
+      "text": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/popup-menu - replace menu provider toggle sequential toggle button should set loop characteristics type ",
+        "features/popup-menu - replace menu provider toggle parallel toggle button should set loop characteristics type "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1679-a1402375001cf574.json",
+    "report_sha256": "a1402375001cf574db6753746d7fb98ef24dfdfa98075ac5f5708e8e54a22522"
+  }
+}

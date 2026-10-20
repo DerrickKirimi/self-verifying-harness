@@ -1,0 +1,82 @@
+{
+  "kind": "fixture-oracle",
+  "run_at": "2026-10-20T14:59:14.887685+00:00",
+  "pre_fix_commit": "426a532c59194764244a8635781f28a1ac41a8df",
+  "post_fix_commit": "eee15ebbb2e6a06419bbca30899e589ad644fb30",
+  "image_id": "sha256:c6851f11372980d302814879a150a90fbe1400f6ce3a6b019dd7deba7307b602",
+  "test_sha256": {
+    "conftest.py": "2b68365d4b484c26efedb6a50aed5a0986a81457f363822c7cbd0891e54ab2c3",
+    "test_search.py": "bdbec254dd29304eb0b2dc07c00dbb00b2447a8c9850d3474cbc30757b72f277",
+    "test_closed.py": "245607588c629329be5457506e3155e827aa6cb42efcdf3cf53ba691f72a170b",
+    "test_priority.py": "d4cb3ab25c892ca8344ac57c55cc0d8f7392b5c63cf9ae5dc58daea4def31fb9"
+  },
+  "claims": [
+    {
+      "id": "search-case",
+      "test": "test_search.py",
+      "pre": {
+        "exit_code": 1,
+        "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________________ test_search_ignores_case ___________________________\n\napp_url = 'http://127.0.0.1:8080'\n\n    def test_search_ignores_case(app_url):\n        with urlopen(app_url + \"/api/issues?q=login\", timeout=2) as response:\n            issues = json.load(response)\n>       assert [issue[\"id\"] for issue in issues] == [1]\nE       assert [] == [1]\nE         \nE         Right contains one more item: 1\nE         Use -v to get more diff\n\nchecks/test_search.py:8: AssertionError\n---------------------------- Captured stderr setup -----------------------------\n127.0.0.1 - - [20/Oct/2026 14:59:02] \"GET /api/issues HTTP/1.1\" 200 -\n----------------------------- Captured stderr call -----------------------------\n127.0.0.1 - - [20/Oct/2026 14:59:02] \"GET /api/issues?q=login HTTP/1.1\" 200 -\n=========================== short test summary info ============================\nFAILED checks/test_search.py::test_search_ignores_case - assert [] == [1]\n1 failed in 0.46s\n",
+        "stderr": "",
+        "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"1\" skipped=\"0\" tests=\"1\" time=\"0.472\" timestamp=\"2026-10-20T14:59:02.392099+00:00\" hostname=\"21d5ab8b3d0f\"><testcase classname=\"test_search\" name=\"test_search_ignores_case\" time=\"0.353\"><failure message=\"assert [] == [1]&#10;  &#10;  Right contains one more item: 1&#10;  Use -v to get more diff\">app_url = 'http://127.0.0.1:8080'\n\n    def test_search_ignores_case(app_url):\n        with urlopen(app_url + \"/api/issues?q=login\", timeout=2) as response:\n            issues = json.load(response)\n&gt;       assert [issue[\"id\"] for issue in issues] == [1]\nE       assert [] == [1]\nE         \nE         Right contains one more item: 1\nE         Use -v to get more diff\n\nchecks/test_search.py:8: AssertionError</failure></testcase></testsuite></testsuites>",
+        "status": "assertion_failure"
+      },
+      "post": {
+        "exit_code": 0,
+        "stdout": ".                                                                        [100%]\n1 passed in 0.40s\n",
+        "stderr": "",
+        "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"1\" time=\"0.404\" timestamp=\"2026-10-20T14:59:05.103830+00:00\" hostname=\"d30ca23fd0d7\"><testcase classname=\"test_search\" name=\"test_search_ignores_case\" time=\"0.326\" /></testsuite></testsuites>",
+        "status": "pass"
+      },
+      "verified": true
+    },
+    {
+      "id": "closed-filter",
+      "test": "test_closed.py",
+      "pre": {
+        "exit_code": 1,
+        "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________________ test_closed_filter_excludes_open _______________________\n\napp_url = 'http://127.0.0.1:8080'\n\n    def test_closed_filter_excludes_open(app_url):\n        with urlopen(app_url + \"/api/issues?status=closed\", timeout=2) as response:\n            issues = json.load(response)\n>       assert [issue[\"id\"] for issue in issues] == [2]\nE       assert [1, 3] == [2]\nE         \nE         At index 0 diff: 1 != 2\nE         Left contains one more item: 3\nE         Use -v to get more diff\n\nchecks/test_closed.py:8: AssertionError\n---------------------------- Captured stderr setup -----------------------------\n127.0.0.1 - - [20/Oct/2026 14:59:07] \"GET /api/issues HTTP/1.1\" 200 -\n----------------------------- Captured stderr call -----------------------------\n127.0.0.1 - - [20/Oct/2026 14:59:07] \"GET /api/issues?status=closed HTTP/1.1\" 200 -\n=========================== short test summary info ============================\nFAILED checks/test_closed.py::test_closed_filter_excludes_open - assert [1, 3...\n1 failed in 0.42s\n",
+        "stderr": "",
+        "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"1\" skipped=\"0\" tests=\"1\" time=\"0.425\" timestamp=\"2026-10-20T14:59:07.405295+00:00\" hostname=\"faac97bb97bd\"><testcase classname=\"test_closed\" name=\"test_closed_filter_excludes_open\" time=\"0.322\"><failure message=\"assert [1, 3] == [2]&#10;  &#10;  At index 0 diff: 1 != 2&#10;  Left contains one more item: 3&#10;  Use -v to get more diff\">app_url = 'http://127.0.0.1:8080'\n\n    def test_closed_filter_excludes_open(app_url):\n        with urlopen(app_url + \"/api/issues?status=closed\", timeout=2) as response:\n            issues = json.load(response)\n&gt;       assert [issue[\"id\"] for issue in issues] == [2]\nE       assert [1, 3] == [2]\nE         \nE         At index 0 diff: 1 != 2\nE         Left contains one more item: 3\nE         Use -v to get more diff\n\nchecks/test_closed.py:8: AssertionError</failure></testcase></testsuite></testsuites>",
+        "status": "assertion_failure"
+      },
+      "post": {
+        "exit_code": 0,
+        "stdout": ".                                                                        [100%]\n1 passed in 0.37s\n",
+        "stderr": "",
+        "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"1\" time=\"0.376\" timestamp=\"2026-10-20T14:59:09.949277+00:00\" hostname=\"b9aeca38fb1e\"><testcase classname=\"test_closed\" name=\"test_closed_filter_excludes_open\" time=\"0.322\" /></testsuite></testsuites>",
+        "status": "pass"
+      },
+      "verified": true
+    },
+    {
+      "id": "priority-order",
+      "test": "test_priority.py",
+      "pre": {
+        "exit_code": 1,
+        "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________________ test_priority_is_high_medium_low _______________________\n\napp_url = 'http://127.0.0.1:8080'\n\n    def test_priority_is_high_medium_low(app_url):\n        with urlopen(app_url + \"/api/issues?sort=priority\", timeout=2) as response:\n            issues = json.load(response)\n>       assert [issue[\"priority\"] for issue in issues] == [\"high\", \"medium\", \"low\"]\nE       AssertionError: assert ['high', 'low', 'medium'] == ['high', 'medium', 'low']\nE         \nE         At index 1 diff: 'low' != 'medium'\nE         Use -v to get more diff\n\nchecks/test_priority.py:8: AssertionError\n---------------------------- Captured stderr setup -----------------------------\n127.0.0.1 - - [20/Oct/2026 14:59:12] \"GET /api/issues HTTP/1.1\" 200 -\n----------------------------- Captured stderr call -----------------------------\n127.0.0.1 - - [20/Oct/2026 14:59:12] \"GET /api/issues?sort=priority HTTP/1.1\" 200 -\n=========================== short test summary info ============================\nFAILED checks/test_priority.py::test_priority_is_high_medium_low - AssertionE...\n1 failed in 0.40s\n",
+        "stderr": "",
+        "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"1\" skipped=\"0\" tests=\"1\" time=\"0.409\" timestamp=\"2026-10-20T14:59:12.045974+00:00\" hostname=\"899c69601754\"><testcase classname=\"test_priority\" name=\"test_priority_is_high_medium_low\" time=\"0.313\"><failure message=\"AssertionError: assert ['high', 'low', 'medium'] == ['high', 'medium', 'low']&#10;  &#10;  At index 1 diff: 'low' != 'medium'&#10;  Use -v to get more diff\">app_url = 'http://127.0.0.1:8080'\n\n    def test_priority_is_high_medium_low(app_url):\n        with urlopen(app_url + \"/api/issues?sort=priority\", timeout=2) as response:\n            issues = json.load(response)\n&gt;       assert [issue[\"priority\"] for issue in issues] == [\"high\", \"medium\", \"low\"]\nE       AssertionError: assert ['high', 'low', 'medium'] == ['high', 'medium', 'low']\nE         \nE         At index 1 diff: 'low' != 'medium'\nE         Use -v to get more diff\n\nchecks/test_priority.py:8: AssertionError</failure></testcase></testsuite></testsuites>",
+        "status": "assertion_failure"
+      },
+      "post": {
+        "exit_code": 0,
+        "stdout": ".                                                                        [100%]\n1 passed in 0.34s\n",
+        "stderr": "",
+        "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"1\" time=\"0.351\" timestamp=\"2026-10-20T14:59:14.248167+00:00\" hostname=\"eabc5e9f77bc\"><testcase classname=\"test_priority\" name=\"test_priority_is_high_medium_low\" time=\"0.306\" /></testsuite></testsuites>",
+        "status": "pass"
+      },
+      "verified": true
+    }
+  ],
+  "summary": {
+    "verified": 3,
+    "total": 3,
+    "wilson_95": [
+      0.4385029682449546,
+      1.0
+    ]
+  },
+  "m0_complete": false,
+  "limitation": "Fixture tests only; owner recordings and 10\u201320 annotated bugs are still required."
+}

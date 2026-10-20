@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T14:52:33.695271+00:00",
+  "updated_at": "2026-10-20T15:00:15.446863+00:00",
   "cases": [
     {
       "task": "bpmn-io__bpmn-js-1557",
@@ -37,22 +37,21 @@
     },
     {
       "task": "bpmn-io__bpmn-js-1659",
-      "state": "admitted"
+      "state": "existing-validated"
     },
     {
       "task": "bpmn-io__bpmn-js-1677",
       "state": "not-admitted",
-      "reason": "pulling-image"
+      "reason": "oracle-rejected"
     },
     {
       "task": "bpmn-io__bpmn-js-1679",
-      "state": "not-admitted",
-      "reason": "pending"
+      "state": "admitted"
     },
     {
       "task": "bpmn-io__bpmn-js-1719",
       "state": "not-admitted",
-      "reason": "pending"
+      "reason": "resolving-image"
     },
     {
       "task": "bpmn-io__bpmn-js-1640",

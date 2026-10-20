@@ -46,15 +46,15 @@ Update this file at the end of every working session: what changed, gate results
   suite: **49 passed**. No model transport is wired to it yet and no metered
   calls have been made. Private local configuration is capped below the supplied
   prepaid balance; no key or billing screenshot is committed.
-- [RUN] Current external admission gate: **7/7 admitted annotations, Wilson 95%
-  [64.57%, 100%]**, below the required sample size and lower bound. This is
+- [RUN] Current external admission gate: **8/8 admitted annotations, Wilson 95%
+  [67.56%, 100%]**, below the required sample size and lower bound. This is
   `notes/runs/m0-gate.json`, not model performance. Cases 1557, 1570 and 1655
-  plus 1610, 1623, 1638 and 1659 pass; 1567 was rejected because its target failure is a runtime exception.
+  plus 1610, 1623, 1638, 1659 and 1679 pass; 1567 and 1677 were rejected
+  because their target failures are runtime exceptions without assertions.
   Case 1578 passed its native oracle but was subsequently excluded for insufficient
   oracle-to-claim alignment (D24); its historical proof remains. Candidate 1610
-  has passed, as have 1623/1638/1659; candidate 1677's post-fix run is live.
-  Its observed pre-fix target failure is a runtime exception without an assertion,
-  so it cannot enter the strict admission gate. Two additional reviewed
+  has passed, as have 1623/1638/1659/1679; candidate 1719 is live.
+  Two additional reviewed
   candidates, 1640 and 1928, are queued for
   a subsequent batch resume after the currently live 12-case process finishes.
 - [CODE/RUN] Fresh-clone source preparation now downloads and hash-verifies both
@@ -87,6 +87,12 @@ Update this file at the end of every working session: what changed, gate results
   in `evals/PROTOCOL.md` (D26), before any model measurements. This includes
   strict temporal diagnostics beside ±5 s retrieval, claim grounding, independent
   regression/wrong-fix checks and actual Harbor trial rewards.
+- [CODE/RUN/SRC] Updated host and fixture sandbox to pytest 9.1.1 to address
+  GitHub's three alerts for CVE-2025-71176. All 51 harness tests pass. The same
+  three frozen fixture checks still fail before/pass after in the rebuilt image
+  (3/3; Wilson 95% [43.85%, 100%]); proof:
+  `notes/runs/fixture-oracle-pytest9.json`. The local default image was promoted
+  only after verification. Details: `notes/2026-10-20-pytest-upgrade.md`.
 
 ## Log
 

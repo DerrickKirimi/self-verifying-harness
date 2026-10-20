@@ -67,6 +67,14 @@ Local clones live in `~/swe/llms/<repo>`. Commits are as read on the date shown.
   `notes/runs/m1-package-candidates.json`. Selection rationale and unmeasured
   integration checks: `notes/2026-10-20-harness-selection.md`. [RUN/INF]
 
+### Fixture dependency maintenance (2026-10-20)
+
+- [pytest 9.0.3 release](https://github.com/pytest-dev/pytest/releases/tag/9.0.3):
+  upstream confirms the insecure temporary-directory fix for CVE-2025-71176.
+  [SRC] GitHub's repository alerts identify the three affected declarations;
+  snapshot: `notes/runs/dependency-alerts-before.json`. Upgrade and regression
+  evidence: `notes/2026-10-20-pytest-upgrade.md`. [RUN]
+
 ## Public evaluation candidates (read 2026-10-20)
 
 No external candidate has passed our oracle yet. [RUN] Detailed inspection scope

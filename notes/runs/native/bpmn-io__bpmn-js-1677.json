@@ -1,0 +1,68 @@
+{
+  "task": "bpmn-io__bpmn-js-1677",
+  "run_at": "2026-10-20T14:55:32.804365+00:00",
+  "graded_at": "2026-10-20T14:55:32.804385+00:00",
+  "row_sha256": "dfd7a46dde0d5024fdf3cda5b734f13369fcdab4e7324726ea94d518a68751f7",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1677@sha256:d477e0dd37cd6ddc58de258af69c95b86e085336e66f1be4325b03e400e9401d",
+  "image_id": "sha256:926e013fc08ad811f6893d865732832d967388dfeac0ce41f812f6e6af1155f7",
+  "base_commit": "ee75929dd1e9bbb5c6ba5ce5c4475008b354a825",
+  "fix_patch_sha256": "19db55731162201669163f14fef3bf4d2ed1321e4c9bec88eb346b53c8822cc7",
+  "test_patch_sha256": "fc943eef09995b05916762e2f987b35353cd8573ef63d2d29780a4432ffb0a12",
+  "upstream_eval_sha256": "8f3d2aa161632b37da1b7e505094d6be1efff2ffa983be82560d596c53ccdd32",
+  "executed_eval_sha256": "3becd7f0c7e17d5db76ab7d2795979b19f045a2894d8d6637cbf34c4b460cbeb",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1789,
+      "discovered": 1796,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": false,
+      "summary": "1 FAILED, 1788 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "ee75929dd1e9bbb5c6ba5ce5c4475008b354a825",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - label-editing basics should cancel on selected element deletion FAILED\n\tError: illegal invocation in <execute> or <revert> phase (action: element.updateLabel)\n\t    at CommandStack._pushAction (webpack-internal:///./node_modules/diagram-js/lib/command/CommandStack.js:446:11)\n\t    at CommandStack.execute (webpack-internal:///./node_modules/diagram-js/lib/command/CommandStack.js:152:8)\n\t    at Modeling.updateLabel (webpack-internal:///./lib/features/modeling/Modeling.js:78:22)\n\t    at LabelEditingProvider.update (webpack-internal:///./lib/features/label-editing/LabelEditingProvider.js:416:18)\n\t    at DirectEditing.complete (webpack-internal:///./node_modules/diagram-js-direct-editing/lib/DirectEditing.js:106:21)\n\t    at eval (webpack-internal:///./lib/features/label-editing/LabelEditingProvider.js:52:21)\n\t    at invokeFunction (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:516:13)\n\t    at EventBus._invokeListener (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:368:19)\n\t    at EventBus._invokeListeners (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:349:24)\n\t    at EventBus.fire (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:310:24)",
+      "targets": [
+        {
+          "name": "features - label-editing basics should cancel on selected element deletion ",
+          "failed": true,
+          "assertion": false,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - label-editing basics should cancel on selected element deletion FAILED\n\tError: illegal invocation in <execute> or <revert> phase (action: element.updateLabel)\n\t    at CommandStack._pushAction (webpack-internal:///./node_modules/diagram-js/lib/command/CommandStack.js:446:11)\n\t    at CommandStack.execute (webpack-internal:///./node_modules/diagram-js/lib/command/CommandStack.js:152:8)\n\t    at Modeling.updateLabel (webpack-internal:///./lib/features/modeling/Modeling.js:78:22)\n\t    at LabelEditingProvider.update (webpack-internal:///./lib/features/label-editing/LabelEditingProvider.js:416:18)\n\t    at DirectEditing.complete (webpack-internal:///./node_modules/diagram-js-direct-editing/lib/DirectEditing.js:106:21)\n\t    at eval (webpack-internal:///./lib/features/label-editing/LabelEditingProvider.js:52:21)\n\t    at invokeFunction (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:516:13)\n\t    at EventBus._invokeListener (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:368:19)\n\t    at EventBus._invokeListeners (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:349:24)\n\t    at EventBus.fire (webpack-internal:///./node_modules/diagram-js/lib/core/EventBus.js:310:24)"
+        }
+      ],
+      "log_sha256": "b8f5e99eba3a9cf4daef90d075995943b5475bdd19d5cd9d545a562175c96191",
+      "raw_log_sha256": "6e10aa6754632c8f1cd3e20730c4844c34326dbd2d822a7bfa9fe0cd9799b00a"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1789,
+      "discovered": 1796,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1789 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "ee75929dd1e9bbb5c6ba5ce5c4475008b354a825",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features - label-editing basics should cancel on selected element deletion ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "c577c3748a5c48f341f62c01c2314b9b162fcbd80746287f6d76cb6b68820ab0",
+      "raw_log_sha256": "9ad277e437108968d3a2c41f6d71391725262b95ede31498464dc8b0013f6e69"
+    }
+  },
+  "verified": false,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1677/logs"
+}

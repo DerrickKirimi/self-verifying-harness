@@ -1,0 +1,81 @@
+{
+  "task": "bpmn-io__bpmn-js-1679",
+  "run_at": "2026-10-20T14:59:54.784348+00:00",
+  "graded_at": "2026-10-20T14:59:54.784368+00:00",
+  "row_sha256": "790e12fb5b0eddbaa5d46226d04f17450a6d9b1f731e3a5668fa3937fac52838",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+  "image_id": "sha256:cf7c141432a96db65f4e5b771bb492eeb1509c5752c8bce01d3c58b200db1d14",
+  "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+  "fix_patch_sha256": "5b97e165e6788a68802845d667c12db747ee8bbff58755d971d108e0c574801e",
+  "test_patch_sha256": "0784ca6bdbdbce42c762ed7e580a999e1c231aab0e8cd5ed7175bd313b2f7832",
+  "upstream_eval_sha256": "28ff78c6fc1c4820203c7683640b9541fb8ab1cab08a06372bedbc6896751e47",
+  "executed_eval_sha256": "3c94e7f505b8b18c3c01255dfaeb1339fffe5a324e4d9e4452a3e5ce2f049cab",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1792,
+      "discovered": 1799,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "2 FAILED, 1790 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider toggle sequential toggle button should set loop characteristics type FAILED\n\tAssertionError: expected false to be true\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:659:150)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features/popup-menu - replace menu provider toggle sequential toggle button should set loop characteristics type ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider toggle sequential toggle button should set loop characteristics type FAILED\n\tAssertionError: expected false to be true\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:659:150)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "features/popup-menu - replace menu provider toggle parallel toggle button should set loop characteristics type ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider toggle parallel toggle button should set loop characteristics type FAILED\n\tAssertionError: expected false to be true\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:534:150)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "c99e6dd3d91b5a4f23c5d7642266089bc0f98d6909cae9617e5f2a2667c63e22",
+      "raw_log_sha256": "5a85ce1d81a74abe86fbc1f95d42a4f80db887a8644d19f9ce7bcb42912d2765"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1792,
+      "discovered": 1799,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1792 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/popup-menu - replace menu provider toggle sequential toggle button should set loop characteristics type ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "features/popup-menu - replace menu provider toggle parallel toggle button should set loop characteristics type ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "0e837245255d21dbcbe13d04a974745bb3181fa33a16c40e4247189afe37c934",
+      "raw_log_sha256": "deb8bdb192d8f936d6a907b2ba16842d770dfa4f82f62d29ec3ad77f6343fb98"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "data/external/proofs/cddb3f8a44047f54d7f5738d4430d5441c4368bbcce4b4e56edde7d74f961482",
+  "source_report_sha256": "cddb3f8a44047f54d7f5738d4430d5441c4368bbcce4b4e56edde7d74f961482"
+}
