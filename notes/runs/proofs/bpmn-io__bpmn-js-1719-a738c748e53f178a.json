@@ -1,0 +1,69 @@
+{
+  "task": "bpmn-io__bpmn-js-1719",
+  "run_at": "2026-10-20T15:04:10.635111+00:00",
+  "graded_at": "2026-10-20T15:04:10.635132+00:00",
+  "row_sha256": "49b5b6c39f8c4fdeb416734519dc1054867af7f14bdce65d38f77f147cd292e7",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1719@sha256:1961091a8de6b8c388cb83277f78875a0e9eec425ffee1c128977ba3254dd297",
+  "image_id": "sha256:70bd01d80d89bea55d75a3f2b6796022e17d2cb0f43b2a3e7577a94079fe8e14",
+  "base_commit": "a02fe7bfa1f2923c1c2c1a650e8116329e602492",
+  "fix_patch_sha256": "ce18d2a7c48eb8e93ca7bc989708c27a1cebe114b5f1891e3fd3e60b9ab029bf",
+  "test_patch_sha256": "7d2a03cd22b6c4bbcbf47ab4e442ec69b3b79b64032fa6f591f0102ec5bbd5b6",
+  "upstream_eval_sha256": "5f95bb5b4abca158c881fc896ee3d0a5dbbb5760d1f9756e84e413599dda5839",
+  "executed_eval_sha256": "8bfc214683b4837624f5d455205bf1b4b844746fbf1733530415b083a2c04c59",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1808,
+      "discovered": 1815,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1807 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "a02fe7bfa1f2923c1c2c1a650e8116329e602492",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/modeling/behavior - subprocess planes create should move labels to plane for collapsed subprocess FAILED\n\tAssertionError: expected { Object (labels, children, ...) } to equal { Object (labels, children, ...) }\n\t    at eval (webpack-internal:///./test/spec/features/modeling/behavior/SubProcessPlaneBehaviorSpec.js:126:44)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:244:20)",
+      "targets": [
+        {
+          "name": "features/modeling/behavior - subprocess planes create should move labels to plane for collapsed subprocess ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/modeling/behavior - subprocess planes create should move labels to plane for collapsed subprocess FAILED\n\tAssertionError: expected { Object (labels, children, ...) } to equal { Object (labels, children, ...) }\n\t    at eval (webpack-internal:///./test/spec/features/modeling/behavior/SubProcessPlaneBehaviorSpec.js:126:44)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:229:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:244:20)"
+        }
+      ],
+      "log_sha256": "7128da8e307bc025245fba32edcd3ff8fe437c82bb3c6e1885d3978b813b4a5a",
+      "raw_log_sha256": "cfdd521a1b16dd5dcb21017160b52b2ebcb4c559cbe50a89bdbb15ceaf3b9d7e"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1808,
+      "discovered": 1815,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1808 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "a02fe7bfa1f2923c1c2c1a650e8116329e602492",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/modeling/behavior - subprocess planes create should move labels to plane for collapsed subprocess ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "da6e0fea59940238cfbe03be028e2aedcec36362520dca86e040526b50fc1748",
+      "raw_log_sha256": "6690c75c8e24197b13af1f2434214605f30698dc5feba58244fe73e55c78ab2d"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "data/external/proofs/3629171bdb6b26e08c9a3986e58b81809b1f590782dfb16824dd209b1cbff824",
+  "source_report_sha256": "3629171bdb6b26e08c9a3986e58b81809b1f590782dfb16824dd209b1cbff824"
+}

@@ -36,6 +36,8 @@ def main():
     for task in IDS:
         row = selected[task]
         case = progress["cases"].setdefault(task, {})
+        case.pop("detail", None)
+        case.pop("reason", None)
         output = report_root / (task + ".json")
         row_path = source / "cases" / (task + ".json")
         if task == "bpmn-io__bpmn-js-1655":

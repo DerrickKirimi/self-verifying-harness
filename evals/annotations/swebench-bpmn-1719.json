@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1719",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1719",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1719.json",
+    "row_sha256": "49b5b6c39f8c4fdeb416734519dc1054867af7f14bdce65d38f77f147cd292e7"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "a02fe7bfa1f2923c1c2c1a650e8116329e602492",
+    "fix_patch_sha256": "ce18d2a7c48eb8e93ca7bc989708c27a1cebe114b5f1891e3fd3e60b9ab029bf",
+    "test_patch_sha256": "7d2a03cd22b6c4bbcbf47ab4e442ec69b3b79b64032fa6f591f0102ec5bbd5b6",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1719@sha256:1961091a8de6b8c388cb83277f78875a0e9eec425ffee1c128977ba3254dd297"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1719/media.gif",
+    "sha256": "60563d817e9beecd50ee38f774ad0aa339a348b3efc4f879e4058e872406e917",
+    "source_url": "https://user-images.githubusercontent.com/33545902/178237778-960903e0-70dd-41d2-adb8-362360785914.gif",
+    "duration_s": 47.66,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 31.0,
+      "t_end_s": 35.0,
+      "text": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/modeling/behavior - subprocess planes create should move labels to plane for collapsed subprocess "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1719-a738c748e53f178a.json",
+    "report_sha256": "a738c748e53f178a56ddaea1c2ea561dc4110d0964441fe8ae2e3d00161a70d1"
+  }
+}

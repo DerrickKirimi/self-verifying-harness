@@ -1,0 +1,69 @@
+{
+  "task": "bpmn-io__bpmn-js-1928",
+  "run_at": "2026-10-20T15:15:24.703094+00:00",
+  "graded_at": "2026-10-20T15:15:24.703113+00:00",
+  "row_sha256": "b8f75e1673ac2e4bba3bb7b7af3d2f1f9d018e438146087b48be50796e00b4f4",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+  "image_id": "sha256:73866f1cf1f9843a2fdf60e5a1811c0390bf9a0ccd6c8c4366a71cce57b1c9b2",
+  "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+  "fix_patch_sha256": "3bf1d7527a20d8515392c3ad8ba08f260f6b324610e27817dc9b2ea80d7921eb",
+  "test_patch_sha256": "8928cb4c727153a54eefc0015395839aa3a71470654fba8c7119ff1a572a38ed",
+  "upstream_eval_sha256": "be8a2ff8cd959db0c0a21d5f7866d02b7b42ce61b62d8c82969594e2c8d4d7e7",
+  "executed_eval_sha256": "0c58c5d2b535c3bdf13fd28d9b7ffdcc66bd9cd4c87b04daa1c34c301428e568",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1889,
+      "discovered": 1896,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1888 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/space-tool - BpmnSpaceTool participants should not resize an empty pool vertically FAILED\n\tAssertionError: expected <Participant_2> bounds to equal \n\t  { x: 160, y: 170, width: 600, height: 60 }\n\tbut got\n\t  { x: 160, y: 70, width: 600, height: 160 }",
+      "targets": [
+        {
+          "name": "features/space-tool - BpmnSpaceTool participants should not resize an empty pool vertically ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/space-tool - BpmnSpaceTool participants should not resize an empty pool vertically FAILED\n\tAssertionError: expected <Participant_2> bounds to equal \n\t  { x: 160, y: 170, width: 600, height: 60 }\n\tbut got\n\t  { x: 160, y: 70, width: 600, height: 160 }"
+        }
+      ],
+      "log_sha256": "4adab057218a04d5750fe7024da968174fe6b65497872378a5c9b6c07787f12b",
+      "raw_log_sha256": "7eb829210008af6ceb7131dc860fe38a786c9992b184ea19d9d2faf89fd8b0c7"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1889,
+      "discovered": 1896,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1889 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/space-tool - BpmnSpaceTool participants should not resize an empty pool vertically ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "9b77de93258c258a18cb387add08fc07b3362adb65499528bd2f3b8ca3b7ad66",
+      "raw_log_sha256": "c31f946a7aafde2a79bb68746ccc39c9855b6df5ad32b64bd8990142a0dfec85"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "data/external/proofs/edd65a74bbb6d096c75173e8175b4e59496938c87fa01ae02f790678aa595d79",
+  "source_report_sha256": "edd65a74bbb6d096c75173e8175b4e59496938c87fa01ae02f790678aa595d79"
+}

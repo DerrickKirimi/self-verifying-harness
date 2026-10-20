@@ -23,6 +23,12 @@ Do not tune them after observing a result. [INF]
   held-out repair correctness and task-package integrity. A setup failure,
   inaccessible page or timeout is never an observed claim failure. [INF]
 
+[CODE] `svh freeze-eval --output evals/frozen-m0.json` refuses an incomplete
+admission gate or an existing destination. It records the exact annotation hashes
+and a content identity. `svh.corpus.load_frozen_corpus` checks those bytes and
+revalidates admission before a model evaluation; a saved pass flag cannot waive
+the sample requirement. Freeze only after finishing the intended curation batch.
+
 ## M0: corpus admission
 
 [CODE/INF] Existing gate: 10–20 distinct reviewed temporal artifacts; every

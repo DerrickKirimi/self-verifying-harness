@@ -1,0 +1,51 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1640",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1640",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1640.json",
+    "row_sha256": "a022f8a46e10fb8fcc420442531e0ce280ce3e98db85c463386036865dc32391"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+    "fix_patch_sha256": "d05930dcc7c29124c4dfcee7fd6b628ad3f7da0eb7ac3973fb7b3cc4d58e8b18",
+    "test_patch_sha256": "d6797a4785d92b3d56c960d8146be158e679f804ea132f724272b46010057a74",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1640/media.gif",
+    "sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+    "source_url": "https://user-images.githubusercontent.com/7633572/150531680-3f51471b-df5f-4b08-b6c1-d49b2e6a2209.gif",
+    "duration_s": 18.39,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:36:31.626757+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 7.5,
+      "t_end_s": 12.5,
+      "text": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/popup-menu - replace menu provider toggle parallel toggle button should keep sequential properties ",
+        "features/popup-menu - replace menu provider toggle sequential toggle button should keep parallel properties "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1640-e4c8ea0829ed2390.json",
+    "report_sha256": "e4c8ea0829ed2390e116293e8ab462cbc595a35ede9e06e29ea11872e352b95b"
+  }
+}

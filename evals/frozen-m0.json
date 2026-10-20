@@ -1,0 +1,122 @@
+{
+  "format": "svh.corpus.v1",
+  "frozen_at": "2026-10-20T18:05:46.319764+00:00",
+  "dataset": "SWE-bench/SWE-bench_Multimodal",
+  "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+  "annotations": [
+    {
+      "path": "evals/annotations/swebench-bpmn-1557.json",
+      "sha256": "c07859b73fecc0da2ad50b2f8315bff3062a1893eb9b45615891bdc8bbfdf50a"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1570.json",
+      "sha256": "7c2bd5db30534a5c0a22b42715939fd2a1893cbceeccc1c374725492be721827"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1610.json",
+      "sha256": "55adb287ada5d4abeefbbe57281e02a7e87b26857505dcdab53e4aa300ee54cd"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1623.json",
+      "sha256": "eff7c06e06dc7d7f89c2df4e56a01a3433c3c9d6ad1ac0777835b2a42d700fa8"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1638.json",
+      "sha256": "cfa02b9bf144b4c880dba5173fa808cfbbb9a678ea9f2582543b1b64c03dc357"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1640.json",
+      "sha256": "0c19f4af0bf122c3f2cc8ac1289a223ce238c9ac1d77c1f0020da8382722e4d6"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1655.json",
+      "sha256": "eaecfbfc26681ffbd936a90272edd033588619bc1ac03dfe91cce3598555b153"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1659.json",
+      "sha256": "0da30937cbc74b6b0c2147098a87060dd6edd3faaa59f38f850e6a21ed36ba28"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1679.json",
+      "sha256": "b15823a55c6bf76721ec062387b9846fdb734c86d462d6d4186577b682cb9fef"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1719.json",
+      "sha256": "058a71aed6557ef48bad59443b564a32c216d54aad2bef28c4f24b6ec5c839bd"
+    },
+    {
+      "path": "evals/annotations/swebench-bpmn-1928.json",
+      "sha256": "6d70aad427ad5e79de1840991c98eb6d347af4f0c84bccdd00368485cd862b9d"
+    }
+  ],
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "scope": "Curated visual-only supplied-oracle gate; speech and generated-reproduction gates remain separate",
+  "gate": {
+    "cases": [
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1557.json",
+        "id": "swebench-bpmn-1557",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1570.json",
+        "id": "swebench-bpmn-1570",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1610.json",
+        "id": "swebench-bpmn-1610",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1623.json",
+        "id": "swebench-bpmn-1623",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1638.json",
+        "id": "swebench-bpmn-1638",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1640.json",
+        "id": "swebench-bpmn-1640",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1655.json",
+        "id": "swebench-bpmn-1655",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1659.json",
+        "id": "swebench-bpmn-1659",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1679.json",
+        "id": "swebench-bpmn-1679",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1719.json",
+        "id": "swebench-bpmn-1719",
+        "accepted": true
+      },
+      {
+        "annotation": "evals/annotations/swebench-bpmn-1928.json",
+        "id": "swebench-bpmn-1928",
+        "accepted": true
+      }
+    ],
+    "accepted": 11,
+    "total": 11,
+    "wilson_95": [
+      0.7411670330319684,
+      1.0
+    ],
+    "required_wilson_lower": 0.7,
+    "passed": true,
+    "scope": "Curated visual-only supplied-oracle gate; speech and generated-reproduction gates remain separate"
+  }
+}

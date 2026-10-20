@@ -5,6 +5,7 @@ supplied `verified` Boolean is trusted: source bytes and raw logs are rechecked.
 """
 
 import hashlib
+from datetime import datetime, timezone
 import json
 import math
 from pathlib import Path
@@ -179,3 +180,38 @@ def corpus_gate(root, paths):
             "wilson_95": interval, "required_wilson_lower": 0.7,
             "passed": 10 <= len(outcomes) <= 20 and accepted == len(outcomes) and interval[0] >= 0.7,
             "scope": "Curated visual-only supplied-oracle gate; speech and generated-reproduction gates remain separate"}
+
+
+def freeze_corpus(root, paths, destination):
+    """Freeze an admitted evaluation set; refuse incomplete gates and overwrites."""
+    paths = sorted(paths)
+    gate = corpus_gate(root, paths)
+    if not gate["passed"]:
+        raise ValueError("Cannot freeze an evaluation corpus before its admission gate passes")
+    entries = [{"path": str(path.relative_to(root)), "sha256": digest(path)} for path in paths]
+    identity = {"dataset": DATASET, "revision": REVISION, "annotations": entries}
+    checksum = hashlib.sha256(json.dumps(identity, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    manifest = {"format": "svh.corpus.v1", "frozen_at": datetime.now(timezone.utc).isoformat(),
+                **identity, "corpus_sha256": checksum, "scope": gate["scope"], "gate": gate}
+    destination = contained(root, destination)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with destination.open("x") as output:
+        output.write(json.dumps(manifest, indent=2) + "\n")
+    return manifest
+
+
+def load_frozen_corpus(root, path):
+    """Revalidate bytes and evidence before evaluating a frozen corpus."""
+    manifest = json.loads(contained(root, path).read_text())
+    if (manifest.get("format") != "svh.corpus.v1"
+            or manifest.get("dataset") != DATASET or manifest.get("revision") != REVISION):
+        raise ValueError("Unrecognized frozen evaluation corpus")
+    identity = {key: manifest[key] for key in ("dataset", "revision", "annotations")}
+    checksum = hashlib.sha256(json.dumps(identity, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    if checksum != manifest["corpus_sha256"]:
+        raise ValueError("Frozen corpus identity changed")
+    paths = [checked_file(root, entry["path"], entry["sha256"]) for entry in manifest["annotations"]]
+    gate = corpus_gate(root, paths)
+    if not gate["passed"]:
+        raise ValueError("Frozen corpus no longer satisfies its admission gate")
+    return manifest, [json.loads(path.read_text()) for path in paths]

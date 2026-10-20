@@ -10,9 +10,9 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
             embeddings                    ask in the meeting
 ```
 
-**Status:** M0 in progress. A Docker oracle runner and three planted issue-board
-bugs are executable. A pinned external video/task annotation now validates;
-the full visual eval set is being curated before ingestion work.
+**Status:** M0 passed on eleven reviewed temporal cases with observed supplied
+test failures before and passes after their reference fixes. The visual corpus
+is frozen; M1 ingestion and MCP integration are starting. The MVP is incomplete.
 See [`STATUS.md`](STATUS.md).
 
 ## Run the first checkpoint
@@ -38,14 +38,17 @@ writes commit IDs, image ID, test hashes, logs and a Wilson interval to
 gate or a Harbor oracle/nop run.
 
 Reference projects inform decisions; none is a required base. The M0 runner
-has no MCP, Pixeltable, embedding-model or agent-loop dependency. Current
+works independently of the optional agent/MCP stack. No Pixeltable or embedding
+model is inherited from a reference. Current
 integration and retrieval decisions are in [the decision log](docs/decisions.md).
 
 The first external oracle also works: a SWE-bench Multimodal BPMN video task
 fails at the expected color assertion before its reference fix, then passes
 its 1777 executed tests afterward (7 existing skips remain unchanged).
-This is a supplied-oracle pilot with a validated timestamp annotation; full M0
-admission is still pending. See the [audit and reproduction commands](notes/2026-10-20-swebench-multimodal-pilot.md)
+The full M0 set now contains eleven admitted cases: 11/11, Wilson 95%
+[74.12%, 100%], frozen in [evals/frozen-m0.json](evals/frozen-m0.json).
+This measures curated supplied-oracle integrity, not generated fixes or speech.
+See the [audit and reproduction commands](notes/2026-10-20-swebench-multimodal-pilot.md)
 and [external admission workflow](notes/2026-10-20-external-admission.md).
 
 ## Why

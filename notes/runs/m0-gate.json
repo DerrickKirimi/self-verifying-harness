@@ -26,6 +26,11 @@
       "accepted": true
     },
     {
+      "annotation": "evals/annotations/swebench-bpmn-1640.json",
+      "id": "swebench-bpmn-1640",
+      "accepted": true
+    },
+    {
       "annotation": "evals/annotations/swebench-bpmn-1655.json",
       "id": "swebench-bpmn-1655",
       "accepted": true
@@ -39,15 +44,25 @@
       "annotation": "evals/annotations/swebench-bpmn-1679.json",
       "id": "swebench-bpmn-1679",
       "accepted": true
+    },
+    {
+      "annotation": "evals/annotations/swebench-bpmn-1719.json",
+      "id": "swebench-bpmn-1719",
+      "accepted": true
+    },
+    {
+      "annotation": "evals/annotations/swebench-bpmn-1928.json",
+      "id": "swebench-bpmn-1928",
+      "accepted": true
     }
   ],
-  "accepted": 8,
-  "total": 8,
+  "accepted": 11,
+  "total": 11,
   "wilson_95": [
-    0.6755924351161198,
+    0.7411670330319684,
     1.0
   ],
   "required_wilson_lower": 0.7,
-  "passed": false,
+  "passed": true,
   "scope": "Curated visual-only supplied-oracle gate; speech and generated-reproduction gates remain separate"
 }

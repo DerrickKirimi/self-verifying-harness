@@ -1,0 +1,80 @@
+{
+  "task": "bpmn-io__bpmn-js-1640",
+  "run_at": "2026-10-20T15:09:16.914730+00:00",
+  "graded_at": "2026-10-20T15:09:16.914756+00:00",
+  "row_sha256": "a022f8a46e10fb8fcc420442531e0ce280ce3e98db85c463386036865dc32391",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+  "image_id": "sha256:3452605bc71851612365a552ed2bbf1748a349a7ac5f5e594e21520cb8acb362",
+  "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+  "fix_patch_sha256": "d05930dcc7c29124c4dfcee7fd6b628ad3f7da0eb7ac3973fb7b3cc4d58e8b18",
+  "test_patch_sha256": "d6797a4785d92b3d56c960d8146be158e679f804ea132f724272b46010057a74",
+  "upstream_eval_sha256": "80e4dd8af656805edd51be01638f163f3ffdaae279ebd9fac82b6f6ab80e3dea",
+  "executed_eval_sha256": "070931394998aa72e5db140ce6b97066d5c2ee29a8821d1940c7650d74922b4a",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1776,
+      "discovered": 1783,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "2 FAILED, 1774 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider toggle parallel toggle button should keep sequential properties FAILED\n\tAssertionError: expected { Object ($type) } to deeply equal { Object ($type, collection, ...) }\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:539:115)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features/popup-menu - replace menu provider toggle parallel toggle button should keep sequential properties ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider toggle parallel toggle button should keep sequential properties FAILED\n\tAssertionError: expected { Object ($type) } to deeply equal { Object ($type, collection, ...) }\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:539:115)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        },
+        {
+          "name": "features/popup-menu - replace menu provider toggle sequential toggle button should keep parallel properties ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider toggle sequential toggle button should keep parallel properties FAILED\n\tAssertionError: expected { Object ($type) } to deeply equal { Object ($type, collection, ...) }\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:645:115)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "6cfa48fe393c4ee63e7c8318ced64ef6d3db73bb1e80737e24a5d59e82962b8d",
+      "raw_log_sha256": "4020c3ac5c000e3725dc7c29db67f36e0be44abbcd3ee02159df9dd0b4c68230"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1776,
+      "discovered": 1783,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1776 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/popup-menu - replace menu provider toggle parallel toggle button should keep sequential properties ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        },
+        {
+          "name": "features/popup-menu - replace menu provider toggle sequential toggle button should keep parallel properties ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "af32d951174976df0f81770c65e6ddffcb7f7c02f2efb2c687c0b3e5e8fc95dc",
+      "raw_log_sha256": "c4aa4b75a1eeb2a64e59b7d0e46480fabc4607d2d330c642efe2bf2378d204d6"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1640/logs"
+}

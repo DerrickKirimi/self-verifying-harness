@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1928",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1928",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1928.json",
+    "row_sha256": "b8f75e1673ac2e4bba3bb7b7af3d2f1f9d018e438146087b48be50796e00b4f4"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+    "fix_patch_sha256": "3bf1d7527a20d8515392c3ad8ba08f260f6b324610e27817dc9b2ea80d7921eb",
+    "test_patch_sha256": "8928cb4c727153a54eefc0015395839aa3a71470654fba8c7119ff1a572a38ed",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1928/media.gif",
+    "sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+    "source_url": "https://user-images.githubusercontent.com/58601/201333134-d400f316-8fa1-4de2-a48a-d10d1a7938bf.gif",
+    "duration_s": 9.99,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:36:31.626816+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 4.0,
+      "t_end_s": 6.0,
+      "text": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/space-tool - BpmnSpaceTool participants should not resize an empty pool vertically "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1928-7141b054accb455c.json",
+    "report_sha256": "7141b054accb455c1fddd02c1e85f28dc98cf59efc2db54fba349cc97c53fefe"
+  }
+}

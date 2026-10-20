@@ -1,12 +1,13 @@
 """Admission requires media, source and observed execution to stay bound together."""
 
 import hashlib
+import copy
 import json
 from pathlib import Path
 
 import pytest
 
-from svh.corpus import digest, validate_external
+from svh.corpus import digest, freeze_corpus, load_frozen_corpus, validate_external
 from svh.native import evaluation_script
 from svh.sources import DATASET, REVISION
 
@@ -121,3 +122,74 @@ def test_changed_claim_cannot_reuse_a_manual_review(case):
     case[2]["claims"][0]["text"] = "A different requirement with the same source test"
     with pytest.raises(ValueError, match="manually reviewed claims"):
         validate(case)
+
+
+def test_incomplete_corpus_cannot_be_frozen(case, monkeypatch):
+    validate(case)
+    monkeypatch.setattr("svh.corpus.rows", lambda source: iter([case[3]]))
+    with pytest.raises(ValueError, match="admission gate"):
+        freeze_corpus(case[0], [case[1]], Path("frozen.json"))
+    assert not (case[0] / "frozen.json").exists()
+
+
+@pytest.fixture
+def admitted_corpus(case, monkeypatch):
+    root, _, template, original_row, original_report, _ = case
+    paths, pinned, reviews = [], [], {}
+    folder = root / "evals/annotations"
+    folder.mkdir()
+    for index in range(10):
+        task = f"test-task-{index}"
+        source = root / "data/external" / task
+        source.mkdir()
+        row = copy.deepcopy(original_row)
+        row["instance_id"] = task
+        row_path = source / "row.json"
+        row_path.write_text(json.dumps(row))
+        media = source / "bug.gif"
+        media.write_bytes(f"distinct-media-{index}".encode())
+        report = copy.deepcopy(original_report)
+        report.update(task=task, row_sha256=digest(row_path), raw_logs=str(source.relative_to(root)))
+        for side in ["pre", "post"]:
+            (source / (side + ".log")).write_bytes((root / "data/external/case" / (side + ".log")).read_bytes())
+        proof = source / "proof.json"
+        proof.write_text(json.dumps(report))
+        annotation = copy.deepcopy(template)
+        annotation["id"] = task
+        annotation["source"].update(instance_id=task, row_path=str(row_path.relative_to(root)), row_sha256=digest(row_path))
+        annotation["media"].update(path=str(media.relative_to(root)), sha256=digest(media))
+        annotation["oracle"].update(report_path=str(proof.relative_to(root)), report_sha256=digest(proof))
+        path = folder / (task + ".json")
+        path.write_text(json.dumps(annotation))
+        paths.append(path)
+        pinned.append(row)
+        reviews[task] = {"oracle_alignment": "direct", "media_sha256": digest(media),
+                         **{key: annotation["claims"][0][key] for key in ("t_start_s", "t_end_s", "text")}}
+    (root / "evals/reviews.json").write_text(json.dumps({"cases": reviews}))
+    monkeypatch.setattr("svh.corpus.rows", lambda source: iter(pinned))
+    return root, paths
+
+
+def test_frozen_corpus_rejects_overwrite_and_changed_annotation(admitted_corpus):
+    root, paths = admitted_corpus
+    original = freeze_corpus(root, paths, Path("frozen.json"))
+    manifest, annotations = load_frozen_corpus(root, Path("frozen.json"))
+    assert len(annotations) == 10
+    assert manifest["corpus_sha256"] == original["corpus_sha256"]
+    with pytest.raises(FileExistsError):
+        freeze_corpus(root, paths, Path("frozen.json"))
+    paths[0].write_text(paths[0].read_text() + "\n")
+    with pytest.raises(ValueError, match="Hash mismatch"):
+        load_frozen_corpus(root, Path("frozen.json"))
+
+
+def test_forged_pass_cannot_shrink_frozen_evaluation_denominator(admitted_corpus):
+    root, paths = admitted_corpus
+    manifest = freeze_corpus(root, paths, Path("frozen.json"))
+    manifest["annotations"] = manifest["annotations"][:1]
+    identity = {key: manifest[key] for key in ("dataset", "revision", "annotations")}
+    manifest["corpus_sha256"] = hash_text(json.dumps(identity, sort_keys=True, separators=(",", ":")))
+    manifest["gate"]["passed"] = True
+    (root / "frozen.json").write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="admission gate"):
+        load_frozen_corpus(root, Path("frozen.json"))

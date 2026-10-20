@@ -1,7 +1,7 @@
 {
   "task": "bpmn-io__bpmn-js-1677",
   "run_at": "2026-10-20T14:55:32.804365+00:00",
-  "graded_at": "2026-10-20T14:55:32.804385+00:00",
+  "graded_at": "2026-10-20T15:05:07.955804+00:00",
   "row_sha256": "dfd7a46dde0d5024fdf3cda5b734f13369fcdab4e7324726ea94d518a68751f7",
   "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1677@sha256:d477e0dd37cd6ddc58de258af69c95b86e085336e66f1be4325b03e400e9401d",
   "image_id": "sha256:926e013fc08ad811f6893d865732832d967388dfeac0ce41f812f6e6af1155f7",

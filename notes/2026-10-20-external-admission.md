@@ -1,5 +1,9 @@
 # External temporal corpus admission
 
+[RUN] Final update: M0 passed on eleven cases and is frozen. See
+`notes/2026-10-20-m0-complete.md` for the final gate and replay instructions.
+The checkpoint observations below predate full admission.
+
 [CODE] The installed `svh.native` runner adapts the inspected BPMN/Karma contract
 without importing the benchmark's agent loop. Source/test patches are separate;
 the same frozen test patch runs before and after the source patch. Target failure
@@ -80,6 +84,13 @@ must be reviewed again; downloading a replacement never grants admission. A
 refresh retains historical proof snapshots and validates fresh logs before
 replacing annotation references. The current corpus is still being assembled;
 the final command must fail until the required sample and interval are met.
+
+[CODE/RUN] Frozen corpus support now records annotation hashes and rejects an
+incomplete gate, overwrites, changed annotation bytes and a forged pass on a
+reduced denominator. The model evaluation loader recomputes admission rather
+than trusting the manifest's saved gate. These checks bring the harness suite
+to 54 passing tests. Once curation is complete, run `uv run svh freeze-eval`;
+no corpus has been frozen yet while fewer than ten cases are admitted.
 
 [SRC/CODE] Shared Gemini access is authorized, with prepaid credit evidence and
 auto-reload disabled. Private configuration uses the external secret file, never
