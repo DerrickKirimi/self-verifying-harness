@@ -84,8 +84,11 @@ and Harbor trials have not been measured. [RUN]
    model. Use the existing deepagents loop for the codebase checkpoint.
 3. Docker-only backend and no-delegation harness profile are implemented and
    tested. Actual isolation/transfer/output/timeout/source-fingerprint smoke
-   passes; `notes/2026-10-20-docker-harness.md`. The matched pilot checkpoint is running in exec57257; poll it before any
-   additional paid worker. Use this backend for every code checkpoint/reproduction/fix;
+   passes; `notes/2026-10-20-docker-harness.md`. The original and bounded pilots are terminal and failed; retained evidence
+   is in `notes/runs/m2-checkpoint-failed-pilots.json`. Typed Flash pilots now
+   complete with source unchanged. Full matched checkpoint batch is running
+   sequentially in exec93013 (media-v3 then issue-only-v4); poll this handle and
+   do not start another paid worker. `notes/2026-10-21-m2-checkpoint-integration.md`. Use this backend for every code checkpoint/reproduction/fix;
    preserve source fingerprints during read-only M2 inspection.
 4. Then measure M2 and proceed to M3 generated reproduction/fix, frozen observed
    fail/pass, independent native regressions, wrong-fix controls and real Harbor

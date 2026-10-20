@@ -33,6 +33,14 @@ with tempfile.NamedTemporaryFile(prefix="svh-host-private-") as marker:
         }
         results = {label: backend.execute(command).exit_code == 0 for label, command in checks.items()}
         assert all(results.values()), results
+        source_read = backend.read("/workspace/package.json", offset=0, limit=5)
+        assert source_read.error is None and source_read.file_data
+        assert "bpmn-js" in str(source_read.file_data["content"])
+        results["sdk_source_read_helper"] = True
+        matches = backend.glob("**/*SetColorHandler*")
+        assert matches.error is None and matches.matches
+        assert all(item["path"].startswith("/workspace/") for item in matches.matches)
+        results["default_glob_scoped_to_project"] = True
         content = b"literal data: $(touch /root/never) `not shell`\n"
         assert backend.upload_files([("/workspace/controlled.txt", content)])[0].error is None
         assert backend.download_files(["/workspace/controlled.txt"])[0].content == content

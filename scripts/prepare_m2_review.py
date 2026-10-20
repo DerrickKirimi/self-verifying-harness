@@ -1,22 +1,31 @@
 """Create local source-frame contact sheets for human claim judgments."""
 import hashlib
+import argparse
 import io
 import json
+import re
 from pathlib import Path
 
 from PIL import Image, ImageDraw
 from svh.evidence import Evidence
 
 root = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser()
+parser.add_argument("--predictions", type=Path, default=Path("data/runtime/m2/issue+media.json"))
+parser.add_argument("--directory", type=Path, default=Path("data/runtime/m2/review-frames"))
+args = parser.parse_args()
 evidence = Evidence.from_corpus(root, Path("evals/frozen-m0.json"))
-report = json.loads((root / "data/runtime/m2/issue+media.json").read_text())
-directory = root / "data/runtime/m2/review-frames"
+report = json.loads((root / args.predictions).read_text())
+directory = root / args.directory
 directory.mkdir(parents=True, exist_ok=True)
 reviews = []
 for case in report["cases"]:
     if case["status"] != "completed":
         continue
-    for prediction in case["predictions"]:
+    response_sha = case.get("response_sha256", case.get("trace_sha256"))
+    for prediction in case.get("predictions", case.get("refined_predictions", [])):
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", prediction["id"]):
+            raise ValueError("Untrusted prediction identifier cannot choose an artifact path")
         if not prediction.get("span"):
             continue
         record = evidence.recording(case["id"])
@@ -26,7 +35,7 @@ for case in report["cases"]:
         metadata_path = path.with_suffix(".json")
         if metadata_path.exists():
             prior = json.loads(metadata_path.read_text())
-            if prior["response_sha256"] == case["response_sha256"]:
+            if prior["response_sha256"] == response_sha:
                 reviews.append(prior)
                 continue
             raise ValueError("Review sheet belongs to a different model response")
@@ -45,7 +54,7 @@ for case in report["cases"]:
             sheet.paste(panel, ((index % 2) * 800, (index // 2) * height))
         sheet.save(path)
         review = {"recording_id": record.id, "prediction_id": prediction["id"],
-                  "response_sha256": case["response_sha256"], "media_sha256": record.sha256,
+                  "response_sha256": response_sha, "media_sha256": record.sha256,
                   "timestamps_s": [timestamp for timestamp, _ in frames],
                   "path": str(path.relative_to(root)), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
         metadata_path.write_text(json.dumps(review, indent=2) + "\n")

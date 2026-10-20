@@ -73,6 +73,10 @@ class DockerSandbox(BaseSandbox):
             raise ValueError("Sandbox is not running")
         if not isinstance(command, str) or not 0 < len(command) <= 100_000:
             raise ValueError("Supply a bounded shell command")
+        # BaseSandbox's fixed file helpers start this way. Isolate their imports
+        # from the downloaded checkout without changing quoted command content.
+        if command.startswith("python3 -c "):
+            command = "python3 -I -c " + command[len("python3 -c "):]
         duration = min(300, timeout if timeout is not None else 120)
         if duration <= 0:
             raise ValueError("Execution timeout must be positive")
@@ -176,6 +180,28 @@ print(digest.hexdigest())
             raise ValueError("Upload batch exceeds eight MiB")
         rows = self._files("upload", [(path, base64.b64encode(data).decode()) for path, data in files])
         return [FileUploadResponse(path=row["path"], error=row.get("error")) for row in rows]
+
+    @staticmethod
+    def _project_root(path):
+        return "/workspace" if path in (None, "/") else path
+
+    def ls(self, path):
+        return super().ls(self._project_root(path))
+
+    async def als(self, path):
+        return await super().als(self._project_root(path))
+
+    def glob(self, pattern, path=None):
+        return super().glob(pattern, self._project_root(path))
+
+    async def aglob(self, pattern, path=None):
+        return await super().aglob(pattern, self._project_root(path))
+
+    def grep(self, pattern, path=None, glob=None, *, max_count=None):
+        return super().grep(pattern, self._project_root(path), glob, max_count=max_count)
+
+    async def agrep(self, pattern, path=None, glob=None, *, max_count=None):
+        return await super().agrep(pattern, self._project_root(path), glob, max_count=max_count)
 
     def download_files(self, paths):
         rows = self._files("download", paths)

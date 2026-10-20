@@ -1,0 +1,17 @@
+{
+  "format": "svh.m2-checkpoint-policy.v3",
+  "base_extraction_model": "gemini-3.5-flash-lite",
+  "checkpoint_model": "gemini-3.8-flash",
+  "thinking_level": "low",
+  "output_cap": 4096,
+  "step_cap": 30,
+  "conditions": [
+    "issue-only",
+    "issue+media"
+  ],
+  "structured_output": "CheckpointOutput tool; handle_errors=False",
+  "prompt_sha256": "dbacb06b99c1e5a2f0d27bc363805c1df7f1e8be157332abd991a83945613a58",
+  "schema_sha256": "602bef0cca44780848a46cec69827c396360d23076c0eb19b84e8e098c0be27a",
+  "rubric_sha256": "57283e256f6ece27d3266806d46a31de4471478f91bf247897feece900017d2e",
+  "reason": "Preserve failed one-shot and two failed pilot checkpoints. Evaluate a stronger existing model with validated final schema and bounded search; no scoring thresholds or gold inputs changed."
+}

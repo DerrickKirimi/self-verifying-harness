@@ -7,6 +7,13 @@ pytest.importorskip("langchain_core")
 from svh import extract
 
 
+def test_untrusted_claim_id_cannot_escape_its_artifact_directory():
+    output = {"questions": [], "predictions": [{"id": "../../escape", "symptom": "reported bug",
+               "expected_source": "issue", "observations": [], "span": None}]}
+    with pytest.raises(ValueError, match="structure"):
+        extract.validate_output(output, "issue-only", 3.0)
+
+
 def test_dataset_row_allowlist_keeps_gold_out_of_model_tasks(tmp_path, monkeypatch):
     path = tmp_path / "row.json"
     path.write_text(json.dumps({"problem_statement": "Public issue", "patch": "PRIVATE_GOLD",

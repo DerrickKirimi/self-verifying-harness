@@ -3,6 +3,7 @@ import base64
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 
 from langchain_core.messages import HumanMessage
@@ -78,11 +79,19 @@ def extract_claims(evidence, task, condition, model, destination):
         with destination.open("x") as stream:
             stream.write(json.dumps(raw, indent=2) + "\n")
     result = parse_json(raw["text"])
+    validate_output(result, condition, record.duration_s)
+    return {"id": record.id, "status": "completed", **result,
+            "response_sha256": hashlib.sha256(destination.read_bytes()).hexdigest(),
+            "identity": identity, "usage": raw["usage"]}
+
+
+def validate_output(result, condition, duration_s):
     if not isinstance(result.get("predictions"), list) or not isinstance(result.get("questions"), list):
         raise ValueError("Missing prediction/question lists")
     seen = set()
     for prediction in result["predictions"]:
-        if (not isinstance(prediction.get("id"), str) or prediction["id"] in seen
+        if (not isinstance(prediction.get("id"), str)
+                or not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", prediction["id"]) or prediction["id"] in seen
                 or not isinstance(prediction.get("symptom"), str)
                 or prediction.get("expected_source") not in {"issue", "shown", "unknown"}
                 or not isinstance(prediction.get("observations"), list)):
@@ -93,8 +102,5 @@ def extract_claims(evidence, task, condition, model, destination):
             raise ValueError("Issue-only output invented media grounding")
         if span is not None:
             a, b = span["start_s"], span["end_s"]
-            if not all(isinstance(t, (int, float)) and math.isfinite(t) for t in (a, b)) or not 0 <= a < b <= record.duration_s:
+            if not all(isinstance(t, (int, float)) and math.isfinite(t) for t in (a, b)) or not 0 <= a < b <= duration_s:
                 raise ValueError("Generated claim span is outside registered media")
-    return {"id": record.id, "status": "completed", **result,
-            "response_sha256": hashlib.sha256(destination.read_bytes()).hexdigest(),
-            "identity": identity, "usage": raw["usage"]}

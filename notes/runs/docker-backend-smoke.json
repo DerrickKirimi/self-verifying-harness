@@ -11,6 +11,8 @@
     "root_read_only": true,
     "working_directory": true,
     "network_unreachable": true,
+    "sdk_source_read_helper": true,
+    "default_glob_scoped_to_project": true,
     "file_roundtrip_and_output_bound": true,
     "timeout_destroys_execution_domain": true
   },
