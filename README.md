@@ -60,6 +60,9 @@ Today the path runs: meeting → transcriber → someone writes a text ticket �
 4. [`docs/decisions.md`](docs/decisions.md): decisions and open questions.
 5. [`docs/references.md`](docs/references.md): sources, with local clones and commits.
 6. [`AGENTS.md`](AGENTS.md): rules for anyone (human or agent) working here.
+7. [`docs/literature-review.md`](docs/literature-review.md): related work ranked
+   by relevance, including SWE-bench Multimodal successors, video replay and
+   browser verification, with concrete cautions for our design.
 
 ## Layout
 

@@ -72,3 +72,34 @@ and local temporary download locations are in
 - [RUN] BPMN native oracle pilot passed; report and raw-log hashes in
   `notes/runs/swebench-bpmn-pilot.json`. Scope, commands and limitations:
   `notes/2026-10-20-swebench-multimodal-pilot.md`.
+
+## Literature review sources (read 2026-10-20)
+
+Ordered discussion and implications: [literature-review.md](literature-review.md).
+These are primary papers or author repositories/project pages. [SRC] Inspection
+was section-scoped, not a cover-to-cover review or reproduction of external
+results. [RUN] No external system was executed for this review. Paper links pin
+the inspected version where available; mutable web repositories are not pinned
+dependencies. No local clones were created for these readings. [RUN]
+
+| Source | Version / scope read | Relevance |
+|---|---|---|
+| [GUIRepair: Seeing is Fixing](https://arxiv.org/html/2506.16136v1), [author project](https://sites.google.com/view/guirepair) | v1 (2025); motivation, §III, evaluation setup, project reproduction instructions | Visual report → repro code → rendered patch feedback |
+| [ViBR](https://arxiv.org/html/2604.19905v1) | v1 (2026); §2, §3.3, threats/data availability | Recording-driven Android bug replay |
+| [Beyond Fail-to-Pass / CoHarden](https://arxiv.org/html/2607.19843v1) | v1 (2026); §2–3, discussion/implementation notes | Lax assertions, test/fix coupling, mutation challenges |
+| [VisualRepair](https://arxiv.org/html/2607.14075v1) | v1 (2026); §III–IV, parameter studies | Direct Multimodal successor; GIFs, crops, patch selection |
+| [FailureMem](https://arxiv.org/html/2603.17826v1) | v1 (2026); §3, setup, appendix A and visual tools | Direct Multimodal successor; failure memories and gold separation |
+| [SWE-bench Multimodal paper](https://arxiv.org/html/2410.03859v1) | v1 (2024); §2–4; current release page already listed above | Dataset/oracle construction; SWE-agent M browser tools |
+| [OpenHands-Versa paper](https://arxiv.org/html/2506.03011v1), [repo](https://github.com/adityasoni9998/OpenHands-Versa) | v1 (2025); tools, protocol, analysis/failures; mutable README | Existing coding harness with visual browsing; Multimodal evaluation |
+| [Framesleuth](https://github.com/thestackhub1/framesleuth-agent) | Mutable README: architecture, bundles, grounding, quality/eval descriptions; code not audited | Recording-to-MCP product overlap |
+| [Agentless Lite](https://github.com/sorendunn/Agentless-Lite) | Mutable README: method/retrieval/artifacts; code not audited | Minimal direct Multimodal repair baseline |
+| [CodeV](https://github.com/luolin101/CodeV) | README workflow; prior pinned dataset audit listed above | Visual-to-text pipeline baseline |
+| [SWT-Bench paper](https://arxiv.org/abs/2406.12952), [harness](https://github.com/logic-star-ai/swt-bench) | Early v1 HTML formulation/metrics/method (title differs from final paper); current README | Generated-test evaluation before/after gold fix |
+| [ReProAgent](https://arxiv.org/html/2607.09123v1) | v1 (2026); task formulation, stages/tools, semantic failure review | Reproduction planning and failure attribution |
+| [ReBug](https://arxiv.org/html/2608.03598v1) | v1 (2026); §III–IV | Browser prerequisites and procedure-execution evaluation |
+| [SWEeper-Bench](https://sweeperbench.com/) | Project page: protocol, verifier calibration, worked example; paper/code not audited | Browser discovery, target/preservation procedures |
+| [Replay Web Debug Bench](https://www.replay.io/blog/web-debug-bench) | Author announcement dated 2026-04-07; protocol/generation/scoring/example | Instrumented browser recordings for diagnosis |
+| [V2S+](https://arxiv.org/html/2301.01191v1) | v1 (2023); introduction, input requirements, detection/replay design | Touch-indicator-based replay precedent |
+| [GIFdroid](https://arxiv.org/html/2112.04128v1) | v1 (2021); introduction and approach | Keyframe-to-UI-graph replay precedent |
+| [CAPdroid](https://arxiv.org/html/2302.00886v1) | v1 (2023); introduction, approach overview | Video-action captioning precedent |
+| [JANUS](https://arxiv.org/abs/2407.08610), [author PDF](https://ojcchar.github.io/files/28-icse24-vid-dupl.pdf) | Abstract, author-hosted introduction/method overview | Visual/OCR/temporal duplicate-video retrieval |
