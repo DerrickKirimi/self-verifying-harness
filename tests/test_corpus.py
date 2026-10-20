@@ -62,6 +62,11 @@ def case(tmp_path, monkeypatch):
         "oracle": {"runner": "swebench-karma", "report_path": "proof.json", "report_sha256": digest(report_path)},
     }
     path = tmp_path / "annotation.json"
+    manual_review = {"cases": {row["instance_id"]: {
+        "oracle_alignment": "direct", "media_sha256": annotation["media"]["sha256"],
+        **{key: annotation["claims"][0][key] for key in ("t_start_s", "t_end_s", "text")},
+    }}}
+    (tmp_path / "evals/reviews.json").write_text(json.dumps(manual_review))
     monkeypatch.setattr("svh.corpus.probe", lambda path: {"duration_s": 5.0, "has_audio": False, "kind": "animated_image"})
     return tmp_path, path, annotation, row, report, report_path
 
@@ -100,4 +105,19 @@ def test_success_boolean_cannot_override_observed_failure(case):
     case[4]["results"]["pre"]["raw_log_sha256"] = digest(source / "pre.log")
     case[4]["verified"] = True
     with pytest.raises(ValueError, match="does not verify"):
+        validate(case)
+
+
+def test_supporting_invariant_cannot_verify_broader_recorded_claim(case):
+    path = case[0] / "evals/reviews.json"
+    review = json.loads(path.read_text())
+    review["cases"][case[3]["instance_id"]]["oracle_alignment"] = "supporting-invariant"
+    path.write_text(json.dumps(review))
+    with pytest.raises(ValueError, match="oracle-to-claim alignment"):
+        validate(case)
+
+
+def test_changed_claim_cannot_reuse_a_manual_review(case):
+    case[2]["claims"][0]["text"] = "A different requirement with the same source test"
+    with pytest.raises(ValueError, match="manually reviewed claims"):
         validate(case)

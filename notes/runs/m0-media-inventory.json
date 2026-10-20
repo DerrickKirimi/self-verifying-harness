@@ -92,6 +92,20 @@
       "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1638/review-001.png"
     ]
   },
+  "bpmn-io__bpmn-js-1640": {
+    "source_url": "https://user-images.githubusercontent.com/7633572/150531680-3f51471b-df5f-4b08-b6c1-d49b2e6a2209.gif",
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1640/media.gif",
+    "sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+    "duration_s": 18.39,
+    "has_audio": false,
+    "kind": "animated_image",
+    "review_interval_s": 0.5,
+    "review_state": "unreviewed",
+    "sheets": [
+      "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1640/review-001.png",
+      "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1640/review-002.png"
+    ]
+  },
   "bpmn-io__bpmn-js-1655": {
     "source_url": "https://user-images.githubusercontent.com/25825387/169325524-f91870f7-c0e5-4b43-999f-4045eeeb2697.mov",
     "path": "data/external/swebench-multimodal/pilot.mov",
@@ -159,6 +173,19 @@
       "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1719/review-002.png",
       "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1719/review-003.png",
       "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1719/review-004.png"
+    ]
+  },
+  "bpmn-io__bpmn-js-1928": {
+    "source_url": "https://user-images.githubusercontent.com/58601/201333134-d400f316-8fa1-4de2-a48a-d10d1a7938bf.gif",
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1928/media.gif",
+    "sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+    "duration_s": 9.99,
+    "has_audio": false,
+    "kind": "animated_image",
+    "review_interval_s": 0.5,
+    "review_state": "unreviewed",
+    "sheets": [
+      "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1928/review-001.png"
     ]
   }
 }

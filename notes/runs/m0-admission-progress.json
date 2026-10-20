@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20T14:33:51.185167+00:00",
+  "updated_at": "2026-10-20T14:36:42.241209+00:00",
   "cases": [
     {
       "task": "bpmn-io__bpmn-js-1557",
@@ -16,12 +16,13 @@
     },
     {
       "task": "bpmn-io__bpmn-js-1578",
-      "state": "admitted"
+      "state": "not-admitted",
+      "reason": "The supplied failing test checks diagram-information object identity after copying a subprocess; it does not reproduce copying pools or assert distinct process IDs after export/import. Retain its passing native oracle as supporting evidence, but exclude it from the direct-claim M0 gate."
     },
     {
       "task": "bpmn-io__bpmn-js-1610",
       "state": "not-admitted",
-      "reason": "pulling-image"
+      "reason": "running-oracle"
     },
     {
       "task": "bpmn-io__bpmn-js-1623",
@@ -54,6 +55,16 @@
     },
     {
       "task": "bpmn-io__bpmn-js-1719",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1640",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1928",
       "state": "not-admitted",
       "reason": "pending"
     }

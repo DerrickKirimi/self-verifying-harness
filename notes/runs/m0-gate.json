@@ -11,20 +11,15 @@
       "accepted": true
     },
     {
-      "annotation": "evals/annotations/swebench-bpmn-1578.json",
-      "id": "swebench-bpmn-1578",
-      "accepted": true
-    },
-    {
       "annotation": "evals/annotations/swebench-bpmn-1655.json",
       "id": "swebench-bpmn-1655",
       "accepted": true
     }
   ],
-  "accepted": 4,
-  "total": 4,
+  "accepted": 3,
+  "total": 3,
   "wilson_95": [
-    0.5101091635454027,
+    0.4385029682449546,
     1.0
   ],
   "required_wilson_lower": 0.7,

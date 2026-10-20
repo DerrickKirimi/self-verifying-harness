@@ -13,7 +13,7 @@ from svh.sources import export_rows, resolve_image
 
 
 IDS = [f"bpmn-io__bpmn-js-{number}" for number in
-       [1557, 1567, 1570, 1578, 1610, 1623, 1638, 1655, 1659, 1677, 1679, 1719]]
+       [1557, 1567, 1570, 1578, 1610, 1623, 1638, 1655, 1659, 1677, 1679, 1719, 1640, 1928]]
 
 
 def main():

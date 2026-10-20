@@ -26,6 +26,11 @@ def main():
     outcomes = []
     for task, review in reviews["cases"].items():
         path = root / "evals/annotations" / ("swebench-bpmn-" + task.rsplit("-", 1)[1] + ".json")
+        if review.get("oracle_alignment") != "direct":
+            if path.exists():
+                raise ValueError("An excluded claim must not remain in the admission directory: " + task)
+            outcomes.append({"task": task, "state": "not-admitted", "reason": review["oracle_alignment_reason"]})
+            continue
         if path.exists() and not args.refresh_proofs:
             validate_external(root, path, pinned_rows=pinned)
             outcomes.append({"task": task, "state": "existing-validated"})
@@ -57,7 +62,7 @@ def main():
                       ["path", "sha256", "source_url", "duration_s", "has_audio", "kind"]},
             "review": {"method": "contact-sheet", "interval_s": review["interval_s"],
                        "screening": review["screening"], "distribution": "reference-only",
-                       "reviewed_at": reviews["reviewed_at"]},
+                       "reviewed_at": review.get("reviewed_at", reviews["reviewed_at"])},
             "claims": [{"id": "visual-claim", "t_start_s": review["t_start_s"],
                         "t_end_s": review["t_end_s"], "text": review["text"],
                         "evidence_mode": "shown", "expected_tests": row["FAIL_TO_PASS"]}],

@@ -29,6 +29,15 @@ estimate performance on arbitrary applications, recordings or narration. Gold
 oracle curation is separate from subsequent blind generated-check evaluation.
 Media stays reference-only: no redistribution or training rights are asserted.
 
+[CODE/INF] Oracle alignment is separately reviewed in `evals/reviews.json`.
+Case 1578's fail/pass run is real, but the failing test checks copied subprocess
+diagram-object identity. It does not reproduce the recorded pool-copy/export
+failure or assert distinct process IDs. Its annotation was therefore moved out
+of admission into `evals/excluded/`; proof snapshots are retained. This correction
+prevents a native benchmark pass from silently verifying a broader claim. Two
+additional directly aligned candidates, 1640 and 1928, have been reviewed and
+queued for their own Docker runs. No oracle result is inferred from inspection.
+
 ```sh
 uv sync --locked --extra datasets
 uv run python -I scripts/run_m0_oracles.py

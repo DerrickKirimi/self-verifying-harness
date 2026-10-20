@@ -46,20 +46,28 @@ Update this file at the end of every working session: what changed, gate results
   suite: **49 passed**. No model transport is wired to it yet and no metered
   calls have been made. Private local configuration is capped below the supplied
   prepaid balance; no key or billing screenshot is committed.
-- [RUN] Current external admission gate: **4/4 admitted annotations, Wilson 95%
-  [51.01%, 100%]**, below the required sample size and lower bound. This is
+- [RUN] Current external admission gate: **3/3 admitted annotations, Wilson 95%
+  [43.85%, 100%]**, below the required sample size and lower bound. This is
   `notes/runs/m0-gate.json`, not model performance. Cases 1557, 1570 and 1655
-  and 1578 pass; 1567 was rejected because its target failure is a runtime
-  exception. Candidate 1610 is running; remaining candidates are queued.
+  pass; 1567 was rejected because its target failure is a runtime exception.
+  Case 1578 passed its native oracle but was subsequently excluded for insufficient
+  oracle-to-claim alignment (D24); its historical proof remains. Candidate 1610
+  is running. Two additional reviewed candidates, 1640 and 1928, are queued for
+  a subsequent batch resume after the currently live 12-case process finishes.
 - [CODE/RUN] Fresh-clone source preparation now downloads and hash-verifies both
   pinned Parquet files, then exports the reviewed rows. An isolated temporary-root
   replay fetched both files and exported 12 rows successfully:
   `notes/runs/m0-source-replay-smoke.json`. Explicit `--rerun` and
   `--refresh-proofs` support fresh local oracle evidence without deleting public
   historical proof metadata. Full fresh-clone Docker replay remains unmeasured.
-- [SRC] Owner explicitly requested a side agent for a relevance-ranked literature
-  review. `/root/literature_review` is researching primary sources and writing
-  `docs/literature-review.md` plus reference entries; main work continues on M0.
+- [SRC] Owner-requested side-agent literature review is complete:
+  `docs/literature-review.md`, with primary sources in `docs/references.md`.
+  Closest precedents include GUIRepair, ViBR and Framesleuth; direct Multimodal
+  successors include VisualRepair, FailureMem and OpenHands-Versa. CoHarden
+  motivates testing weak-oracle and co-generated-test/fix failure modes.
+- [CODE/RUN] Admission now requires an explicit direct-alignment review and exact
+  agreement with the reviewed claim text/timestamps. Supporting-invariant and
+  changed-claim rejection checks added; total suite: **51 passed**.
 
 ## Log
 

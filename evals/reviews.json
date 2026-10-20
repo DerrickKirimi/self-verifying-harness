@@ -11,7 +11,9 @@
       "interval_s": 0.5,
       "t_start_s": 7.5,
       "t_end_s": 9.9,
-      "text": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool."
+      "text": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test opens the replacement menu on a data store outside a participant and asserts there is no data-object reference choice, one of the source issue's explicit acceptable outcomes."
     },
     "bpmn-io__bpmn-js-1567": {
       "media_sha256": "9a278e74e878a25207bad9224cbc3307e596fdd47d9099f63405897002960c60",
@@ -20,7 +22,9 @@
       "interval_s": 0.5,
       "t_start_s": 7.0,
       "t_end_s": 9.99,
-      "text": "After wrapping a process in a pool and entering a subprocess, clicking the parent breadcrumb fails to return to the root. Navigation should follow the changed root."
+      "text": "After wrapping a process in a pool and entering a subprocess, clicking the parent breadcrumb fails to return to the root. Navigation should follow the changed root.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test clicks the root breadcrumb after a root change, directly exercising the failed navigation shown."
     },
     "bpmn-io__bpmn-js-1570": {
       "media_sha256": "74a72f40dc46e662419b7b0af6da58a5ec6a55eb674020781226487209b1e091",
@@ -29,7 +33,9 @@
       "interval_s": 0.5,
       "t_start_s": 2.0,
       "t_end_s": 4.0,
-      "text": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo."
+      "text": "Wrapping the process in a pool makes the diagram jump in the viewport. The current scroll and zoom should be preserved, including undo and redo.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The tests compare viewport position and zoom before/after collaboration creation, undo/redo and navigating back."
     },
     "bpmn-io__bpmn-js-1578": {
       "media_sha256": "8f66eeb4501b05948f762fac44b9c3d1879d9cd89158fa1bf52814a00d3ca059",
@@ -38,7 +44,9 @@
       "interval_s": 0.5,
       "t_start_s": 12.0,
       "t_end_s": 16.0,
-      "text": "After copying a pool containing a task, exporting and importing the diagram produces errors. Copying must create distinct process identities and correctly connected diagram information."
+      "text": "After copying a pool containing a task, exporting and importing the diagram produces errors. Copying must create distinct process identities and correctly connected diagram information.",
+      "oracle_alignment": "supporting-invariant",
+      "oracle_alignment_reason": "The supplied failing test checks diagram-information object identity after copying a subprocess; it does not reproduce copying pools or assert distinct process IDs after export/import. Retain its passing native oracle as supporting evidence, but exclude it from the direct-claim M0 gate."
     },
     "bpmn-io__bpmn-js-1610": {
       "media_sha256": "4f5f5b423fedc1e16aca0f2651b63322b81d9055cc71540786b88fc6499a8e53",
@@ -47,7 +55,9 @@
       "interval_s": 0.5,
       "t_start_s": 8.0,
       "t_end_s": 9.99,
-      "text": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element."
+      "text": "An active text editing box remains visible after leaving the subprocess plane. Changing the root should finish editing the previous element.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test changes root while editing, then asserts editing ended and the edited name was submitted."
     },
     "bpmn-io__bpmn-js-1623": {
       "media_sha256": "d5e89fad422e9d16286260a3d7befcabb9901f8987f2a5f650868f7a67b14236",
@@ -56,7 +66,9 @@
       "interval_s": 0.5,
       "t_start_s": 16.0,
       "t_end_s": 20.3,
-      "text": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram."
+      "text": "After switching diagrams and returning, the subprocess drilldown overlay disappears. Subprocess navigation should remain available after reopening the diagram.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test reopens the diagram and asserts the drilldown overlay and breadcrumb navigation remain functional."
     },
     "bpmn-io__bpmn-js-1638": {
       "media_sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
@@ -65,7 +77,9 @@
       "interval_s": 0.5,
       "t_start_s": 0.5,
       "t_end_s": 3.12,
-      "text": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property."
+      "text": "Clearing a task label triggers linting errors. Clearing the name should remove its label information rather than leave a null label property.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test clears the task name and asserts the diagram-information label property is absent, the explicit source issue requirement."
     },
     "bpmn-io__bpmn-js-1655": {
       "media_sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
@@ -74,7 +88,9 @@
       "interval_s": 0.25,
       "t_start_s": 5.0,
       "t_end_s": 6.816667,
-      "text": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color."
+      "text": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test applies distinct stroke/fill colors to an external label and asserts its text uses the stroke color."
     },
     "bpmn-io__bpmn-js-1659": {
       "media_sha256": "1661275794ac56cc1bde7e3790f7233de817170995336da12089c336363e9998",
@@ -83,7 +99,9 @@
       "interval_s": 0.5,
       "t_start_s": 6.0,
       "t_end_s": 9.0,
-      "text": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection."
+      "text": "Resizing an expanded subprocess reroutes its sequence flow while the label and attached association remain behind. Labels and associations should follow the updated connection.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The tests update connection waypoints and assert label coordinates and incoming/outgoing association endpoints follow the new route."
     },
     "bpmn-io__bpmn-js-1677": {
       "media_sha256": "11faeb93f5ba1b5e2215179d924afb84c76332f5802a76cf9f04595a0c92f705",
@@ -92,7 +110,9 @@
       "interval_s": 0.5,
       "t_start_s": 1.5,
       "t_end_s": 4.0,
-      "text": "Removing an element with direct editing active leaves an editing box behind and breaks the interaction. Removing the selected element should cancel direct editing."
+      "text": "Removing an element with direct editing active leaves an editing box behind and breaks the interaction. Removing the selected element should cancel direct editing.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test removes a selected element during editing and asserts the pending edited name was not applied."
     },
     "bpmn-io__bpmn-js-1679": {
       "media_sha256": "be1925039dea24dd160978f40e52df53caa2f30eadb4826b74de192d952a4bd3",
@@ -101,7 +121,9 @@
       "interval_s": 0.5,
       "t_start_s": 14.0,
       "t_end_s": 18.9,
-      "text": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly."
+      "text": "Switching a task from loop to parallel or sequential changes its marker but leaves the exported XML loop type unchanged. The selected loop characteristics must be serialized correctly.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The tests toggle parallel/sequential from a standard loop and assert the resulting business-object loop type and sequential flag."
     },
     "bpmn-io__bpmn-js-1719": {
       "media_sha256": "60563d817e9beecd50ee38f774ad0aa339a348b3efc4f879e4058e872406e917",
@@ -110,7 +132,33 @@
       "interval_s": 0.5,
       "t_start_s": 31.0,
       "t_end_s": 35.0,
-      "text": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane."
+      "text": "Collapsing an expanded subprocess leaves internal event labels visible outside it. Labels belonging to the subprocess should move to its hidden plane.",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test collapses an expanded subprocess after moving its event label and asserts the label belongs to the hidden subprocess plane."
+    },
+    "bpmn-io__bpmn-js-1640": {
+      "media_sha256": "f877412cb3f6b6ff56d261277b8a4a37a9d73537c563efaba723ef048ebc4607",
+      "screening": "no-sensitive-content-observed",
+      "pages_viewed": 2,
+      "interval_s": 0.5,
+      "t_start_s": 7.5,
+      "t_end_s": 12.5,
+      "text": "Changing a subprocess from parallel to sequential multi-instance clears its loop cardinality and other properties. Changing the multi-instance mode should preserve the existing properties except the sequential flag.",
+      "reviewed_at": "2026-10-20T14:36:31.626757+00:00",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The tests toggle parallel/sequential and assert equality of loop characteristics excluding only the sequential flag."
+    },
+    "bpmn-io__bpmn-js-1928": {
+      "media_sha256": "4e00fc9ed4ff87de4d6c26ce82521ea380f137cb2d9af0dbc6d105095f560941",
+      "screening": "no-sensitive-content-observed",
+      "pages_viewed": 1,
+      "interval_s": 0.5,
+      "t_start_s": 4.0,
+      "t_end_s": 6.0,
+      "text": "Using the space tool vertically across an empty pool increases its height. An empty pool should retain its fixed height during vertical space-tool movement.",
+      "reviewed_at": "2026-10-20T14:36:31.626816+00:00",
+      "oracle_alignment": "direct",
+      "oracle_alignment_reason": "The test applies vertical space-tool movement to an empty participant and compares all bounds to the original bounds."
     }
   }
 }

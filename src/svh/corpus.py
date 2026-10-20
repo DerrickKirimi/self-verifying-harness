@@ -119,6 +119,18 @@ def validate_external(root: Path, annotation: Path, *, pinned_rows=None):
         expected.update(claim["expected_tests"])
     if expected != set(row["FAIL_TO_PASS"]):
         raise ValueError("Annotated claims must cover exactly the executed target tests")
+    reviews = json.loads((root / "evals/reviews.json").read_text())
+    review = reviews["cases"].get(task, {})
+    if review.get("oracle_alignment") != "direct":
+        raise ValueError("Manual review does not establish direct oracle-to-claim alignment")
+    if review.get("media_sha256") != media["sha256"]:
+        raise ValueError("Manual review is for different media bytes")
+    observed_claims = [{key: claim[key] for key in ("t_start_s", "t_end_s", "text")} for claim in data["claims"]]
+    reviewed_claims = review.get("claims")
+    if reviewed_claims is None:
+        reviewed_claims = [{key: review[key] for key in ("t_start_s", "t_end_s", "text")}]
+    if observed_claims != reviewed_claims:
+        raise ValueError("Annotation claims differ from the manually reviewed claims")
     oracle = data["oracle"]
     report_path = checked_file(root, oracle["report_path"], oracle["report_sha256"])
     report = json.loads(report_path.read_text())
