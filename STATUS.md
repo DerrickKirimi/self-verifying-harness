@@ -32,9 +32,9 @@ Harbor trials have been measured. [RUN]
 - [CODE/SRC] Authorized Gemini credentials remain in the external private file
   named by gitignored `.env`; never print or commit keys/screenshots/account IDs.
   Private local API cap is $4.00, below the supplied prepaid balance. Persistent
-  `svh.budget` reservations are tested, but no model transport is wired yet.
-  Include reasoning/summarization calls, retain ambiguous charges and disable
-  retries before any paid request. `notes/2026-10-20-gemini-access.md`.
+  `svh.budget` reservations are tested, and a budget-covered model transport is now tested.
+  Reasoning and sync/async summarization calls are covered; ambiguous charges
+  retain reservations and SDK/middleware retries are disabled. `notes/2026-10-20-gemini-access.md`.
 - [RUN/SRC] Host and fixture sandbox use pytest 9.1.1 after three GitHub alerts
   for CVE-2025-71176. All three original frozen fixture checks still fail before
   and pass after: 3/3, Wilson 95% [43.85%, 100%]. New proof:
@@ -59,10 +59,12 @@ Harbor trials have been measured. [RUN]
 
 1. Curation is complete and frozen. Do not restart either terminal Docker batch.
    M0 now passes on all eleven admitted cases; use the frozen manifest in M1.
-2. The selected stack is installed and its HTTP boundary is demonstrated. Cover
-   the complete model transport, including implicit middleware calls, with
-   the persistent cost guard. Disable retries/delegation for the first baseline.
-   Verify sandbox boundaries before generated code or paid model use.
+2. Budget-covered Gemini transport is tested, including actual summarization
+   middleware and all public call modes. Authenticated metadata confirms both
+   candidate models and token limits; no paid generation yet. Eleven new tests
+   pass; full suite 68 passed. See `notes/2026-10-20-budgeted-gemini.md`.
+   Disable delegation through the selected harness profile and verify Docker
+   boundaries before executing any generated code.
 3. Build ingestion/retrieval and measure M1 against the fixed-frame baseline,
    then proceed through M2 claims/checkpoints and M3 generated check/fix, held-out
    regressions, wrong-fix controls and actual Harbor oracle/nop trials.

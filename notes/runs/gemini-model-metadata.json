@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-10-20T18:22:00.129013+00:00",
+  "generation_requests": 0,
+  "models": [
+    {
+      "model": "gemini-3.5-flash-lite",
+      "returned_name": "models/gemini-3.5-flash-lite",
+      "input_limit": 1048576,
+      "output_limit": 65536,
+      "supported_actions": [
+        "generateContent",
+        "countTokens",
+        "createCachedContent",
+        "batchGenerateContent"
+      ],
+      "input_rate": "0.30",
+      "output_rate": "2.50"
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "returned_name": "models/gemini-3.8-flash",
+      "input_limit": 1048576,
+      "output_limit": 65536,
+      "supported_actions": [
+        "generateContent",
+        "countTokens",
+        "createCachedContent",
+        "batchGenerateContent"
+      ],
+      "input_rate": "0.75",
+      "output_rate": "3.75"
+    }
+  ],
+  "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing",
+  "pricing_checked_date": "2026-10-20"
+}
