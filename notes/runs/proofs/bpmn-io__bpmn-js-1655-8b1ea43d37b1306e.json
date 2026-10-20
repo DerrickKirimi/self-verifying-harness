@@ -1,0 +1,69 @@
+{
+  "task": "bpmn-io__bpmn-js-1655",
+  "run_at": "2026-10-20T13:13:22.987442+00:00",
+  "graded_at": "2026-10-20T14:16:34.703669+00:00",
+  "row_sha256": "2917d4f03ca96c818a74dd609f4a75a194f776c2a1e79ade1eb72a471de2df9e",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+  "image_id": "sha256:130b3dc96637e701ec2939ec0f4801e062673cd70ac72e307c6fc61e4b3d153a",
+  "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+  "fix_patch_sha256": "897372a7de6b9decb13df53d739db2f32c911398fbd5e3d9c1d622c8df4f5056",
+  "test_patch_sha256": "0529bc8e816bb12c02a7089cfdbc0a2548a1603af5b946ed254d825a6e552fa3",
+  "upstream_eval_sha256": "1965ee97e80ba61f13d40af2a2c7b5b9dbc5bdc4374b7f3da8a98582573747c0",
+  "executed_eval_sha256": "0870b66fa2a5193400a2106f69ff224f4feb4113f1c0bb297de85346182acd19",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1777,
+      "discovered": 1784,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1776 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/modeling - set color execute setting stroke + fill color on external label FAILED\n\tAssertionError: expected '#ff00ff' to deeply equal '#ffff00'\n\t    at eval (webpack-internal:///./test/spec/features/modeling/SetColorSpec.js:163:44)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features/modeling - set color execute setting stroke + fill color on external label ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/modeling - set color execute setting stroke + fill color on external label FAILED\n\tAssertionError: expected '#ff00ff' to deeply equal '#ffff00'\n\t    at eval (webpack-internal:///./test/spec/features/modeling/SetColorSpec.js:163:44)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "798994c1bc5c7ab8ddbf240c5d6dca07b2cd9f75450a96727df4fa2343f207f2",
+      "raw_log_sha256": "8f67a91193532d732af23be59ce7b11fc3a36db140f60f0a2a5c621a8d2569b0"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1777,
+      "discovered": 1784,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1777 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/modeling - set color execute setting stroke + fill color on external label ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "f60f6f0162816fd04ff06a194b0143b6e10849be8be8232a752110ff4c024c19",
+      "raw_log_sha256": "d2d2cd12e019679deea9cd602b6293f43fdd02d11e4567c33d6ab3c615c9827c"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "data/external/proofs/9bdadcebc71fe2b4c62361182f380b4ee07fa5f19deccde6ff9d1cf8fc418ca3",
+  "source_report_sha256": "9bdadcebc71fe2b4c62361182f380b4ee07fa5f19deccde6ff9d1cf8fc418ca3"
+}

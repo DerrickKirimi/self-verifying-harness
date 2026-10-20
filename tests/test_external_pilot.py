@@ -1,7 +1,9 @@
 """Protect the admission checks for a failure-only upstream test reporter."""
 
 import importlib.util
+import json
 from pathlib import Path
+import pytest
 
 
 spec = importlib.util.spec_from_file_location(
@@ -49,3 +51,29 @@ def test_pass_requires_a_positive_suite_summary():
     assert result["suite_complete"] and result["all_passed"]
     assert result["test_exit_code"] == 0
     assert not pilot.evidence("SVH_TEST_EXIT_CODE:0\n", "color")["all_passed"]
+
+
+def test_another_tests_assertion_cannot_validate_target_crash():
+    log = (
+        "Chrome Headless 131.0.0.0 (Linux x86_64) target FAILED\nTypeError: setup failed\n"
+        "Chrome Headless 131.0.0.0 (Linux x86_64) other FAILED\nAssertionError: different bug\n"
+    )
+    assert not pilot.evidence(log, "target")["assertion_observed"]
+    assert not pilot.evidence(log, ["target", "other"])["assertion_observed"]
+
+
+@pytest.mark.parametrize("side,key,value", [
+    ("pre", "expected_failure_observed", False),
+    ("pre", "assertion_observed", False),
+    ("pre", "test_exit_code", 0),
+    ("post", "suite_complete", False),
+    ("post", "skipped", 8),
+    ("post", "all_passed", False),
+    ("post", "base_commit_observed", "0" * 40),
+])
+def test_evidence_cannot_be_promoted_with_broken_integrity(side, key, value):
+    report = json.loads((Path(__file__).resolve().parents[1] / "notes/runs/swebench-bpmn-pilot.json").read_text())
+    pre, post = report["results"]["pre"], report["results"]["post"]
+    assert pilot.verified_pair(pre, post, report["base_commit"])
+    report["results"][side][key] = value
+    assert not pilot.verified_pair(pre, post, report["base_commit"])

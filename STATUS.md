@@ -28,6 +28,18 @@ Update this file at the end of every working session: what changed, gate results
   fix; afterward all 1777 executed tests pass, with the same 7 skips in both
   runs. Proof: `notes/runs/swebench-bpmn-pilot.json`. Media annotation/admission
   and agent-generated reproductions remain unmeasured; M0 is not complete.
+- [CODE/RUN] External annotation admission now binds the pinned Parquet row,
+  base/patch/image hashes, decoded media and regraded raw logs. The first
+  annotation (`evals/annotations/swebench-bpmn-1655.json`) validates. Runner
+  integrity tests: **44 passed**. Twelve visual artifacts have been manually
+  screened at 2 fps (the pilot additionally at 4 fps); reviews and timestamped
+  claims are in `evals/reviews.json`. Raw media stays ignored/reference-only.
+- [RUN] A sequential 12-candidate Docker curation batch is running. Durable
+  progress: `notes/runs/m0-curation-progress.json`; command:
+  `.venv/bin/python -I scripts/run_m0_oracles.py`. Existing reports are regraded
+  on resume. Do not infer completion from the progress file alone; inspect
+  reports/raw logs. The second candidate's pre-run has a target runtime error
+  rather than an assertion and currently cannot satisfy strict admission.
 
 ## Log
 
@@ -64,10 +76,11 @@ Update this file at the end of every working session: what changed, gate results
 
 ## Next step
 
-Next single unit: connect the successful BPMN oracle to an external-source
-annotation/provenance adapter. Support its native test runner and immutable
-base+patch states; finish full-clip review and timestamp annotation. The local
-walkthrough schema currently only covers pytest/Playwright and commit pairs.
+Finish the sequential native-oracle batch, freeze proofs for passing candidates,
+and admit reviewed annotations with `svh eval-gate`. The provenance adapter and
+first admission are implemented. Curation includes one application only; do not
+present it as cross-application or speech evaluation. Admission requires 10–20
+distinct artifacts, every oracle passing, Wilson lower bound >=0.70 (D22).
 
 Then assemble the 10–20-bug M0 set from reviewed video/GIF candidates in the pinned
 SWE-bench Multimodal release, supplementing from other sources when necessary.

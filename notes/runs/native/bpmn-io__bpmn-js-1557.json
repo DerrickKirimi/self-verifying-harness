@@ -1,0 +1,68 @@
+{
+  "task": "bpmn-io__bpmn-js-1557",
+  "run_at": "2026-10-20T14:21:48.428900+00:00",
+  "graded_at": "2026-10-20T14:21:48.428919+00:00",
+  "row_sha256": "c5ea1af6a018916683da8b121463983eb3d9c1880aae37ee05f17051a0ef2f24",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1557@sha256:4b2c56f9718fc5bc6e9b258bd02ac7a301a0f0f20b013fd7bd9ffb9314e08b80",
+  "image_id": "sha256:37e2ef06701b4e8a113c340cf038c130e36b336b348dc2242a2f9120d825f4c5",
+  "base_commit": "143603a26dbcc6dec8ca37df94562fc9050e96b4",
+  "fix_patch_sha256": "d5d2f433c5d6db681c9ea1e864be651bd00319e0b32e581906be9c47e03a2979",
+  "test_patch_sha256": "5bc3d5c9aadd7d8e1c8e9c812d187888303f79b4bce1fb0d3ef157a7425a7169",
+  "upstream_eval_sha256": "1ac30409741db32eae0ef5d51e5ec6cfa4cda69c91d00e61e984d277d51bf9fd",
+  "executed_eval_sha256": "fa391618dc4d2397a65262f47a896ec78486a5a42d95ca7a89f5a0796d70cb4f",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1677,
+      "discovered": 1684,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": true,
+      "summary": "1 FAILED, 1676 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "143603a26dbcc6dec8ca37df94562fc9050e96b4",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider replace menu data store positioned against participant should contain no reference FAILED\n\tAssertionError: expected { '0': <div class=\"entry bpmn-icon-data-object\" data-id=\"replace-with-data-object-reference\"><span>Data Object Reference</span></div>,\n\t  entries: [Function: entries],\n\t  keys: [Function: keys],\n\t  values: [Function: values],\n\t  forEach: [Function: forEach],\n\t  length: 1,\n\t  item: [Function: item] } to have a length of 0 but got 1\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:1463:40)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features/popup-menu - replace menu provider replace menu data store positioned against participant should contain no reference ",
+          "failed": true,
+          "assertion": true,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features/popup-menu - replace menu provider replace menu data store positioned against participant should contain no reference FAILED\n\tAssertionError: expected { '0': <div class=\"entry bpmn-icon-data-object\" data-id=\"replace-with-data-object-reference\"><span>Data Object Reference</span></div>,\n\t  entries: [Function: entries],\n\t  keys: [Function: keys],\n\t  values: [Function: values],\n\t  forEach: [Function: forEach],\n\t  length: 1,\n\t  item: [Function: item] } to have a length of 0 but got 1\n\t    at eval (webpack-internal:///./test/spec/features/popup-menu/ReplaceMenuProviderSpec.js:1463:40)\n\t    at Modeler.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "41e2bd68a2963ae28eb2439a7a12319aa84e156a3f3e07e30abf556dbc99210d",
+      "raw_log_sha256": "bf74990e44d0eaf5d4668812d23fe14a7ecb54a0c20023b23e9dd52ae58c8db4"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1677,
+      "discovered": 1684,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1677 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "143603a26dbcc6dec8ca37df94562fc9050e96b4",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features/popup-menu - replace menu provider replace menu data store positioned against participant should contain no reference ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "fec65197d827ceb4eac9683284e895263c7aa7bd4da298c7668198470bd8239f",
+      "raw_log_sha256": "972ed70ceb7ab9b1a3ba41923f3afacee569d996e93dfab857f8881157510dce"
+    }
+  },
+  "verified": true,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1557/logs"
+}

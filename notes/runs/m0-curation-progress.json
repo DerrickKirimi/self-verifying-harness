@@ -1,0 +1,23 @@
+{
+  "cases": {
+    "bpmn-io__bpmn-js-1557": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1557.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1557.json",
+      "state": "oracle-passed",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1557@sha256:4b2c56f9718fc5bc6e9b258bd02ac7a301a0f0f20b013fd7bd9ffb9314e08b80"
+    },
+    "bpmn-io__bpmn-js-1567": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1567.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1567.json",
+      "state": "oracle-rejected",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1567@sha256:70a7cf492ac608b2799f695e6b46e9d72304fd12e3da8d5c5a5f17c59de32b8c"
+    },
+    "bpmn-io__bpmn-js-1570": {
+      "report": "notes/runs/native/bpmn-io__bpmn-js-1570.json",
+      "row": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1570.json",
+      "state": "pulling-image",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570@sha256:ff51a6a93e0ac0995f544c75df9c2c725fd78bfcfc02786be3c4d469f806bb31"
+    }
+  },
+  "updated_at": "2026-10-20T14:26:24.297530+00:00"
+}

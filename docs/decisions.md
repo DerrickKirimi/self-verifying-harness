@@ -58,3 +58,11 @@ No public candidate is verified or included in M0 yet. [RUN]
 |---|---|---|
 | D19 | **Use the pinned current SWE-bench Multimodal release as the primary visual-task source; supplement its media coverage as needed.** Supersedes the next-step priority for CodeV in the first audit. | Owner delegated selection and expressed interest in this benchmark. [SRC] Actual Parquet inspection found direct video and GIF candidates, and the official site documents a recent v2 environment/grading refresh. [RUN/SRC] Newer-model difficulty and media contribution remain unmeasured. [INF] |
 | D20 | **Keep one implementation branch and isolated adapters/artifacts.** | No conflicting product implementations yet justify branch divergence. [INF] Start with the native BPMN color-label oracle; keep raw data and gold patches ignored, then attach annotated media after the oracle succeeds. |
+
+## Decisions (20 Oct 2026, external corpus admission)
+
+| # | Decision | Why / evidence |
+|---|---|---|
+| D21 | **Represent external source states as an immutable base commit plus hashed source/test patches and a pinned Docker image.** | The benchmark supplies patches, not a second Git commit. The external schema binds these bytes, the pinned dataset row, decoded media and frozen execution logs. It does not invent a post-fix commit. [CODE] |
+| D22 | **M0 admission requires 10–20 distinct reviewed temporal artifacts, every supplied oracle passing, and a 95% Wilson lower bound of at least 0.70.** | This numerical threshold was set before measuring the full corpus; it supplements the requirement that every admitted reproduction fail by assertion before and pass after. Curated admission is not model success or independent sampling. Rejected candidates remain recorded separately. [INF/CODE] |
+| D23 | **Use a conservative local API budget with per-request cost reservations before paid requests.** | The owner authorized shared Gemini credentials and supplied prepaid balance/cap evidence. Provider billing limits have enforcement latency; the local ledger must retain reservations after ambiguous failures and disable implicit retries. Secret files, screenshots and account identifiers remain outside commits. [SRC/INF] |

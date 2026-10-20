@@ -11,8 +11,9 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
 ```
 
 **Status:** M0 in progress. A Docker oracle runner and three planted issue-board
-bugs are executable. Owner-narrated recordings and the full eval set are still
-needed before ingestion work. See [`STATUS.md`](STATUS.md).
+bugs are executable. A pinned external video/task annotation now validates;
+the full visual eval set is being curated before ingestion work.
+See [`STATUS.md`](STATUS.md).
 
 ## Run the first checkpoint
 
@@ -43,8 +44,9 @@ integration and retrieval decisions are in [the decision log](docs/decisions.md)
 The first external oracle also works: a SWE-bench Multimodal BPMN video task
 fails at the expected color assertion before its reference fix, then passes
 its 1777 executed tests afterward (7 existing skips remain unchanged).
-This is a supplied-oracle pilot; media annotation and full M0 admission are
-still pending. See the [audit, proof and reproduction commands](notes/2026-10-20-swebench-multimodal-pilot.md).
+This is a supplied-oracle pilot with a validated timestamp annotation; full M0
+admission is still pending. See the [audit and reproduction commands](notes/2026-10-20-swebench-multimodal-pilot.md)
+and [external admission workflow](notes/2026-10-20-external-admission.md).
 
 ## Why
 

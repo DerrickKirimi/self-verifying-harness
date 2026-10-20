@@ -1,0 +1,68 @@
+{
+  "task": "bpmn-io__bpmn-js-1567",
+  "run_at": "2026-10-20T14:26:15.119735+00:00",
+  "graded_at": "2026-10-20T14:26:15.119756+00:00",
+  "row_sha256": "40161180ff3253c098dbc22735d01b6dba9e0c394a934266cb78c62f23b3a69c",
+  "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1567@sha256:70a7cf492ac608b2799f695e6b46e9d72304fd12e3da8d5c5a5f17c59de32b8c",
+  "image_id": "sha256:91c0c6bf1e31c1f4ef1a8c3c033f212affdbc39fbe4625dadbe11c13883a22c5",
+  "base_commit": "695c261709027d595949265b499adf21916971ad",
+  "fix_patch_sha256": "b4298023b42e50e74d76f39ba3b82f45e3d4b962fb3a69d8bd71af3c132103a9",
+  "test_patch_sha256": "52d8f171da97929c439ea81289b73181ed24472896e3b12e56d27a7e9dd33276",
+  "upstream_eval_sha256": "ac4390bc61391ea24b23d19e390d63e5009adf99a2a029441d185a7102cecb9d",
+  "executed_eval_sha256": "e96f7ff5198c4ff0ccd0cd3146b7b2bb4b71726ab5c7cf3cfc4311d5638509d5",
+  "results": {
+    "pre": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 1,
+      "suite_complete": true,
+      "executed": 1723,
+      "discovered": 1730,
+      "skipped": 7,
+      "expected_failure_observed": true,
+      "assertion_observed": false,
+      "summary": "1 FAILED, 1722 SUCCESS",
+      "all_passed": false,
+      "base_commit_observed": "695c261709027d595949265b499adf21916971ad",
+      "failure_excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Collaboration Breadcrumbs should switch to root FAILED\n\tError: Uncaught Error: rootElement required (webpack-internal:///./node_modules/diagram-js/lib/core/Canvas.js:610)\n\t    at clickBreadcrumb (webpack-internal:///./test/spec/features/drilldown/DrilldownSpec.js:468:36)\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownSpec.js:372:9)\n\t    at Viewer.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)",
+      "targets": [
+        {
+          "name": "features - drilldown Collaboration Breadcrumbs should switch to root ",
+          "failed": true,
+          "assertion": false,
+          "excerpt": "Chrome Headless 151.0.0.0 (Linux x86_64) features - drilldown Collaboration Breadcrumbs should switch to root FAILED\n\tError: Uncaught Error: rootElement required (webpack-internal:///./node_modules/diagram-js/lib/core/Canvas.js:610)\n\t    at clickBreadcrumb (webpack-internal:///./test/spec/features/drilldown/DrilldownSpec.js:468:36)\n\t    at eval (webpack-internal:///./test/spec/features/drilldown/DrilldownSpec.js:372:9)\n\t    at Viewer.invoke (webpack-internal:///./node_modules/didi/dist/index.esm.js:207:15)\n\t    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        }
+      ],
+      "log_sha256": "1627c2bb7430ce3868da4345dc20f8aa0e7c566e8d9fa7d891725395db142a74",
+      "raw_log_sha256": "675728e13e00aa4b270f0c7681ffddefb4bd06f9f266a53110fce5799738a5c2"
+    },
+    "post": {
+      "docker_exit_code": 0,
+      "timeout": false,
+      "test_exit_code": 0,
+      "suite_complete": true,
+      "executed": 1723,
+      "discovered": 1730,
+      "skipped": 7,
+      "expected_failure_observed": false,
+      "assertion_observed": false,
+      "summary": "1723 SUCCESS",
+      "all_passed": true,
+      "base_commit_observed": "695c261709027d595949265b499adf21916971ad",
+      "failure_excerpt": null,
+      "targets": [
+        {
+          "name": "features - drilldown Collaboration Breadcrumbs should switch to root ",
+          "failed": false,
+          "assertion": false,
+          "excerpt": null
+        }
+      ],
+      "log_sha256": "e4ca3ddcb6a48caaaba0502c2b6ad44d58a9185d8d517bd38306c087b29065e5",
+      "raw_log_sha256": "c59d556947b7ff5b277942a8c7c45ece1c25f073b0b87b5809ec85786b312b29"
+    }
+  },
+  "verified": false,
+  "scope": "Supplied test/gold-fix oracle only; no agent-generated reproduction, media-derived claim or full M0 admission yet",
+  "raw_logs": "/home/d3rrick/swe/llms/self-verifying-harness/data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1567/logs"
+}

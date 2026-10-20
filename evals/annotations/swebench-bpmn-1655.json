@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1655",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1655",
+    "row_path": "data/external/swebench-multimodal/bpmn-pilot-row.json",
+    "row_sha256": "2917d4f03ca96c818a74dd609f4a75a194f776c2a1e79ade1eb72a471de2df9e"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+    "fix_patch_sha256": "897372a7de6b9decb13df53d739db2f32c911398fbd5e3d9c1d622c8df4f5056",
+    "test_patch_sha256": "0529bc8e816bb12c02a7089cfdbc0a2548a1603af5b946ed254d825a6e552fa3",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/pilot.mov",
+    "sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
+    "source_url": "https://user-images.githubusercontent.com/25825387/169325524-f91870f7-c0e5-4b43-999f-4045eeeb2697.mov",
+    "duration_s": 6.816667,
+    "has_audio": false,
+    "kind": "video"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.25,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:20:18.462432+00:00"
+  },
+  "claims": [
+    {
+      "id": "external-label-stroke-color",
+      "t_start_s": 5.0,
+      "t_end_s": 6.816667,
+      "text": "After setting an external label to orange, its text uses the pale fill color rather than the darker stroke color. External label text should use the stroke color.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/modeling - set color execute setting stroke + fill color on external label "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1655-8b1ea43d37b1306e.json",
+    "report_sha256": "8b1ea43d37b1306e507e07ab6d1b3a4c6c7a75a50ad06c4a05a1484b2430ec8d"
+  }
+}
