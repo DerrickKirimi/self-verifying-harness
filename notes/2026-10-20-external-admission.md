@@ -32,6 +32,7 @@ Media stays reference-only: no redistribution or training rights are asserted.
 ```sh
 uv sync --locked --extra datasets
 uv run python -I scripts/run_m0_oracles.py
+uv run python -I scripts/admit_reviewed_cases.py
 uv run svh validate evals/annotations/swebench-bpmn-1655.json
 uv run svh eval-gate --annotations evals/annotations --output notes/runs/m0-gate.json
 ```
@@ -40,9 +41,14 @@ uv run svh eval-gate --annotations evals/annotations --output notes/runs/m0-gate
 alive; a quiet process is not evidence of a hang. The batch handles one task at
 a time and preserves at least 15 GiB of free disk before further pulls.
 
-[SRC/INF] Shared Gemini access is authorized, with prepaid credit evidence and
+[SRC/CODE] Shared Gemini access is authorized, with prepaid credit evidence and
 auto-reload disabled. Private configuration uses the external secret file, never
-key bytes in this repository. Before any metered call, implement and test local
-worst-case request reservations, retain ambiguous charges, and disable retries.
+key bytes in this repository. `svh.budget` implements atomic persistent worst-case
+request reservations, retains ambiguous charges, and only releases a reservation
+after metered settlement. Concurrent requests cannot oversubscribe the local cap;
+restarts cannot silently increase it. Five budget tests pass; total suite is now
+49 passed. No transport is connected yet. Before paid calls, bind reservations to
+verified model prices/token limits, disable retries and optional paid tools.
 Provider-side cap enforcement is delayed; it cannot replace that guard. No paid
-model calls have been made for this checkpoint.
+model calls have been made for this checkpoint. A project-local ledger cannot
+account for unrelated simultaneous consumption of the shared account.

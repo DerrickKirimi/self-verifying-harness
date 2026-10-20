@@ -40,6 +40,12 @@ Update this file at the end of every working session: what changed, gate results
   on resume. Do not infer completion from the progress file alone; inspect
   reports/raw logs. The second candidate's pre-run has a target runtime error
   rather than an assertion and currently cannot satisfy strict admission.
+- [CODE/RUN] A persistent SQLite cost ledger now reserves request upper bounds
+  atomically, retains ambiguous charges across restarts and refuses silent cap
+  increases. Concurrent-reservation and settlement checks pass; total runner
+  suite: **49 passed**. No model transport is wired to it yet and no metered
+  calls have been made. Private local configuration is capped below the supplied
+  prepaid balance; no key or billing screenshot is committed.
 
 ## Log
 

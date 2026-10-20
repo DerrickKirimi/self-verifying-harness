@@ -9,3 +9,4 @@ evals/recordings/
 traces/
 .scion/agents
 data/external/
+data/runtime/

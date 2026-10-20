@@ -1,0 +1,50 @@
+{
+  "format": "svh.external.v1",
+  "id": "swebench-bpmn-1557",
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Multimodal",
+    "revision": "4e6662d51c48e475f7f346e4fa09a6f8b31fcaa5",
+    "instance_id": "bpmn-io__bpmn-js-1557",
+    "row_path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1557.json",
+    "row_sha256": "c5ea1af6a018916683da8b121463983eb3d9c1880aae37ee05f17051a0ef2f24"
+  },
+  "app": {
+    "repo": "bpmn-io/bpmn-js",
+    "base_commit": "143603a26dbcc6dec8ca37df94562fc9050e96b4",
+    "fix_patch_sha256": "d5d2f433c5d6db681c9ea1e864be651bd00319e0b32e581906be9c47e03a2979",
+    "test_patch_sha256": "5bc3d5c9aadd7d8e1c8e9c812d187888303f79b4bce1fb0d3ef157a7425a7169",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1557@sha256:4b2c56f9718fc5bc6e9b258bd02ac7a301a0f0f20b013fd7bd9ffb9314e08b80"
+  },
+  "media": {
+    "path": "data/external/swebench-multimodal/cases/bpmn-io__bpmn-js-1557/media.gif",
+    "sha256": "29ef13593291739b2e19bb76ca0dc4acc7eb0cc9491b84997cac4a8b7a362815",
+    "source_url": "https://user-images.githubusercontent.com/42800119/138047751-6691a166-0650-45f8-ace9-f65429e9b76e.gif",
+    "duration_s": 9.9,
+    "has_audio": false,
+    "kind": "animated_image"
+  },
+  "review": {
+    "method": "contact-sheet",
+    "interval_s": 0.5,
+    "screening": "no-sensitive-content-observed",
+    "distribution": "reference-only",
+    "reviewed_at": "2026-10-20T14:25:56.884945+00:00"
+  },
+  "claims": [
+    {
+      "id": "visual-claim",
+      "t_start_s": 7.5,
+      "t_end_s": 9.9,
+      "text": "Morphing a data store outside a pool to a data object produces an error. The replacement menu should prevent an invalid reference outside the pool.",
+      "evidence_mode": "shown",
+      "expected_tests": [
+        "features/popup-menu - replace menu provider replace menu data store positioned against participant should contain no reference "
+      ]
+    }
+  ],
+  "oracle": {
+    "runner": "swebench-karma",
+    "report_path": "notes/runs/proofs/bpmn-io__bpmn-js-1557-26f5e3d16fb629fa.json",
+    "report_sha256": "26f5e3d16fb629fa4f9ee0032f2ee224a7aa11b24ee39f7fcbf23b1e3abac122"
+  }
+}

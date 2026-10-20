@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "annotation": "evals/annotations/swebench-bpmn-1557.json",
+      "id": "swebench-bpmn-1557",
+      "accepted": true
+    },
+    {
+      "annotation": "evals/annotations/swebench-bpmn-1655.json",
+      "id": "swebench-bpmn-1655",
+      "accepted": true
+    }
+  ],
+  "accepted": 2,
+  "total": 2,
+  "wilson_95": [
+    0.34238022750665303,
+    1.0
+  ],
+  "required_wilson_lower": 0.7,
+  "passed": false,
+  "scope": "Curated visual-only supplied-oracle gate; speech and generated-reproduction gates remain separate"
+}

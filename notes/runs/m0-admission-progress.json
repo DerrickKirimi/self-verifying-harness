@@ -1,0 +1,63 @@
+{
+  "updated_at": "2026-10-20T14:27:13.355151+00:00",
+  "cases": [
+    {
+      "task": "bpmn-io__bpmn-js-1557",
+      "state": "admitted"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1567",
+      "state": "not-admitted",
+      "reason": "oracle-rejected"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1570",
+      "state": "not-admitted",
+      "reason": "running-oracle"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1578",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1610",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1623",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1638",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1655",
+      "state": "existing-validated"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1659",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1677",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1679",
+      "state": "not-admitted",
+      "reason": "pending"
+    },
+    {
+      "task": "bpmn-io__bpmn-js-1719",
+      "state": "not-admitted",
+      "reason": "pending"
+    }
+  ]
+}
