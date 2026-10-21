@@ -1,0 +1,119 @@
+{
+  "scope": "AI-assisted development alignment; no independently human-adjudicated success or generated fail/pass pair in this checkpoint",
+  "cases": {
+    "swebench-bpmn-1640/1": {
+      "check_sha256": "d074065ddcadd1e4af7692d3d4036762c6c50862e55907f23d5bc30ad6d668e4",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "SvhGeneratedSpec - multi instance properties preserved when switching between parallel and sequential should preserve loop cardinality and completion condition when changing from parallel to sequential multi-instance",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:65:58)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "d074065ddcadd1e4af7692d3d4036762c6c50862e55907f23d5bc30ad6d668e4",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": true,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "28c747c5061b87f04fbc247ad4d7157e645e12387cd192d189fc666c3e87c993"
+      },
+      "alignment_review": {
+        "check_sha256": "d074065ddcadd1e4af7692d3d4036762c6c50862e55907f23d5bc30ad6d668e4",
+        "aligned": false,
+        "reviewer": "Codex AI controller review; not independent human adjudication",
+        "reason": "The actual issue Steps to Reproduce explicitly creates a sub-process, but the fixture ParallelTask is a bpmn:task. This check could accept a Task-only fix while leaving the recorded SubProcess failure. It also does not assert initial configured cardinality/condition immediately before toggling. Reproduce on an actual bpmn:SubProcess, establish initial parallel mode and both property values before the real popup transition, then require their preservation. Do not substitute a different activity type because it is easier to set up. The observed after-toggle property failure is retained, but is insufficient to verify this recorded claim."
+      }
+    },
+    "swebench-bpmn-1640/2": {
+      "check_sha256": "bc0f673c27fc0e60c5874fba9ce42ab05d6d35b34a42a14191c9c88e74476109",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "SvhGeneratedSpec - multi instance properties preserved when switching between parallel and sequential in sub-process should preserve loop cardinality and completion condition when changing sub-process from parallel to sequential multi-instance",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:78:58)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "bc0f673c27fc0e60c5874fba9ce42ab05d6d35b34a42a14191c9c88e74476109",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": true,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "c1efeaf4cdfc6e59dfb329eeda0c5eb54d4b971393a7f8f5e7b0dcb59069b831"
+      },
+      "alignment_review": {
+        "check_sha256": "bc0f673c27fc0e60c5874fba9ce42ab05d6d35b34a42a14191c9c88e74476109",
+        "aligned": true,
+        "reviewer": "Codex AI controller review; not independent human adjudication",
+        "reason": "The unchanged generated check uses the fixture SubProcess, asserts configured parallel mode, loop cardinality and completion condition before the actual popup toggle, observes sequential mode afterward, then fails on loss of loopCardinality. The recorded sub-process transition is exercised without manual property deletion. The observed complete Chrome result has one target assertion failure and no setup errors. Coverage is parallel-to-sequential and two configured properties; it does not claim all possible multi-instance properties or the reverse direction."
+      }
+    },
+    "swebench-bpmn-1570/1": {
+      "check_sha256": "5d38583677fb53d2779654efef36645d23b15925d45872ecd5e4bfcd67ef7b8c",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "SvhGeneratedSpec should preserve viewbox when wrapping process in pool",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected { Object (x, y, ...) } to deeply equal { Object (x, y, ...) }\n    at Proxy.assertEqual (absolute/testbed/node_modules/chai/chai.js?40e7aa72e9665366bfd82579520de4fb0754dfae:1381:19)\n    at Proxy.methodWrapper (absolute/testbed/node_modules/chai/chai.js?40e7aa72e9665366bfd82579520de4fb0754dfae:7709:25)\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:23:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "5d38583677fb53d2779654efef36645d23b15925d45872ecd5e4bfcd67ef7b8c",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570@sha256:ff51a6a93e0ac0995f544c75df9c2c725fd78bfcfc02786be3c4d469f806bb31",
+        "base_commit": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+        "source_is_base": true,
+        "source_archive_sha256": "e40b6a189074b14544d261e32f3006ec0657ca0afa300849e8d7675d58b2bcfd",
+        "baseline_fingerprint": "279ffefd78f2ffacb8eff0f2cd7be111d074bf9e026bee140e90b2ec4ec1081f",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "d29d180bc15296304e3d1309def09b5b842dda9cea715b89c92bfb8c822ad1f5"
+      },
+      "alignment_review": {
+        "check_sha256": "5d38583677fb53d2779654efef36645d23b15925d45872ecd5e4bfcd67ef7b8c",
+        "aligned": false,
+        "reviewer": "Codex AI controller review; not independent human adjudication",
+        "reason": "The complete viewbox object contains diagram inner bounds as well as viewport position/scale. Creating a pool legitimately changes diagram bounds, so deep equality of the entire object can fail without the recorded viewport jump. This assertion does not isolate the symptom. Assert preserved viewport x/y/scale and preferably the actual rendered viewport transform, with an existing process element, and load the real modules responsible for the reported operation. Confirm the original process is wrapped. Do not assert unchanged content bounds after adding a pool."
+      }
+    }
+  }
+}

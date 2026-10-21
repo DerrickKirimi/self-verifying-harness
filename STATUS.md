@@ -131,14 +131,19 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    assertions pass; repair36204 is terminal, returning an empty edit list and
    failing validation. Candidate1 is rejected
    because it substituted a Task for the reported SubProcess. Continue sequentially,
-   without pooling v1/v2 results;
+   without pooling v1/v2 results. Case1570 candidate1 is terminal (exec64346):
+   rejected because whole-viewbox equality can fail on legitimate content-bound
+   changes. Candidate2 was not executed: automatic approval review reached its
+   service usage limit. The owner confirmed capacity restored; that exact second
+   candidate command was approved and is now running (exec29006). Prior stopped
+   evidence is retained in `notes/2026-10-21-m3-mapped-flex-v3-checkpoint.md`;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read after v3 case1640 repair: $3.632989 charged/reserved, $0.367011 available,
+7. Last read after v3 case1570 candidate1: $3.661200 charged/reserved, $0.338800 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
