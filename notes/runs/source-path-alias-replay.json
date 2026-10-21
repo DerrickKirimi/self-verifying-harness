@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "generation_requests": 0,
+  "original_benchmark_status_unchanged": true,
+  "captured_fix_trace_sha256": "86d4094e35d1d61b23a6b0948b22b5ae3144b9e1437422ba91075c33b707e6dd",
+  "check_sha256": "a328036ec79d6556a53a94373a096cc12a6422494fe679b948ab28e3e0c0a6eb",
+  "source_files_sha256": {
+    "lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+  },
+  "identical_to_independently_verified_candidate2_source": true,
+  "pre": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "features/modeling - update label should unset di.label when task label is cleared",
+        "success": false,
+        "skipped": false,
+        "log": [
+          "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:46:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        ]
+      },
+      {
+        "name": "features/modeling - update label should unset di.label after creating and then clearing task label",
+        "success": false,
+        "skipped": false,
+        "log": [
+          "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:66:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        ]
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 2,
+    "skipped": 0,
+    "exit_code": 1,
+    "timed_out": false,
+    "check_sha256": "a328036ec79d6556a53a94373a096cc12a6422494fe679b948ab28e3e0c0a6eb",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": true,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {},
+    "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+    "console_sha256": "e4a8fe8b9b175caf563640e40223900e252d5d007f3764cf90b3f2c33a11974c"
+  },
+  "post": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "features/modeling - update label should unset di.label when task label is cleared",
+        "success": true,
+        "skipped": false,
+        "log": []
+      },
+      {
+        "name": "features/modeling - update label should unset di.label after creating and then clearing task label",
+        "success": true,
+        "skipped": false,
+        "log": []
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 2,
+    "skipped": 0,
+    "exit_code": 0,
+    "timed_out": false,
+    "check_sha256": "a328036ec79d6556a53a94373a096cc12a6422494fe679b948ab28e3e0c0a6eb",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": false,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {
+      "lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+    },
+    "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+    "console_sha256": "b442a3d4ddac7e346345f465521c85ad82017fbce933cfb95a62c8260fd554e6"
+  },
+  "native": {
+    "complete": true,
+    "exit_code": 0,
+    "total": 1779,
+    "skipped": 7,
+    "errors": []
+  },
+  "scope": "Interface replay only, no new candidate, no change to frozen evaluation score and no new task export"
+}

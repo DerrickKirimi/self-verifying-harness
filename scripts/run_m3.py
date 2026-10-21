@@ -63,6 +63,9 @@ if not a.task_manifest:
     claim=next(c for c in claims['cases'] if c['id']==a.only)
     # Copy only model outputs, never scorer/gold.
     claim={k:claim[k] for k in ('refined_predictions','code_evidence','hypotheses','questions')}
+if a.stage=='reproduce':
+    from svh.probes import require_candidate_capacity
+    require_candidate_capacity(work/task['id'])
 model=configured_model(root,name=a.model,output_cap=8192,service_tier=a.service_tier)
 model.reasoning_effort=a.thinking or ('medium' if a.model=='gemini-3.8-flash' else 'low')
 casepath=work/task['id']/str(a.candidate);casepath.mkdir(parents=True,exist_ok=True)

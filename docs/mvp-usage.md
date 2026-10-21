@@ -292,3 +292,11 @@ It retains the previous evidence under its SHA256 filename. The new evidence
 binds the exact price-policy bytes. No inference, upload or token-count request
 is made. Price and access reviews can have different UTC dates, but both must
 remain within 24 hours. Recheck `.venv/bin/python -I -m svh.cli budget` afterward.
+
+Source edit outputs accept relative `lib/...js` or the exact equivalent
+`/workspace/lib/...js` used by read tools. Other absolute roots, traversal,
+noncanonical paths and non-JavaScript files are rejected before source reads;
+old/new replacements must still match exactly once and change content.
+A new reproduction stage is refused before model/MCP setup once two distinct
+check versions are recorded for that case. Trusted replays of identical frozen
+bytes remain possible. Maintenance replays do not revise historical eval scores.

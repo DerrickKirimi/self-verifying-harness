@@ -257,7 +257,14 @@ def apply_edits(backend, edits):
     from svh.browser_runner import allowed_source
     files={}
     for edit in edits:
-        path=edit['path'];allowed_source({path:b''})
+        path=edit['path']
+        # File tools expose /workspace paths; accept only that exact alias for
+        # the already permitted relative lib/*.js paths. Never resolve paths.
+        if not isinstance(path,str) or '\\' in path or '\x00' in path:
+            raise ValueError('Invalid source edit path')
+        if path.startswith('/workspace/lib/'):
+            path=path[len('/workspace/'):]
+        allowed_source({path:b''})
         if path not in files:
             row=backend.download_files(['/workspace/'+path])[0]
             if row.error or row.content is None:raise ValueError('Source edit file is absent')

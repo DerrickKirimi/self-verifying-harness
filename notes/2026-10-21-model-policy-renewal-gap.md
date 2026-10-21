@@ -22,3 +22,7 @@ Do not run the old probe or edit pinned `gemini.py` while the v5 evaluation is
 using its frozen method. Resolve renewal after that run, then test the actual
 factory using genuinely refreshed metadata. The no-model README replay is
 independent of this expiration.
+
+## Resolution
+
+[RUN] Resolved by the supported independent price/access review and authenticated renewal in `notes/2026-10-21-model-policy-renewal.md`. The original expiry checkpoint is retained and the continuation explicitly declares its financial-policy amendment; no silent metadata or method replacement.

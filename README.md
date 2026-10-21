@@ -10,21 +10,21 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
             embeddings                    ask in the meeting
 ```
 
-**Status:** M0 passed on eleven reviewed temporal cases with observed supplied
-test failures before and passes after their reference fixes. The visual corpus
-is frozen; M1 and refined numerical M2 checks are measured. M3 now has four distinct generated recording-to-check-to-fix demonstrations,
-independent regressions and executed Harbor nop/oracle rewards0/1 for each.
-The [completed all-eleven run](notes/runs/m3-probed-v2-final-score.json) verifies2/11 (Wilson95%
-[5.14%,47.70%]) and fails the acceptance gate; the MVP is not yet shipped. An
-ordinary clarified synthetic audio run also completes generated repair and
-Harbor integrity. A [later evaluation](notes/2026-10-21-m3-mapped-flex-v3-results.md)
-retains a provider error and local budget exhaustion. A fresh Standard run adds
-the [SubProcess and empty-pool tasks](tasks/generated-v5/README.md), with real
-Harbor0/1. Its checkpoint has5/11 valid pairs [21.27%,71.99%] and4/11 full repairs
-[15.17%,64.62%]; four frozen cases remain unattempted, so the gate stays incomplete.
-Independent human claim
-adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
-See [`STATUS.md`](STATUS.md).
+**Status:** M0 and M1 passed; refined numerical M2 checks passed under
+AI-assisted review. The [completed eleven-case Standard run](notes/2026-10-21-m3-standard-submission-v5-results.md)
+now passes the predeclared numerical M3 gate: **5/11** unchanged generated checks
+fail before and pass after a generated source fix (Wilson95% [21.27%,71.99%]);
+**4/11** also pass native regressions ([15.17%,64.62%]). All eleven cases and
+failures are retained. The run explicitly records a mid-run financial-policy
+renewal; generation settings and version limits stayed unchanged.
+
+Four distinct public tasks have actual Harbor nop/oracle rewards0/1, including
+the [SubProcess and empty-pool tasks](tasks/generated-v5/README.md). An ordinary
+clarified synthetic-audio input also completes generated repair and Harbor
+integrity. Earlier [v2](notes/runs/m3-probed-v2-final-score.json) and budget/capacity
+failures remain recorded separately. **The full MVP is not yet declared shipped:**
+[independent human adjudication](docs/independent-review.md) remains outstanding.
+See the [usage guide](docs/mvp-usage.md) and [current status](STATUS.md).
 
 ## Try the recording-to-repair demo
 

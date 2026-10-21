@@ -8,13 +8,24 @@ from svh.browser_runner import observe
 from svh.verification import digest, browser_verdict
 
 
-def check_version_budget(case_directory, check, maximum=2):
+def recorded_check_digests(case_directory):
     known=set()
     for stage in ('1','2'):
         directory=case_directory/stage
         for path in [directory/'check.js',*directory.glob('development-probes/probe-*/check.js')]:
             if path.is_file() and path.stat().st_size:
                 known.add(digest(path.read_bytes()))
+    return known
+
+
+def require_candidate_capacity(case_directory, maximum=2):
+    """Do not fund a new generation stage when no distinct version remains."""
+    if len(recorded_check_digests(case_directory)) >= maximum:
+        raise ValueError('Two distinct frozen check versions already exist; no new candidate generation is allowed')
+
+
+def check_version_budget(case_directory, check, maximum=2):
+    known=recorded_check_digests(case_directory)
     if digest(check) not in known and len(known)>=maximum:
         raise ValueError('Two distinct frozen check versions already exist for this case')
 

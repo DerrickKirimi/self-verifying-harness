@@ -25,3 +25,17 @@ def test_development_checks_are_frozen_before_execution_and_only_two_versions(tm
         with pytest.raises(ValueError):registry.selected('probe-1')
         with pytest.raises(ValueError,match='Two distinct'):await registry.run('third version')
     asyncio.run(run());assert len(calls)==2
+
+
+def test_new_candidate_preflight_counts_distinct_versions_across_both_slots(tmp_path):
+    case=tmp_path/'case';stage=case/'1';stage.mkdir(parents=True)
+    (stage/'check.js').write_bytes(b'first')
+    probe=stage/'development-probes/probe-1';probe.mkdir(parents=True)
+    (probe/'check.js').write_bytes(b'first')
+    probes.require_candidate_capacity(case)
+    stage2=case/'2';stage2.mkdir()
+    (stage2/'check.js').write_bytes(b'second')
+    with pytest.raises(ValueError,match='no new candidate'):probes.require_candidate_capacity(case)
+    # Trusted reruns of identical bytes remain valid for proof/diagnostics.
+    probes.check_version_budget(case,b'first')
+    with pytest.raises(ValueError,match='Two distinct'):probes.check_version_budget(case,b'third')

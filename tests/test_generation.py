@@ -107,3 +107,21 @@ def test_audio_context_carries_transcript_without_inventing_images():
     assert calls==['get_recording','get_transcript']
     assert proof['frame_sha256']==[] and len(proof['transcript_sha256'])==64
     assert all(block['type']=='text' for block in content) and 'Clear the label' in str(content)
+
+
+def test_canonical_workspace_alias_preserves_exact_edits_and_rejects_other_paths():
+    calls=[]
+    class Backend:
+        def download_files(self,paths):
+            calls.extend(paths)
+            return [SimpleNamespace(error=None,content=b'function actual() { return 1; }')]
+    backend=Backend()
+    assert apply_edits(backend,[{'path':'/workspace/lib/a.js','old':'return 1','new':'return 2'}]) == {'lib/a.js':b'function actual() { return 2; }'}
+    assert calls == ['/workspace/lib/a.js']
+    for path in ['/other/lib/a.js','/workspace/../lib/a.js','/workspace/lib/../../test/check.js',
+                 '/workspace//lib/a.js','/workspace/lib//a.js','/workspace/lib/./a.js',
+                 '/workspace/test/a.js','/workspace/lib/a.json','lib/a\\x.js','lib/a\x00.js']:
+        calls.clear()
+        with pytest.raises(ValueError):apply_edits(backend,[{'path':path,'old':'return 1','new':'return 2'}])
+        assert not calls, path
+    with pytest.raises(ValueError):apply_edits(backend,[{'path':'/workspace/lib/a.js','old':'nonexistent','new':'changed'}])

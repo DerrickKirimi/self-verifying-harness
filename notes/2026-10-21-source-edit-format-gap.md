@@ -26,3 +26,7 @@ same traversal/extension/allowlist checks. Never accept arbitrary absolute paths
 the actual captured output in an isolated replay and preserve the original
 failure rather than rewriting the model trace or retrospectively changing its
 benchmark outcome. Do not edit pinned generation code during v5.
+
+## Resolution
+
+[RUN] Resolved after the frozen evaluation. `notes/runs/source-path-alias-replay.json` records actual captured-output pre-fail/post-pass and1772 native passes with seven skips, without generation or retroactive benchmark changes. Only the exact workspace alias is normalized; invalid/traversing paths are rejected before backend access. All148 harness tests pass.

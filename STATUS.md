@@ -2,12 +2,15 @@
 
 Update this file at every session checkpoint. Read AGENTS.md first.
 
-## Current milestone: M3 (generated self-verification), evaluation in progress
+## Current milestone: numerical M3 passed; independent human review outstanding
 
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
 retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
 claims failed M2; refined numerical M2 gates now pass under AI-assisted review.
-Independent human adjudication remains outstanding. Four distinct generated repairs
+Independent human adjudication remains outstanding. The completed, explicitly
+financially amended eleven-case v5 run passes numerical M3:5/11 valid pairs
+[21.27%,71.99%],4/11 full native-passing repairs [15.17%,64.62%],zero pending.
+Four distinct generated repairs
 have passed unchanged checks, independent regressions and real Harbor nop/oracle
 trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN]
 
@@ -35,7 +38,8 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 - [CODE/SRC] Authorized Gemini credentials remain in the external private file
   named by gitignored `.env`; never print or commit keys/screenshots/account IDs.
   Initial local API cap was $4.00; the owner's explicit additional funding now
-  authorizes a cumulative $12.00 (see next steps and funding note). Persistent
+  authorizes a cumulative $12.195678 (latest explicit five-dollar allowance;
+  see entry20). Persistent
   `svh.budget` reservations are tested, and a budget-covered model transport is now tested.
   Reasoning and sync/async summarization calls are covered; ambiguous charges
   retain reservations and SDK/middleware retries are disabled. `notes/2026-10-20-gemini-access.md`.
@@ -65,7 +69,19 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
   `notes/runs/mcp-http-smoke.json`. All **57 tests pass**, including auth/origin,
   trusted-input and image-bridge checks. `notes/2026-10-20-mcp-boundary.md`.
 
-## Next concrete steps
+## Next concrete step
+
+**Complete the independent human review described in `docs/independent-review.md`.**
+Both frozen media-grounded and issue-only packets are ready; no paid model call
+is needed for that review. Do not claim independent judgments or full MVP shipping
+until a real reviewer supplies them. All inference/Harbor workers are terminal.
+The README demo is runnable; all148 harness tests pass. The completed v5 run is
+historical and frozen; release adapter changes after it intentionally prevent
+resuming it under mismatched source hashes. Any further evaluation needs a new
+prospectively pinned method, not extra versions in exhausted cases.
+
+The numbered entries below preserve chronological implementation history; entry21
+is the latest measured checkpoint.
 
 1. M0/M1 passed. M2 sequential exec93013 is terminal: all eleven cases in both
    conditions completed with source unchanged. Refined media grounded precision
@@ -346,6 +362,29 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     The permitted1570 candidate2 has now been launched after renewal. Finish
     that case and1623/1659/1719 sequentially, then measure the entire denominator.
 
+21. **All eleven cases now considered; numerical M3 passes**, with zero pending
+    stages. Valid pairs5/11 [21.27%,71.99%], full native-passing repairs4/11
+    [15.17%,64.62%]. The disclosure and exact final report/score are linked from
+    `notes/2026-10-21-m3-standard-submission-v5-results.md`. No earlier run's
+    successes are pooled. Cases1570/1623/1659/1719 add no verified repair; their
+    errors, invalid assertions and one mistaken controller launch cancelled before
+    generation are retained in `notes/2026-10-21-v5-resumed-failures.md`.
+    The source-path ambiguity is now fixed after evaluation: only canonical
+    `/workspace/lib/...js` is normalized, with original traversal/extension and
+    exact replacement checks. Actual captured1638 output replays in Docker:
+    original frozen check fails before, passes after;1772 native passes/seven
+    skips. Source bytes match the separately verified candidate2. This is an
+    interface replay, not a retroactive score change or new exported claim:
+    `notes/runs/source-path-alias-replay.json`. New candidate preflight now refuses
+    exhausted distinct-version capacity before model/MCP setup. All **148 tests
+    pass**, one expected invalid-tier warning. No paid call for release checks.
+    Final charged/reserved **$8.454073**, cap **$12.195678**, available
+    **$3.741605**, three uncertain reservations retained. Since the owner's latest
+    authorization, actual increase is **$1.258395 of the $5 allowance**. No model
+    worker remains. README and usage instructions are current. Independent human
+    adjudication remains the unresolved protocol requirement; full MVP shipping
+    is not claimed.
+
 ## Evidence and history
 
 - Original intent: `docs/idea/` (never edit); analysis/roadmap/decisions/references:
@@ -366,4 +405,4 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | V2 complete2/11 fails; v5 checkpoint5/11 valid pairs [21.27%,71.99%],4/11 full repairs [15.17%,64.62%], four unattempted; four distinct public tasks plus ordinary audio have actual Harbor0/1; MVP incomplete |
+| M3 generated verification/fix/Harbor | Numerical gate passed in explicitly financially amended v5: all11 considered,zero pending;5/11 valid pairs [21.27%,71.99%],4/11 full repairs [15.17%,64.62%]; four distinct public tasks plus ordinary audio have actual Harbor0/1; human adjudication outstanding |
