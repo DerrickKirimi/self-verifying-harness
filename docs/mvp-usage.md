@@ -149,6 +149,15 @@ claims and inspect code from an ordinary task before generating its check:
   --run-name my-run --stage reproduce --model gemini-3.5-flash-lite
 ```
 
+[CODE/SRC] The default service tier is Standard. To use the separately reviewed
+Flex tier, add `--service-tier flex --thinking medium` to **both** stage commands.
+Flex requires fresh access metadata and `notes/runs/gemini-flex-policy.json`;
+the transport reserves the full input-context limit plus maximum output at the
+matching reviewed prices. It permits one request attempt, a fifteen-minute
+timeout, and no automatic Standard fallback. Queuing can make a stage take longer.
+See the [reviewed policy and actual access smoke](../notes/2026-10-21-next-evaluation-budget-options.md).
+Never increase or reset the persistent cap to get around a rejected reservation.
+
 [CODE/INF] Inspect the retained `candidate.json`, actual browser observation and
 recording. A setup assertion is not the target failure. An explicit
 `alignment-review.json` beside the frozen `check.js` must bind its SHA256, contain

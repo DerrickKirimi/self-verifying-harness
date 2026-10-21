@@ -17,7 +17,9 @@ independent regressions and executed Harbor nop/oracle rewards0/1 for each.
 The [completed all-eleven run](notes/runs/m3-probed-v2-final-score.json) verifies2/11 (Wilson95%
 [5.14%,47.70%]) and fails the acceptance gate; the MVP is not yet shipped. An
 ordinary clarified synthetic audio run also completes generated repair and
-Harbor integrity. Independent human claim
+Harbor integrity. A [later evaluation](notes/2026-10-21-m3-mapped-flex-v3-results.md)
+retains a provider error and local budget exhaustion; it adds no verified repair.
+Independent human claim
 adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
 See [`STATUS.md`](STATUS.md).
 

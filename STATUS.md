@@ -135,7 +135,15 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    rejected because whole-viewbox equality can fail on legitimate content-bound
    changes. Candidate2 was not executed: automatic approval review reached its
    service usage limit. The owner confirmed capacity restored; that exact second
-   candidate command was approved and is now running (exec29006). Prior stopped
+   candidate command was approved and completed (exec29006): its viewport x/y
+   assertions pass on buggy code, then an additional probe is refused by the
+   case-wide version limit. Case1610 fails on a provider ServerError (exec64778),
+   retaining the full $0.167527 reservation. Case1623 (exec71506) is terminal with
+   BudgetExceeded before any provider request. All seven remaining cases are now
+   terminal with the same actual local refusal; no paid requests were dispatched.
+   Final v3 has0/11 generated fail/pass pairs [0%,25.88%], no pending stages and
+   no active worker. It fails the gate and is budget-limited, not a clean method
+   comparison. See `notes/2026-10-21-m3-mapped-flex-v3-results.md`. Prior stopped
    evidence is retained in `notes/2026-10-21-m3-mapped-flex-v3-checkpoint.md`;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
@@ -143,8 +151,10 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read after v3 case1570 candidate1: $3.661200 charged/reserved, $0.338800 available,
-   zero pending, cap $4.00. Read `svh budget` again before new work; do not
+7. Last read after v3 case1610: $3.861395 charged/reserved, $0.138605 available,
+   one unsettled request ($0.167527), cap $4.00. Settled cost estimate $3.693868.
+   Remaining availability is below the minimum full-context reservation. Read
+   `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
 8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
