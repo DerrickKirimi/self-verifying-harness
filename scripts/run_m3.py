@@ -38,6 +38,10 @@ lock=(root/'data/runtime/m3/worker.lock').open('a');fcntl.flock(lock,fcntl.LOCK_
 rpath=work/'report.json'
 report=json.loads(rpath.read_text()) if rpath.exists() else {'corpus_sha256':corpus_sha,'cases':[{'id':t['id'],'status':'not_attempted','candidates':[]} for t in tasks]}
 if report['corpus_sha256']!=corpus_sha:raise SystemExit('Different corpus')
+if report.get('method'):
+    method_bytes=(root/report['method']).read_bytes();method=json.loads(method_bytes)
+    if digest(method_bytes)!=report['method_sha256'] or method['model']!=a.model:
+        raise SystemExit('Use the prepared run method and model; do not mix methods silently')
 task=next(t for t in tasks if t['id']==a.only)
 row=next(t for t in report['cases'] if t['id']==a.only)
 claim=None
@@ -95,7 +99,10 @@ async def run():
                                   'instruction':'Correct setup/API mistakes before any source fix. Put rendered DOM assertions before internal DI assertions so the observed failure checks the visible symptom. Preserve general coverage; inspect actual fixture identifiers.'}
                     output=await generate(task,claim,model,backend,client,casepath/'reproduce-trace.json',feedback=feedback)
             (casepath/'candidate.json').write_text(json.dumps(output,indent=2)+'\n')
-            check=output['check_javascript'].encode();(casepath/'check.js').write_bytes(check)
+            check=output['check_javascript'].encode()
+            from svh.probes import check_version_budget
+            check_version_budget(casepath.parent,check)
+            (casepath/'check.js').write_bytes(check)
             candidate['check_sha256']=digest(check)
             candidate['pre']=observe(task['image'],task['base_commit'],check,casepath/'pre')
             candidate['status']='observed_base_assertion' if browser_verdict(candidate['pre'],assertion_failure=True) else 'invalid_reproduction'

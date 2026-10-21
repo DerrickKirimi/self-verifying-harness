@@ -1,0 +1,17 @@
+{
+  "format": "svh.m3.method.v2",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "model": "gemini-3.5-flash-lite",
+  "thinking_level": "low",
+  "output_cap": 8192,
+  "max_agent_steps": 30,
+  "maximum_distinct_executed_check_versions_per_case": 2,
+  "evidence": "Controller fetches registered metadata and three actual frames through authenticated MCP before model invocation",
+  "generation": "Existing deepagents loop may call the trusted browser probe on fresh buggy source; final submission references the exact frozen probe bytes",
+  "source_inspection": "Bounded buggy source/base spec/fixture packet; inspection cutoff after ten tool replies, with remaining frozen probe submissions permitted; three read calls for repair",
+  "repair": "Only after controller-reviewed target assertion failure; generated source-only edits, unchanged check, independent native regression suite",
+  "judgments": "Explicit Codex AI controller review, not independent human adjudication",
+  "rubric": "evals/m3-rubric.json unchanged; retain all eleven cases and every failed probe",
+  "budget": "Shared persistent ledger, unchanged USD4 cap; include budget exhaustion as unsuccessful",
+  "scope": "Fresh development-method run after the partial v1 attempt, not unseen or held-out evaluation"
+}

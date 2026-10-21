@@ -1,5 +1,7 @@
 """Generate one stage with the existing SDK loop; the controller verifies it later."""
 import hashlib
+import base64
+import math
 import json
 from pathlib import PurePosixPath
 from pydantic import BaseModel, ConfigDict, Field
@@ -8,20 +10,24 @@ from langsmith import tracing_context
 from langchain.agents.middleware import AgentMiddleware
 from langchain_core.messages import ToolMessage, SystemMessage, HumanMessage
 from svh.harness import create_harness
-from svh.mcp_client import harness_tools
+from svh.probes import ProbeRegistry
+from svh.verification import browser_verdict
 
 
 class BoundedInspection(AgentMiddleware):
     """Limit tool exposure, while the SDK retains its typed final-output tool."""
-    def __init__(self, *, require_media, limit=10):
-        self.require_media,self.limit=require_media,limit
+    def __init__(self, *, require_media, limit=10, require_probe=False):
+        self.require_media,self.limit,self.require_probe=require_media,limit,require_probe
 
     def narrow(self, request):
         replies=[m for m in request.messages if isinstance(m,ToolMessage)]
         successful={m.name for m in replies if m.status=='success'}
         missing={'get_recording','get_frames'}-successful if self.require_media else set()
+        qualified=any(m.name=='probe_browser_check' and browser_verdict((m.artifact or {}).get('development_browser',{}),assertion_failure=True) for m in replies)
         allowed=missing or {'grep','read_file','glob','ls'}
-        if len(replies)>=self.limit:allowed=set()
+        if self.require_probe:allowed.add('probe_browser_check')
+        if len(replies)>=self.limit:allowed={'probe_browser_check'} if self.require_probe and not qualified else set()
+        if self.require_probe and qualified:allowed=set()
         tools=[t for t in request.tools if (t.name if hasattr(t,'name') else t.get('name')) in allowed]
         message=request.system_message
         if not tools:
@@ -30,12 +36,16 @@ class BoundedInspection(AgentMiddleware):
         messages=request.messages
         if not tools:
             messages=[*messages,HumanMessage(content='Controller checkpoint: source inspection is finished. Return your concrete final CheckCandidate or SourceFix now, using the available recorded evidence and existing source. CheckCandidate requires complete executable JavaScript, a nonempty requirement and rationale; do not emit empty placeholder fields. Keep any remaining uncertainty explicit. Do not call another inspection tool.')]
-        return request.override(tools=tools,system_message=message,messages=messages)
+        overrides={'tools':tools,'system_message':message,'messages':messages}
+        if self.require_probe and not qualified:overrides.update(response_format=None,tool_choice='any')
+        if self.require_probe and qualified:
+            overrides['messages']=[*request.messages,HumanMessage(content='Controller: an actual frozen probe has a completed assertion failure. Return CheckSubmission now with its check_ref and requirement/rationale. Do not repeat or change code.')]
+        return request.override(**overrides)
 
     def deny(self,request):
         replies=[m for m in request.state.get('messages',[]) if isinstance(m,ToolMessage)]
         name=request.tool_call['name']
-        if name not in {'get_recording','get_frames','grep','read_file','glob','ls'} or len(replies)>=self.limit:
+        if name not in {'get_recording','get_frames','grep','read_file','glob','ls','probe_browser_check'} or (name!='probe_browser_check' and len(replies)>=self.limit):
             return ToolMessage(content='This generation stage permits only bounded read-only inspection. Return the typed final output.',tool_call_id=request.tool_call['id'],status='error')
         return None
 
@@ -56,6 +66,15 @@ class CheckCandidate(BaseModel):
     check_javascript: str = Field(min_length=1, max_length=128*1024, description="Complete executable standalone Karma/Mocha JavaScript check, without markdown")
     requirement: str = Field(min_length=1, description="Concrete software behavior being checked")
     rationale: str = Field(min_length=1, description="How the asserted failure corresponds to the recording requirement")
+    visible_assertions: list[str]
+    uncertainty: str | None
+
+
+class CheckSubmission(BaseModel):
+    model_config=ConfigDict(extra='forbid')
+    check_ref: str = Field(pattern=r'^probe-[12]$')
+    requirement: str = Field(min_length=1)
+    rationale: str = Field(min_length=1)
     visible_assertions: list[str]
     uncertainty: str | None
 
@@ -83,12 +102,17 @@ returned spec may use the existing webpack test/... and lib/... module roots.
 For grep use output_mode="content" so source lines, not just filenames, are
 returned. Read the actual fixture XML before asserting its identifiers or text.
 Be concise: at most three targeted searches and four file pages. Return the typed
-final output after that investigation. Do not execute tests: the trusted controller
-will stage your output in a fresh base and run actual Chrome separately.
+final output after that investigation. Only the controller-owned probe_browser_check tool may execute a development
+check on fresh buggy source. Never run arbitrary commands or apply a source fix.
 '''
 REPRO=COMMON+'''Generate one JavaScript browser reproduction for the supplied recording
-claim. Call get_recording and get_frames to inspect the cited failure. Return a
-single standalone Karma/Mocha spec in CheckCandidate, not markdown. It will be
+claim. The controller supplies actual metadata and frames fetched over MCP.
+Inspect these attached frames before coding. Return a
+single standalone Karma/Mocha spec using probe_browser_check, not markdown.
+Use actual returned runtime/setup errors to correct the check. At most two
+distinct check versions may execute. Once the intended assertion fails, return
+CheckSubmission referencing its check_ref with requirement/rationale/visible_assertions.
+Do not repeat code in the final submission or propose a source fix. It will be
 stored as test/SvhGeneratedSpec.js, with existing webpack module roots and
 sinon/chai globals. Import bootstrapModeler/inject from 'test/TestHelper'; use
 existing source modules and base fixtures (absolute webpack imports starting
@@ -96,7 +120,9 @@ with 'test/...'). Inspect a nearby existing spec first. Each assert must express
 the expected correct behavior, so a buggy result should fail an AssertionError.
 Use actual rendered DOM/visibility/style assertions for visible UI requirements;
 prefer standard document.querySelector and window.getComputedStyle over guessing helper exports,
-plus relevant modeling invariants. Assert the feature still exists to reject
+plus relevant modeling invariants. Assert the current rendered symptom before
+private/internal invariants so the observed failure concerns the visible behavior.
+Assert the feature still exists to reject
 feature deletion; exercise two distinct values where useful to reject a visible
 example special case. Do not inspect source text, hardcode known wrong output,
 throw a fake error, invert an assertion, mark tests skipped or mock the behavior
@@ -119,16 +145,47 @@ will be evaluated in a fresh sandbox with unchanged tests and held-out regressio
 '''
 
 
+async def recording_context(client, task, claim):
+    metadata=await client.call_tool('get_recording',{'recording_id':task['id']})
+    if metadata.is_error or metadata.structured_content.get('id')!=task['id']:
+        raise ValueError('Registered recording metadata is unavailable')
+    record=metadata.structured_content;duration=record['duration_s']
+    predictions=claim.get('refined_predictions',[])
+    span=predictions[0].get('span') if predictions else None
+    start,end=(span['start_s'],span['end_s']) if span else (0,min(duration,30))
+    if not all(isinstance(v,(int,float)) and math.isfinite(v) for v in [start,end]):
+        raise ValueError('Invalid claimed recording interval')
+    start=max(0,start);end=min(duration,end,start+30)
+    if not start<end:raise ValueError('Claim interval is outside recording')
+    frames=await client.call_tool('get_frames',{'recording_id':task['id'],'t0':start,'t1':end,'max_frames':3})
+    if frames.is_error:raise ValueError('Actual recording frames are unavailable')
+    images=[b for b in frames.content if b.type=='image']
+    times=frames.structured_content['timestamps_s']
+    if len(images)!=3 or len(times)!=3:raise ValueError('Missing bounded recording frames')
+    content=[{'type':'text','text':'Controller-fetched registered MCP recording metadata: '+json.dumps(record)}]
+    hashes=[]
+    for timestamp,block in zip(times,images,strict=True):
+        hashes.append(hashlib.sha256(base64.b64decode(block.data,validate=True)).hexdigest())
+        content.extend([{'type':'text','text':f'Actual recording frame at {timestamp:.6f}s'},
+                        {'type':'image_url','image_url':{'url':f'data:{block.mime_type};base64,{block.data}'}}])
+    if record['has_audio']:
+        transcript=await client.call_tool('get_transcript',{'recording_id':task['id'],'t0':start,'t1':end})
+        if transcript.is_error:raise ValueError('Audio claim requires its prepared transcript')
+        content.append({'type':'text','text':'Timestamped recording transcript: '+json.dumps(transcript.structured_content)})
+    return content,{'metadata':record,'timestamps_s':times,'frame_sha256':hashes}
+
+
 async def generate(task, claim, model, backend, client, destination, *, pre=None, check=None, feedback=None, max_steps=30):
     repairing=pre is not None
     if repairing and check is None:
         raise ValueError('Repair requires the frozen check')
-    schema=SourceFix if repairing else CheckCandidate
+    schema=SourceFix if repairing else CheckSubmission
     prompt=FIX if repairing else REPRO
-    tools=await harness_tools(client) if not repairing else []
+    probes=None if repairing else ProbeRegistry(task,destination.parent)
+    tools=[probes.tool()] if probes is not None else []
     agent=create_harness(model,backend,tools=tools,system_prompt=prompt,
                          response_format=ToolStrategy(schema,handle_errors=False),
-                         middleware=[BoundedInspection(require_media=not repairing,limit=3 if repairing else 10)])
+                         middleware=[BoundedInspection(require_media=False,limit=3 if repairing else 10,require_probe=not repairing)])
     from svh.source_packet import source_packet
     request={'recording_id':task['id'],'quoted_issue':task['problem_statement'],'claim':claim,
              'existing_buggy_source_packet':source_packet(backend,claim,include_tests=not repairing)}
@@ -136,11 +193,17 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
         request['previous_candidate_failure']=feedback
     if repairing:
         request.update(frozen_check=check.decode(),observed_failure=pre)
+    media,provenance=await recording_context(client,task,claim) if not repairing else ([],None)
+    message_content=[{'type':'text','text':json.dumps(request)},*media] if not repairing else json.dumps(request)
     before=backend.initial_source_fingerprint
-    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v5-explicit-final-handoff','limit':3 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
+    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v7-frozen-development-probes','limit':3 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
+    raw['prefetched_recording_evidence']=provenance
+    from pathlib import Path
+    module=Path(__file__).parent
+    raw['implementation_sha256']={name:hashlib.sha256((module/name).read_bytes()).hexdigest() for name in ['generation.py','probes.py','source_packet.py','browser_runner.py','docker_backend.py','harness.py']}
     structured=None
     with tracing_context(enabled=False):
-        async for state in agent.astream({'messages':[{'role':'user','content':json.dumps(request)}]},
+        async for state in agent.astream({'messages':[{'role':'user','content':message_content}]},
                 config={'recursion_limit':max_steps},stream_mode='values'):
             raw['messages']=[m.model_dump() for m in state['messages']]
             structured=state.get('structured_response',structured)
@@ -152,9 +215,11 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     if structured is None:raise ValueError('Missing typed stage output')
     result=schema.model_validate(structured).model_dump()
     if not repairing:
-        names={m.get('name') for m in raw['messages'] if m.get('type')=='tool' and m.get('status')=='success'}
-        if not {'get_recording','get_frames'}<=names:
-            raise ValueError('Reproduction omitted actual recording evidence')
+        ref=result.pop('check_ref');check=probes.selected(ref)
+        result={'check_javascript':check.decode(),**result}
+        raw['selected_check_ref']=ref
+        raw['canonical_output']=result
+        destination.write_text(json.dumps(raw,indent=2,default=str)+'\n')
     return result
 
 

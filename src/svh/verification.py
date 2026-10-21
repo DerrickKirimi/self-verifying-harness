@@ -48,6 +48,7 @@ def score(attempts, rubric, expected_ids):
                        for c in a.get('candidates', [])) for a in attempts)
     n=len(attempts)
     attempted=sum(a.get('status') != 'not_attempted' for a in attempts)
-    return {'artifacts': n, 'attempted_artifacts': attempted, 'valid_reproductions': {'successes': valid, 'n': n, 'wilson95': wilson(valid,n)},
+    pending=sum(c.get('status')=='generating_check' or (c.get('status')=='observed_base_assertion' and c.get('alignment_review',{}).get('aligned') is not False) for a in attempts for c in a.get('candidates',[]))
+    return {'artifacts': n, 'attempted_artifacts': attempted, 'pending_stages': pending, 'valid_reproductions': {'successes': valid, 'n': n, 'wilson95': wilson(valid,n)},
             'full_generated_repairs': {'successes': repaired, 'n': n, 'wilson95': wilson(repaired,n)},
-            'generated_verification_gate_passed': attempted == n and n >= rubric['minimum_artifacts'] and wilson(valid,n)[0] >= rubric['valid_reproduction_wilson_lower'] and repaired >= rubric['minimum_full_generated_repairs']}
+            'generated_verification_gate_passed': pending == 0 and attempted == n and n >= rubric['minimum_artifacts'] and wilson(valid,n)[0] >= rubric['valid_reproduction_wilson_lower'] and repaired >= rubric['minimum_full_generated_repairs']}

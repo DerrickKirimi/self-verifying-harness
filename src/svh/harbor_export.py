@@ -71,7 +71,7 @@ def export_task(destination, task, claim, candidate, casepath, *, media_referenc
     repair_output=json.loads((casepath/'source-fix.json').read_text())
     repro_trace=json.loads((casepath/'reproduce-trace.json').read_text())
     repair_trace=json.loads((casepath/'repair-trace.json').read_text())
-    if (generated.get('check_javascript','').encode()!=check or repro_trace.get('structured_response')!=generated
+    if (generated.get('check_javascript','').encode()!=check or repro_trace.get('canonical_output',repro_trace.get('structured_response'))!=generated
             or repair_trace.get('structured_response')!=repair_output):
         raise ValueError('Artifacts differ from retained model outputs')
     files={p.relative_to(casepath/'source').as_posix():p.read_bytes() for p in (casepath/'source').rglob('*.js')}

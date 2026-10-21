@@ -84,18 +84,21 @@ and Harbor trials have not been measured. [RUN]
    skips, 1799 discovered. Finite wrong-fix controls expose a fixture shortcut;
    a separately observed fail/pass ID variation now guards the Harbor task.
    `notes/2026-10-21-first-generated-repair.md` and task proof contain evidence.
-5. Actual Harbor integrity passes for the exported1679 task: **nop reward0,
-   oracle reward1**, observed browser checks and native regressions verified.
-   Exec82768 is terminal. Initial missing-Buildx setup failure is retained;
-   official verified Buildx is project-local. No paid model worker is active.
-6. M3 checkpoint: 1/11 [1.62%,37.74%], five artifacts considered; gate incomplete.
-   1655/1638/1570/1640 exhaust two candidates unsuccessfully. Still consider
-   1557 ambiguity, then 1610/1623/1659/1719/1928. Preserve all denominators/attempts;
-   no extra candidates are added to exhausted cases. Full suite: **95 passed**. All current workers are terminal.
-7. Guard ledger: $3.113287 settled estimate, $0.886713 available, no unsettled
-   requests, cap $4.00. Do not raise/reset it. Need complete remaining M3 cases,
-   real Harbor trials and final audit before calling the MVP shipped. Human
-   claim adjudication remains outstanding; numerical M2 review is AI-assisted.
+5. Actual Harbor integrity passes for the exported1679 task: nop reward0,
+   oracle reward1, primary/independent browser checks and native suite observed.
+   All old workers are terminal. First v1 run remains incomplete: one verified
+   repair, seven considered cases including 1557 abstention, four unattempted.
+6. Reproduction development now has controller-owned browser probes inside the
+   existing SDK loop, actual MCP images delivered before inference, two distinct
+   check versions per case and frozen probe references. Targeted integrity checks
+   pass; `notes/2026-10-21-m3-browser-development.md` describes the measured limits.
+   A fresh **probed-v2** all-eleven run is prepared with unchanged rubric, Lite/low,
+   no paid v2 call yet. Its1557 ambiguity is already recorded as an abstention.
+7. Budget before v2: $3.141581 settled estimate, $0.858419 available, zero pending,
+   cap $4.00. Do not raise/reset it. Start with a single case, inspect target
+   assertion alignment, then source-only repair/native tests. Export each newly
+   verified claim and run actual Harbor integrity; preserve the failed v1 results.
+   Last full suite95 passed; new probe/media/pending-state units pass separately.
 
 ## Evidence and history
 

@@ -36,3 +36,11 @@ def test_unattempted_cases_cannot_pass_gate_even_with_enough_successes():
     cases[-1]={'id':'10','status':'not_attempted','candidates':[]}
     result=score(cases,r,[str(i) for i in range(11)])
     assert result['attempted_artifacts']==10 and not result['generated_verification_gate_passed']
+
+
+def test_active_stage_cannot_pass_completed_m3_gate():
+    pre,post=pair();r={'minimum_artifacts':10,'valid_reproduction_wilson_lower':.2,'minimum_full_generated_repairs':1}
+    cases=[{'id':str(i),'status':'attempted','candidates':[{'pre':pre,'post':post,'alignment_review':{'aligned':True,'check_sha256':'frozen'},'native_regressions_passed':True}]} for i in range(11)]
+    cases[-1]['candidates']=[{'status':'generating_check'}]
+    result=score(cases,r,[str(i) for i in range(11)])
+    assert result['pending_stages']==1 and not result['generated_verification_gate_passed']
