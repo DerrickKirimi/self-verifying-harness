@@ -18,7 +18,46 @@ is still incomplete; the MVP is not yet shipped. Independent human claim
 adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
 See [`STATUS.md`](STATUS.md).
 
-## Run the first checkpoint
+## Try the recording-to-repair demo
+
+Requires Linux x86_64, Python 3.13, `uv`, `ffmpeg`/`ffprobe`, and a running
+Docker daemon. Run these commands from this repository. The isolated Harbor
+installation is needed once (it requires Python >=3.12):
+
+```sh
+uv sync --locked --extra agent --python 3.13
+uv venv --python 3.13 data/runtime/harbor-venv
+uv pip install --python data/runtime/harbor-venv/bin/python \
+  'harbor @ git+https://github.com/harbor-framework/harbor.git@4b94505a91c5ddcb70b5740ac95718ddee13e5a0'
+.venv/bin/python -I scripts/demo.py
+```
+
+On this workspace the environments are already installed; just run the last
+command. No Gemini key or paid model call is needed. The first run downloads the
+reviewed public GIF and Docker image; allow several minutes and disk space for
+the prepared browser environment. Buildx is installed under this project's
+ignored data directory with pinned official checksums.
+
+The demo retrieves three real recording frames through authenticated MCP, then
+replays the previously generated check and source fix in fresh Docker Harbor
+trials. Expected result: `nop` reward **0** from the target assertion failing;
+`oracle` reward **1** after the generated fix, with the same check, an independent
+variant and native regressions passing. This replays frozen generation outputs;
+it does not ask a model to generate a new fix.
+
+The command prints `PASS` and paths to PNG frames and `result.json` under
+`data/runtime/demos/<run-name>/`. Detailed rewards and evidence hashes are saved
+to `notes/runs/harbor-<run-name>.json`; raw browser observations and logs live in
+`data/runtime/harbor-jobs/`. Every invocation gets a fresh run name. A nonzero exit
+means the demo did not pass; inspect the printed run directory and logs.
+
+For **your own recording and fresh model-backed generation**, follow
+[ordinary input and generation instructions](docs/mvp-usage.md). That path needs
+Gemini credentials and the persistent spending cap. The current application
+adapter supports prepared BPMN-js/Karma projects; arbitrary repositories and
+speech quality are not yet validated.
+
+## Run the original fixture checkpoint
 
 Requires Python 3.11+, `uv` and access to a running Docker daemon. No model API
 key is needed.

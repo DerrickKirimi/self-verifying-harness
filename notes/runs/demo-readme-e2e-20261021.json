@@ -1,0 +1,23 @@
+{
+  "format": "svh.demo.v1",
+  "passed": true,
+  "scope": "Recording MCP retrieval and frozen generated-repair replay; no fresh model generation",
+  "model_calls": 0,
+  "manifest_sha256": "0f67bed7ccd80e3582684445d15ef51aff636b3a8b1c0a7ecf5973d00ebeb448",
+  "frames": [
+    {
+      "path": "data/runtime/demos/readme-e2e-20261021/frame-1.png",
+      "sha256": "8dc4d68146bb74220006f13524444d9bf260136e23c58faa779a16f7e55f8ffe"
+    },
+    {
+      "path": "data/runtime/demos/readme-e2e-20261021/frame-2.png",
+      "sha256": "a9dc3757e8a3433d290c2d6df4dc3f976653fbf45b09c35cd6b4a529e8cf8744"
+    },
+    {
+      "path": "data/runtime/demos/readme-e2e-20261021/frame-3.png",
+      "sha256": "ce3bb0a3001aacbe45d260a42058f2e3694a2541066e0234835b960f36e78d5e"
+    }
+  ],
+  "harbor_report": "notes/runs/harbor-readme-e2e-20261021.json",
+  "harbor_report_sha256": "cfa9b852f66c9d052683c03500a8c7c2c45b109368ae7549da72ca55480439d7"
+}

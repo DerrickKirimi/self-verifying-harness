@@ -2,13 +2,14 @@
 
 Update this file at every session checkpoint. Read AGENTS.md first.
 
-## Current milestone: M3 (generated self-verification), starting
+## Current milestone: M3 (generated self-verification), evaluation in progress
 
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
 retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
 claims failed M2; refined numerical M2 gates now pass under AI-assisted review.
-Independent human adjudication remains outstanding. Generated reproductions/fixes
-and Harbor trials have not been measured. [RUN]
+Independent human adjudication remains outstanding. One generated repair has
+passed unchanged checks, independent regressions and real Harbor nop/oracle
+trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
   10–20-case and lower-bound >=0.70 gate. Proof: `notes/runs/m0-gate.json`.
@@ -92,13 +93,23 @@ and Harbor trials have not been measured. [RUN]
    existing SDK loop, actual MCP images delivered before inference, two distinct
    check versions per case and frozen probe references. Targeted integrity checks
    pass; `notes/2026-10-21-m3-browser-development.md` describes the measured limits.
-   A fresh **probed-v2** all-eleven run is prepared with unchanged rubric, Lite/low,
-   no paid v2 call yet. Its1557 ambiguity is already recorded as an abstention.
-7. Budget before v2: $3.141581 settled estimate, $0.858419 available, zero pending,
-   cap $4.00. Do not raise/reset it. Start with a single case, inspect target
-   assertion alignment, then source-only repair/native tests. Export each newly
-   verified claim and run actual Harbor integrity; preserve the failed v1 results.
-   Last full suite95 passed; new probe/media/pending-state units pass separately.
+   A fresh **probed-v2** all-eleven run uses unchanged rubric, Lite/low. Its1557
+   ambiguity is an abstention;1655 exhausted two checks, both explicitly rejected
+   for wrong DI-property assertions (the second also expected the wrong color).
+   1679 candidate1 has a reviewed target type-transition failure; repair/native
+   stage is running in exec70987. Do not mix the earlier v1 success into v2 scores.
+7. Last read before the v2 repair: $3.208077 charged/reserved, $0.791923 available,
+   zero pending, cap $4.00. Read `svh budget` again after terminal repair; do not
+   raise/reset it. Export each newly verified claim and run actual Harbor
+   integrity; preserve the failed v1 results.
+8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
+   three actual PNG frames via authenticated MCP, then executes Harbor nop0/oracle1
+   with frozen generated source/check bytes. The fresh run `readme-e2e-20261021`
+   passed primary and varied-ID checks and all1792 executed native tests, seven
+   unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
+   This is recorded-generation replay, not fresh inference or full-MVP completion.
+   The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
+   Latest full harness suite: **100 passed** (including task resume identity).
 
 ## Evidence and history
 
@@ -120,4 +131,4 @@ and Harbor trials have not been measured. [RUN]
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | First generated repair + native regressions + finite controls pass; 1/11 [1.62%,37.74%] partial checkpoint; Harbor trials active; MVP incomplete |
+| M3 generated verification/fix/Harbor | First generated repair + native regressions + finite controls + actual Harbor trials pass; v1 1/11 [1.62%,37.74%] partial checkpoint; v2 evaluation active; MVP incomplete |

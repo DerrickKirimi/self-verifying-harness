@@ -1,0 +1,33 @@
+{
+  "task": "swebench-bpmn-1679",
+  "bundle_sha256": "22a11c721dedabac0e64624a0e4cf08a0c65a30e6e967a1c970946bfe27aff0f",
+  "trials": [
+    {
+      "agent": "nop",
+      "expected_reward": 0,
+      "actual_rewards": {
+        "reward": 0
+      },
+      "passed": true,
+      "exception_type": null,
+      "trial_result_sha256": "5c616a9bcdc5635dc19f70c8e505c9b64a114f7b702da4b08ce2b6e9c6352ceb",
+      "completed_primary_browser_tests": 2,
+      "target_assertion_failure": true,
+      "log_sha256": "f39a1bf23f55f63e50858706ffba71b37ef3c2429f1a23aa71aebf5816822bdd"
+    },
+    {
+      "agent": "oracle",
+      "expected_reward": 1,
+      "actual_rewards": {
+        "reward": 1
+      },
+      "passed": true,
+      "exception_type": null,
+      "trial_result_sha256": "dd55b1948f9c02fa6fb82593d9063edd0ae0c77c9ec577bbf63f5f33862a295e",
+      "completed_primary_browser_tests": 2,
+      "target_assertion_failure": false,
+      "log_sha256": "c06273234416f76fe9f0f78447fdcd0c35c700d8170a7c1f229feae63e2926a5"
+    }
+  ],
+  "passed": true
+}
