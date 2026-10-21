@@ -135,6 +135,15 @@ recording. A setup assertion is not the target failure. An explicit
 checkpoint is explicit; it is not automatically human-adjudicated. Do not approve
 an assertion merely because it failed.
 
+[CODE] For the example task ID `my-recording`, the exact files are under
+`data/runtime/m3/my-run/my-recording/1/`. Read `check.js`, `candidate.json` and
+`pre/observation.json`; `pre/console.log` retains the raw browser output.
+The review JSON needs `check_sha256` (the actual SHA256 of `check.js`), `aligned`
+(a boolean), `reviewer` and `reason`. Explain why the observed failure is the
+recorded target and why initial setup succeeded. Use `aligned:false` when it
+does not match; the repair stage will reject it. Never edit the frozen check to
+make an existing review pass.
+
 ```sh
 .venv/bin/python -I scripts/run_m3.py --task-manifest data/runtime/task.json \
   --run-name my-run --stage repair --model gemini-3.5-flash-lite
@@ -164,6 +173,22 @@ regressions, pins exact generated source/check bytes and uses a separate verifie
 Packaging is not a trial result. Actual nop=0/oracle=1 must still be executed for
 every eventual exported task. No live meeting, SaaS, cloud migration or RL
 training system is included in this development MVP.
+
+[CODE] After a full generated repair and native regressions pass, export an
+ordinary run and execute its real integrity trials:
+
+```sh
+.venv/bin/python -I scripts/export_m3.py --task-manifest data/runtime/task.json \
+  --run-directory data/runtime/m3/my-run --output-directory data/runtime/exports/my-run
+.venv/bin/python -I scripts/run_harbor_integrity.py \
+  --task data/runtime/exports/my-run/my-recording --run-name my-run-integrity
+```
+
+[CODE] Keep private exports under ignored paths. Export refuses an existing task
+directory; use a new destination instead of overwriting evidence. The ordinary
+route uses the observed native baseline and never loads benchmark gold patches.
+For public evaluation exports, omit `--task-manifest`; `--only <case-id>` selects
+one completed case so a repeated experiment need not duplicate the same claim.
 
 ## Replaying the exported development task
 

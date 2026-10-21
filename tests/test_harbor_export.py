@@ -6,6 +6,49 @@ from svh.harbor_export import export_task
 from svh.verification import digest
 
 
+def test_ordinary_export_route_never_reads_benchmark_gold(tmp_path,monkeypatch):
+    import hashlib
+    import runpy
+    import sys
+    from contextlib import contextmanager
+    from types import SimpleNamespace
+    import svh.extract
+    import svh.tasks
+    import svh.docker_backend
+    import svh.harbor_export
+    clip=tmp_path/'clip.gif';clip.write_bytes(b'controlled recording')
+    manifest=tmp_path/'task.json'
+    manifest.write_text(json.dumps({'format':'svh.task.v1','id':'owner-task','problem_statement':'Clear label DI',
+        'environment':{'adapter':'bpmn-karma-v1','image':'sha256:'+'a'*64,'base_commit':'b'*40},
+        'recording':{'path':'clip.gif','sha256':hashlib.sha256(clip.read_bytes()).hexdigest(),'source_url':'owner-local'}}))
+    monkeypatch.setattr(svh.tasks.subprocess,'run',lambda *a,**k:SimpleNamespace(stdout=b'{"format":{"duration":"2"},"streams":[{"codec_type":"video"}]}'))
+    def no_gold(*args):raise AssertionError('Ordinary export must not read benchmark rows')
+    monkeypatch.setattr(svh.extract,'public_tasks',no_gold)
+    work=tmp_path/'run';case=work/'owner-task/1';case.mkdir(parents=True)
+    (case/'candidate.json').write_text('{"requirement":"Clear the retained label property"}')
+    (work/'report.json').write_text(json.dumps({'corpus_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest(),
+        'cases':[{'id':'owner-task','candidates':[{'number':1,'status':'full_generated_repair'}]}]}))
+    @contextmanager
+    def sandbox(*args):
+        yield SimpleNamespace(download_files=lambda paths:[SimpleNamespace(error=None,content=b'Fixture license')])
+    monkeypatch.setattr(svh.docker_backend,'sandbox',sandbox)
+    calls=[]
+    monkeypatch.setattr(svh.harbor_export,'export_task',lambda *a,**k:calls.append((a,k)))
+    script=Path(__file__).resolve().parents[1]/'scripts/export_m3.py'
+    monkeypatch.setattr(sys,'argv',[str(script),'--task-manifest',str(manifest),
+        '--run-directory',str(work),'--output-directory',str(tmp_path/'exported'),'--only','owner-task'])
+    runpy.run_path(str(script),run_name='__main__')
+    assert len(calls)==1 and calls[0][0][1]['id']=='owner-task'
+    assert calls[0][1]['native_patch'] is None
+    assert calls[0][1]['media_reference']=={'sha256':hashlib.sha256(clip.read_bytes()).hexdigest(),'source_url':'owner-local'}
+    report=json.loads((work/'report.json').read_text())
+    report['cases'][0]['candidates'][0]['status']='repair_failed'
+    (work/'report.json').write_text(json.dumps(report))
+    with pytest.raises(SystemExit,match='No selected case'):
+        runpy.run_path(str(script),run_name='__main__')
+    assert len(calls)==1
+
+
 def test_export_rejects_unverified_or_changed_generated_inputs(tmp_path):
     case=tmp_path/'case';case.mkdir();(case/'check.js').write_bytes(b'generated check')
     generated={'check_javascript':'generated check'};repair={'edits':[]}

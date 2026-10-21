@@ -104,11 +104,15 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    is authorized by that manufactured failure. Exec21395 is terminal.
    1640 exhausted both distinct versions with setup failures (bad relative import,
    then a synthetic popup event missing preventDefault); exec17719 is terminal.
-   1638 candidate1 reproduction is now running in exec78962. Then attempt the
-   remaining1570/1610/1659/1719/1928 sequentially; do not grant extra versions to
+   1638 candidate1 now has an observed generated fail/pass and full independent
+   native pass:1772 executed passes, seven skips,1779 discovered. Exec78962 and
+   repair67084 are terminal. Its distinct task is exported under
+   `tasks/generated-v2/swebench-bpmn-1638`; actual Harbor nop/oracle is running
+   in exec9556. Then attempt the remaining1570/1610/1659/1719/1928 sequentially;
+   do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
-7. Last read after terminal1640: $3.266869 charged/reserved, $0.733131 available,
+7. Last read after terminal1638: $3.281019 charged/reserved, $0.718981 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
@@ -130,6 +134,11 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    Actual ordinary-demo ingestion and all four MCP metadata/frame/search/screen
    tools pass: `notes/runs/ordinary-indexed-mcp-smoke.json`. No new retrieval
    quality claim; M3 all-case gate and independent human adjudication remain open.
+10. Ordinary Harbor export now accepts `--task-manifest`, validates the report's
+    manifest identity, and uses the already observed native baseline without
+    benchmark gold patches. The usage guide includes export/integrity commands.
+    Two export tests pass, including ordinary-route gold exclusion and refusing
+    an empty/unverified export. `--only` avoids duplicate public claim exports.
 
 ## Evidence and history
 

@@ -11,6 +11,7 @@ from svh.verification import browser_verdict
 p=argparse.ArgumentParser();p.add_argument('--task',type=Path,required=True);p.add_argument('--run-name',required=True)
 a=p.parse_args();root=Path(__file__).resolve().parents[1];task=(root/a.task).resolve()
 if not re.fullmatch('[A-Za-z0-9_-]{1,64}',a.run_name):raise SystemExit('Invalid run name')
+if not (task/'bundle.json').is_file():raise SystemExit('Task bundle is missing; finish exporting the verified task before running Harbor')
 package=json.loads((task/'bundle.json').read_text())
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 for name,digest in package['files'].items():
