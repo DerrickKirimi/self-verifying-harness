@@ -102,9 +102,14 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    1623 exhausted both distinct check versions inside candidate1; rejected because
    it explicitly deletes overlays before expecting them to reappear. No repair
    is authorized by that manufactured failure. Exec21395 is terminal.
-   1640 candidate1 reproduction is running in exec17719; other cases remain pending.
-7. Last read after ordinary ingestion: $3.251483 charged/reserved, $0.748517 available,
-   zero pending, cap $4.00. Read `svh budget` again after terminal1640; do not
+   1640 exhausted both distinct versions with setup failures (bad relative import,
+   then a synthetic popup event missing preventDefault); exec17719 is terminal.
+   1638 candidate1 reproduction is now running in exec78962. Then attempt the
+   remaining1570/1610/1659/1719/1928 sequentially; do not grant extra versions to
+   exhausted cases. The five-considered-case report/score is frozen publicly in
+   `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
+7. Last read after terminal1640: $3.266869 charged/reserved, $0.733131 available,
+   zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
 8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
@@ -114,7 +119,7 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **104 passed** (including task resume identity and
+   Latest full harness suite: **105 passed** (including task resume identity and
    ordinary narrated-video transcript flow). No fresh paid speech quality result.
 9. Ordinary task narration is now transcribed before extraction, cached privately
    by manifest identity, supplied as quoted timestamped evidence, then reinspected

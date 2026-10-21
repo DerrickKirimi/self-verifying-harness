@@ -1,0 +1,8 @@
+{
+  "before_score_sha256": "96d02bbdc31c01a30a9daf664535dec9bbb773b2cc010538672467ea82981c13",
+  "after_score_sha256": "96d02bbdc31c01a30a9daf664535dec9bbb773b2cc010538672467ea82981c13",
+  "byte_identical": true,
+  "frozen_corpus_revalidated": true,
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "scope": "Actual corpus revalidation and unchanged development checkpoint metrics; no timing benchmark"
+}

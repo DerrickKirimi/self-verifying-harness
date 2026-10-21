@@ -54,15 +54,24 @@ def evidence(log, expected):
                     and int(counts[-1][0]) + int(skipped) == int(counts[-1][1]))
     # Same failure-name extraction as the upstream BPMN parser; keep assertion
     # text separately so infrastructure errors cannot qualify as bug evidence.
-    failures = re.findall(r"(?:Chrome Headless|HeadlessChrome).*?\(Linux[^)]*\)\s(.*?)\sFAILED\n", text)
     targets = [expected] if isinstance(expected, str) else expected
     lines = text.splitlines()
+    # Karma progress uses carriage returns. Searching the entire log makes the
+    # lazy wildcard retry across many accumulated progress messages. Match only
+    # complete failure headers, once, before attaching assertion details.
+    headers = {}
+    for index, line in enumerate(lines):
+        if line.endswith(' FAILED'):
+            header = re.match(r"(?:Chrome Headless|HeadlessChrome).*?\(Linux[^)]*\)\s(.*?)\sFAILED$", line)
+            if header:
+                headers[index] = header[1].strip()
+    failures = set(headers.values())
     target_results = []
     for target in targets:
         excerpt = None
-        for index, line in enumerate(lines):
-            header = re.search(r"(?:Chrome Headless|HeadlessChrome).*?\(Linux[^)]*\)\s(.*?)\sFAILED$", line)
-            if header and header[1].strip() == target.strip():
+        for index, failure in headers.items():
+            if failure == target.strip():
+                line = lines[index]
                 block = [line]
                 for detail in lines[index + 1:]:
                     if re.match(r"(?:Chrome Headless|HeadlessChrome)", detail):
@@ -72,7 +81,7 @@ def evidence(log, expected):
                 break
         target_results.append({
             "name": target,
-            "failed": target.strip() in {failure.strip() for failure in failures},
+            "failed": target.strip() in failures,
             "assertion": bool(excerpt and re.search(r"AssertionError|expected .* to (?:equal|eql)", excerpt)),
             "excerpt": excerpt,
         })

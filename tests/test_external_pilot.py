@@ -62,6 +62,17 @@ def test_another_tests_assertion_cannot_validate_target_crash():
     assert not pilot.evidence(log, ["target", "other"])["assertion_observed"]
 
 
+def test_carriage_return_progress_cannot_hide_or_manufacture_failure_headers():
+    progress='Chrome Headless 131.0.0.0 (Linux x86_64): Executed 1 of 2 SUCCESS\r'
+    log=(progress*2000+'Chrome Headless 131.0.0.0 (Linux x86_64) target FAILED\n'
+         'AssertionError: expected red to equal blue\n'
+         'Executed 2 of 2 (1 FAILED)\nTOTAL: 1 FAILED, 1 SUCCESS\nSVH_TEST_EXIT_CODE:1\n')
+    result=pilot.evidence(log,'target')
+    assert result['expected_failure_observed'] and result['assertion_observed']
+    assert result['suite_complete'] and result['executed']==2
+    assert not pilot.evidence(progress*2000,'target')['expected_failure_observed']
+
+
 @pytest.mark.parametrize("side,key,value", [
     ("pre", "expected_failure_observed", False),
     ("pre", "assertion_observed", False),

@@ -12,7 +12,8 @@ a=p.parse_args()
 root=Path(__file__).resolve().parents[1]
 manifest,annotations=load_frozen_corpus(root,root/'evals/frozen-m0.json')
 run=root/a.run_directory
-report=json.loads((run/'report.json').read_text())
+report_bytes=(run/'report.json').read_bytes()
+report=json.loads(report_bytes)
 rubric=json.loads((root/'evals/m3-rubric.json').read_text())
 if report['corpus_sha256']!=manifest['corpus_sha256'] or rubric['corpus_sha256']!=manifest['corpus_sha256']:
     raise SystemExit('Different evaluation corpus')
@@ -48,7 +49,8 @@ for case in report['cases']:
             if digest((directory/'native/observation.json').read_bytes())!=c['native_observation_sha256']:
                 raise ValueError('Native regression proof changed')
 result=score(report['cases'],rubric,[x['id'] for x in annotations])
-result.update(corpus_sha256=manifest['corpus_sha256'],run_report_sha256=digest((run/'report.json').read_bytes()),
+if (run/'report.json').read_bytes()!=report_bytes:raise ValueError('Run report changed during scoring; retry at a stable checkpoint')
+result.update(corpus_sha256=manifest['corpus_sha256'],run_report_sha256=digest(report_bytes),
               budget=report['budget'],scope='Development run; AI-assisted claim alignment, not independent human scoring; Harbor integrity scored separately')
 out=root/a.output;out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

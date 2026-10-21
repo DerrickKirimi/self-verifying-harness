@@ -1,0 +1,285 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "method": "evals/m3-method-probed-v2.json",
+  "method_sha256": "e0fe0a8c6e76ca35a13de42047b7a588dbff77afd191996ad972d6ba061019ba",
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 3266869,
+    "available_microdollars": 733131,
+    "unsettled_requests": 0
+  },
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "abstained",
+      "candidates": [],
+      "stage": "requirement_review",
+      "reason": "The requirement offers two incompatible policies and explicitly asks which to implement; no owner response or benchmark gold policy is substituted.",
+      "review": "Codex AI controller; no human response assumed",
+      "source_checkpoint_sha256": "2d98b946eb724ba22ea8ee8b19963c93a87550294a07cb3fd961ec2439301686",
+      "questions": [
+        "Should DataObjectReferences be disallowed from existing outside of a pool in collaborations (e.g. via rules/ReplaceMenuProvider), or should morphing be permitted by properly resolving or guarding the DI parent/planeElement?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "observed_base_assertion",
+          "model": "gemini-3.5-flash-lite",
+          "check_sha256": "fe4e996092134974e5e1b40e9d9d4bbd60a6b892ffcf341a27c50d5b398e7d75",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "SvhGeneratedSpec - drilldown overlay persistence on root set / diagram change should retain or restore drilldown overlays when root element changes",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected [] not to be empty\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:46:36)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "fe4e996092134974e5e1b40e9d9d4bbd60a6b892ffcf341a27c50d5b398e7d75",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1623@sha256:7038a30f623bbdbd27997654002a75dc7dc73b3204cb1be669fc2908f2415165",
+            "base_commit": "21f7ed402d25c6c0737459a86a39323642634715",
+            "source_is_base": true,
+            "source_archive_sha256": "891fedde591953763076e20a11c8b28664680a7aefaed62e76fe6711fd23b16a",
+            "baseline_fingerprint": "c65da6dcf30c5f0a5f79a32776ea54cb5446396abdf3ad207e4bb76ad113bf20",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "24a14df7c64e618647a20fd926ec32bcdfec1046c615baf25786e4b447cfcd85"
+          },
+          "alignment_review": {
+            "check_sha256": "fe4e996092134974e5e1b40e9d9d4bbd60a6b892ffcf341a27c50d5b398e7d75",
+            "aligned": false,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "The check explicitly calls overlays.remove to delete the feature, then expects it to reappear after canvas root navigation. This is a manufactured supporting failure, not the recorded multi-diagram change which naturally loses the overlay. The failing assertion tests the internal registry, not rendered visibility. Reproduce the actual diagram-switch lifecycle without explicitly deleting overlays, establish initial visible button, then observe its loss. Do not invent missing plugin behavior or treat artificial deletion as the target bug."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.5-flash-lite",
+          "error_type": "ExceptionGroup",
+          "nested_error_types": [
+            "ExceptionGroup",
+            "ExceptionGroup",
+            "ValueError"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "observed_base_assertion",
+          "model": "gemini-3.5-flash-lite",
+          "check_sha256": "f994cb2cb731b7890c8eccd57ad57b2818d0bb3b238d1d40f29ea0d918245a79",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "SvhGeneratedSpec should set external label color to stroke color",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected undefined to equal '#ffff00'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:29:111)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "f994cb2cb731b7890c8eccd57ad57b2818d0bb3b238d1d40f29ea0d918245a79",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+            "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+            "source_is_base": true,
+            "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+            "baseline_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "3c1b4a30bef54bc83148e666e874c85f4db19a8c189caa66cca261e816292fbc"
+          },
+          "alignment_review": {
+            "check_sha256": "f994cb2cb731b7890c8eccd57ad57b2818d0bb3b238d1d40f29ea0d918245a79",
+            "aligned": false,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "The actual failure is undefined versus expected yellow at getDi(label).get(color), not the recorded fill-versus-stroke mismatch. This assertion reads a different DI object/property and has no rendered SVG assertion. It could fail after a correct fix too. Inspect actual label/labelTarget DI handling and existing base specs. Verify the label exists, then assert CURRENT rendered SVG text fill using its graphics and computed style, with distinct fill/stroke colors. A target failure should show the fill color where stroke is expected; do not treat undefined/missing setup state as the reported color bug."
+          }
+        },
+        {
+          "number": 2,
+          "status": "observed_base_assertion",
+          "model": "gemini-3.5-flash-lite",
+          "check_sha256": "aa8cb85f4cc71c855f2c9e7738e618f63d48918c9aa8c94346a969ad8c0965c3",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "SvhGeneratedSpec should set external label color to stroke color",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected undefined to equal '#ff00ff'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:29:105)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "aa8cb85f4cc71c855f2c9e7738e618f63d48918c9aa8c94346a969ad8c0965c3",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+            "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+            "source_is_base": true,
+            "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+            "baseline_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "b4a1025ef93ebe6dc2653bd690c3300f2924fa578fb4a161daa739a9d68dcec6"
+          },
+          "alignment_review": {
+            "check_sha256": "aa8cb85f4cc71c855f2c9e7738e618f63d48918c9aa8c94346a969ad8c0965c3",
+            "aligned": false,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "Failure is undefined at getDi(flowLabel).get(color), not an observed rendered fill-versus-stroke mismatch. Worse, the check expects FUCHSIA fill while the stated requirement is YELLOW stroke. It has no DOM assertion. Both allowed versions are exhausted; no source fix is justified."
+          }
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "full_generated_repair",
+          "model": "gemini-3.5-flash-lite",
+          "check_sha256": "f7886fcb0a88e8e93666680a3d41e9fe41b13885fa7f3580665dc8f441bf0a6c",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "SvhGeneratedSpec should update loopCharacteristics type when toggling from loop to parallel multi-instance",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected false to be true\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:60:145)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:229:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "f7886fcb0a88e8e93666680a3d41e9fe41b13885fa7f3580665dc8f441bf0a6c",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+            "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+            "source_is_base": true,
+            "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+            "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "d4056038d78a436dd9a5dd6dbb46105a9d1961973f010af363e18fb8ad5369f9"
+          },
+          "alignment_review": {
+            "check_sha256": "f7886fcb0a88e8e93666680a3d41e9fe41b13885fa7f3580665dc8f441bf0a6c",
+            "aligned": true,
+            "reviewer": "Codex AI controller source/recording review; not independent human adjudication",
+            "reason": "The actual Chrome run successfully opens the replace popup and triggers standard-loop followed by parallel multi-instance. StandardLoopCharacteristics existence/type assertions pass. It fails specifically because the resulting business object retains the old loop type, matching the recorded serialization/type inconsistency. This check covers the parallel business-object transition; it does not independently check exported XML or sequential mode. No source changes have occurred."
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "SvhGeneratedSpec should update loopCharacteristics type when toggling from loop to parallel multi-instance",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "f7886fcb0a88e8e93666680a3d41e9fe41b13885fa7f3580665dc8f441bf0a6c",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+            "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+            "source_is_base": false,
+            "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+            "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+            "source_files_sha256": {
+              "lib/features/popup-menu/ReplaceMenuProvider.js": "119c90bd4114db43e528a7eeb3dc67a45fa9886b9140e568d6a8c6dc46ebbf18"
+            },
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "2c565b970a0fc0951f95919324ae7168c9e00b62e437a5f6ef07c217f85b74c1"
+          },
+          "native_regressions_passed": true,
+          "native_observation_sha256": "8dbbabc0961c622e790e5d5a990ffa78e397a5810008719131be8f340fc473c1"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "not_attempted",
+      "candidates": []
+    }
+  ]
+}
