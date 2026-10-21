@@ -1,8 +1,8 @@
 # Running the development MVP
 
-[CODE/RUN] M0/M1 and refined numerical M2 checks are measured. Generated M3
-checks are being evaluated; no full generated repair or Harbor reward has passed
-yet. Independent human claim adjudication remains outstanding. See `STATUS.md`.
+[CODE/RUN] M0/M1 and refined numerical M2 checks are measured. Generated M3 checks are being evaluated. Case1679 now has an observed
+generated fail/pass repair, independent regressions, wrong-fix controls and real
+Harbor nop/oracle rewards0/1. The all-case gate remains incomplete. Independent human claim adjudication remains outstanding. See `STATUS.md`.
 
 ## Setup
 
@@ -105,3 +105,29 @@ regressions, pins exact generated source/check bytes and uses a separate verifie
 Packaging is not a trial result. Actual nop=0/oracle=1 must still be executed for
 every eventual exported task. No live meeting, SaaS, cloud migration or RL
 training system is included in this development MVP.
+
+## Replaying the exported development task
+
+[RUN/CODE] The first verified package is
+`tasks/generated-v1/swebench-bpmn-1679`. Its actual integrity report is
+`notes/runs/harbor-generated-v1-1679-buildx.json`. Media is reference-only;
+source/check bytes and upstream license are bundled. This is a recording-grounded
+task, not a claim of multimodal student-agent performance.
+
+[CODE] Harbor is installed separately from the main model/harness environment.
+The inspected source checkout/version is recorded in `docs/references.md`.
+Its Docker backend also needs Buildx; `scripts/install_buildx.py` installs the
+reviewed official binary under ignored project paths and verifies its digests.
+After installing Harbor into `data/runtime/harbor-venv`, replay with a new run name:
+
+```sh
+.venv/bin/python -I scripts/install_buildx.py
+.venv/bin/python -I scripts/run_harbor_integrity.py \
+  --task tasks/generated-v1/swebench-bpmn-1679 --run-name my-integrity-replay
+```
+
+[CODE] The launcher strips model credentials, runs nop and oracle sequentially,
+and rejects missing/setup/timeout rewards or a reward0 without the expected
+completed browser assertion failure. The separate verifier accepts only source
+artifacts, reruns the primary and independently frozen varied-ID check, then
+requires unchanged native regression coverage/skips.

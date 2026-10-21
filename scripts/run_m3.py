@@ -130,8 +130,19 @@ async def run():
                 candidate.update(native_regressions_passed=bool(passed),native_observation_sha256=digest((casepath/'native/observation.json').read_bytes()))
                 candidate['status']='full_generated_repair' if passed else 'native_regressions_failed'
     except Exception as error:
+        pending=[error];seen=set();evidence=[]
+        while pending:
+            item=pending.pop()
+            if id(item) in seen:continue
+            seen.add(id(item));entry={'type':type(item).__name__}
+            reply=getattr(item,'ai_message',None)
+            if reply is not None:entry['model_reply']=reply.model_dump()
+            evidence.append(entry)
+            pending.extend(getattr(item,'exceptions',[]))
+            if item.__cause__ is not None:pending.append(item.__cause__)
+        (casepath/'generation-error.json').write_text(json.dumps(evidence,indent=2,default=str)+'\n')
         candidate.update(status='error',error_type=type(error).__name__,
-            nested_error_types=[type(e).__name__ for e in getattr(error,'exceptions',[])])
+            nested_error_types=[e['type'] for e in evidence])
         # Exceptions can contain provider request data: retain no arbitrary exception text.
     save();print(json.dumps({'id':task['id'],'stage':a.stage,'status':candidate['status'],'budget':report['budget']}),flush=True)
 

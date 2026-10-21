@@ -1,0 +1,19 @@
+{
+  "release": "v0.38.1",
+  "published_at": "2026-10-20T22:09:11Z",
+  "source": "https://github.com/docker/buildx/releases/tag/v0.38.1",
+  "assets": [
+    {
+      "name": "buildx-v0.38.1.linux-amd64",
+      "browser_download_url": "https://github.com/docker/buildx/releases/download/v0.38.1/buildx-v0.38.1.linux-amd64",
+      "digest": "sha256:e25d5cd675092bb5d1d03632fdc46cdf3fede7b514dc5f023a105e00d3ce5ad4",
+      "size": 68366498
+    },
+    {
+      "name": "checksums.txt",
+      "browser_download_url": "https://github.com/docker/buildx/releases/download/v0.38.1/checksums.txt",
+      "digest": "sha256:3a51c1e06d3aaaa4f571d87bea2be540f4f3debe8485c2b7046d08b0c49d57e5",
+      "size": 5420
+    }
+  ]
+}

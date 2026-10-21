@@ -154,3 +154,16 @@ dependencies. No local clones were created for these readings. [RUN]
   torch 2.14.1+cpu, torchvision 0.29.1+cpu. The installed shared processor needs
   Torchvision even with the vision encoder disabled; initial missing-dependency
   failure was resolved before any semantic quality measurement.
+
+## Docker Buildx for executed Harbor trials (2026-10-21)
+
+[SRC/RUN] Harbor's Docker backend calls `docker buildx build`. The host lacked
+Buildx; first nop setup produced no reward. Official release metadata and binary:
+[Buildx0.38.1](https://github.com/docker/buildx/releases/tag/v0.38.1), published
+2026-10-20. Linux-amd64 binary SHA256
+`e25d5cd675092bb5d1d03632fdc46cdf3fede7b514dc5f023a105e00d3ce5ad4`,
+matched independently against release asset metadata and published checksums.
+Local download: `data/external/docker-buildx/v0.38.1/`; project-only plugin config
+`data/runtime/docker-client/`. Installer: `scripts/install_buildx.py`; metadata:
+`notes/runs/buildx-release-metadata.json`. No system plugin or owner Docker config
+was modified. Installed version command returned v0.38.1, commit0dbe87f36ed472fe36b6796c3f70b4210a731fc5.

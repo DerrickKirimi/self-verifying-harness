@@ -78,22 +78,24 @@ and Harbor trials have not been measured. [RUN]
 3. Normal task input must work without supplied gold fixes/tests or prior corpus
    admission; see `notes/2026-10-21-mvp-completion-audit.md`. Export every fully
    verified claim and execute actual Harbor nop/oracle trials. MVP is incomplete.
-4. M3 gate/Chrome runner and ordinary-task workflow are implemented. No valid
-   generated reproduction/fix yet: 1655/1638/1570/1640 exhaust two candidates with
-   setup/alignment, pre-existing passes or generation failures. All are retained.
-   **1679 candidate1 is active in exec19601**. Poll it; no parallel paid workers.
-   See `notes/2026-10-21-m3-development-attempts.md`; `docs/mvp-usage.md`.
-5. Existing buggy source/spec/fixture packets and bounded tool exposure help
-   source grounding; generation is still unreliable. Tiny typed-output probes
-   pass, including prior-tool history; universal SDK failure is not established.
-   Ordinary registration and actual authenticated MCP frame retrieval pass with
-   no gold/admission dependency: `notes/runs/normal-task-mcp-smoke.json`.
-6. Harbor 0.24.0 is installed separately; exporter integrity unit test passes,
-   but no task is exported and no real nop/oracle trial has run. Full suite:
-   **94 passed**. No source fix has yet been generated.
-7. Before active 1679 candidate1: **$2.678613 settled**, **$1.321387 available**,
-   zero unsettled requests, cap $4.00. Current request reservation is additional
-   until metered usage settles. Do not raise/reset the ledger or cap.
+4. **First full generated repair passes (1679 candidate2).** Original generated
+   Chrome check fails at the actual XML assertions, unchanged check passes after
+   generated source fix; independent native suite: 1792 pass, seven unchanged
+   skips, 1799 discovered. Finite wrong-fix controls expose a fixture shortcut;
+   a separately observed fail/pass ID variation now guards the Harbor task.
+   `notes/2026-10-21-first-generated-repair.md` and task proof contain evidence.
+5. Actual Harbor integrity passes for the exported1679 task: **nop reward0,
+   oracle reward1**, observed browser checks and native regressions verified.
+   Exec82768 is terminal. Initial missing-Buildx setup failure is retained;
+   official verified Buildx is project-local. No paid model worker is active.
+6. M3 checkpoint: 1/11 [1.62%,37.74%], five artifacts considered; gate incomplete.
+   1655/1638/1570/1640 exhaust two candidates unsuccessfully. Still consider
+   1557 ambiguity, then 1610/1623/1659/1719/1928. Preserve all denominators/attempts;
+   no extra candidates are added to exhausted cases. Full suite: **95 passed**. All current workers are terminal.
+7. Guard ledger: $3.113287 settled estimate, $0.886713 available, no unsettled
+   requests, cap $4.00. Do not raise/reset it. Need complete remaining M3 cases,
+   real Harbor trials and final audit before calling the MVP shipped. Human
+   claim adjudication remains outstanding; numerical M2 review is AI-assisted.
 
 ## Evidence and history
 
@@ -115,4 +117,4 @@ and Harbor trials have not been measured. [RUN]
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | Not measured; MVP incomplete |
+| M3 generated verification/fix/Harbor | First generated repair + native regressions + finite controls pass; 1/11 [1.62%,37.74%] partial checkpoint; Harbor trials active; MVP incomplete |

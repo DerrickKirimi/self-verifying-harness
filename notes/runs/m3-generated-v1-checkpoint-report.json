@@ -1,0 +1,384 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "invalid_reproduction",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "45ba91261e8e3988a42cfb0b1bffc4c888ad2d210299abbf320dcfd3a83df22a",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - create participant should not jump or change viewbox when wrapping process in participant pool",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "45ba91261e8e3988a42cfb0b1bffc4c888ad2d210299abbf320dcfd3a83df22a",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570@sha256:ff51a6a93e0ac0995f544c75df9c2c725fd78bfcfc02786be3c4d469f806bb31",
+            "base_commit": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+            "source_is_base": true,
+            "source_archive_sha256": "e40b6a189074b14544d261e32f3006ec0657ca0afa300849e8d7675d58b2bcfd",
+            "baseline_fingerprint": "279ffefd78f2ffacb8eff0f2cd7be111d074bf9e026bee140e90b2ec4ec1081f",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "7c80aba6062561a20738d7ccdd27788f1dc4be00ebd5d1f398bfe0d1600ed36f"
+          }
+        },
+        {
+          "number": 2,
+          "status": "invalid_reproduction",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "a2b1db40e647dbe34f006dc7d71337512b55dcffc6d04f0fa95696e9521b0217",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - create participant should not jump diagram when wrapping process in participant pool",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "a2b1db40e647dbe34f006dc7d71337512b55dcffc6d04f0fa95696e9521b0217",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1570@sha256:ff51a6a93e0ac0995f544c75df9c2c725fd78bfcfc02786be3c4d469f806bb31",
+            "base_commit": "70d38eb447d14994e5e33e2d55764986a43cf6b6",
+            "source_is_base": true,
+            "source_archive_sha256": "e40b6a189074b14544d261e32f3006ec0657ca0afa300849e8d7675d58b2bcfd",
+            "baseline_fingerprint": "279ffefd78f2ffacb8eff0f2cd7be111d074bf9e026bee140e90b2ec4ec1081f",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "2b199f5a39e5cf41300a1457f232bb1f66e8411deee2ad680a1aae0c9879a33c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "observed_base_assertion",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "2b8ab351d6ef906cf397f310b31f15ab1f5a3de98af89f46e53dc8e39b2ee00f",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features - label-editing di.label should remove di.label when label is cleared",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:43:26)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features - label-editing di.label should remove di.label when label is cleared on another element",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected { Object ($type) } to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:77:29)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "2b8ab351d6ef906cf397f310b31f15ab1f5a3de98af89f46e53dc8e39b2ee00f",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+            "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+            "source_is_base": true,
+            "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+            "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "baeedd523c3b3a03c0f2ba95607866514dd2947765c4f1045f29b561c801f153"
+          }
+        },
+        {
+          "number": 2,
+          "status": "observed_base_assertion",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "0c6b65c7c2e2c4bd532d4b78a8d85eb25752f195630d8e98386419b03282209e",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - update label embedded di.label should remove di.label property when clearing task label",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected 'Task 2' to equal 'Task_2'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:33:39)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features/modeling - update label embedded di.label should remove di.label property when setting task label to null",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected 'Task with label' to equal ''\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:64:39)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "0c6b65c7c2e2c4bd532d4b78a8d85eb25752f195630d8e98386419b03282209e",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+            "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+            "source_is_base": true,
+            "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+            "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "1624a90e860fd1fcd31c642124b722f956089f94611a70f95d069e9bc3242d22"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "error_type": "ValueError",
+          "nested_error_types": []
+        },
+        {
+          "number": 2,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "error_type": "ExceptionGroup",
+          "nested_error_types": [
+            "ExceptionGroup"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "invalid_reproduction",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "d9241d6a6c22ba6965b64c33dc9a530b5f4ab889d00085177b639ece13ca1b57",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - set color external label should set external label color to stroke color when stroke and fill differ",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected '#ffff00' to equal '#ff00ff'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:44:44)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features/modeling - set color external label should set external label color to stroke color for event label with distinct colors",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "Error: <moddleElement> required\n    at UpdateModdlePropertiesHandler.execute (webpack-internal:///./lib/features/modeling/cmd/UpdateModdlePropertiesHandler.js:22:11)\n    at eval (webpack-internal:///../testbed/node_modules/diagram-js/lib/command/CommandStack.js:415:31)\n    at CommandStack._atomicDo (webpack-internal:///../testbed/node_modules/diagram-js/lib/command/CommandStack.js:377:5)\n    at CommandStack._internalExecute (webpack-internal:///../testbed/node_modules/diagram-js/lib/command/CommandStack.js:408:8)\n    at CommandStack.execute (webpack-internal:///../testbed/node_modules/diagram-js/lib/command/CommandStack.js:153:8)\n    at eval (webpack-internal:///./lib/features/modeling/cmd/SetColorHandler.js:69:26)\n    at forEach (webpack-internal:///../testbed/node_modules/min-dash/dist/index.esm.js:183:16)\n    at SetColorHandler.postExecute (webpack-internal:///./lib/features/modeling/cmd/SetColorHandler.js:60:59)\n    at CommandStack._internalExecute (webpack-internal:///../testbed/node_modules/diagram-js/lib/command/CommandStack.js:428:15)\n    at CommandStack.execute (webpack-internal:///../testbed/node_modules/diagram-js/lib/command/CommandStack.js:153:8)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "d9241d6a6c22ba6965b64c33dc9a530b5f4ab889d00085177b639ece13ca1b57",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+            "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+            "source_is_base": true,
+            "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+            "baseline_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "c265d477343c1de5c63b6b528ae99c69a25fbf7abf0067f87baa23c901dcd18f"
+          }
+        },
+        {
+          "number": 2,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "error_type": "ExceptionGroup"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "error_type": "ExceptionGroup",
+          "nested_error_types": [
+            "ExceptionGroup"
+          ]
+        },
+        {
+          "number": 2,
+          "status": "full_generated_repair",
+          "model": "gemini-3.8-flash",
+          "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_1\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_1_di\" bpmnElement=\"Task_1\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:87:29)"
+                ]
+              },
+              {
+                "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_1\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_1_di\" bpmnElement=\"Task_1\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics isSequential=\"true\"'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:118:29)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+            "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+            "source_is_base": true,
+            "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+            "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+            "source_files_sha256": {},
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "42be0dad29bdb5ec8ae2871fee7d5fd51c2326539cd14274f36ed5a62fb96552"
+          },
+          "alignment_review": {
+            "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+            "aligned": true,
+            "reviewer": "Codex AI controller visual/source review; not independent human adjudication",
+            "reason": "The generated check operates the real replace popup to toggle standard loop then parallel/sequential modes. Existing-type and DOM marker assertions complete; both actual Chrome failures occur at exported XML assertions retaining standardLoopCharacteristics instead of multiInstanceLoopCharacteristics. This matches the reviewed recording/issue rather than setup assumptions. Both modes and feature existence are covered. No source change has occurred."
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+                "success": true,
+                "skipped": false,
+                "log": []
+              },
+              {
+                "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+            "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+            "source_is_base": false,
+            "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+            "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+            "source_files_sha256": {
+              "lib/features/popup-menu/ReplaceMenuProvider.js": "41b0003ca600e4852847c0df566937b5fb5682670377cd208b4d0076f7354125"
+            },
+            "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+            "console_sha256": "1a5d71dbd6be8b10bbf46f81ecd2c251cd0c0be003f143a7a66fe6139230a43d"
+          },
+          "native_regressions_passed": true,
+          "native_observation_sha256": "0eb3ed6b69c8d3368f74019c4b06c3c3b16b0c422f2e201eff92344002dfc594"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "not_attempted",
+      "candidates": []
+    }
+  ],
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 3113287,
+    "available_microdollars": 886713,
+    "unsettled_requests": 0
+  }
+}

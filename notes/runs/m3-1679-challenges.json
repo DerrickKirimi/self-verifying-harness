@@ -1,0 +1,333 @@
+{
+  "scope": "Finite authored wrong-fix challenges; not a comprehensive mutation score",
+  "check_origin": "Original model-generated check, plus controller-authored identifier variation",
+  "cases": [
+    {
+      "name": "varied-id-base",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_outside_recording\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_outside_recording_di\" bpmnElement=\"Task_outside_recording\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:87:29)"
+            ]
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_outside_recording\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_outside_recording_di\" bpmnElement=\"Task_outside_recording\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics isSequential=\"true\"'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:118:29)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": true,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {},
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "3331904d83b180b66a437123727b0df76d568c649d874d82c21dc1c8cb6c3f0f"
+      }
+    },
+    {
+      "name": "varied-id-generated-fix",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": true,
+            "skipped": false,
+            "log": []
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "41b0003ca600e4852847c0df566937b5fb5682670377cd208b4d0076f7354125"
+        },
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "12e83c7a5c085772a2da58b53befa5232d650920812f646999d86f6e90fe24bd"
+      }
+    },
+    {
+      "name": "feature-deletion",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected null to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:77:29)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:229:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected null to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:108:31)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:229:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "700344362c3c056dc4a7f79f0a7ef6567e2fd8438076b3c225fb6421674968b5"
+        },
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "c7dd6e9d70bbfff6168488c374917a75318b19c0d22f5fa2b05537f393db76bd"
+      }
+    },
+    {
+      "name": "error-suppression",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_1\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_1_di\" bpmnElement=\"Task_1\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:87:29)"
+            ]
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_1\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_1_di\" bpmnElement=\"Task_1\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics isSequential=\"true\"'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:118:29)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "90d5341394a3a0d0aedf896af5ad5d0fb0a680f0c463f9a505a4a2054daefcc3"
+        },
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "71635a4c1181004a9f96e7c0fc8e137c0b4eb1cf62fed72b221a2420db6f36db"
+      }
+    },
+    {
+      "name": "fixture-shortcut-primary",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": true,
+            "skipped": false,
+            "log": []
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "e5d4de65644e1c08b2bfb72735df6391405c2c3b0aca98df6ebefd77f6a14328"
+        },
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "6f7d1c224e7bbdcdaa9798f120739ef49b47c8be1ccc95f9ca0a126588f0fcf9"
+      }
+    },
+    {
+      "name": "fixture-shortcut-varied-id",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_outside_recording\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_outside_recording_di\" bpmnElement=\"Task_outside_recording\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:87:29)"
+            ]
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_outside_recording\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_outside_recording_di\" bpmnElement=\"Task_outside_recording\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics isSequential=\"true\"'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:118:29)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "e5d4de65644e1c08b2bfb72735df6391405c2c3b0aca98df6ebefd77f6a14328"
+        },
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "48588cb490d436a87c67353fa1776bf8f8ce182291102f070fc55a7e600e15c8"
+      }
+    }
+  ],
+  "passed": true,
+  "independent_checks": [
+    {
+      "id": "varied-id",
+      "path": "varied-id.js",
+      "sha256": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_outside_recording\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_outside_recording_di\" bpmnElement=\"Task_outside_recording\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:87:29)"
+            ]
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" id=\"Definitions_1\" targetNamespace=\"http://bpmn.io/schema/bpmn\">\\n  <bpmn:process id=\"Process_1\" isExecutable=\"false\">\\n    <bpmn:task id=\"Task_outside_recording\" name=\"Task 1\">\\n      <bpmn:standardLoopCharacteristics />\\n    </bpmn:task>\\n  </bpmn:process>\\n  <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">\\n    <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">\\n      <bpmndi:BPMNShape id=\"Task_outside_recording_di\" bpmnElement=\"Task_outside_recording\">\\n        <dc:Bounds x=\"150\" y=\"100\" width=\"100\" height=\"80\" />\\n      </bpmndi:BPMNShape>\\n    </bpmndi:BPMNPlane>\\n  </bpmndi:BPMNDiagram>\\n</bpmn:definitions>\\n' to include '<bpmn:multiInstanceLoopCharacteristics isSequential=\"true\"'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:118:29)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": true,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {},
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "3331904d83b180b66a437123727b0df76d568c649d874d82c21dc1c8cb6c3f0f"
+      },
+      "post": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to parallel multi-instance after toggling loop",
+            "success": true,
+            "skipped": false,
+            "log": []
+          },
+          {
+            "name": "features/popup-menu - toggle loop characteristics should update loop characteristics to sequential multi-instance after toggling loop",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "41b0003ca600e4852847c0df566937b5fb5682670377cd208b4d0076f7354125"
+        },
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "12e83c7a5c085772a2da58b53befa5232d650920812f646999d86f6e90fe24bd"
+      }
+    }
+  ],
+  "mutant_source_sha256": {
+    "feature-deletion": "700344362c3c056dc4a7f79f0a7ef6567e2fd8438076b3c225fb6421674968b5",
+    "error-suppression": "90d5341394a3a0d0aedf896af5ad5d0fb0a680f0c463f9a505a4a2054daefcc3",
+    "fixture-shortcut": "e5d4de65644e1c08b2bfb72735df6391405c2c3b0aca98df6ebefd77f6a14328"
+  }
+}

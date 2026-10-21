@@ -12,8 +12,9 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
 
 **Status:** M0 passed on eleven reviewed temporal cases with observed supplied
 test failures before and passes after their reference fixes. The visual corpus
-is frozen; M1 and refined numerical M2 checks are measured. M3 generated checks
-are under evaluation; the MVP remains incomplete. Independent human claim
+is frozen; M1 and refined numerical M2 checks are measured. M3 now has one generated recording-to-check-to-fix demonstration, independent
+regressions and executed Harbor nop/oracle rewards0/1. The all-case evaluation
+is still incomplete; the MVP is not yet shipped. Independent human claim
 adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
 See [`STATUS.md`](STATUS.md).
 

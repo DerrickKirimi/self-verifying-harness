@@ -22,6 +22,7 @@ def add(path,limit,line=None,tail=False):
 specs=sorted((root/'test/spec').rglob('*Spec.js'))
 for item in paths:
     path=root/item['path'];add(path,10000,item['line'])
+    if sys.argv[2]=='0':continue
     stem=re.sub(r'(Handler|Behavior|Provider)$','',path.stem).lower()
     matched=[p for p in specs if stem in p.stem.lower()]
     for spec in matched[:2]:
@@ -37,13 +38,13 @@ print(json.dumps(packet))
 '''
 
 
-def source_packet(backend, claim):
+def source_packet(backend, claim, *, include_tests=True):
     paths=[]
     for citation in claim.get('code_evidence',[])[:2]:
         path=PurePosixPath(citation['path'])
         if not str(path).startswith('/workspace/lib/') or '..' in path.parts:
             raise ValueError('Source retrieval requires a permitted checkpoint citation')
         paths.append({'path':str(path.relative_to('/workspace')),'line':citation['line']})
-    result=backend.execute('python3 -I -c '+shlex.quote(SCRIPT)+' '+shlex.quote(json.dumps(paths)),timeout=30)
+    result=backend.execute('python3 -I -c '+shlex.quote(SCRIPT)+' '+shlex.quote(json.dumps(paths))+' '+('1' if include_tests else '0'),timeout=30)
     if result.exit_code != 0 or result.truncated:raise ValueError('Could not retrieve bounded base source packet')
     return json.loads(result.output)

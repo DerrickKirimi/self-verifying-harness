@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from langchain.agents.structured_output import ToolStrategy
 from langsmith import tracing_context
 from langchain.agents.middleware import AgentMiddleware
-from langchain_core.messages import ToolMessage, SystemMessage
+from langchain_core.messages import ToolMessage, SystemMessage, HumanMessage
 from svh.harness import create_harness
 from svh.mcp_client import harness_tools
 
@@ -27,7 +27,25 @@ class BoundedInspection(AgentMiddleware):
         if not tools:
             message=SystemMessage(content=str(message.content if message else '')+
                 '\nThe inspection budget is exhausted. Return the typed final output now; express uncertainty if necessary.')
-        return request.override(tools=tools,system_message=message)
+        messages=request.messages
+        if not tools:
+            messages=[*messages,HumanMessage(content='Controller checkpoint: source inspection is finished. Return your concrete final CheckCandidate or SourceFix now, using the available recorded evidence and existing source. CheckCandidate requires complete executable JavaScript, a nonempty requirement and rationale; do not emit empty placeholder fields. Keep any remaining uncertainty explicit. Do not call another inspection tool.')]
+        return request.override(tools=tools,system_message=message,messages=messages)
+
+    def deny(self,request):
+        replies=[m for m in request.state.get('messages',[]) if isinstance(m,ToolMessage)]
+        name=request.tool_call['name']
+        if name not in {'get_recording','get_frames','grep','read_file','glob','ls'} or len(replies)>=self.limit:
+            return ToolMessage(content='This generation stage permits only bounded read-only inspection. Return the typed final output.',tool_call_id=request.tool_call['id'],status='error')
+        return None
+
+    def wrap_tool_call(self,request,handler):
+        denied=self.deny(request)
+        return denied if denied is not None else handler(request)
+
+    async def awrap_tool_call(self,request,handler):
+        denied=self.deny(request)
+        return denied if denied is not None else await handler(request)
 
     def wrap_model_call(self,request,handler):return handler(self.narrow(request))
     async def awrap_model_call(self,request,handler):return await handler(self.narrow(request))
@@ -110,16 +128,16 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     tools=await harness_tools(client) if not repairing else []
     agent=create_harness(model,backend,tools=tools,system_prompt=prompt,
                          response_format=ToolStrategy(schema,handle_errors=False),
-                         middleware=[BoundedInspection(require_media=not repairing)])
+                         middleware=[BoundedInspection(require_media=not repairing,limit=3 if repairing else 10)])
     from svh.source_packet import source_packet
     request={'recording_id':task['id'],'quoted_issue':task['problem_statement'],'claim':claim,
-             'existing_buggy_source_packet':source_packet(backend,claim)}
+             'existing_buggy_source_packet':source_packet(backend,claim,include_tests=not repairing)}
     if feedback is not None:
         request['previous_candidate_failure']=feedback
     if repairing:
         request.update(frozen_check=check.decode(),observed_failure=pre)
     before=backend.initial_source_fingerprint
-    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v4-with-base-source-packet','limit':10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
+    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v5-explicit-final-handoff','limit':3 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
     structured=None
     with tracing_context(enabled=False):
         async for state in agent.astream({'messages':[{'role':'user','content':json.dumps(request)}]},

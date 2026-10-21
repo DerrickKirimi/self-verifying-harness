@@ -1,0 +1,20 @@
+{
+  "files": {
+    "task.toml": "c3bc138b2050433fc22ed16dbdaa9da0d09730b0742090c8817d44160113b9a7",
+    "SOURCE.md": "380a27ae5fef6c73b2e301f5b0f5becee30b70dae94cafbe8d9ccb65b91c23d3",
+    "instruction.md": "6b89402c6c1016221c1c8fb0bd1d6dffdd4c8375f303f933073a7a9ab50196e1",
+    "SOURCE-LICENSE": "5788cf8bd61481776cee1c943595525499a1355c045e9244f92e6c8092c06770",
+    "environment/Dockerfile": "b8dbb0f9ad597df85d48f57c9bd2925f0e7bcb4ce8ba8ddfad80622fd5b41f07",
+    "tests/proof.json": "8889999834260525605cccdbb87da42496787c898ab2fde7d44219ec01bffea5",
+    "tests/verify.py": "43519924e6ffff82fe0556523ea6bd712fc8ee8a90707775be919dddc2e5a4fe",
+    "tests/karma.cjs": "8748c70475a7ba71150dcfca4a08fae406f1fd2b607cdc97204ca1c4ec0ea826",
+    "tests/reporter.cjs": "42f8c0468831f9a4a6313b5bd89b0d571489af774e76347d58980a1cd60e6aab",
+    "tests/test.sh": "08bf0843b6051e6428fd0142342cc5a6875e4c989c5e08b3a67eb3fc5958fabc",
+    "tests/check.js": "94e3f0db8f0111abb0d6c5d0871edf7b5e174fa53201a932447f81774bf86f83",
+    "tests/native.diff": "0784ca6bdbdbce42c762ed7e580a999e1c231aab0e8cd5ed7175bd313b2f7832",
+    "solution/solve.sh": "ee4d18de0d7c84d4924511e1d0e2aa8c791655faea193796b3745e0f5e0891e9",
+    "solution/source/lib/features/popup-menu/ReplaceMenuProvider.js": "41b0003ca600e4852847c0df566937b5fb5682670377cd208b4d0076f7354125",
+    "tests/independent/varied-id.js": "7bc038f1b893e810e90e3608edc7255f6b9fa123c346d58c0aad0938f9431851"
+  },
+  "harbor_trials": "pending; never infer reward from packaging"
+}

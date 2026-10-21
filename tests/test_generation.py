@@ -31,3 +31,17 @@ def test_inspection_requires_media_first_and_exhausts_reads_without_removing_fin
     request.messages.append(ToolMessage(content='ok',name='read_file',tool_call_id='read'))
     narrowed=limiter.narrow(request)
     assert narrowed.tools==[] and narrowed.response_format=='preserved-by-sdk'
+
+
+def test_unadvertised_writes_and_exhausted_reads_cannot_dispatch():
+    from svh.generation import BoundedInspection
+    from langchain_core.messages import ToolMessage
+    limiter=BoundedInspection(require_media=False,limit=1)
+    calls=[]
+    request=SimpleNamespace(state={'messages':[]},tool_call={'name':'execute','id':'fabricated'})
+    result=limiter.wrap_tool_call(request,lambda r:calls.append(r))
+    assert result.status=='error' and not calls
+    request.tool_call={'name':'read_file','id':'extra'}
+    request.state={'messages':[ToolMessage(content='already read',tool_call_id='old',name='read_file')]}
+    result=limiter.wrap_tool_call(request,lambda r:calls.append(r))
+    assert result.status=='error' and not calls
