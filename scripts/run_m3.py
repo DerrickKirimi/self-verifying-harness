@@ -35,6 +35,9 @@ else:
 if a.only not in {t['id'] for t in tasks}:raise SystemExit('Unknown task')
 work=root/'data/runtime/m3'/a.run_name;work.mkdir(parents=True,exist_ok=True)
 lock=(root/'data/runtime/m3/worker.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+if a.task_manifest:
+    from svh.tasks import bind_task_run
+    bind_task_run(work,corpus_sha,normal_task)
 rpath=work/'report.json'
 report=json.loads(rpath.read_text()) if rpath.exists() else {'corpus_sha256':corpus_sha,'cases':[{'id':t['id'],'status':'not_attempted','candidates':[]} for t in tasks]}
 if report['corpus_sha256']!=corpus_sha:raise SystemExit('Different corpus')

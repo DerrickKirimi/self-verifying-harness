@@ -8,6 +8,23 @@ import subprocess
 from svh.evidence import Evidence, Recording
 
 
+def bind_task_run(work, identity, task):
+    """Bind checkpoints before paid work, including a crash before report creation."""
+    path = work / 'input-identity.json'
+    expected = {'format': 'svh.task-run.v1', 'manifest_sha256': identity,
+                'id': task['id'], 'image': task['image'], 'base_commit': task['base_commit']}
+    if path.exists():
+        if json.loads(path.read_text()) != expected:
+            raise ValueError('Run name belongs to a different task manifest; use a new run name')
+        return
+    if any(work.iterdir()):
+        raise ValueError('Existing task artifacts have no input identity; use a new run name')
+    # Caller holds the worker lock. Exclusive creation also prevents overwrites.
+    with path.open('x') as stream:
+        json.dump(expected, stream, indent=2)
+        stream.write('\n')
+
+
 def load_task(root, manifest_path):
     path=(root/manifest_path).resolve()
     data=path.read_bytes()

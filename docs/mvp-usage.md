@@ -77,7 +77,7 @@ claims and inspect code from an ordinary task before generating its check:
 
 ```sh
 .venv/bin/python -I scripts/run_m3.py --task-manifest data/runtime/task.json \
-  --run-name my-run --stage reproduce
+  --run-name my-run --stage reproduce --model gemini-3.5-flash-lite
 ```
 
 [CODE/INF] Inspect the retained `candidate.json`, actual browser observation and
@@ -89,7 +89,7 @@ an assertion merely because it failed.
 
 ```sh
 .venv/bin/python -I scripts/run_m3.py --task-manifest data/runtime/task.json \
-  --run-name my-run --stage repair
+  --run-name my-run --stage repair --model gemini-3.5-flash-lite
 ```
 
 [CODE] Repair is blocked until a completed base Chrome assertion failure and
@@ -98,6 +98,12 @@ container, reruns the identical check and runs native regressions separately.
 An invalid first check may get `--candidate 2`; earlier attempts remain retained.
 Never modify a frozen check in place or relabel a setup failure as reproduction.
 Private run outputs, model traces and recordings stay ignored.
+
+[CODE] Resume with the same manifest, run name and stage. The run binds its input
+identity before extraction or any paid call, including interruptions before the
+first report is written. A changed manifest needs a new run name. Older ordinary
+run directories without an input identity are rejected; preserve them and start
+a new run rather than importing an unbound checkpoint.
 
 [CODE] For the frozen public evaluation adapter, replace `--task-manifest` with
 `--only swebench-bpmn-<id>`; all eleven corpus rows remain in its report. It
