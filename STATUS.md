@@ -222,22 +222,35 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     qualifies and no extra version is granted. Case1638 candidate1 is terminal
     (exec42464): its actual probe reaches the target null-versus-undefined DI
     assertion, but the final model call fails with recorded HTTP503. No successful
-    stage is fabricated. Candidate2 is now running (exec65843); one additional
-    distinct check version remains.
-    Last ledger after1638/1: charged/reserved$4.435591, available$7.564409, two
-    unsettled requests. New source/funding/privacy tests
+    stage is fabricated. Candidate2 (exec65843) now completes and observes both
+    empty-string/null cases fail at DI-label removal after initial and rendered
+    assertions pass. Its exact frozen check is explicitly aligned; repair is
+    repair94405 is now terminal with HTTP503, no generated fix. No third distinct
+    version was granted. V4 is preserved incomplete (3/11 considered,8 unattempted),
+    with no generated pair; see `notes/2026-10-21-flash-flex-checkpoint.md`.
+    Last ledger afterv4: charged/reserved$4.958983, available$7.041017, three
+    unsettled requests ($0.984679). New source/funding/privacy tests
     pass: **128 total**, one expected invalid-tier warning. Error records now
     preserve valid integer HTTP status without provider error/request text;
     old1610 status remains unknown. Local Ollama tag deepseek-r1:8b reports only
     completion/thinking, no tools/vision; it was inspected but not used as a
     substitute. No model download or local inference was performed.
 17. Independent human review now has a concrete handoff:
-    `docs/independent-review.md` and `evals/m2-human-review-template.json`.
+    `docs/independent-review.md`, `evals/m2-human-review-template.json` and a
+    separate `evals/m2-human-issue-only-template.json` for the paired baseline.
     All eleven existing contact-sheet hashes were checked against actual PNGs;
     the blank template binds the exact refined output hash and deliberately has
     null decisions, which the actual scorer rejects. No previous AI decisions
     or reasons are copied. This prepares the outstanding review; it does not
     claim that a human has reviewed or passed it.
+18. Fresh **standard-submission-v5** is frozen before calls: Gemini3.8Flash/
+    Standard/medium, same11 cases and rubric, no copied successes. The internal
+    tool is now `submit_browser_reproduction` and explicitly requires the reported
+    action and corrective assertions on the first version; the read-budget
+    checkpoint repeats that contract. Execution/version limits are unchanged.
+    Standard is an explicit new-run selection after Flex capacity errors, not
+    automatic fallback. All128 harness tests still pass. Case1640 candidate1 is
+    running (exec65942); inspect its actual output before advancing.
 
 ## Evidence and history
 

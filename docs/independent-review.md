@@ -56,3 +56,22 @@ numerical pass is evidence conditional on the recorded judgments; software
 cannot authenticate that the reviewer is human. Keep the completed human review
 and its provenance separate from the existing AI-assisted result. Record the
 actual outcome in `STATUS.md`; a disagreement or failed gate must remain visible.
+
+[CODE/INF] The paired **issue-only** baseline also needs independent semantic
+review. Start from `evals/m2-human-issue-only-template.json` in a separate private
+file. It binds `notes/runs/m2-refined-issue-only.json` and copies no AI decisions.
+The model received no recording in this condition: judge its symptom/expectation
+against the same reference, and never infer that it viewed the source. Complete
+all decisions explicitly, then score separately:
+
+```sh
+.venv/bin/python -I scripts/score_m2.py \
+  --predictions notes/runs/m2-refined-issue-only.json \
+  --judgments data/runtime/m2/independent-human-issue-only.json \
+  --checkpoints notes/runs/m2-checkpoints-issue-only.json \
+  --output data/runtime/m2/independent-human-issue-only-score.json
+```
+
+[INF] Report both conditions and their actual intervals, retaining errors and
+ambiguity in each denominator. An issue-only baseline cannot pass the media
+grounding gate; its role is the paired content comparison.

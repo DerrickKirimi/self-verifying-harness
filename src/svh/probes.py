@@ -21,7 +21,7 @@ def check_version_budget(case_directory, check, maximum=2):
 
 class ProbeInput(BaseModel):
     check_javascript: str = Field(min_length=1,max_length=128*1024,
-        description='Complete standalone Karma/Mocha spec to execute on fresh buggy source')
+        description='Complete reported-behavior reproduction: establish initial state, perform the reported action and assert the correct outcome. Never a setup smoke or console-only diagnostic.')
 
 
 class ProbeRegistry:
@@ -56,8 +56,8 @@ class ProbeRegistry:
         return text,{'development_browser':observed,'check_ref':ref,'check_sha256':row['sha256']}
 
     def tool(self):
-        return StructuredTool.from_function(coroutine=self.run,name='probe_browser_check',args_schema=ProbeInput,
-            description='Freeze and run a generated standalone browser check on fresh BUGGY source in Docker. Returns actual errors/assertions. At most two distinct check versions per case. Never applies a fix.',
+        return StructuredTool.from_function(coroutine=self.run,name='submit_browser_reproduction',args_schema=ProbeInput,
+            description='Submit a COMPLETE reproduction of the reported bug with corrective assertions, on fresh BUGGY source in Docker. Every executed script consumes one of only TWO distinct versions for the entire case. Never submit setup smokes, DOM dumps or unrelated checks. Returns actual errors/assertions and never applies a fix.',
             response_format='content_and_artifact')
 
     def selected(self, ref):

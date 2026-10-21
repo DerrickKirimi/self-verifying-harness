@@ -78,7 +78,7 @@ def test_final_schema_is_unavailable_until_a_real_probe_assertion():
     from langchain_core.messages import SystemMessage,ToolMessage
     class Request:
         messages=[]
-        tools=[SimpleNamespace(name='read_file'),SimpleNamespace(name='probe_browser_check')]
+        tools=[SimpleNamespace(name='read_file'),SimpleNamespace(name='submit_browser_reproduction')]
         system_message=SystemMessage(content='develop check')
         response_format='initial-final-schema'
         def override(self,**kw):return SimpleNamespace(**{'response_format':self.response_format,**kw})
@@ -87,7 +87,7 @@ def test_final_schema_is_unavailable_until_a_real_probe_assertion():
     assert pending.response_format is None and pending.tool_choice=='any'
     observation={'complete':True,'errors':[],'browser':'Chrome','total':1,'skipped':0,'exit_code':1,
                  'results':[{'success':False,'log':['AssertionError: expected old to equal new']}]}
-    request.messages=[ToolMessage(content='observed',tool_call_id='probe',name='probe_browser_check',artifact={'development_browser':observation})]
+    request.messages=[ToolMessage(content='observed',tool_call_id='probe',name='submit_browser_reproduction',artifact={'development_browser':observation})]
     final=limiter.narrow(request)
     assert final.tools==[] and final.response_format=='initial-final-schema'
 

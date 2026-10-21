@@ -1,0 +1,106 @@
+{
+  "condition": "issue-only",
+  "prediction_sha256": "40d832a5b299928fb688d97fefb19331455c5119a8233ee7e404cdcb7916651b",
+  "scorer": "UNREVIEWED: replace with an independent human reviewer identifier",
+  "predictions": [
+    {
+      "recording_id": "swebench-bpmn-1557",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1570",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1610",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1623",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1638",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1640",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1655",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1659",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1679",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1719",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    },
+    {
+      "recording_id": "swebench-bpmn-1928",
+      "prediction_id": "claim-1",
+      "gold_claim_id": null,
+      "symptom_match": null,
+      "expected_match": null,
+      "source_support": null,
+      "reason": ""
+    }
+  ]
+}

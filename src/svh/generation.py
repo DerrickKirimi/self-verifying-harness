@@ -23,10 +23,10 @@ class BoundedInspection(AgentMiddleware):
         replies=[m for m in request.messages if isinstance(m,ToolMessage)]
         successful={m.name for m in replies if m.status=='success'}
         missing={'get_recording','get_frames'}-successful if self.require_media else set()
-        qualified=any(m.name=='probe_browser_check' and browser_verdict((m.artifact or {}).get('development_browser',{}),assertion_failure=True) for m in replies)
+        qualified=any(m.name=='submit_browser_reproduction' and browser_verdict((m.artifact or {}).get('development_browser',{}),assertion_failure=True) for m in replies)
         allowed=missing or {'grep','read_file','glob','ls'}
-        if self.require_probe:allowed.add('probe_browser_check')
-        if len(replies)>=self.limit:allowed={'probe_browser_check'} if self.require_probe and not qualified else set()
+        if self.require_probe:allowed.add('submit_browser_reproduction')
+        if len(replies)>=self.limit:allowed={'submit_browser_reproduction'} if self.require_probe and not qualified else set()
         if self.require_probe and qualified:allowed=set()
         tools=[t for t in request.tools if (t.name if hasattr(t,'name') else t.get('name')) in allowed]
         message=request.system_message
@@ -37,6 +37,8 @@ class BoundedInspection(AgentMiddleware):
         if not tools:
             messages=[*messages,HumanMessage(content='Controller checkpoint: source inspection is finished. Return your concrete final CheckCandidate or SourceFix now, using the available recorded evidence and existing source. CheckCandidate requires complete executable JavaScript, a nonempty requirement and rationale; do not emit empty placeholder fields. Keep any remaining uncertainty explicit. Do not call another inspection tool.')]
         overrides={'tools':tools,'system_message':message,'messages':messages}
+        if self.require_probe and not qualified and len(replies)>=self.limit:
+            overrides['messages']=[*request.messages,HumanMessage(content='Controller: source inspection is finished. Submit the complete reported-behavior reproduction now: establish initial state, perform the reported action, and assert the correct outcome. Every executed script counts toward the TWO-version case limit, including setup smokes and diagnostic dumps. Do not use a version just to inspect DOM or confirm the fixture loads. No source fix is allowed yet.')]
         if self.require_probe and not qualified:overrides.update(response_format=None,tool_choice='any')
         if self.require_probe and qualified:
             overrides['messages']=[*request.messages,HumanMessage(content='Controller: an actual frozen probe has a completed assertion failure. Return CheckSubmission now with its check_ref and requirement/rationale. Do not repeat or change code.')]
@@ -45,7 +47,7 @@ class BoundedInspection(AgentMiddleware):
     def deny(self,request):
         replies=[m for m in request.state.get('messages',[]) if isinstance(m,ToolMessage)]
         name=request.tool_call['name']
-        if name not in {'get_recording','get_frames','grep','read_file','glob','ls','probe_browser_check'} or (name!='probe_browser_check' and len(replies)>=self.limit):
+        if name not in {'get_recording','get_frames','grep','read_file','glob','ls','submit_browser_reproduction'} or (name!='submit_browser_reproduction' and len(replies)>=self.limit):
             return ToolMessage(content='This generation stage permits only bounded read-only inspection. Return the typed final output.',tool_call_id=request.tool_call['id'],status='error')
         return None
 
@@ -110,13 +112,17 @@ returned spec may use the existing webpack test/... and lib/... module roots.
 For grep use output_mode="content" so source lines, not just filenames, are
 returned. Read the actual fixture XML before asserting its identifiers or text.
 Be concise: at most three targeted searches and four file pages. Return the typed
-final output after that investigation. Only the controller-owned probe_browser_check tool may execute a development
+final output after that investigation. Only the controller-owned submit_browser_reproduction tool may execute a development
 check on fresh buggy source. Never run arbitrary commands or apply a source fix.
 '''
 REPRO=COMMON+'''Generate one JavaScript browser reproduction for the supplied recording
 claim. The controller supplies actual metadata and frames fetched over MCP.
 Inspect these attached frames before coding. Return a
-single standalone Karma/Mocha spec using probe_browser_check, not markdown.
+single standalone Karma/Mocha spec using submit_browser_reproduction, not markdown.
+Your FIRST submission must already exercise the reported action and assert the
+expected correct result. Do not submit fixture-loading smoke tests, console-only
+DOM inspection or unrelated passing checks. All executed scripts consume the
+same TWO distinct versions for the entire case, including diagnostic scripts.
 Use actual returned runtime/setup errors to correct the check. At most two
 distinct check versions may execute. Once the intended assertion fails, return
 CheckSubmission referencing its check_ref with requirement/rationale/visible_assertions.
@@ -219,7 +225,7 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     media,provenance=await recording_context(client,task,claim) if not repairing else ([],None)
     message_content=[{'type':'text','text':json.dumps(request)},*media] if not repairing else json.dumps(request)
     before=backend.initial_source_fingerprint
-    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v9-content-search','limit':5 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort,
+    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v10-target-submission','limit':5 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort,
          'service_tier':model._price.service_tier}
     raw['prefetched_recording_evidence']=provenance
     from pathlib import Path

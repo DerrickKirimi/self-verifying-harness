@@ -1,0 +1,184 @@
+{
+  "scope": "Incomplete method run; no success pooled; HTTP503 uncertainty retained; no actual generated source repair",
+  "errors": {
+    "swebench-bpmn-1640/1/generation-error.json": [
+      {
+        "type": "ExceptionGroup"
+      },
+      {
+        "type": "ExceptionGroup"
+      },
+      {
+        "type": "ValueError"
+      }
+    ],
+    "swebench-bpmn-1638/1/generation-error.json": [
+      {
+        "type": "ExceptionGroup"
+      },
+      {
+        "type": "ExceptionGroup"
+      },
+      {
+        "type": "GoogleAPIError",
+        "http_status": 503
+      },
+      {
+        "type": "ServerError",
+        "http_status": 503
+      }
+    ],
+    "swebench-bpmn-1638/2/generation-error.json": [
+      {
+        "type": "GoogleAPIError",
+        "http_status": 503
+      },
+      {
+        "type": "ServerError",
+        "http_status": 503
+      }
+    ]
+  },
+  "probes": {
+    "swebench-bpmn-1640/1/development-probes/probe-2/execution/observation.json": {
+      "complete": true,
+      "errors": [],
+      "results": [
+        {
+          "name": "probe markers dom checks SVG DOM of ParallelTask and SequentialTask",
+          "success": true,
+          "skipped": false,
+          "log": []
+        }
+      ],
+      "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+      "disconnected": false,
+      "total": 1,
+      "skipped": 0,
+      "exit_code": 0,
+      "timed_out": false,
+      "check_sha256": "8f6d969006075215146c8e4f05b29cfba45111c2ba481476fa1cd8f0c57056cb",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+      "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+      "source_is_base": true,
+      "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+      "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+      "source_files_sha256": {},
+      "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+      "console_sha256": "fddd4e3a02f752f400026c388334e58ebed56b952b3ac7e9a6da6f551fe439e7"
+    },
+    "swebench-bpmn-1640/1/development-probes/probe-1/execution/observation.json": {
+      "complete": true,
+      "errors": [],
+      "results": [
+        {
+          "name": "probe test runs",
+          "success": true,
+          "skipped": false,
+          "log": []
+        }
+      ],
+      "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+      "disconnected": false,
+      "total": 1,
+      "skipped": 0,
+      "exit_code": 0,
+      "timed_out": false,
+      "check_sha256": "53aac82d9686932302106e3f7a26489132f72a5ef2f4356c3c9b3f5951881dee",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+      "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+      "source_is_base": true,
+      "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+      "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+      "source_files_sha256": {},
+      "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+      "console_sha256": "61c42502a42fd3496d6c1b5f58f1999553ee0cedc44b38969064607669755e27"
+    },
+    "swebench-bpmn-1638/1/development-probes/probe-1/execution/observation.json": {
+      "complete": true,
+      "errors": [],
+      "results": [
+        {
+          "name": "features/modeling - update label embedded di should change name of task and set di.label",
+          "success": true,
+          "skipped": false,
+          "log": []
+        },
+        {
+          "name": "features/modeling - update label embedded di should remove di.label when clearing task label",
+          "success": false,
+          "skipped": false,
+          "log": [
+            "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:66:36)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+          ]
+        }
+      ],
+      "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+      "disconnected": false,
+      "total": 2,
+      "skipped": 0,
+      "exit_code": 1,
+      "timed_out": false,
+      "check_sha256": "78c18b93b9a326af188c7c082b0b2eb9a61f9eaeb8a8f10711f009440e227439",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+      "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+      "source_is_base": true,
+      "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+      "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+      "source_files_sha256": {},
+      "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+      "console_sha256": "f7f804068463d7728598c51cbbfcb185eb3686336fd1754901c4f7bc9a242c1a"
+    },
+    "swebench-bpmn-1638/2/development-probes/probe-1/execution/observation.json": {
+      "complete": true,
+      "errors": [],
+      "results": [
+        {
+          "name": "features/modeling - update label should remove di.label when clearing task label",
+          "success": false,
+          "skipped": false,
+          "log": [
+            "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:42:36)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+          ]
+        },
+        {
+          "name": "features/modeling - update label should remove di.label when setting label to null",
+          "success": false,
+          "skipped": false,
+          "log": [
+            "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:66:36)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+          ]
+        }
+      ],
+      "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+      "disconnected": false,
+      "total": 2,
+      "skipped": 0,
+      "exit_code": 1,
+      "timed_out": false,
+      "check_sha256": "dbe18bd150da34e8eea235c873e2693457982d49083ec694a92de7cef71e6ed3",
+      "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+      "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+      "source_is_base": true,
+      "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+      "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+      "source_files_sha256": {},
+      "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+      "console_sha256": "63b1f971713c76ca9a1099734343880636abf34f5214cd29319853a5d8468d78"
+    }
+  },
+  "ledger_aggregate": [
+    {
+      "state": "reserved",
+      "requests": 3,
+      "reserved_microdollars": 984679,
+      "charged_microdollars": 984679
+    },
+    {
+      "state": "settled",
+      "requests": 504,
+      "reserved_microdollars": 288082517,
+      "charged_microdollars": 3974304
+    }
+  ]
+}
