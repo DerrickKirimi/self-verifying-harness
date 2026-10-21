@@ -169,28 +169,10 @@ def configured_model(root: Path, name="gemini-3.5-flash-lite", output_cap=4096, 
     config = private_values(root / ".env")
     secrets = private_values(Path(config["SVH_GEMINI_SECRETS_FILE"]))
     metadata = json.loads((root / "notes/runs/gemini-model-metadata.json").read_text())
-    checked = datetime.fromisoformat(metadata["checked_at"])
-    if checked.date().isoformat() != metadata["pricing_checked_date"]:
-        raise ValueError("Recheck prices alongside model metadata")
-    # Price policy is deliberately not taken from a model response or media file.
-    rates = {"gemini-3.5-flash-lite": ("0.30", "2.50"), "gemini-3.8-flash": ("0.75", "3.75")}
-    if metadata["pricing_checked_date"] != "2026-10-20" or name not in rates:
-        raise ValueError("No reviewed pricing policy for this model/date")
-    entry = next(item for item in metadata["models"] if item["model"] == name)
-    if entry.get("returned_name") != "models/" + name or "generateContent" not in entry.get("supported_actions", []):
-        raise ValueError("Authenticated model access is unconfirmed")
-    if service_tier=='flex':
-        policy=json.loads((root/'notes/runs/gemini-flex-policy.json').read_text())
-        reviewed={'gemini-3.5-flash-lite':('0.15','1.25'),'gemini-3.8-flash':('0.375','1.875')}
-        if policy.get('pricing_checked_date')!='2026-10-21' or policy.get('service_tier')!='flex' or tuple(policy['rates'][name])!=reviewed[name]:
-            raise ValueError('No reviewed Flex price policy')
-        flex_checked=datetime.fromisoformat(policy['checked_at'])
-        if flex_checked.date().isoformat()!=policy['pricing_checked_date'] or flex_checked>datetime.now(timezone.utc):
-            raise ValueError('Invalid Flex review date')
-        checked=min(checked,flex_checked)
-        rates=reviewed
-    elif service_tier!='standard':raise ValueError('Unreviewed service tier')
-    price = Price(name, *rates[name], checked, entry["input_limit"], entry["output_limit"],service_tier)
+    from svh.model_policy import reviewed_access
+    policy_bytes = (root / 'notes/runs/gemini-price-policy.json').read_bytes()
+    entry, rates, checked = reviewed_access(policy_bytes, metadata, name, service_tier)
+    price = Price(name, *rates, checked, entry["input_limit"], entry["output_limit"], service_tier)
     from decimal import Decimal
     # A higher config value never raises an existing ledger; explicit owner
     # funding must first be recorded through Budget.authorize_limit.

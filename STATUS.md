@@ -157,7 +157,8 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    the cumulative local cap from$4 to$12 without resetting charges or releasing
    the$0.167527 uncertain reservation. At authorization: charged/reserved$3.861395,
    available$8.138605, settled estimate$3.693868. Read `svh budget` again before
-   work; do not raise/reset further. `notes/2026-10-21-funding-authorization.md`.
+   work; retain this historical funding event. A later explicit five-dollar
+   allowance is recorded in step20; do not reset charges. `notes/2026-10-21-funding-authorization.md`.
    Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
 8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
@@ -312,12 +313,38 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     completion until every frozen case is considered. Last read after repair:
     charged/reserved$7.021649, available$4.978351, three
     uncertain reservations retained.
+    Commit193499b is pushed. Remaining cases1570/1623/1659/1719; case1570
+    candidate1 (exec71008) is terminal after one base-passing viewport check and
+    no trusted target failure. Its candidate2 did not launch before access-policy
+    expiry; no second candidate directory or new charge was produced then.
+    Renewal and the explicitly recorded financial amendment now permit resumption,
+    with one additional distinct executed version available. Do not stop on the positive interval;
+    finish the frozen denominator and resolve release audit items.
 19. Release audit found no supported later-day model-policy renewal: the probe
     writes a current access timestamp but a hardcoded old pricing date, and the
     factory rejects that mismatch/age. Current metadata expires at18:22UTC today.
-    Do not overwrite it or edit pinned factory code during v5. Resolve the
-    renewal procedure after the current evaluation; details and acceptance in
-    `notes/2026-10-21-model-policy-renewal-gap.md`. README replay is unaffected.
+    The expiry checkpoint is frozen before maintenance. The supported renewal
+    is now implemented and actually tested; see step20. README replay is unaffected.
+
+20. The owner explicitly authorized up to **$5 additional usage**. At the actual
+    checkpoint charged/reserved was$7.195678; cumulative local cap is now
+    **$12.195678**, allowing exactly$5 more, preserving all three unknown
+    reservations. No provider billing setting is changed. Authorization:
+    `notes/2026-10-21-additional-five-dollar-authorization.md`.
+    Supported renewal independently expires price/access reviews, binds exact
+    price-policy bytes, preserves old evidence and refuses partial failures.
+    Actual authenticated metadata refreshed19:43UTC; all four model/tier factory
+    constructions pass without generation or ledger changes. All **146 tests
+    pass** with loopback networking (one expected invalid-tier warning).
+    `notes/2026-10-21-model-policy-renewal.md` and usage guide explain renewal.
+    Before any resumed paid call, an explicit financial amendment was frozen:
+    `evals/m3-method-standard-submission-v5-renewed.json`, SHA
+    `0549beafdb54056c923e24b76bac9ad66adc6c4b9e50074c4cd464b3ef1db0ea`.
+    Original method and exact expiry report/score remain retained; the amended
+    development run has two financial epochs, unchanged generation method/rates/
+    limits and no extra candidate versions or pooled successes from other runs.
+    The permitted1570 candidate2 has now been launched after renewal. Finish
+    that case and1623/1659/1719 sequentially, then measure the entire denominator.
 
 ## Evidence and history
 

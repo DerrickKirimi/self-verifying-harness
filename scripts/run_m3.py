@@ -51,7 +51,7 @@ if report.get('method'):
             or method.get('service_tier','standard')!=a.service_tier or method['thinking_level']!=thinking):
         raise SystemExit('Use the prepared run method and model; do not mix methods silently')
     for filename,expected in method.get('implementation_sha256',{}).items():
-        if filename not in {'generation.py','source_packet.py','probes.py','browser_runner.py','docker_backend.py','harness.py','gemini.py','budget.py','failures.py'}:
+        if filename not in {'generation.py','source_packet.py','probes.py','browser_runner.py','docker_backend.py','harness.py','gemini.py','budget.py','failures.py','model_policy.py'}:
             raise SystemExit('Unrecognized method implementation file')
         if digest((root/'src/svh'/filename).read_bytes())!=expected:
             raise SystemExit('Method implementation changed; prepare a new method/run before paid work')
@@ -127,6 +127,7 @@ async def run():
     if a.stage=='reproduce':
         if len(row['candidates'])!=index:raise ValueError('Candidate already recorded or earlier candidate missing')
         candidate={'number':a.candidate,'status':'generating_check','model':a.model,'service_tier':a.service_tier,'thinking_level':model.reasoning_effort}
+        if report.get('method_sha256'):candidate['method_sha256']=report['method_sha256']
         row['candidates'].append(candidate);row['status']='attempted';save()
     else:
         candidate=row['candidates'][index]

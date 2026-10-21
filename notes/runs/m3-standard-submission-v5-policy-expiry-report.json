@@ -1,0 +1,653 @@
+{
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "method": "evals/m3-method-standard-submission-v5.json",
+  "method_sha256": "d67fa979870d2c605f3378d2a3f3f22b5e9e65cf9532123d5d06d4e4db055bc8",
+  "cases": [
+    {
+      "id": "swebench-bpmn-1557",
+      "status": "abstained",
+      "candidates": [],
+      "stage": "requirement_review",
+      "reason": "The requirement offers two incompatible policies and explicitly asks which to implement; no owner response or benchmark gold policy is substituted.",
+      "review": "Codex AI controller; no human response assumed",
+      "source_checkpoint_sha256": "2d98b946eb724ba22ea8ee8b19963c93a87550294a07cb3fd961ec2439301686",
+      "questions": [
+        "Should DataObjectReferences be disallowed from existing outside of a pool in collaborations (e.g. via rules/ReplaceMenuProvider), or should morphing be permitted by properly resolving or guarding the DI parent/planeElement?"
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1570",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "error_type": "ExceptionGroup",
+          "nested_error_types": [
+            "ExceptionGroup",
+            "ExceptionGroup",
+            "ValueError"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "native_regressions_failed",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features - label-editing plane switch should cancel direct editing when switching planes",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected true to be false\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:47:58)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features - label-editing plane switch should cancel direct editing when navigating via breadcrumbs",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected true to be false\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:74:58)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610@sha256:e04c512ea4dd182059b2eea39716ebd7ee750db6008d8442c2dd65ff9d62f767",
+            "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+            "source_is_base": true,
+            "source_archive_sha256": "098b95be7c6d21231475901c1fad8dcad255aa98340cafbe836078c3adab4f2a",
+            "baseline_fingerprint": "5a41c038b38548bc2ff724d1fa2994b8c21b7008c597aa9fc6c035288e3729e6",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "fbeaffe3f22e16f1e3eaa44ce58e2a94c0d10aefb4acabf1abbe34b1c9695272"
+          },
+          "alignment_review": {
+            "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+            "aligned": true,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "Both cases activate real direct editing on the nested-plane task and first assert active editing with an attached textbox parent. One switches from collapsedProcess_plane to the distinct rootProcess; the other clicks the actual root breadcrumb and confirms the new rootProcess id. Completed base failures are true-versus-false in the post-action textbox-removal/cancellation assertions, not an initial setup failure. This directly checks the recorded editing overlay remaining after plane navigation. The check never sets the root to itself or manually deletes the editor."
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features - label-editing plane switch should cancel direct editing when switching planes",
+                "success": true,
+                "skipped": false,
+                "log": []
+              },
+              {
+                "name": "features - label-editing plane switch should cancel direct editing when navigating via breadcrumbs",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610@sha256:e04c512ea4dd182059b2eea39716ebd7ee750db6008d8442c2dd65ff9d62f767",
+            "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+            "source_is_base": false,
+            "source_archive_sha256": "098b95be7c6d21231475901c1fad8dcad255aa98340cafbe836078c3adab4f2a",
+            "baseline_fingerprint": "5a41c038b38548bc2ff724d1fa2994b8c21b7008c597aa9fc6c035288e3729e6",
+            "source_files_sha256": {
+              "lib/features/label-editing/LabelEditingProvider.js": "1ef7aa8d25d16eda333351920da8f7c3400a3ad6fc9117dd2577c9e83b3507e9"
+            },
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "4bd5f59b4dbc12c3c587b58b6f652abc41a8d847f41671aee4142982bfb7728f"
+          },
+          "native_regressions_passed": false,
+          "native_observation_sha256": "b17ba9175a6781243bfd58922e8929acbba10f66f1279e6d7a28c7e32faa2042"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1623",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1638",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "a328036ec79d6556a53a94373a096cc12a6422494fe679b948ab28e3e0c0a6eb",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - update label should unset di.label when task label is cleared",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:46:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features/modeling - update label should unset di.label after creating and then clearing task label",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:66:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "a328036ec79d6556a53a94373a096cc12a6422494fe679b948ab28e3e0c0a6eb",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+            "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+            "source_is_base": true,
+            "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+            "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "239fa1560024d5379d01623a21f3d6c75a3f59c3dda3b3fd4020e8610a49d57a"
+          },
+          "alignment_review": {
+            "check_sha256": "a328036ec79d6556a53a94373a096cc12a6422494fe679b948ab28e3e0c0a6eb",
+            "aligned": true,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "The first case establishes rendered Task_2 text and an existing DI label, clears it through modeling.updateLabel, re-queries the rendered text and confirms the empty name before the target null-versus-undefined DI assertion fails. The second establishes no initial Task_1 DI label, creates one through updateLabel, then clears it and reaches the same target failure. Both complete fresh-base Chrome cases fail after legitimate actions, not during setup. Coverage is these two task-label paths; no all-state correctness is inferred."
+          },
+          "error_type": "ValueError",
+          "nested_error_types": [
+            "ValueError"
+          ]
+        },
+        {
+          "number": 2,
+          "status": "full_generated_repair",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "32221946415f75d2f6d3ae61f74ac26768196c5564e3ed23b71b869df803c726",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - update label should unset di.label when task label is cleared",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:46:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features/modeling - update label should unset di.label after creating and then clearing task label",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected null to be undefined\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:75:34)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "32221946415f75d2f6d3ae61f74ac26768196c5564e3ed23b71b869df803c726",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+            "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+            "source_is_base": true,
+            "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+            "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "ebda96e9f3155bbdfef05aebac0338c210b7041468a99efd8aec589cc04398f6"
+          },
+          "alignment_review": {
+            "check_sha256": "32221946415f75d2f6d3ae61f74ac26768196c5564e3ed23b71b869df803c726",
+            "aligned": true,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "The unchanged first case establishes rendered Task_2 text and an existing DI label, clears through modeling.updateLabel and confirms empty rendered text/name before the target null-versus-undefined DI assertion fails. The second establishes no initial DI label on Task_1, creates/render-checks Foo, then clears it and confirms empty rendered text/name before the same target failure. Both complete fresh-base executions reach actual post-action assertions, not setup failure or manufactured removal. This review binds only the new frozen check; the first candidate's rejected absolute source path remains a failed repair."
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - update label should unset di.label when task label is cleared",
+                "success": true,
+                "skipped": false,
+                "log": []
+              },
+              {
+                "name": "features/modeling - update label should unset di.label after creating and then clearing task label",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "32221946415f75d2f6d3ae61f74ac26768196c5564e3ed23b71b869df803c726",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+            "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+            "source_is_base": false,
+            "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+            "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+            "source_files_sha256": {
+              "lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+            },
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "ba7264897472300dca452fcf908c8af1fe156433b8d412fa08083fbd92e901cd"
+          },
+          "native_regressions_passed": true,
+          "native_observation_sha256": "b558dcaa7a4017fe848bd93b3bb043c85602fbc7294fc68ec5491c8be32d4f80"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1640",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "full_generated_repair",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: loopCardinality should be preserved: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:108:99)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+            "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+            "source_is_base": true,
+            "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+            "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "0cc63b9b11acfce892be4fb3d81c6861aa51fe8223aee594901098a52126af5f"
+          },
+          "alignment_review": {
+            "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+            "aligned": true,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "The model-created fixture contains a real SubProcess with configured parallel multi-instance cardinality and completion condition. Initial visual-marker and property assertions pass. The actual popup action changes to sequential mode, its visual marker and mode assertions pass, then the target cardinality-preservation assertion fails in complete fresh-base Chrome execution. This matches the reported SubProcess transition without manual feature removal. It covers parallel-to-sequential and the two configured values; no reverse-direction or all-property guarantee is claimed."
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+            "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+            "source_is_base": false,
+            "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+            "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+            "source_files_sha256": {
+              "lib/features/popup-menu/ReplaceMenuProvider.js": "247241448b9f0356cc5ea739aca51e81cc69c6f889f1568d244395092b07aa67"
+            },
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "75529567695aeb0082dcee9da8902b17564c1a041efa2ee7072e42f2d570dc7f"
+          },
+          "native_regressions_passed": true,
+          "native_observation_sha256": "3cf50cf529398f213eeec780e84f177ff7947bdcfafb957d04aaf1510a7441c2"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1655",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "error_type": "ExceptionGroup",
+          "nested_error_types": [
+            "ExceptionGroup",
+            "ExceptionGroup",
+            "ValueError"
+          ]
+        },
+        {
+          "number": 2,
+          "status": "observed_base_assertion",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "4d486a6d03d6a2061153b925360256ecc2007164eac9e2e2f6bbfd86a9ea52f0",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/modeling - set color external label should set external label to stroke color when stroke and fill are provided",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected '' to equal 'rgb(255, 0, 255)'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:43:60)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              },
+              {
+                "name": "features/modeling - set color external label should set external label to stroke color when only stroke is provided",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected '' to equal 'rgb(255, 0, 255)'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:69:60)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "4d486a6d03d6a2061153b925360256ecc2007164eac9e2e2f6bbfd86a9ea52f0",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1655@sha256:84f2d5f6c527bff4e80d433dfb46a48abee3d7bcddffe5f1149230d9528c05df",
+            "base_commit": "7478388070d83e8802c873e8480dbf23ae3ace3a",
+            "source_is_base": true,
+            "source_archive_sha256": "fc39f8b0f23b67e21e291abb5a4ed6979986c25764becb2b244e8214d0b121a7",
+            "baseline_fingerprint": "0e7546cd8b4cc16c153b86aa0bc49660abe7dff6c2ef21f1c2cb8e962463fd35",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "aacb2fc42113ef1a620fca483e3ef6c0e6b9ba25d6355c397f69d1144274704b"
+          }
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1659",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "error",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "error_type": "ExceptionGroup",
+          "nested_error_types": [
+            "ExceptionGroup",
+            "ExceptionGroup",
+            "ValueError"
+          ]
+        },
+        {
+          "number": 2,
+          "status": "full_generated_repair",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to parallel multi-instance characteristics",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected false to be true\n    at Context.eval (webpack-internal:///./test/SvhGeneratedSpec.js:75:142)"
+                ]
+              },
+              {
+                "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to sequential multi-instance characteristics",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected false to be true\n    at Context.eval (webpack-internal:///./test/SvhGeneratedSpec.js:106:142)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+            "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+            "source_is_base": true,
+            "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+            "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "0894edfd171df5048fef96fb883d11a1331e6397f40285b6f05fb149ac93884b"
+          },
+          "alignment_review": {
+            "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+            "aligned": true,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "Corrected using actual loaded webpack source: stack lines75/106 are the MultiInstanceLoopCharacteristics type assertions, after successful initial standard-loop and actual popup selections. The model type remains wrong, directly reproducing the data-type defect underlying the recorded serialized-loop bug. The unchanged check also asserts correct exported XML after repair; its XML assertion is not claimed as the first base failure. The prior rejection incorrectly mapped compiled to original lines and is preserved unchanged. Diagnostic check SHA and base source archive equal the original; no test version was added.",
+            "previous_review_sha256": "52967f02a68c200e5c04bc087306980d554fea91aaa1731d09dd13cd4dc54ad1",
+            "diagnostic_identity": {
+              "scope": "Trusted CDP source capture, not a new generated candidate or fail/pass claim",
+              "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+              "loaded_source_sha256": "56ff1d476ac6ad20bbb4bca326bc84040666a2f9fae7bb5f1df583b54d27854a",
+              "diagnostic_config_sha256": "a343528292c787d9ae157d278c4a0f6612089b224ce208f14c31bc09cb917e4c",
+              "diagnostic_reporter_sha256": "c40609720a09690ca9525d777d7d1beaa62305d2d1a252ec666b38269fd31d50",
+              "exit_code": 1,
+              "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f"
+            },
+            "stack_lines": [
+              {
+                "line": 75,
+                "text": "    expect(Object(lib_util_ModelUtil__WEBPACK_IMPORTED_MODULE_4__[\"is\"])(loopCharacteristics, 'bpmn:MultiInstanceLoopCharacteristics')).to.be.true;"
+              },
+              {
+                "line": 106,
+                "text": "    expect(Object(lib_util_ModelUtil__WEBPACK_IMPORTED_MODULE_4__[\"is\"])(loopCharacteristics, 'bpmn:MultiInstanceLoopCharacteristics')).to.be.true;"
+              }
+            ]
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to parallel multi-instance characteristics",
+                "success": true,
+                "skipped": false,
+                "log": []
+              },
+              {
+                "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to sequential multi-instance characteristics",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 2,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+            "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+            "source_is_base": false,
+            "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+            "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+            "source_files_sha256": {
+              "lib/features/popup-menu/ReplaceMenuProvider.js": "41b0003ca600e4852847c0df566937b5fb5682670377cd208b4d0076f7354125"
+            },
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "72ba93a5d57e25653e4c648dac4e707c31ee2b8b6fd39b05991605d159c98496"
+          },
+          "native_regressions_passed": true,
+          "native_observation_sha256": "f28a0ab930ad933dbe8da47aa2d5fc1aeb502c454f623474588e9ce247851dfc"
+        }
+      ]
+    },
+    {
+      "id": "swebench-bpmn-1719",
+      "status": "not_attempted",
+      "candidates": []
+    },
+    {
+      "id": "swebench-bpmn-1928",
+      "status": "attempted",
+      "candidates": [
+        {
+          "number": 1,
+          "status": "full_generated_repair",
+          "model": "gemini-3.8-flash",
+          "service_tier": "standard",
+          "thinking_level": "medium",
+          "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+          "pre": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "space tool - empty pool should not resize empty pool vertically",
+                "success": false,
+                "skipped": false,
+                "log": [
+                  "AssertionError: expected 160 to equal 60\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:66:35)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:232:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:244:20)"
+                ]
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 1,
+            "timed_out": false,
+            "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+            "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+            "source_is_base": true,
+            "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+            "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+            "source_files_sha256": {},
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "f7e0e396e6fc35d4c4e92e9500b6df2378d92cab1b992a02fd6f9a60c9d13a18"
+          },
+          "alignment_review": {
+            "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+            "aligned": true,
+            "reviewer": "Codex AI controller review; not independent human adjudication",
+            "reason": "The inline model-created collaboration contains an empty participant with height60 and no process reference/children. It captures initial height as a primitive, activates the real space tool at a vertical cut through the pool and uses actual dragging move/end events. Fresh-base Chrome completes and fails the post-action height assertion:160 instead of60, directly matching the recorded unwanted vertical resize. The unchanged check also requires the current rendered rectangle height after repair. It does not directly invoke resizeShape, delete the feature or fake the exception. Scope is this empty-pool vertical drag; all other space-tool behavior is left to independent native regression checks."
+          },
+          "post": {
+            "complete": true,
+            "errors": [],
+            "results": [
+              {
+                "name": "space tool - empty pool should not resize empty pool vertically",
+                "success": true,
+                "skipped": false,
+                "log": []
+              }
+            ],
+            "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+            "disconnected": false,
+            "total": 1,
+            "skipped": 0,
+            "exit_code": 0,
+            "timed_out": false,
+            "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+            "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+            "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+            "source_is_base": false,
+            "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+            "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+            "source_files_sha256": {
+              "lib/features/space-tool/BpmnSpaceTool.js": "564c71fa74c22dac763d3d0c1dfdeea12e0313930908a0fc565e4c32371cfdaf"
+            },
+            "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+            "console_sha256": "665921df164c7d53c2700d468a295479e4f6d6f658b6a757ed6dde9b22f2eef7"
+          },
+          "native_regressions_passed": true,
+          "native_observation_sha256": "40b4a2ec271a374224ff92791c4782acfe0c764ca475f42b11419832f3cf7c8a"
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "cap_microdollars": 12000000,
+    "charged_or_reserved_microdollars": 7195678,
+    "available_microdollars": 4804322,
+    "unsettled_requests": 3
+  }
+}

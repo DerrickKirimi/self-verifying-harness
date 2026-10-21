@@ -1,0 +1,28 @@
+{
+  "format": "svh.gemini-price-policy.v1",
+  "checked_at": "2026-10-21T19:42:37.791322+00:00",
+  "source": "https://ai.google.dev/gemini-api/docs/pricing",
+  "rates": {
+    "standard": {
+      "gemini-3.5-flash-lite": [
+        "0.30",
+        "2.50"
+      ],
+      "gemini-3.8-flash": [
+        "0.75",
+        "3.75"
+      ]
+    },
+    "flex": {
+      "gemini-3.5-flash-lite": [
+        "0.15",
+        "1.25"
+      ],
+      "gemini-3.8-flash": [
+        "0.375",
+        "1.875"
+      ]
+    }
+  },
+  "review_note": "Official Standard and Flex text generation prices read 2026-10-21; Flash 3.8 promotional rates valid through 2026-12-31. Includes thinking tokens. No hosted tools or cached-input discount enabled."
+}

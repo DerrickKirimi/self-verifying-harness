@@ -273,3 +273,22 @@ and rejects missing/setup/timeout rewards or a reward0 without the expected
 completed browser assertion failure. The separate verifier accepts only source
 artifacts, reruns the primary and independently frozen varied-ID check, then
 requires unchanged native regression coverage/skips.
+
+### Renew Gemini access and pricing reviews
+
+Paid calls fail closed when either authenticated model access or the operator's
+price review is older than 24 hours. Renewal does not reset or raise the budget.
+Read the current [official pricing](https://ai.google.dev/gemini-api/docs/pricing),
+including Standard/Flex rates and any dated promotional changes. Then update
+`notes/runs/gemini-price-policy.json` with the actual UTC review timestamp and a
+short review note. Do not merely refresh a timestamp without reading the prices.
+Rates are checked against the reviewed allowlist in `src/svh/model_policy.py`;
+changed prices require a code review before paid usage resumes.
+
+Run `.venv/bin/python -I scripts/probe_gemini.py`. It fetches authenticated model
+metadata, checks exact model names, generation capability and positive token
+limits, and atomically replaces access evidence only after both models succeed.
+It retains the previous evidence under its SHA256 filename. The new evidence
+binds the exact price-policy bytes. No inference, upload or token-count request
+is made. Price and access reviews can have different UTC dates, but both must
+remain within 24 hours. Recheck `.venv/bin/python -I -m svh.cli budget` afterward.
