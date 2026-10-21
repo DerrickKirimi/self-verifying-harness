@@ -34,6 +34,16 @@ def token_cost(input_tokens, output_tokens, input_usd_per_million, output_usd_pe
 
 
 class Budget:
+    @classmethod
+    def existing(cls, path: Path):
+        """Open an initialized ledger without changing its spending limit."""
+        instance = cls.__new__(cls)
+        instance.path = Path(path)
+        with sqlite3.connect(f'{instance.path.resolve().as_uri()}?mode=ro', uri=True) as db:
+            if db.execute('SELECT cap FROM policy WHERE id=1').fetchone() is None:
+                raise ValueError('Budget has not been initialized')
+        return instance
+
     def __init__(self, path: Path, cap_usd):
         self.path = Path(path)
         cap = microdollars(cap_usd)
@@ -78,6 +88,28 @@ class Budget:
             db.execute("INSERT INTO requests VALUES (?, ?, ?, ?, 'reserved')",
                        (request, label, maximum_microdollars, maximum_microdollars))
         return request
+
+    def authorize_limit(self, cap_usd, *, expected_cap_usd, authorization: str):
+        """Explicit owner funding event; preserve every past charge/reservation."""
+        cap, expected = microdollars(cap_usd), microdollars(expected_cap_usd)
+        if cap <= expected or not authorization.strip() or len(authorization) > 300:
+            raise ValueError('A higher limit and a short non-secret owner authorization reference are required')
+        with self.transaction() as db:
+            db.execute('''CREATE TABLE IF NOT EXISTS funding (
+                authorization TEXT PRIMARY KEY, previous_cap INTEGER NOT NULL,
+                authorized_cap INTEGER NOT NULL, recorded_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)''')
+            prior = db.execute('SELECT previous_cap, authorized_cap FROM funding WHERE authorization=?', (authorization,)).fetchone()
+            if prior is not None:
+                if prior != (expected, cap):
+                    raise ValueError('Authorization already recorded with different amounts')
+                return
+            current = db.execute('SELECT cap FROM policy WHERE id=1').fetchone()[0]
+            if current != expected:
+                raise ValueError('Spending limit changed; review before authorizing funding')
+            if db.execute("SELECT 1 FROM requests WHERE state='exceeded' LIMIT 1").fetchone():
+                raise ValueError('Resolve the unexpected request overage before funding')
+            db.execute('INSERT INTO funding(authorization,previous_cap,authorized_cap) VALUES (?,?,?)', (authorization, expected, cap))
+            db.execute('UPDATE policy SET cap=? WHERE id=1', (cap,))
 
     def settle(self, request: str, actual_microdollars: int):
         if type(actual_microdollars) is not int or actual_microdollars < 0:

@@ -5,6 +5,18 @@ from svh.generation import apply_edits
 from svh.browser_runner import allowed_source
 
 
+def test_search_dispatch_supplies_source_content_instead_of_only_paths():
+    from svh.generation import BoundedInspection
+    class Request:
+        state={'messages':[]}
+        tool_call={'name':'grep','id':'search','args':{'pattern':'toggleLoopEntry','path':'/workspace/lib','output_mode':'files_with_matches'}}
+        def override(self,**kwargs):return SimpleNamespace(**kwargs)
+    request=Request()
+    result=BoundedInspection(require_media=False).wrap_tool_call(request,lambda r:r.tool_call['args'])
+    assert result=={'pattern':'toggleLoopEntry','path':'/workspace/lib','output_mode':'content'}
+    assert request.tool_call['args']['output_mode']=='files_with_matches'
+
+
 def test_source_transfer_ignores_agent_git_and_restricts_paths():
     class Backend:
         def download_files(self,paths):return [SimpleNamespace(error=None,content=b'function actual() { return 1; }')]

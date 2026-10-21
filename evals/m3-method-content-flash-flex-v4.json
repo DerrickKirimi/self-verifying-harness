@@ -1,0 +1,31 @@
+{
+  "format": "svh.m3.method.v4",
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "model": "gemini-3.8-flash",
+  "service_tier": "flex",
+  "thinking_level": "medium",
+  "output_cap": 8192,
+  "max_agent_steps": 30,
+  "maximum_distinct_executed_check_versions_per_case": 2,
+  "evidence": "Same frozen corpus and M2 model outputs; controller fetches actual metadata and three timestamped frames over MCP before inference",
+  "references": "Existing buggy source and base specs only; relative imports in spec examples mapped to test/... or lib/... with original excerpt hashes and explicit import mappings; executed checks are not rewritten",
+  "generation": "Same existing SDK loop and MCP frames; root-mapped base spec imports; grep dispatch forces source content; ten read replies; same two-distinct-version cap per case and recorded-object/transition rubric",
+  "repair": "Five read replies, nonempty typed source edits, exact frozen target assertion first; same check afterward and independent native regressions",
+  "rubric": "evals/m3-rubric.json unchanged; all eleven cases retained, no v1/v2 successes pooled",
+  "budget": "Owner-authorized cumulative USD12 limit; prior settled usage and unknown reservation preserved; full authenticated input context plus maximum output reserved at reviewed Flex rates; no retry/fallback; ambiguous errors retain reservations",
+  "judgments": "Explicit Codex AI controller alignment, not independent human adjudication",
+  "scope": "Fresh all-eleven development run after budget-limited v3; new stronger model and inspection controls, not an isolated ablation or unseen quality claim",
+  "implementation_sha256": {
+    "generation.py": "e28cfcec45d86e4fd574739fbea2cddb30542dea5a5ccd76023e4249f27e3947",
+    "source_packet.py": "54936a346112f34e7b2c74b918600899e9b841777008a7b643f217b2a2890b5a",
+    "probes.py": "e6b681f22a1db17a2dd6b622790e091b11dcbedfe39ff044c33a2ceea7a54627",
+    "browser_runner.py": "95f7ae236644dab46bf441d300e0bc331f5b5d427862ce7eec76a38015b30017",
+    "docker_backend.py": "7a234fa6fdb255a1325aab2786fb01062b07f68319697c3f659e78ab91952113",
+    "harness.py": "214cf2ccfee811e66b67fa0f64954281f7f40206492e8a5fd6f08c8d9503d61a",
+    "gemini.py": "b35ed5fb00fab304f1962fc33c1935e7dc92b9523601dbf1513b2ad3e1a0b675",
+    "budget.py": "2e66dcaf5262e842dcfcf79b89cd432357d22e300ad9c5bdbe4cc2e94707d7e6",
+    "failures.py": "f2525f62d86a4fc93bdf914cd8f1ab07d403af5eb004b6c3c0fc7c32b5560464"
+  },
+  "generation_prompt_sha256": "c00447405b0901febf2c33506552945badd1129d975b44bc0f1dd61163a5ac2b",
+  "repair_prompt_sha256": "2e40e45b8cd324777d8e61afd3883175a514661983d49e3595809c930243c5d2"
+}

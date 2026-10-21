@@ -192,7 +192,9 @@ def configured_model(root: Path, name="gemini-3.5-flash-lite", output_cap=4096, 
     elif service_tier!='standard':raise ValueError('Unreviewed service tier')
     price = Price(name, *rates[name], checked, entry["input_limit"], entry["output_limit"],service_tier)
     from decimal import Decimal
-    cap = min(Decimal(config["SVH_API_CAP_USD"]), Decimal("4.00"))
+    # A higher config value never raises an existing ledger; explicit owner
+    # funding must first be recorded through Budget.authorize_limit.
+    cap = Decimal(config["SVH_API_CAP_USD"])
     return model(api_key=secrets.get("GEMINI_API_KEY") or secrets.get("GOOGLE_API_KEY"),
                  budget=Budget(root / "data/runtime/gemini-budget.sqlite", cap),
                  price=price, output_cap=output_cap)

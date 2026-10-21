@@ -51,11 +51,19 @@ class BoundedInspection(AgentMiddleware):
 
     def wrap_tool_call(self,request,handler):
         denied=self.deny(request)
-        return denied if denied is not None else handler(request)
+        if denied is not None:return denied
+        return handler(self.content_search(request))
 
     async def awrap_tool_call(self,request,handler):
         denied=self.deny(request)
-        return denied if denied is not None else await handler(request)
+        if denied is not None:return denied
+        return await handler(self.content_search(request))
+
+    def content_search(self,request):
+        if request.tool_call['name']=='grep':
+            args={**request.tool_call.get('args',{}),'output_mode':'content'}
+            return request.override(tool_call={**request.tool_call,'args':args})
+        return request
 
     def wrap_model_call(self,request,handler):return handler(self.narrow(request))
     async def awrap_model_call(self,request,handler):return await handler(self.narrow(request))
@@ -88,7 +96,7 @@ class SourceEdit(BaseModel):
 
 class SourceFix(BaseModel):
     model_config=ConfigDict(extra='forbid')
-    edits: list[SourceEdit]
+    edits: list[SourceEdit] = Field(min_length=1)
     rationale: str
 
 
@@ -200,7 +208,7 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     tools=[probes.tool()] if probes is not None else []
     agent=create_harness(model,backend,tools=tools,system_prompt=prompt,
                          response_format=ToolStrategy(schema,handle_errors=False),
-                         middleware=[BoundedInspection(require_media=False,limit=3 if repairing else 10,require_probe=not repairing)])
+                         middleware=[BoundedInspection(require_media=False,limit=5 if repairing else 10,require_probe=not repairing)])
     from svh.source_packet import source_packet
     request={'recording_id':task['id'],'quoted_issue':task['problem_statement'],'claim':claim,
              'existing_buggy_source_packet':source_packet(backend,claim,include_tests=not repairing)}
@@ -211,7 +219,7 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     media,provenance=await recording_context(client,task,claim) if not repairing else ([],None)
     message_content=[{'type':'text','text':json.dumps(request)},*media] if not repairing else json.dumps(request)
     before=backend.initial_source_fingerprint
-    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v8-mapped-references','limit':3 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort,
+    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v9-content-search','limit':5 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort,
          'service_tier':model._price.service_tier}
     raw['prefetched_recording_evidence']=provenance
     from pathlib import Path

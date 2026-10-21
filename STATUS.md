@@ -34,7 +34,8 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
   capability interoperability. `notes/2026-10-20-harness-selection.md`, D25.
 - [CODE/SRC] Authorized Gemini credentials remain in the external private file
   named by gitignored `.env`; never print or commit keys/screenshots/account IDs.
-  Private local API cap is $4.00, below the supplied prepaid balance. Persistent
+  Initial local API cap was $4.00; the owner's explicit additional funding now
+  authorizes a cumulative $12.00 (see next steps and funding note). Persistent
   `svh.budget` reservations are tested, and a budget-covered model transport is now tested.
   Reasoning and sync/async summarization calls are covered; ambiguous charges
   retain reservations and SDK/middleware retries are disabled. `notes/2026-10-20-gemini-access.md`.
@@ -151,11 +152,13 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read after v3 case1610: $3.861395 charged/reserved, $0.138605 available,
-   one unsettled request ($0.167527), cap $4.00. Settled cost estimate $3.693868.
-   Remaining availability is below the minimum full-context reservation. Read
-   `svh budget` again before new work; do not
-   raise/reset it. Export each newly verified claim and run actual Harbor
+7. The owner has now explicitly funded further work: reported balance$11.51,
+   monthly usage/limit$2.69/$12, auto-renew off. A recorded funding event raises
+   the cumulative local cap from$4 to$12 without resetting charges or releasing
+   the$0.167527 uncertain reservation. At authorization: charged/reserved$3.861395,
+   available$8.138605, settled estimate$3.693868. Read `svh budget` again before
+   work; do not raise/reset further. `notes/2026-10-21-funding-authorization.md`.
+   Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
 8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
    three actual PNG frames via authenticated MCP, then executes Harbor nop0/oracle1
@@ -210,6 +213,16 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     `notes/2026-10-21-next-evaluation-budget-options.md`.
     Full harness suite: **123 passed**, with one expected SDK warning from the
     test that rejects an invalid `auto` tier. No model calls in this test suite.
+16. Fresh **content-flash-flex-v4** is frozen before its calls: stronger
+    Gemini3.8Flash/Flex/medium, actual MCP frames, root-mapped spec examples,
+    grep forced to return content, five repair reads and nonempty typed edits.
+    Same eleven cases/rubric/two distinct test versions, no pooled successes.
+    Case1640 candidate1 is running (exec50848). New source/funding/privacy tests
+    pass: **128 total**, one expected invalid-tier warning. Error records now
+    preserve valid integer HTTP status without provider error/request text;
+    old1610 status remains unknown. Local Ollama tag deepseek-r1:8b reports only
+    completion/thinking, no tools/vision; it was inspected but not used as a
+    substitute. No model download or local inference was performed.
 
 ## Evidence and history
 

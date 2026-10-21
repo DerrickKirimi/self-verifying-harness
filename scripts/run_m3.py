@@ -51,7 +51,7 @@ if report.get('method'):
             or method.get('service_tier','standard')!=a.service_tier or method['thinking_level']!=thinking):
         raise SystemExit('Use the prepared run method and model; do not mix methods silently')
     for filename,expected in method.get('implementation_sha256',{}).items():
-        if filename not in {'generation.py','source_packet.py','probes.py','browser_runner.py','docker_backend.py','harness.py','gemini.py'}:
+        if filename not in {'generation.py','source_packet.py','probes.py','browser_runner.py','docker_backend.py','harness.py','gemini.py','budget.py','failures.py'}:
             raise SystemExit('Unrecognized method implementation file')
         if digest((root/'src/svh'/filename).read_bytes())!=expected:
             raise SystemExit('Method implementation changed; prepare a new method/run before paid work')
@@ -187,16 +187,8 @@ async def run():
                 candidate.update(native_regressions_passed=bool(passed),native_observation_sha256=digest((casepath/'native/observation.json').read_bytes()))
                 candidate['status']='full_generated_repair' if passed else 'native_regressions_failed'
     except Exception as error:
-        pending=[error];seen=set();evidence=[]
-        while pending:
-            item=pending.pop()
-            if id(item) in seen:continue
-            seen.add(id(item));entry={'type':type(item).__name__}
-            reply=getattr(item,'ai_message',None)
-            if reply is not None:entry['model_reply']=reply.model_dump()
-            evidence.append(entry)
-            pending.extend(getattr(item,'exceptions',[]))
-            if item.__cause__ is not None:pending.append(item.__cause__)
+        from svh.failures import exception_evidence
+        evidence=exception_evidence(error)
         (casepath/'generation-error.json').write_text(json.dumps(evidence,indent=2,default=str)+'\n')
         candidate.update(status='error',error_type=type(error).__name__,
             nested_error_types=[e['type'] for e in evidence])

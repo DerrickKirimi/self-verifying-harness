@@ -37,13 +37,22 @@ def main():
     ingest.add_argument('--task-manifest',type=Path,help='ingest an ordinary task without benchmark gold')
     ingest.add_argument('--semantic',action='store_true',help='build the reviewed local text embedding index for an ordinary task')
     commands.add_parser("budget", help="show the persistent Gemini charged/reserved budget without credentials")
+    funding = commands.add_parser('authorize-budget', help='record explicit owner authorization for a higher cumulative limit')
+    funding.add_argument('--total-cap-usd', required=True)
+    funding.add_argument('--expected-cap-usd', required=True)
+    funding.add_argument('--authorization', required=True, help='non-secret reference to the owner authorization')
     serve = commands.add_parser("serve", help="run an archived fixture for recording")
     serve.add_argument("--revision", choices=["pre", "post"], default="pre")
     args = parser.parse_args()
     args.root = args.root.resolve()
-    if args.command == "budget":
+    if args.command in {"budget", "authorize-budget"}:
         from svh.budget import Budget
-        print(json.dumps(Budget(args.root / "data/runtime/gemini-budget.sqlite", "4.00").summary(), indent=2))
+        path = args.root / 'data/runtime/gemini-budget.sqlite'
+        budget = Budget.existing(path) if path.exists() else Budget(path, '4.00')
+        if args.command == 'authorize-budget':
+            budget.authorize_limit(args.total_cap_usd, expected_cap_usd=args.expected_cap_usd,
+                                   authorization=args.authorization)
+        print(json.dumps(budget.summary(), indent=2))
         return
     if args.command == "ingest":
         if args.task_manifest:

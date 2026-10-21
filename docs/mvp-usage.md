@@ -34,6 +34,23 @@ the transport rejects stale reviews. Ledger reservations persist across failures
 uv run --extra agent svh budget
 ```
 
+[CODE] Additional credit does not reset prior usage. After the owner explicitly
+authorizes more spending, record the higher **cumulative** cap with its expected
+previous value and a non-secret authorization reference. For example:
+
+```sh
+.venv/bin/svh authorize-budget --total-cap-usd 12.00 --expected-cap-usd 4.00 \
+  --authorization notes/2026-10-21-funding-authorization.md
+```
+
+[CODE/INF] Update `SVH_API_CAP_USD` in the private `.env` to the authorized cap
+before starting another worker. Configuration alone cannot raise an existing
+ledger. Funding preserves every settled charge and uncertain reservation, rejects
+stale/reused amounts and never re-enables an unexpected-overage lock. Keep new
+allowance below actual provider balance and monthly headroom; neither is fetched
+automatically by the harness. The owner's current funding decision is recorded
+in the referenced note; do not reuse it for another increase.
+
 ## Ordinary input, without benchmark gold
 
 [CODE] Create a private manifest under ignored `data/runtime/`. Recording paths
