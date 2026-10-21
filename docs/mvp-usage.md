@@ -190,7 +190,9 @@ starts another attempt without overwriting the failure. Saved extraction is
 reused. Successful checkpoints are hash-bound to the report and rejected if
 changed. Audio checkpoints must obtain metadata/transcript evidence before their
 typed final and have five bounded source-tool replies. An empty or unresolved
-primary requirement abstains before reproduction.
+primary requirement abstains before reproduction. When extraction itself is
+unclear, its questions are printed before entering code inspection. Supply an
+explicit clarification in a new manifest/run rather than editing a frozen check.
 
 [CODE] For the frozen public evaluation adapter, replace `--task-manifest` with
 `--only swebench-bpmn-<id>`; all eleven corpus rows remain in its report. It

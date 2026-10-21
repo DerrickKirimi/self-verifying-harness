@@ -24,8 +24,8 @@ def test_retrieval_localizes_and_never_interprets_query_as_sql():
     assert parse_json('```json\n{"a": 1}\n```') == {"a": 1}
 
 
-def test_caption_grid_stays_inside_media_and_resume_never_calls_model(tmp_path):
-    duration = 6.816667
+@pytest.mark.parametrize('duration',[6.816667,3600])
+def test_caption_grid_stays_inside_media_and_resume_never_calls_model(tmp_path,duration):
     record = SimpleNamespace(duration_s=duration, sha256="a" * 64)
     calls = []
     class FakeEvidence:
@@ -34,6 +34,7 @@ def test_caption_grid_stays_inside_media_and_resume_never_calls_model(tmp_path):
             return record
         def frames(self, identifier, start, end, count):
             assert 0 <= start < end <= duration
+            assert end-start<=30
             return [((start + end) / 2, b"controlled-png")]
     class FakeModel:
         model = "test"

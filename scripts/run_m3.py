@@ -83,6 +83,11 @@ async def run():
                 from svh.checkpoint import inspect_code
                 phase='claim_extraction';row['stage']=phase;save()
                 first=extract_claims(normal_evidence,task,'issue+media',model,work/'extraction.json')
+                if not first.get('predictions') or not first['predictions'][0].get('expected_behavior'):
+                    row.update(status='abstained',stage='claim_extraction',questions=first.get('questions',[]),
+                               reason=first.get('abstain_reason') or 'No actionable primary requirement was extracted')
+                    save();print(json.dumps({'id':task['id'],'status':'abstained','questions':row['questions'],
+                                            'reason':row['reason'],'budget':report['budget']}),flush=True);return
                 phase='code_checkpoint';row['stage']=phase;save()
                 attempts=work/'checkpoint-attempts';attempts.mkdir(exist_ok=True)
                 number=1+max([int(p.name) for p in attempts.iterdir() if p.is_dir() and p.name.isdecimal()] or [0])
@@ -105,7 +110,8 @@ async def run():
         if not claim.get('refined_predictions') or not claim['refined_predictions'][0].get('expected_behavior'):
             row.update(status='abstained',stage='requirement_review',questions=claim.get('questions',[]),
                        reason='The checkpoint returned no actionable primary requirement; no check or fix is generated')
-            save();print(json.dumps({'id':task['id'],'status':'abstained','budget':report['budget']}),flush=True);return
+            save();print(json.dumps({'id':task['id'],'status':'abstained','questions':row['questions'],
+                                    'reason':row['reason'],'budget':report['budget']}),flush=True);return
         row.update(status='attempted',stage=a.stage);row.pop('error_types',None);save()
     index=a.candidate-1
     if a.stage=='reproduce':

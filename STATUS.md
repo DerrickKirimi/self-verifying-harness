@@ -119,8 +119,10 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    observe its generated target assertion fail. Repair/native now pass, exec52652
    terminal:1772 executed native passes, seven skips, same1779 coverage as the
    independently observed original native baseline, without benchmark gold.
-   Ordinary private export is running in exec68550; run actual Harbor only after
-   that handle is terminal. Its outcome stays outside the public denominator;
+   Ordinary private export and actual Harbor nop0/oracle1 now pass; exec68550 and
+   Harbor44084 terminal. `notes/runs/harbor-ordinary-audio-v3.json` pins its bundle.
+   Its outcome stays outside the public denominator. Public1719 candidate1 is
+   now running in exec72400. After it, attempt1928,1570 and1659 sequentially;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
@@ -167,6 +169,10 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     `notes/2026-10-21-ordinary-checkpoint-controls.md` and the retained failure
     report. The garbled original audio is not silently corrected or counted as
     accurate transcription; v3 uses an explicit text clarification.
+13. Unclear extraction now prints its questions and abstains before Docker/code
+    inspection. A long-recording sampler bug is fixed: the fixed45 grid now uses
+    centered windows <=30s even for the advertised one-hour input bound. Ten
+    targeted ingestion/preparation tests pass; no long-meeting quality claim.
 
 ## Evidence and history
 

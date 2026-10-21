@@ -60,8 +60,9 @@ def caption_recording(evidence: Evidence, recording_id, model, destination: Path
     else:
         content = [{"type": "text", "text": CAPTION_PROMPT}]
         for index in range(45):
-            start = index * record.duration_s / 45
-            end = min(record.duration_s, (index + 1) * record.duration_s / 45)
+            midpoint=(index+.5)*record.duration_s/45
+            width=min(record.duration_s/45,30)
+            start,end=max(0,midpoint-width/2),min(record.duration_s,midpoint+width/2)
             timestamp, png = evidence.frames(recording_id, start, end, 1)[0]
             content.extend([{"type": "text", "text": f"Frame {index}, time {timestamp:.6f} seconds"},
                             {"type": "image_url", "image_url": {"url": "data:image/png;base64," + base64.b64encode(png).decode()}}])

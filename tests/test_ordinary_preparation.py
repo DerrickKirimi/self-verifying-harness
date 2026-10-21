@@ -11,7 +11,8 @@ import pytest
 pytest.importorskip('deepagents')
 
 
-def test_failed_checkpoint_attempts_are_preserved_and_cached_success_is_bound(tmp_path,monkeypatch):
+@pytest.mark.parametrize('actionable',[True,False])
+def test_failed_checkpoint_attempts_are_preserved_and_cached_success_is_bound(tmp_path,monkeypatch,actionable,capsys):
     import svh.tasks
     import svh.extract
     import svh.ingest
@@ -31,7 +32,8 @@ def test_failed_checkpoint_attempts_are_preserved_and_cached_success_is_bound(tm
         destination=args[-1]
         if not destination.exists():
             extraction_calls.append('one controlled response');destination.write_text('{}')
-        return {'predictions':[]}
+        return {'predictions':[{'expected_behavior':'Remove the label property'}] if actionable else [],
+                'questions':[] if actionable else ['Which behavior is intended?']}
     monkeypatch.setattr(svh.extract,'extract_claims',extract)
     @asynccontextmanager
     async def client(*args,**kwargs):
@@ -53,6 +55,12 @@ def test_failed_checkpoint_attempts_are_preserved_and_cached_success_is_bound(tm
     monkeypatch.setattr('sys.argv',[str(script),'--task-manifest',str(tmp_path/'manifest.json'),
                                   '--run-name',name,'--stage','reproduce','--model','gemini-3.5-flash-lite'])
     try:
+        if not actionable:
+            runpy.run_path(str(script),run_name='__main__')
+            report=json.loads((work/'report.json').read_text())
+            assert report['cases'][0]['status']=='abstained' and not inspected
+            assert 'Which behavior is intended?' in capsys.readouterr().out
+            return
         with pytest.raises(SystemExit,match='code_checkpoint failed'):
             runpy.run_path(str(script),run_name='__main__')
         first=inspected[0].read_bytes()

@@ -1,0 +1,33 @@
+{
+  "task": "audio-clarified-e2e",
+  "bundle_sha256": "5813237691c5abf4342c48db7e692fb5a45cf7f6bfb27d06bf3402edfc66e8f4",
+  "trials": [
+    {
+      "agent": "nop",
+      "expected_reward": 0,
+      "actual_rewards": {
+        "reward": 0
+      },
+      "passed": true,
+      "exception_type": null,
+      "trial_result_sha256": "d7ce2306fa609a6d0a4ab02b5b1f811430a6fa042ab938af6f9dd51b99d2c6b4",
+      "completed_primary_browser_tests": 1,
+      "target_assertion_failure": true,
+      "log_sha256": "caa5e50f0a667042afb53d373d4347d4fbfc53a966bb30cdccd562caff5f9ca2"
+    },
+    {
+      "agent": "oracle",
+      "expected_reward": 1,
+      "actual_rewards": {
+        "reward": 1
+      },
+      "passed": true,
+      "exception_type": null,
+      "trial_result_sha256": "7b47f6a235a61695359fe9ae38a7a42f08840297d04f2336e98f9224fd9f472a",
+      "completed_primary_browser_tests": 1,
+      "target_assertion_failure": false,
+      "log_sha256": "b46ca0f0e2b4eee6b8a96e5f96b25459fabc414e623de8a15d3be8f118a6c181"
+    }
+  ],
+  "passed": true
+}
