@@ -1,0 +1,19 @@
+{
+  "files": {
+    "task.toml": "f2f3a3f057c16c1d97d49109a4163f2230ec0d39f12812bb830ec66e89521c11",
+    "SOURCE.md": "1236a9c005613638c9c56acc8143f357a2a989c11ed424922bef55417ddbac24",
+    "instruction.md": "7855cbe37a4fd0f015d507e7334449d8e9369961b737a8b42bc19c5e596618d3",
+    "SOURCE-LICENSE": "5788cf8bd61481776cee1c943595525499a1355c045e9244f92e6c8092c06770",
+    "environment/Dockerfile": "c1061dbdb2f3a8fc04d8b72b69b8a98d6ac68f996920374d39c9d8afd3bba183",
+    "tests/proof.json": "620b27c090550d3ba9d34afd99fcd5078cf80fcf9ce322d6b91703b551333bf2",
+    "tests/verify.py": "43519924e6ffff82fe0556523ea6bd712fc8ee8a90707775be919dddc2e5a4fe",
+    "tests/karma.cjs": "20a92f8788c456d24e2139f1866d215b473fd762e4aa5af02d1408623cb4b34a",
+    "tests/reporter.cjs": "42f8c0468831f9a4a6313b5bd89b0d571489af774e76347d58980a1cd60e6aab",
+    "tests/test.sh": "08bf0843b6051e6428fd0142342cc5a6875e4c989c5e08b3a67eb3fc5958fabc",
+    "tests/check.js": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+    "tests/native.diff": "8928cb4c727153a54eefc0015395839aa3a71470654fba8c7119ff1a572a38ed",
+    "solution/solve.sh": "ee4d18de0d7c84d4924511e1d0e2aa8c791655faea193796b3745e0f5e0891e9",
+    "solution/source/lib/features/space-tool/BpmnSpaceTool.js": "564c71fa74c22dac763d3d0c1dfdeea12e0313930908a0fc565e4c32371cfdaf"
+  },
+  "harbor_trials": "pending; never infer reward from packaging"
+}

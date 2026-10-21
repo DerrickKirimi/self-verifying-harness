@@ -7,7 +7,7 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
 retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
 claims failed M2; refined numerical M2 gates now pass under AI-assisted review.
-Independent human adjudication remains outstanding. Three distinct generated repairs
+Independent human adjudication remains outstanding. Four distinct generated repairs
 have passed unchanged checks, independent regressions and real Harbor nop/oracle
 trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN]
 
@@ -303,8 +303,14 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     4/11 valid pairs [15.17%,64.62%],3/11 full repairs [9.75%,56.56%], six
     considered/five unattempted, gate not yet passed. Case1928 reproduction72501
     now observes actual space-tool drag resize an empty pool from60 to160; its
-    exact check is aligned and repair is running (exec44724). Last read after that
-    reproduction: charged/reserved$6.961779, available$5.038221, three
+    repair44724 now completes unchanged check pass and1889 native passes/seven
+    unchanged skips (1896 discovered). Export18747 is terminal:
+    `tasks/generated-v5/swebench-bpmn-1928`; actual Harbor36819 now completes
+    nop0/oracle1 with primary/native integrity. Its bundle remains immutable.
+    Fresh checkpoint5/11 valid pairs [21.27%,71.99%],4/11 full repairs
+    [15.17%,64.62%],seven considered/four unattempted. The gate still refuses
+    completion until every frozen case is considered. Last read after repair:
+    charged/reserved$7.021649, available$4.978351, three
     uncertain reservations retained.
 19. Release audit found no supported later-day model-policy renewal: the probe
     writes a current access timestamp but a hardcoded old pricing date, and the
@@ -333,4 +339,4 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | V2 complete2/11 fails; v5 checkpoint4/11 valid pairs [15.17%,64.62%],3/11 full repairs [9.75%,56.56%], evaluation in progress; three distinct public tasks plus ordinary audio have actual Harbor0/1; MVP incomplete |
+| M3 generated verification/fix/Harbor | V2 complete2/11 fails; v5 checkpoint5/11 valid pairs [21.27%,71.99%],4/11 full repairs [15.17%,64.62%], four unattempted; four distinct public tasks plus ordinary audio have actual Harbor0/1; MVP incomplete |

@@ -1,4 +1,19 @@
-# Generated SubProcess property task
+# Generated SubProcess and empty-pool tasks
+
+| Task | Actual native execution | Actual Harbor report |
+|---|---|---|
+|SubProcess property preservation1640|1776 passes,7 unchanged skips,1783 discovered|[nop0/oracle1](../../notes/runs/harbor-generated-v5-1640.json)|
+|Empty-pool vertical space-tool resize1928|1889 passes,7 unchanged skips,1896 discovered|[nop0/oracle1](../../notes/runs/harbor-generated-v5-1928.json)|
+
+[RUN] Both have generated source-only fixes and frozen checks observed failing
+on base then passing unchanged. Their task directories are immutable after real
+trials.1928 has no additional task-specific mutation sweep or ID variation.
+Replay it without a model call, using a fresh run name:
+
+```sh
+.venv/bin/python -I scripts/run_harbor_integrity.py \
+  --task tasks/generated-v5/swebench-bpmn-1928 --run-name my-1928-check
+```
 
 [RUN] `swebench-bpmn-1640` has a real generated source-only repair and unchanged
 browser check observed failing before and passing afterward. Its independent

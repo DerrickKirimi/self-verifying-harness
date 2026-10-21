@@ -1,0 +1,17 @@
+schema_version = "1.4"
+[task]
+name = "svh/swebench-bpmn-1928"
+version = "0.1.0"
+[environment]
+cpus = 2
+memory_mb = 4096
+[agent]
+network_mode = "no-network"
+timeout_sec = 600
+[verifier]
+network_mode = "no-network"
+environment_mode = "separate"
+timeout_sec = 700
+[[artifacts]]
+source = "/workspace/lib"
+destination = "source"

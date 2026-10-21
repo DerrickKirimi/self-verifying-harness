@@ -1,0 +1,88 @@
+{
+  "scope": "Fresh v5 model-generated actual space-tool empty-pool reproduction, unchanged pass after source fix, independent native passes; Harbor not yet run at snapshot",
+  "pre": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "space tool - empty pool should not resize empty pool vertically",
+        "success": false,
+        "skipped": false,
+        "log": [
+          "AssertionError: expected 160 to equal 60\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:66:35)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:232:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:244:20)"
+        ]
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 1,
+    "timed_out": false,
+    "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+    "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+    "source_is_base": true,
+    "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+    "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+    "source_files_sha256": {},
+    "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+    "console_sha256": "f7e0e396e6fc35d4c4e92e9500b6df2378d92cab1b992a02fd6f9a60c9d13a18"
+  },
+  "post": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "space tool - empty pool should not resize empty pool vertically",
+        "success": true,
+        "skipped": false,
+        "log": []
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 0,
+    "timed_out": false,
+    "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+    "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+    "source_is_base": false,
+    "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+    "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+    "source_files_sha256": {
+      "lib/features/space-tool/BpmnSpaceTool.js": "564c71fa74c22dac763d3d0c1dfdeea12e0313930908a0fc565e4c32371cfdaf"
+    },
+    "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+    "console_sha256": "665921df164c7d53c2700d468a295479e4f6d6f658b6a757ed6dde9b22f2eef7"
+  },
+  "alignment_review": {
+    "check_sha256": "7fd786cd17286227884a2b998ef54ccd83c6ca091d3dca25ab8cc8cc89cd1039",
+    "aligned": true,
+    "reviewer": "Codex AI controller review; not independent human adjudication",
+    "reason": "The inline model-created collaboration contains an empty participant with height60 and no process reference/children. It captures initial height as a primitive, activates the real space tool at a vertical cut through the pool and uses actual dragging move/end events. Fresh-base Chrome completes and fails the post-action height assertion:160 instead of60, directly matching the recorded unwanted vertical resize. The unchanged check also requires the current rendered rectangle height after repair. It does not directly invoke resizeShape, delete the feature or fake the exception. Scope is this empty-pool vertical drag; all other space-tool behavior is left to independent native regression checks."
+  },
+  "native": {
+    "complete": true,
+    "exit_code": 0,
+    "discovered": 1896,
+    "skipped": 7,
+    "executed": 1889,
+    "all_executed_passed": true,
+    "observation_sha256": "40b4a2ec271a374224ff92791c4782acfe0c764ca475f42b11419832f3cf7c8a"
+  },
+  "generation_sha256": {
+    "candidate.json": "bcb0cc192e8a1d1c8e705ed0f27474a05b2decf9422c97b4e26210fec1f410ca",
+    "source-fix.json": "780b2c969ad73ad787976fd6145425cf579829f88118e1b7dde25d4b6c01af2e",
+    "reproduce-trace.json": "e43767cda075acb546772b73bec37a358c71b7068bc1db454dec16b6668016b4",
+    "repair-trace.json": "d3a5342d2b03a5c2d2c2dd1047b77e343146710b540c04f46550c13856b4a05f"
+  },
+  "budget": {
+    "cap_microdollars": 12000000,
+    "charged_or_reserved_microdollars": 7021649,
+    "available_microdollars": 4978351,
+    "unsettled_requests": 3
+  }
+}
