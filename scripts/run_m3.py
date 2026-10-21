@@ -46,7 +46,7 @@ if not a.task_manifest:
     claim=next(c for c in claims['cases'] if c['id']==a.only)
     # Copy only model outputs, never scorer/gold.
     claim={k:claim[k] for k in ('refined_predictions','code_evidence','hypotheses','questions')}
-model=configured_model(root,name=a.model,output_cap=8192);model.reasoning_effort='medium'
+model=configured_model(root,name=a.model,output_cap=8192);model.reasoning_effort='medium' if a.model=='gemini-3.8-flash' else 'low'
 casepath=work/task['id']/str(a.candidate);casepath.mkdir(parents=True,exist_ok=True)
 
 
@@ -88,10 +88,10 @@ async def run():
                     feedback=None
                     if a.candidate>1:
                         previous=work/task['id']/str(a.candidate-1)
-                        feedback={'candidate':json.loads((previous/'candidate.json').read_text()),
-                                  'observation':json.loads((previous/'pre/observation.json').read_text()),
+                        feedback={'candidate':json.loads((previous/'candidate.json').read_text()) if (previous/'candidate.json').exists() else {'error':'No valid typed candidate was returned; provide a nonempty check and explanation'},
+                                  'observation':json.loads((previous/'pre/observation.json').read_text()) if (previous/'pre/observation.json').exists() else None,
                                   'alignment_review':json.loads((previous/'alignment-review.json').read_text()) if (previous/'alignment-review.json').exists() else None,
-                                  'console':(previous/'pre/console.log').read_text()[-16000:],
+                                  'console':(previous/'pre/console.log').read_text()[-16000:] if (previous/'pre/console.log').exists() else '',
                                   'instruction':'Correct setup/API mistakes before any source fix. Put rendered DOM assertions before internal DI assertions so the observed failure checks the visible symptom. Preserve general coverage; inspect actual fixture identifiers.'}
                     output=await generate(task,claim,model,backend,client,casepath/'reproduce-trace.json',feedback=feedback)
             (casepath/'candidate.json').write_text(json.dumps(output,indent=2)+'\n')

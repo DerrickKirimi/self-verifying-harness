@@ -1,0 +1,14 @@
+{
+  "format": "svh.normal-task.smoke.v1",
+  "manifest_sha256": "dc61c23eae84f7e0632ea33d669be1c72e3270867f9adc5190367360656a4fa0",
+  "id": "normal-registration-smoke",
+  "media_sha256": "91ba9104f87ed026fc743653f6fcfd692773eb5b93599d702e8423b9e1b38aed",
+  "supplied_gold_or_admission_required": false,
+  "actual_mcp_metadata": true,
+  "actual_png_frames": 2,
+  "frame_sha256": [
+    "7308aad614496fc1e1fa735e8c0dd6ca1cc4f92b59d483d7d084e8b572bb3a0f",
+    "89f757c26a7353d279018662997ee145be0243427405b5ebdd2e553004095b5d"
+  ],
+  "scope": "Ordinary registration and actual authenticated MCP retrieval only; no generated check/fix measurement"
+}

@@ -41,3 +41,24 @@ Its integrity unit test passes. This is **not** an executed nop/oracle trial.
 [RUN] Before the active 1570 second candidate: $2.338882 settled, $1.661118
 available, zero unsettled requests. Cap unchanged at $4.00. Last full suite:
 93 passed; an additional denominator integrity test also passes in a targeted run.
+
+[RUN] Later checkpoint: 1570 candidate2 also passes on buggy source and is
+rejected. 1640 candidate1 returns an empty typed check; candidate2 fails typed
+output validation after inspection. Neither reaches a trusted claim assertion.
+No extra candidates are added to exhausted cases.
+
+[RUN/INF] Two tiny integration diagnostics return nonempty typed fields both with
+and without prior tool history (`notes/runs/m3-typed-output{-history,}-probe.json`).
+Therefore a universal final-tool transport failure is **not established**. The
+empty case output remains a generation/context failure pending diagnosis; do
+not attribute it categorically to the SDK. Both diagnostics together settle
+$0.000947. Total after diagnostics: $2.678613, remaining $1.321387, no pending.
+
+[CODE/RUN] Existing-source packet retrieval now supplies buggy source, related
+base specs/fixtures and bottom-of-spec helpers, without supplied patches or grader
+context. First actual packet metadata: `notes/runs/m3-base-source-packet-smoke.json`.
+The tool-exposure cap is ten for subsequent attempts (still within the original
+30 graph steps). This evolving development run is not a fixed-method benchmark.
+Ordinary task registration + actual authenticated MCP PNG retrieval passes:
+`notes/runs/normal-task-mcp-smoke.json`; replay `scripts/smoke_normal_task.py`.
+Full suite: 94 passed. Case1679 candidate1 now runs sequentially in exec19601.

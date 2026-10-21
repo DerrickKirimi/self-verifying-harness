@@ -1,0 +1,40 @@
+{
+  "scope": "Existing buggy source/base tests/fixtures only, no supplied test patch or gold source fix",
+  "inspection_policy": {
+    "version": "bounded-v3-with-base-source-packet",
+    "limit": 8,
+    "media_first": true
+  },
+  "files": [
+    {
+      "path": "/workspace/lib/features/popup-menu/ReplaceMenuProvider.js",
+      "first_line": 344,
+      "content_sha256": "3716b8ea8239ca508f790e4084b7f7e423dfeb0dcc176433a42c80efd8e79cce",
+      "characters": 5217
+    },
+    {
+      "path": "/workspace/test/spec/features/popup-menu/ReplaceMenuProviderSpec.js",
+      "first_line": 1,
+      "content_sha256": "3fdddcb6c9dd5e74b152e5a58c2e4b8634091b4aa442229c664f8516f3b7706f",
+      "characters": 10000
+    },
+    {
+      "path": "/workspace/test/fixtures/bpmn/draw/activity-markers-simple.bpmn",
+      "first_line": 1,
+      "content_sha256": "c5281ff0584c88bacb343407c90191a9bc3ac070d5a86875a22b33b66a7d59ec",
+      "characters": 2750
+    },
+    {
+      "path": "/workspace/test/fixtures/bpmn/features/replace/01_replace.bpmn",
+      "first_line": 1,
+      "content_sha256": "312f961cb33ee0449be505dcafdafd6238ab0285ae2c9a8d690a00218654bd38",
+      "characters": 8000
+    },
+    {
+      "path": "/workspace/test/fixtures/bpmn/features/replace/data-elements.bpmn",
+      "first_line": 1,
+      "content_sha256": "2bcfb17ee8ceec2e1cef3ea4dd0207b302e31969c04d11c27ae3cc0d55465d31",
+      "characters": 1497
+    }
+  ]
+}

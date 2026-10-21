@@ -79,17 +79,21 @@ and Harbor trials have not been measured. [RUN]
    admission; see `notes/2026-10-21-mvp-completion-audit.md`. Export every fully
    verified claim and execute actual Harbor nop/oracle trials. MVP is incomplete.
 4. M3 gate/Chrome runner and ordinary-task workflow are implemented. No valid
-   generated reproduction/fix yet: 1655 and 1638 exhaust their two candidates with
-   setup/alignment or graph-limit failures, all retained. 1570 candidate1 passes
-   on buggy code (rejected); candidate2 is active in **exec61955**. Poll it; do not
-   start another paid worker. See `notes/2026-10-21-m3-development-attempts.md`.
-   `docs/mvp-usage.md` describes ordinary input without benchmark gold/admission.
-5. Harbor 0.24.0 is installed separately; exporter integrity unit test passes,
-   but no task is exported and no real nop/oracle trial has run. Last full suite:
-   93 passed, plus one new denominator test passing separately.
-6. Budget before active 1570 candidate2: $2.338882 settled, $1.661118 available,
-   zero unsettled requests; cap $4.00. Current in-flight reservation is additional
-   until metered usage settles. No source fix has yet been generated.
+   generated reproduction/fix yet: 1655/1638/1570/1640 exhaust two candidates with
+   setup/alignment, pre-existing passes or generation failures. All are retained.
+   **1679 candidate1 is active in exec19601**. Poll it; no parallel paid workers.
+   See `notes/2026-10-21-m3-development-attempts.md`; `docs/mvp-usage.md`.
+5. Existing buggy source/spec/fixture packets and bounded tool exposure help
+   source grounding; generation is still unreliable. Tiny typed-output probes
+   pass, including prior-tool history; universal SDK failure is not established.
+   Ordinary registration and actual authenticated MCP frame retrieval pass with
+   no gold/admission dependency: `notes/runs/normal-task-mcp-smoke.json`.
+6. Harbor 0.24.0 is installed separately; exporter integrity unit test passes,
+   but no task is exported and no real nop/oracle trial has run. Full suite:
+   **94 passed**. No source fix has yet been generated.
+7. Before active 1679 candidate1: **$2.678613 settled**, **$1.321387 available**,
+   zero unsettled requests, cap $4.00. Current request reservation is additional
+   until metered usage settles. Do not raise/reset the ledger or cap.
 
 ## Evidence and history
 

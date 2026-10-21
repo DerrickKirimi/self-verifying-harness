@@ -13,7 +13,7 @@ from svh.mcp_client import harness_tools
 
 class BoundedInspection(AgentMiddleware):
     """Limit tool exposure, while the SDK retains its typed final-output tool."""
-    def __init__(self, *, require_media, limit=8):
+    def __init__(self, *, require_media, limit=10):
         self.require_media,self.limit=require_media,limit
 
     def narrow(self, request):
@@ -35,9 +35,9 @@ class BoundedInspection(AgentMiddleware):
 
 class CheckCandidate(BaseModel):
     model_config=ConfigDict(extra='forbid')
-    check_javascript: str = Field(max_length=128*1024)
-    requirement: str
-    rationale: str
+    check_javascript: str = Field(min_length=1, max_length=128*1024, description="Complete executable standalone Karma/Mocha JavaScript check, without markdown")
+    requirement: str = Field(min_length=1, description="Concrete software behavior being checked")
+    rationale: str = Field(min_length=1, description="How the asserted failure corresponds to the recording requirement")
     visible_assertions: list[str]
     uncertainty: str | None
 
@@ -111,13 +111,15 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     agent=create_harness(model,backend,tools=tools,system_prompt=prompt,
                          response_format=ToolStrategy(schema,handle_errors=False),
                          middleware=[BoundedInspection(require_media=not repairing)])
-    request={'recording_id':task['id'],'quoted_issue':task['problem_statement'],'claim':claim}
+    from svh.source_packet import source_packet
+    request={'recording_id':task['id'],'quoted_issue':task['problem_statement'],'claim':claim,
+             'existing_buggy_source_packet':source_packet(backend,claim)}
     if feedback is not None:
         request['previous_candidate_failure']=feedback
     if repairing:
         request.update(frozen_check=check.decode(),observed_failure=pre)
     before=backend.initial_source_fingerprint
-    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v2','limit':8,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
+    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v4-with-base-source-packet','limit':10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
     structured=None
     with tracing_context(enabled=False):
         async for state in agent.astream({'messages':[{'role':'user','content':json.dumps(request)}]},

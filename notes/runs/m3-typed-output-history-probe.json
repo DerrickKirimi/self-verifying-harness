@@ -1,0 +1,34 @@
+{
+  "scope": "Synthetic final-tool transport diagnostic only; not a recording reproduction",
+  "tool_calls": [
+    {
+      "name": "CheckCandidate",
+      "args": {
+        "uncertainty": null,
+        "rationale": "integration test",
+        "check_javascript": "describe('probe',function(){it('works',function(){expect(true).to.equal(true);});});",
+        "requirement": "probe behavior",
+        "visible_assertions": [
+          "true equals true"
+        ]
+      },
+      "id": "call_846622",
+      "type": "tool_call"
+    }
+  ],
+  "usage": {
+    "input_tokens": 352,
+    "output_tokens": 70,
+    "total_tokens": 422,
+    "input_token_details": {
+      "cache_read": 0
+    }
+  },
+  "finish": "STOP",
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 2678613,
+    "available_microdollars": 1321387,
+    "unsettled_requests": 0
+  }
+}

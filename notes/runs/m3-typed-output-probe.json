@@ -1,0 +1,35 @@
+{
+  "scope": "Synthetic final-tool transport diagnostic only; not a recording reproduction",
+  "tool_calls": [
+    {
+      "name": "CheckCandidate",
+      "args": {
+        "uncertainty": null,
+        "rationale": "integration test",
+        "check_javascript": "describe('probe',function(){it('works',function(){expect(true).to.equal(true);});});",
+        "requirement": "probe behavior",
+        "visible_assertions": [
+          "true equals true"
+        ]
+      },
+      "id": "call_261300",
+      "type": "tool_call"
+    }
+  ],
+  "usage": {
+    "input_tokens": 210,
+    "output_tokens": 70,
+    "total_tokens": 280,
+    "input_token_details": {
+      "cache_read": 0
+    }
+  },
+  "finish": "STOP",
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 2678086,
+    "available_microdollars": 1321914,
+    "unsettled_requests": 0
+  },
+  "artifact_note": "Restored from exact terminal output of exec51494 after the history diagnostic initially reused its output path."
+}
