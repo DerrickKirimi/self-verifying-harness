@@ -12,8 +12,8 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
 
 **Status:** M0 passed on eleven reviewed temporal cases with observed supplied
 test failures before and passes after their reference fixes. The visual corpus
-is frozen; M1 and refined numerical M2 checks are measured. M3 now has one generated recording-to-check-to-fix demonstration, independent
-regressions and executed Harbor nop/oracle rewards0/1. The all-case evaluation
+is frozen; M1 and refined numerical M2 checks are measured. M3 now has two distinct generated recording-to-check-to-fix demonstrations,
+independent regressions and executed Harbor nop/oracle rewards0/1 for each. The all-case evaluation
 is still incomplete; the MVP is not yet shipped. Independent human claim
 adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
 See [`STATUS.md`](STATUS.md).
@@ -116,6 +116,11 @@ AGENTS.md / CLAUDE.md   instructions for agents (CLAUDE.md imports AGENTS.md)
 STATUS.md               current state and the next step, updated every session
 docs/idea/              the owner's original idea, verbatim (never edited)
 docs/                   analysis, roadmap, decisions, references
-evals/                  the M0 evaluation set: schema now, recordings and annotations later
-notes/                  working notes and experiment logs
+src/svh/                evidence tools, model budget, Docker verification and task packaging
+scripts/                end-to-end demo, evaluation, export and integrity commands
+evals/                  frozen corpus, annotations, prospective methods and acceptance gates
+tasks/                  generated Harbor task packages and their proof manifests
+notes/                  working notes and measured experiment reports
+data/external/          ignored downloads and reference-only recordings
+data/runtime/           ignored private runs, model traces, indexes and browser logs
 ```

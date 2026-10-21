@@ -21,7 +21,7 @@ jobs=root/'data/runtime/harbor-jobs';jobs.mkdir(exist_ok=True)
 report={'task':task.name,'bundle_sha256':sha(task/'bundle.json'),'trials':[],'passed':False}
 out=root/'notes/runs'/('harbor-'+a.run_name+'.json')
 if out.exists():raise SystemExit('Use a new run name; preserve prior trials')
-env={'PATH':os.environ['PATH'],'HOME':os.environ['HOME'],'LANG':'C.UTF-8','LC_ALL':'C.UTF-8','RICH_DISABLE_ANIMATIONS':'1','DOCKER_CONFIG':str(root/'data/runtime/docker-client')}
+env={'PATH':os.environ['PATH'],'HOME':os.environ['HOME'],'LANG':'C.UTF-8','LC_ALL':'C.UTF-8','RICH_DISABLE_ANIMATIONS':'1','HARBOR_TELEMETRY':'0','DOCKER_CONFIG':str(root/'data/runtime/docker-client')}
 for agent,expected in [('nop',0),('oracle',1)]:
  name=a.run_name+'-'+agent
  cmd=[str(root/'data/runtime/harbor-venv/bin/python'),'-I','-m','harbor.cli.main','run','--path',str(task),'--agent',agent,'--env','docker','--jobs-dir',str(jobs),'--job-name',name,'--n-concurrent','1','--max-retries','0','--quiet']

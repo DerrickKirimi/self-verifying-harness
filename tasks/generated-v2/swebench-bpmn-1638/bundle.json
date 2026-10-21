@@ -1,0 +1,19 @@
+{
+  "files": {
+    "task.toml": "4f1ed22c8307a695bafea57f2eb5a3101d9545b13a56d9f28434281edf877b2d",
+    "SOURCE.md": "a112c59567863d49613e11752e75252a1c33c30b1f4e241312c2a5122d0f7bbe",
+    "instruction.md": "5c38f32de9db8e5c5f52802e2fa885367badf97073e819ebab56fae011909a68",
+    "SOURCE-LICENSE": "5788cf8bd61481776cee1c943595525499a1355c045e9244f92e6c8092c06770",
+    "environment/Dockerfile": "5bf75562dbb6f84628dba966802fa1ebfea2f6d8942fc838bab9cfe090106c80",
+    "tests/proof.json": "9da44c58a3e8765cb7eba4921697290ace92728f8ed05625028e01374217b7ce",
+    "tests/verify.py": "43519924e6ffff82fe0556523ea6bd712fc8ee8a90707775be919dddc2e5a4fe",
+    "tests/karma.cjs": "8748c70475a7ba71150dcfca4a08fae406f1fd2b607cdc97204ca1c4ec0ea826",
+    "tests/reporter.cjs": "42f8c0468831f9a4a6313b5bd89b0d571489af774e76347d58980a1cd60e6aab",
+    "tests/test.sh": "08bf0843b6051e6428fd0142342cc5a6875e4c989c5e08b3a67eb3fc5958fabc",
+    "tests/check.js": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+    "tests/native.diff": "f44570973e2cdd8c556c5ef7550045288aa592d3e588574b74e100e2b61754eb",
+    "solution/solve.sh": "ee4d18de0d7c84d4924511e1d0e2aa8c791655faea193796b3745e0f5e0891e9",
+    "solution/source/lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+  },
+  "harbor_trials": "pending; never infer reward from packaging"
+}

@@ -1,0 +1,84 @@
+{
+  "check_sha256": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+  "generated_tests": 1,
+  "native": {
+    "discovered": 1779,
+    "skipped": 7
+  },
+  "pre": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "SvhGeneratedSpec should remove label property from di when label is cleared",
+        "success": false,
+        "skipped": false,
+        "log": [
+          "AssertionError: expected { Object ($type, id, ...) } to not have property 'label'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:27:37)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        ]
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 1,
+    "timed_out": false,
+    "check_sha256": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": true,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {},
+    "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+    "console_sha256": "233f9fe8ef681811b46e340551d466c9e1c405121df7eb979307bb8befaf9648"
+  },
+  "post": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "SvhGeneratedSpec should remove label property from di when label is cleared",
+        "success": true,
+        "skipped": false,
+        "log": []
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 0,
+    "timed_out": false,
+    "check_sha256": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": false,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {
+      "lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+    },
+    "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+    "console_sha256": "660b2a028cdb03584909db52e69f9365c18cade1777717df173057264fccd4b9"
+  },
+  "alignment_review": {
+    "check_sha256": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+    "aligned": true,
+    "reviewer": "Codex AI controller source/recording review; not independent human adjudication",
+    "reason": "The stated requirement and recorded developer-console symptom concern the retained DI label property itself. The actual browser run first confirms an existing DI label, calls the real modeling.updateLabel with an empty string, and fails specifically because the label property remains. This is the target state invariant rather than an undefined setup property or arbitrary visible color. No source change has occurred. Downstream consumer/linter impact is a hypothesis and is not separately verified by this check."
+  },
+  "native_observation_sha256": "ed85c308ff6f7f97f91b019845d077fc93fec1561e89b8a043493f24eb10bc2a",
+  "solution_origin": "agent-generated source file bytes, not benchmark gold",
+  "media": {
+    "sha256": "220daa4e7faf2e8fa18aab3c10ada0642487ab7a9d7d9965bd06e8e036c61758",
+    "source_url": "https://user-images.githubusercontent.com/21984219/164674929-c8e344a5-71d1-4cab-8611-b4cd5ef87a02.gif"
+  },
+  "generation_provenance": {
+    "candidate.json": "6e77c5b76ca36bfe3083307e6fe59198f5ace927da920e601dee4c916753acd9",
+    "source-fix.json": "12e74e838eccb2f48daa53026d251026ec4547aa42cce38d3b094752a936d0f8",
+    "reproduce-trace.json": "7ad762228f7cc617cddc74e5e30af0d909965f7a248a94f330a27df14d613e7f",
+    "repair-trace.json": "5c8ab81f3d0b04fefd946d4336f8b8dd2a6d56afd7e5040c3c31dddf9737bce7"
+  }
+}

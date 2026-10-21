@@ -5,9 +5,11 @@ verified generated repair without Gemini calls, start with the
 [README demo](../README.md#try-the-recording-to-repair-demo). The commands below
 cover fresh model-backed work and individual stages.
 
-[CODE/RUN] M0/M1 and refined numerical M2 checks are measured. Generated M3 checks are being evaluated. Case1679 now has an observed
-generated fail/pass repair, independent regressions, wrong-fix controls and real
-Harbor nop/oracle rewards0/1. The all-case gate remains incomplete. Independent human claim adjudication remains outstanding. See `STATUS.md`.
+[CODE/RUN] M0/M1 and refined numerical M2 checks are measured. Generated M3 checks
+are being evaluated. Cases1679 and1638 have observed generated fail/pass repairs,
+independent regressions and real Harbor nop/oracle rewards0/1. The1679 package
+also has finite wrong-fix controls. The all-case gate remains incomplete.
+Independent human claim adjudication remains outstanding. See `STATUS.md`.
 
 ## Setup
 

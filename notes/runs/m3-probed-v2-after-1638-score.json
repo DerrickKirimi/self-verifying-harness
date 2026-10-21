@@ -1,0 +1,31 @@
+{
+  "artifacts": 11,
+  "attempted_artifacts": 6,
+  "pending_stages": 0,
+  "valid_reproductions": {
+    "successes": 2,
+    "n": 11,
+    "wilson95": [
+      0.05136768974608513,
+      0.4769805619608442
+    ]
+  },
+  "full_generated_repairs": {
+    "successes": 2,
+    "n": 11,
+    "wilson95": [
+      0.05136768974608513,
+      0.4769805619608442
+    ]
+  },
+  "generated_verification_gate_passed": false,
+  "corpus_sha256": "6910fdad889ce36a359981d16ac76c789f5e236eac3556cd3e159112945bad1d",
+  "run_report_sha256": "bf3872cc2d9149e830f64f317bb1bab2ded3644903e645a8d808384b22dc3f41",
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 3281019,
+    "available_microdollars": 718981,
+    "unsettled_requests": 0
+  },
+  "scope": "Development run; AI-assisted claim alignment, not independent human scoring; Harbor integrity scored separately"
+}

@@ -7,8 +7,8 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
 retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
 claims failed M2; refined numerical M2 gates now pass under AI-assisted review.
-Independent human adjudication remains outstanding. One generated repair has
-passed unchanged checks, independent regressions and real Harbor nop/oracle
+Independent human adjudication remains outstanding. Two distinct generated repairs
+have passed unchanged checks, independent regressions and real Harbor nop/oracle
 trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN]
 
 - [RUN] M0 admission: **11/11**, Wilson 95% **[74.12%, 100%]**, meeting the
@@ -107,11 +107,15 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    1638 candidate1 now has an observed generated fail/pass and full independent
    native pass:1772 executed passes, seven skips,1779 discovered. Exec78962 and
    repair67084 are terminal. Its distinct task is exported under
-   `tasks/generated-v2/swebench-bpmn-1638`; actual Harbor nop/oracle is running
-   in exec9556. Then attempt the remaining1570/1610/1659/1719/1928 sequentially;
+   `tasks/generated-v2/swebench-bpmn-1638`; actual Harbor nop0/oracle1 passes,
+   exec9556 terminal. Its report is `notes/runs/harbor-generated-v2-1638.json`.
+   No worker is active. Next attempt1610, then the remaining1570/1659/1719/1928 sequentially;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
+   The newer six-considered-case snapshot is
+   `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
+   five not attempted, acceptance gate still fails. Do not pool v1 and v2.
 7. Last read after terminal1638: $3.281019 charged/reserved, $0.718981 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
@@ -160,4 +164,4 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | First generated repair + native regressions + finite controls + actual Harbor trials pass; v1 1/11 [1.62%,37.74%] partial checkpoint; v2 evaluation active; MVP incomplete |
+| M3 generated verification/fix/Harbor | Two distinct claims exported with actual Harbor0/1; v2 2/11 [5.14%,47.70%], five not attempted; finite controls on1679; MVP incomplete |
