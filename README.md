@@ -113,6 +113,8 @@ Today the path runs: meeting → transcriber → someone writes a text ticket �
 7. [`docs/literature-review.md`](docs/literature-review.md): related work ranked
    by relevance, including SWE-bench Multimodal successors, video replay and
    browser verification, with concrete cautions for our design.
+8. [`docs/independent-review.md`](docs/independent-review.md): the blank human
+   review packet and scoring instructions for the outstanding M2 validation.
 
 ## Layout
 

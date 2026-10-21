@@ -217,12 +217,27 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     Gemini3.8Flash/Flex/medium, actual MCP frames, root-mapped spec examples,
     grep forced to return content, five repair reads and nonempty typed edits.
     Same eleven cases/rubric/two distinct test versions, no pooled successes.
-    Case1640 candidate1 is running (exec50848). New source/funding/privacy tests
+    Case1640 candidate1 is terminal (exec50848): it spends both versions on a
+    passing fixture smoke and assertion-free DOM inspection, so no target failure
+    qualifies and no extra version is granted. Case1638 candidate1 is terminal
+    (exec42464): its actual probe reaches the target null-versus-undefined DI
+    assertion, but the final model call fails with recorded HTTP503. No successful
+    stage is fabricated. Candidate2 is now running (exec65843); one additional
+    distinct check version remains.
+    Last ledger after1638/1: charged/reserved$4.435591, available$7.564409, two
+    unsettled requests. New source/funding/privacy tests
     pass: **128 total**, one expected invalid-tier warning. Error records now
     preserve valid integer HTTP status without provider error/request text;
     old1610 status remains unknown. Local Ollama tag deepseek-r1:8b reports only
     completion/thinking, no tools/vision; it was inspected but not used as a
     substitute. No model download or local inference was performed.
+17. Independent human review now has a concrete handoff:
+    `docs/independent-review.md` and `evals/m2-human-review-template.json`.
+    All eleven existing contact-sheet hashes were checked against actual PNGs;
+    the blank template binds the exact refined output hash and deliberately has
+    null decisions, which the actual scorer rejects. No previous AI decisions
+    or reasons are copied. This prepares the outstanding review; it does not
+    claim that a human has reviewed or passed it.
 
 ## Evidence and history
 
