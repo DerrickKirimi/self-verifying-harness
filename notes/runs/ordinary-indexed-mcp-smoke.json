@@ -1,0 +1,20 @@
+{
+  "format": "svh.ordinary-evidence-smoke.v1",
+  "passed": true,
+  "manifest_sha256": "0f67bed7ccd80e3582684445d15ef51aff636b3a8b1c0a7ecf5973d00ebeb448",
+  "actual_mcp_tools": [
+    "get_recording",
+    "get_frames",
+    "find_moment",
+    "get_screen_text"
+  ],
+  "model_calls": 0,
+  "retrieval_method": "embeddinggemma2-observation",
+  "retrieved_timestamps_s": [
+    18.689999999999998,
+    17.43
+  ],
+  "screen_frame_count": 12,
+  "frame_sha256": "b0cf2d11713ba036ec38b20a6da51846cbfc86b2fa7c7766f535be2a16e5e9b1",
+  "scope": "Actual ordinary-task MCP/index plumbing; not a retrieval quality score"
+}

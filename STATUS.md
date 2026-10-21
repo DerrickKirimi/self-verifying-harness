@@ -99,9 +99,12 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    1679 candidate1 now has a full new generated repair/native pass (exec70987
    terminal). Its check covers parallel type transition; the canonical earlier
    exported task also checks sequential mode and XML. Do not mix v1 into v2 scores.
-   1623 candidate1 reproduction is running in exec21395; all others remain pending.
-7. Last read after the v2 repair: $3.212184 charged/reserved, $0.787816 available,
-   zero pending, cap $4.00. Read `svh budget` again after terminal1623; do not
+   1623 exhausted both distinct check versions inside candidate1; rejected because
+   it explicitly deletes overlays before expecting them to reappear. No repair
+   is authorized by that manufactured failure. Exec21395 is terminal.
+   1640 candidate1 reproduction is running in exec17719; other cases remain pending.
+7. Last read after ordinary ingestion: $3.251483 charged/reserved, $0.748517 available,
+   zero pending, cap $4.00. Read `svh budget` again after terminal1640; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
 8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
@@ -111,13 +114,17 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **102 passed** (including task resume identity and
+   Latest full harness suite: **104 passed** (including task resume identity and
    ordinary narrated-video transcript flow). No fresh paid speech quality result.
 9. Ordinary task narration is now transcribed before extraction, cached privately
    by manifest identity, supplied as quoted timestamped evidence, then reinspected
    via MCP during the code checkpoint. Silent corpus prompts stay unchanged.
-   Remaining ordinary-input gap: visual/OCR/retrieval indexes are still corpus-only;
-   wire an ordinary ingestion command and bound caches before claiming full MVP.
+   Ordinary visual ingestion is now wired too: `svh ingest --task-manifest ...`
+   builds private manifest-bound caption/OCR/transcript caches. `--semantic` adds
+   the reviewed local embedding model; default is the explicit lexical baseline.
+   Actual ordinary-demo ingestion and all four MCP metadata/frame/search/screen
+   tools pass: `notes/runs/ordinary-indexed-mcp-smoke.json`. No new retrieval
+   quality claim; M3 all-case gate and independent human adjudication remain open.
 
 ## Evidence and history
 

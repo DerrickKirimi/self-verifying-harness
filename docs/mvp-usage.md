@@ -80,6 +80,44 @@ deterministic model and synthetic media.
 The thin client preserves image/structured evidence. Tools/resources/prompts and
 trusted input limits are documented in `notes/2026-10-20-mcp-boundary.md`.
 
+## Index an ordinary recording
+
+[CODE] With budgeted Gemini configured, this explicit step produces sampled
+captions and screen text, plus a transcript when audio exists. It requires no
+benchmark rows, gold patches or corpus admission:
+
+```sh
+.venv/bin/svh ingest --task-manifest data/runtime/task.json
+```
+
+[CODE/INF] Restart the MCP server after ingestion. Its `find_moment` and
+`get_screen_text` tools now read the manifest-bound private index. The default
+search is the small lexical baseline; captions and screen text are fallible model
+outputs and must be checked against frames. Ingestion resumes from retained
+responses without regenerating them. Changing the manifest creates a new cache.
+
+[CODE] To select the local text-embedding retrieval measured at M1, install the
+`agent` and `retrieval` extras and prepare the pinned local model using the
+[M1 setup instructions](../notes/2026-10-20-m1-complete.md#reproduce-the-selected-local-retrieval).
+Then run:
+
+```sh
+.venv/bin/svh ingest --task-manifest data/runtime/task.json --semantic
+```
+
+[CODE/INF] Embedding inference runs locally and has no Gemini charge. This option
+reuses saved captions; it fails if the reviewed local model is missing. The
+ordinary-task route has not received a separate retrieval quality evaluation;
+M1's eleven-case development-set result does not measure a new recording.
+
+[CODE] Check actual MCP metadata, frames, search and screen-text retrieval after
+indexing (no model call; choose a fresh output path on every run):
+
+```sh
+.venv/bin/python -I scripts/smoke_task_evidence.py \
+  --task-manifest data/runtime/task.json --output data/runtime/evidence-smoke.json
+```
+
 ## Generated checks and repairs
 
 [CODE] The stage runner keeps the existing deepagents SDK loop. It can extract

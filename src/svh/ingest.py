@@ -167,6 +167,42 @@ def prepare_task_audio(root, manifest_path, model):
     return load_task(root, manifest_path)
 
 
+def ingest_task(root, manifest_path, *, semantic=False, model=None):
+    """Explicit ordinary-input ingestion; independent of benchmark admission."""
+    import fcntl
+    from svh.tasks import load_task
+    runtime=root/'data/runtime';runtime.mkdir(parents=True,exist_ok=True)
+    with (runtime/'ingest.lock').open('a') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        identity,task,evidence=load_task(root,manifest_path)
+        folder=runtime/'task-evidence'/identity
+        folder.mkdir(parents=True,exist_ok=True,mode=0o700);folder.chmod(0o700)
+        if model is None:
+            from svh.gemini import configured_model
+            model=configured_model(root,name='gemini-3.5-flash-lite',output_cap=8000)
+        visual=folder/'visual-index'/(task['id']+'.json')
+        result=caption_recording(evidence,task['id'],model,visual)
+        prepare_task_audio(root,manifest_path,model)
+        method='fixed45'
+        if semantic:
+            from svh.semantic import build
+            build(root,visual,folder/'semantic-index'/(task['id']+'.npy'))
+            method='embeddinggemma2-observation'
+        policy=folder/'retrieval-policy.json'
+        temporary=policy.with_suffix('.tmp')
+        temporary.write_text(json.dumps({'manifest_sha256':identity,'method':method},indent=2)+'\n')
+        temporary.replace(policy)
+        for path in folder.rglob('*'):
+            path.chmod(0o700 if path.is_dir() else 0o600)
+        # Validate exactly what the separate server will load.
+        load_task(root,manifest_path)
+        summary={'id':task['id'],'manifest_sha256':identity,'frames':len(result['frames']),
+                 'retrieval_method':method,'audio':evidence.recording(task['id']).has_audio,
+                 'scope':'Ordinary ingestion; model captions/OCR are fallible evidence'}
+        print(json.dumps(summary),flush=True)
+        return summary
+
+
 def retrieve(index, query, method="fixed45", limit=5):
     """SQLite FTS5 BM25; temporal windows concatenate adjacent frame evidence.
 

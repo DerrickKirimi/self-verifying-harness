@@ -61,6 +61,13 @@ def load_task(root, manifest_path):
     public={'id':task['id'],'problem_statement':task['problem_statement'],
             'issue_sha256':hashlib.sha256(task['problem_statement'].encode()).hexdigest(),
             'image':env['image'],'base_commit':env['base_commit'],'adapter':env['adapter']}
-    transcript_path=root/'data/runtime/task-evidence'/identity/'transcript.json'
+    folder=root/'data/runtime/task-evidence'/identity
+    transcript_path=folder/'transcript.json'
     transcripts={recording.id:json.loads(transcript_path.read_text())} if transcript_path.exists() else {}
-    return identity,public,Evidence([recording],identity,transcripts=transcripts)
+    visual_path=folder/'visual-index'/(recording.id+'.json')
+    indexes={recording.id:json.loads(visual_path.read_text())} if visual_path.exists() else {}
+    policy_path=folder/'retrieval-policy.json'
+    policy=json.loads(policy_path.read_text()) if policy_path.exists() else {}
+    if policy and policy['manifest_sha256']!=identity:raise ValueError('Task retrieval policy identity mismatch')
+    return identity,public,Evidence([recording],identity,transcripts=transcripts,visual_indexes=indexes,
+        retrieval_method=policy.get('method','fixed45'),semantic_root=root,semantic_index_root=folder)

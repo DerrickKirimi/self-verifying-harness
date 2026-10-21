@@ -82,16 +82,17 @@ def build(root, caption_path, destination):
     return manifest
 
 
-def retrieve(root, recording_id, query, limit=5, *, focus_observation=False):
+def retrieve(root, recording_id, query, limit=5, *, focus_observation=False, index_root=None):
     import numpy as np
     if (not re.fullmatch(r"[A-Za-z0-9_-]{1,100}", recording_id)
             or not isinstance(query, str) or not 0 < len(query) <= 2000
             or type(limit) is not int or not 1 <= limit <= 5):
         raise ValueError("Request one to five results")
     # Called only after the evidence registry validates this opaque identifier.
-    path = root / "data/runtime/semantic-index" / (recording_id + ".npy")
+    storage = index_root if index_root is not None else root / 'data/runtime'
+    path = storage / "semantic-index" / (recording_id + ".npy")
     manifest = json.loads(path.with_suffix(".json").read_text())
-    caption_path = root / "data/runtime/visual-index" / (recording_id + ".json")
+    caption_path = storage / "visual-index" / (recording_id + ".json")
     identity = manifest["identity"]
     if (identity["model"] != MODEL or identity["revision"] != REVISION
             or identity["caption_sha256"] != file_sha(caption_path)):

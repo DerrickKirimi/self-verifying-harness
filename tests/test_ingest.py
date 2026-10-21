@@ -117,3 +117,34 @@ def test_ordinary_audio_cache_is_reloaded_for_mcp_and_resumes_without_charge(tmp
     folder=tmp_path/'data/runtime/task-evidence'/identity
     assert folder.stat().st_mode & 0o777 == 0o700
     assert all(path.stat().st_mode & 0o777 == 0o600 for path in folder.iterdir())
+
+
+def test_ordinary_ingestion_registers_visual_tools_without_dataset_rows(tmp_path,monkeypatch):
+    from svh.ingest import ingest_task
+    from svh.tasks import load_task
+    clip=tmp_path/'screen.gif';clip.write_bytes(b'controlled')
+    manifest=tmp_path/'task.json'
+    manifest.write_text(json.dumps({'format':'svh.task.v1','id':'ordinary','problem_statement':'Review screen',
+        'environment':{'adapter':'bpmn-karma-v1','image':'sha256:'+'a'*64,'base_commit':'b'*40},
+        'recording':{'path':'screen.gif','sha256':hashlib.sha256(clip.read_bytes()).hexdigest(),'source_url':'controlled'}}))
+    monkeypatch.setattr('svh.tasks.subprocess.run',lambda *a,**k:SimpleNamespace(stdout=b'{"format":{"duration":"2"},"streams":[{"codec_type":"video"}]}'))
+    monkeypatch.setattr(Evidence,'frames',lambda self,identifier,start,end,count:[((start+end)/2,b'controlled-png')])
+    class Model:
+        model='controlled';calls=0
+        def invoke(self,messages):
+            self.calls+=1
+            return SimpleNamespace(text=json.dumps({'frames':[{'index':n,'caption':'loop menu changes',
+                'screen_text':'Parallel'} for n in range(45)]}),usage_metadata={},response_metadata={})
+    model=Model()
+    summary=ingest_task(tmp_path,manifest,model=model)
+    assert summary['retrieval_method']=='fixed45'
+    identity,task,evidence=load_task(tmp_path,manifest)
+    assert evidence.find_moment(task['id'],'loop menu')['matches']
+    assert evidence.screen_text(task['id'],0,1)['frames'][0]['text']=='Parallel'
+    ingest_task(tmp_path,manifest,model=model)
+    assert model.calls==1
+    changed=json.loads(manifest.read_text());changed['problem_statement']='Different requirement'
+    manifest.write_text(json.dumps(changed))
+    _,task,new_evidence=load_task(tmp_path,manifest)
+    with pytest.raises(ValueError,match='not been visually indexed'):
+        new_evidence.find_moment(task['id'],'loop menu')

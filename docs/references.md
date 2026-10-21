@@ -157,6 +157,14 @@ dependencies. No local clones were created for these readings. [RUN]
 
 ## Docker Buildx for executed Harbor trials (2026-10-21)
 
+[SRC/CODE/RUN] Harbor upstream remote read from the local checkout:
+[harbor-framework/harbor](https://github.com/harbor-framework/harbor), local
+`../harbor`, inspected commit `4b94505a91c5ddcb70b5740ac95718ddee13e5a0`.
+The isolated `data/runtime/harbor-venv` reports version0.24.0. Its source-only
+artifact transfer and separate verifier paths were exercised in actual nop/oracle
+trials; README installation pins this commit. This is the tested revision, not a
+claim that no newer upstream release exists.
+
 [SRC/RUN] Harbor's Docker backend calls `docker buildx build`. The host lacked
 Buildx; first nop setup produced no reward. Official release metadata and binary:
 [Buildx0.38.1](https://github.com/docker/buildx/releases/tag/v0.38.1), published

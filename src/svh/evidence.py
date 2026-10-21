@@ -27,7 +27,7 @@ class Recording:
 
 
 class Evidence:
-    def __init__(self, recordings, corpus_sha256, *, visual_indexes=None, transcripts=None, retrieval_method="fixed45", semantic_root=None):
+    def __init__(self, recordings, corpus_sha256, *, visual_indexes=None, transcripts=None, retrieval_method="fixed45", semantic_root=None, semantic_index_root=None):
         self.recordings = {record.id: record for record in recordings}
         if len(self.recordings) != len(recordings):
             raise ValueError("Duplicate recording identifier")
@@ -36,6 +36,7 @@ class Evidence:
         self.transcripts = transcripts or {}
         self.retrieval_method = retrieval_method
         self.semantic_root = semantic_root
+        self.semantic_index_root = semantic_index_root
         if retrieval_method not in {"fixed45", "temporal3", "embeddinggemma2", "embeddinggemma2-observation"}:
             raise ValueError("Unknown server retrieval policy")
         if retrieval_method.startswith("embeddinggemma2") and semantic_root is None:
@@ -144,7 +145,8 @@ class Evidence:
         if self.retrieval_method.startswith("embeddinggemma2"):
             from svh.semantic import retrieve
             matches = retrieve(self.semantic_root, recording_id, query, limit,
-                               focus_observation=self.retrieval_method.endswith("-observation"))
+                               focus_observation=self.retrieval_method.endswith("-observation"),
+                               **({'index_root':self.semantic_index_root} if self.semantic_index_root is not None else {}))
             for match in matches:
                 frame = min(self.visual_indexes[recording_id]["frames"], key=lambda frame: abs(frame["timestamp_s"] - match["timestamp_s"]))
                 match["caption"] = frame["caption"]

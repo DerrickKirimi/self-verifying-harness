@@ -34,6 +34,8 @@ def main():
     ingest = commands.add_parser("ingest", help="budgeted timestamped ingestion of registered corpus recordings")
     ingest.add_argument("--corpus", type=Path, default=Path("evals/frozen-m0.json"))
     ingest.add_argument("--recording")
+    ingest.add_argument('--task-manifest',type=Path,help='ingest an ordinary task without benchmark gold')
+    ingest.add_argument('--semantic',action='store_true',help='build the reviewed local text embedding index for an ordinary task')
     commands.add_parser("budget", help="show the persistent Gemini charged/reserved budget without credentials")
     serve = commands.add_parser("serve", help="run an archived fixture for recording")
     serve.add_argument("--revision", choices=["pre", "post"], default="pre")
@@ -44,6 +46,12 @@ def main():
         print(json.dumps(Budget(args.root / "data/runtime/gemini-budget.sqlite", "4.00").summary(), indent=2))
         return
     if args.command == "ingest":
+        if args.task_manifest:
+            if args.recording:parser.error('--recording is only for corpus ingestion')
+            from svh.ingest import ingest_task
+            ingest_task(args.root,args.task_manifest,semantic=args.semantic)
+            return
+        if args.semantic:parser.error('--semantic currently selects ordinary task indexing; corpus policy is frozen separately')
         from svh.ingest import ingest_corpus
         ingest_corpus(args.root, args.corpus, args.recording)
         return
