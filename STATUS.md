@@ -264,6 +264,22 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     gate pass. Last read after repair: charged/reserved$5.234003,
     available$6.765997, three unsettled reservations retained. Inspect actual
     `notes/2026-10-21-subprocess-generated-repair.md` records the complete unit.
+    Commit e9a98a4 is pushed. Case1638 candidate1 reproduction73848 is terminal:
+    both actual label paths fail on null-versus-undefined after valid initial
+    state/actions. Exact frozen check is aligned; repair20871 is terminal with
+    ValueError: the model used an absolute SourceEdit path, rejected before any
+    patch was applied. Case1638 candidate2 reproduction29190 is terminal with
+    both target assertions after additional rendered-state checks. Its exact
+    frozen check is aligned; candidate2 repair77011 now completes actual unchanged
+    check pass and1772 native passes/seven unchanged skips (1779 discovered). No
+    model output is manually corrected. See the captured format gap in
+    `notes/2026-10-21-source-edit-format-gap.md`; fix after the pinned run.
+    Its model source file is byte-identical to the existing canonical1638 task,
+    whose actual Harbor0/1 remains linked; no duplicate claim/task is exported.
+    Fresh v5 score2/11 [5.14%,47.70%], three considered/eight unattempted, still
+    no gate pass. Case1679 candidate1 is running (exec2864). Last read after repair:
+    charged/reserved$5.595517, available$6.404483, three
+    uncertain reservations retained.
 19. Release audit found no supported later-day model-policy renewal: the probe
     writes a current access timestamp but a hardcoded old pricing date, and the
     factory rejects that mismatch/age. Current metadata expires at18:22UTC today.
