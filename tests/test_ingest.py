@@ -148,3 +148,37 @@ def test_ordinary_ingestion_registers_visual_tools_without_dataset_rows(tmp_path
     _,task,new_evidence=load_task(tmp_path,manifest)
     with pytest.raises(ValueError,match='not been visually indexed'):
         new_evidence.find_moment(task['id'],'loop menu')
+
+
+def test_audio_only_task_ingests_and_searches_transcript_without_frames(tmp_path):
+    from svh.ingest import ingest_task
+    from svh.tasks import load_task
+    media=tmp_path/'spoken.wav'
+    subprocess.run(['ffmpeg','-nostdin','-v','error','-f','lavfi','-i','sine=frequency=400:duration=2',str(media)],check=True,timeout=20)
+    manifest=tmp_path/'task.json'
+    manifest.write_text(json.dumps({'format':'svh.task.v1','id':'audio-only','problem_statement':'Keep yellow labels',
+        'environment':{'adapter':'bpmn-karma-v1','image':'sha256:'+'a'*64,'base_commit':'b'*40},
+        'recording':{'path':'spoken.wav','sha256':hashlib.sha256(media.read_bytes()).hexdigest(),'source_url':'controlled'}}))
+    class Model:
+        model='deterministic';calls=0
+        def invoke(self,messages):
+            self.calls+=1
+            assert messages[0].content[1]['mime_type']=='audio/wav'
+            return SimpleNamespace(text=json.dumps({'segments':[{'start_s':.1,'end_s':1.5,
+                'speaker':'speaker_1','text':'Keep the label yellow'}]}),usage_metadata={})
+    model=Model()
+    result=ingest_task(tmp_path,manifest,model=model)
+    assert result['frames']==0 and result['retrieval_method']=='transcript_fts5'
+    _,task,evidence=load_task(tmp_path,manifest)
+    assert task['media_kind']=='audio'
+    assert evidence.frames(task['id'],0,1,1)==[]
+    assert evidence.screen_text(task['id'],0,1)['status']=='no_video'
+    match=evidence.find_moment(task['id'],'yellow label')['matches'][0]
+    assert match['timestamp_s']==.8 and match['text']=='Keep the label yellow '
+    ingest_task(tmp_path,manifest,model=model)
+    assert model.calls==1
+    with pytest.raises(ValueError,match='omit --semantic'):
+        ingest_task(tmp_path,manifest,model=model,semantic=True)
+    media.write_bytes(b'changed after registration')
+    with pytest.raises(ValueError,match='bytes changed'):
+        evidence.transcript(task['id'],0,1)

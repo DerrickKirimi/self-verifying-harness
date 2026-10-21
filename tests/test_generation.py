@@ -78,3 +78,20 @@ def test_final_schema_is_unavailable_until_a_real_probe_assertion():
     request.messages=[ToolMessage(content='observed',tool_call_id='probe',name='probe_browser_check',artifact={'development_browser':observation})]
     final=limiter.narrow(request)
     assert final.tools==[] and final.response_format=='initial-final-schema'
+
+
+def test_audio_context_carries_transcript_without_inventing_images():
+    import asyncio
+    from svh.generation import recording_context
+    calls=[]
+    class Client:
+        async def call_tool(self,name,args):
+            calls.append(name)
+            if name=='get_recording':
+                return SimpleNamespace(is_error=False,structured_content={'id':'audio','duration_s':5,'has_audio':True,'kind':'audio'})
+            assert name=='get_transcript'
+            return SimpleNamespace(is_error=False,structured_content={'status':'transcribed','segments':[{'start_s':1,'end_s':2,'text':'Clear the label'}]})
+    content,proof=asyncio.run(recording_context(Client(),{'id':'audio'},{'refined_predictions':[]}))
+    assert calls==['get_recording','get_transcript']
+    assert proof['frame_sha256']==[] and len(proof['transcript_sha256'])==64
+    assert all(block['type']=='text' for block in content) and 'Clear the label' in str(content)

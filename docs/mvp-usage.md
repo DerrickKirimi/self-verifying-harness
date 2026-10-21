@@ -68,7 +68,9 @@ Read-only MCP can serve this ordinary task without a model key:
 uv run --extra agent svh mcp --task-manifest data/runtime/task.json --port 8765
 ```
 
-[CODE] For narrated video, the generation runner first transcribes bounded audio
+[CODE] Audio-only files such as `.wav` use the same manifest; set `recording.path`
+to that file and compute its SHA256. For narrated video or audio-only input, the
+generation runner first transcribes bounded audio
 chunks under the same persistent budget. It saves the transcript in an owner-only
 cache bound to the manifest, includes it in claim extraction, and lets the MCP
 code checkpoint reinspect it. `get_transcript` becomes available after that stage;
@@ -76,7 +78,9 @@ a standalone MCP server started before transcription reports that it is missing.
 Silent video makes no transcription call. Spoken requirements and visible facts
 remain distinct, and speaker labels are uncertain chunk-local labels. Human
 narration accuracy has not yet been measured; the audio data-flow tests use a
-deterministic model and synthetic media.
+deterministic model and synthetic media. Audio-only inputs return `no_video` from
+frame/screen-text tools. Their claims cite reported speech, never invented visual
+observations; actual software behavior still requires the frozen browser check.
 
 [CODE] The server uses an owner-only bearer token in `data/runtime/mcp.token`.
 The thin client preserves image/structured evidence. Tools/resources/prompts and
@@ -91,6 +95,11 @@ benchmark rows, gold patches or corpus admission:
 ```sh
 .venv/bin/svh ingest --task-manifest data/runtime/task.json
 ```
+
+[CODE] For audio-only input, ingestion transcribes the audio and `find_moment`
+searches timestamped transcript segments using lexical FTS5. It makes no visual
+captioning call. Omit `--semantic` for that route; this option currently embeds
+visual captions. Audio retrieval quality is not established by the visual M1 gate.
 
 [CODE/INF] Restart the MCP server after ingestion. Its `find_moment` and
 `get_screen_text` tools now read the manifest-bound private index. The default
@@ -118,6 +127,16 @@ indexing (no model call; choose a fresh output path on every run):
 ```sh
 .venv/bin/python -I scripts/smoke_task_evidence.py \
   --task-manifest data/runtime/task.json --output data/runtime/evidence-smoke.json
+```
+
+[CODE] To exercise audio-only provider transcription and actual MCP with a
+controlled synthetic narrator, install `espeak` and use the budgeted smoke below.
+This makes a Gemini transcription call on its first run and retains the response
+for resume. It reports functional behavior, not human narration accuracy:
+
+```sh
+.venv/bin/python -I scripts/smoke_audio_only.py --run-name my-audio-smoke \
+  --output data/runtime/my-audio-smoke.json
 ```
 
 ## Generated checks and repairs

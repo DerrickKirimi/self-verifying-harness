@@ -175,15 +175,18 @@ def ingest_task(root, manifest_path, *, semantic=False, model=None):
     with (runtime/'ingest.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         identity,task,evidence=load_task(root,manifest_path)
+        audio_only=evidence.recording(task['id']).kind=='audio'
+        if audio_only and semantic:
+            raise ValueError('Audio-only ingestion uses transcript search; omit --semantic, which indexes visual captions')
         folder=runtime/'task-evidence'/identity
         folder.mkdir(parents=True,exist_ok=True,mode=0o700);folder.chmod(0o700)
         if model is None:
             from svh.gemini import configured_model
             model=configured_model(root,name='gemini-3.5-flash-lite',output_cap=8000)
         visual=folder/'visual-index'/(task['id']+'.json')
-        result=caption_recording(evidence,task['id'],model,visual)
+        result={'frames':[]} if audio_only else caption_recording(evidence,task['id'],model,visual)
         prepare_task_audio(root,manifest_path,model)
-        method='fixed45'
+        method='transcript_fts5' if audio_only else 'fixed45'
         if semantic:
             from svh.semantic import build
             build(root,visual,folder/'semantic-index'/(task['id']+'.npy'))

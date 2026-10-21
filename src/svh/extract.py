@@ -61,13 +61,18 @@ def extract_claims(evidence, task, condition, model, destination):
     if condition not in {"issue-only", "issue+media"}:
         raise ValueError("Unknown extraction condition")
     record = evidence.recording(task["id"])
+    audio_only = getattr(record,'kind',None)=='audio'
     transcript = evidence.transcript(record.id, 0, record.duration_s) if condition == 'issue+media' and getattr(record, 'has_audio', False) else None
     prompt = PROMPT + AUDIO_PROMPT if transcript is not None else PROMPT
+    if audio_only and condition=='issue+media':
+        prompt += '\nThis is AUDIO ONLY. No frames exist. Cite heard statements as reported behavior, never visible observations. Do not use expected_source="shown".'
     identity = {"corpus_sha256": evidence.corpus_sha256, "recording_id": record.id,
                 "media_sha256": record.sha256, "issue_sha256": task["issue_sha256"],
                 "condition": condition, "model": model.model, "output_cap": model._output_cap,
                 "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
-                "sampler": "preceding_pts_v1", "frames": 45 if condition == "issue+media" else 0}
+                "sampler": "preceding_pts_v1", "frames": 45 if condition == "issue+media" and not audio_only else 0}
+    if audio_only:
+        identity.update(input_mode='audio_only',sampler='transcript_chunks_v1')
     if transcript is not None:
         identity['transcript_sha256'] = hashlib.sha256(json.dumps(transcript,sort_keys=True).encode()).hexdigest()
     if destination.exists():
@@ -79,7 +84,7 @@ def extract_claims(evidence, task, condition, model, destination):
                     + "\nQuoted issue: " + json.dumps(task["problem_statement"])}]
         if transcript is not None:
             content.append({'type':'text','text':'Quoted timestamped transcript: '+json.dumps(transcript)})
-        if condition == "issue+media":
+        if condition == "issue+media" and not audio_only:
             for index in range(45):
                 midpoint = (index + 0.5) * record.duration_s / 45
                 width = min(record.duration_s / 45, 30)
@@ -95,13 +100,13 @@ def extract_claims(evidence, task, condition, model, destination):
         with destination.open("x") as stream:
             stream.write(json.dumps(raw, indent=2) + "\n")
     result = parse_json(raw["text"])
-    validate_output(result, condition, record.duration_s, allow_spoken=transcript is not None)
+    validate_output(result, condition, record.duration_s, allow_spoken=transcript is not None,allow_shown=not audio_only)
     return {"id": record.id, "status": "completed", **result,
             "response_sha256": hashlib.sha256(destination.read_bytes()).hexdigest(),
             "identity": identity, "usage": raw["usage"]}
 
 
-def validate_output(result, condition, duration_s, *, allow_spoken=False):
+def validate_output(result, condition, duration_s, *, allow_spoken=False,allow_shown=True):
     if not isinstance(result.get("predictions"), list) or not isinstance(result.get("questions"), list):
         raise ValueError("Missing prediction/question lists")
     seen = set()
@@ -113,6 +118,8 @@ def validate_output(result, condition, duration_s, *, allow_spoken=False):
                 or not isinstance(prediction.get("observations"), list)):
             raise ValueError("Invalid generated claim structure")
         seen.add(prediction["id"])
+        if not allow_shown and prediction['expected_source']=='shown':
+            raise ValueError('Audio-only input cannot establish shown evidence')
         span = prediction.get("span")
         if condition == "issue-only" and (span is not None or prediction["observations"]):
             raise ValueError("Issue-only output invented media grounding")

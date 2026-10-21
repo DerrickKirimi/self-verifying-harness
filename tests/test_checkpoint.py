@@ -57,3 +57,34 @@ def test_checkpoint_binds_real_source_and_refuses_edits(tmp_path, monkeypatch, c
         assert scored["code_evidence"][0]["actual_line"] == "actual source line"
         assert len(scored["code_evidence"][0]["file_sha256"]) == 64
     assert destination.exists()  # Failed checkpoints retain the exact episode too.
+
+
+@pytest.mark.parametrize('transcript_present',[True,False])
+def test_audio_checkpoint_requires_transcript_reinspection_instead_of_frames(tmp_path,monkeypatch,transcript_present):
+    result={'code_evidence':[{'path':'/workspace/lib/handler.js','line':1,'observation':'Existing source'}],
+        'hypotheses':['Possible cause'],'questions':[], 'refined_predictions':[{'id':'spoken',
+        'symptom':'Narrator reports a label problem','expected_behavior':'Keep yellow','expected_source':'spoken',
+        'span':{'start_s':.1,'end_s':1.5},'observations':[{'timestamp_s':.2,'detail':'Spoken: keep yellow'}],
+        'uncertainty':None}]}
+    messages=[ToolMessage(content='metadata',name='get_recording',tool_call_id='meta',artifact={'duration_s':2}),
+              ToolMessage(content='actual source',name='read_file',tool_call_id='source')]
+    if transcript_present:messages.append(ToolMessage(content='Keep yellow',name='get_transcript',tool_call_id='audio'))
+    class Agent:
+        async def astream(self,*args,**kwargs):
+            yield {'messages':messages,'structured_response':checkpoint.CheckpointOutput.model_validate(result)}
+    class Backend:
+        initial_source_fingerprint='base';image='image';base_commit='commit';source_archive_sha256='archive'
+        def source_fingerprint(self):return 'base'
+        def download_files(self,paths):return [SimpleNamespace(error=None,content=b'actual source\n')]
+    async def tools(client):return []
+    def create(*args,**kwargs):
+        assert 'AUDIO ONLY' in kwargs['system_prompt']
+        return Agent()
+    monkeypatch.setattr(checkpoint,'harness_tools',tools)
+    monkeypatch.setattr(checkpoint,'create_harness',create)
+    call=checkpoint.inspect_code({'id':'audio','problem_statement':'Review narration'},
+        {'predictions':[],'identity':{'input_mode':'audio_only','transcript_sha256':'bound'}},
+        SimpleNamespace(model='controlled'),Backend(),None,tmp_path/'trace.json')
+    if transcript_present:assert asyncio.run(call)['source_unchanged']
+    else:
+        with pytest.raises(ValueError,match='transcript reinspection'):asyncio.run(call)

@@ -51,16 +51,18 @@ def load_task(root, manifest_path):
     probe=subprocess.run(['ffprobe','-v','error','-protocol_whitelist','file,pipe','-show_entries',
         'format=duration:stream=codec_type','-of','json',str(source)],capture_output=True,timeout=30,check=True)
     meta=json.loads(probe.stdout);duration=float(meta['format']['duration'])
-    if not math.isfinite(duration) or not 0<duration<=3600 or not any(s['codec_type']=='video' for s in meta['streams']):
-        raise ValueError('Provide a finite video/animated recording up to one hour')
+    has_video=any(s['codec_type']=='video' for s in meta['streams'])
+    has_audio=any(s['codec_type']=='audio' for s in meta['streams'])
+    if not math.isfinite(duration) or not 0<duration<=3600 or not (has_video or has_audio):
+        raise ValueError('Provide a finite audio/video recording up to one hour')
     if not isinstance(media['source_url'],str) or len(media['source_url'])>2048:
         raise ValueError('Provide a bounded source reference or owner-local description')
-    recording=Recording(task['id'],source,content_hash,duration,any(s['codec_type']=='audio' for s in meta['streams']),
-                        'animated_image' if source.suffix.lower()=='.gif' else 'video',media['source_url'])
+    recording=Recording(task['id'],source,content_hash,duration,has_audio,
+                        'audio' if not has_video else ('animated_image' if source.suffix.lower()=='.gif' else 'video'),media['source_url'])
     identity=hashlib.sha256(data).hexdigest()
     public={'id':task['id'],'problem_statement':task['problem_statement'],
             'issue_sha256':hashlib.sha256(task['problem_statement'].encode()).hexdigest(),
-            'image':env['image'],'base_commit':env['base_commit'],'adapter':env['adapter']}
+            'image':env['image'],'base_commit':env['base_commit'],'adapter':env['adapter'],'media_kind':recording.kind}
     folder=root/'data/runtime/task-evidence'/identity
     transcript_path=folder/'transcript.json'
     transcripts={recording.id:json.loads(transcript_path.read_text())} if transcript_path.exists() else {}

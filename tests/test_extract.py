@@ -88,3 +88,25 @@ def test_spoken_requirements_receive_transcript_and_bind_cached_response(tmp_pat
         extract.extract_claims(Evidence(),task,'issue+media',Model(),path)
     with pytest.raises(ValueError,match='structure'):
         extract.validate_output({'predictions':result['predictions'],'questions':[]},'issue-only',2,allow_spoken=True)
+
+
+def test_audio_only_extraction_never_asks_for_frames_or_claims_shown_evidence(tmp_path):
+    class Evidence:
+        corpus_sha256='owner'
+        def recording(self,identifier):return SimpleNamespace(id=identifier,duration_s=2,sha256='audio',has_audio=True,kind='audio')
+        def transcript(self,*args):return {'status':'transcribed','segments':[{'start_s':.1,'end_s':1.5,'text':'Keep yellow labels'}]}
+        def frames(self,*args):raise AssertionError('No video stream exists')
+    class Model:
+        model='controlled';_output_cap=1024
+        def invoke(self,messages):
+            assert not any(block['type']=='image_url' for block in messages[0].content)
+            return SimpleNamespace(text=json.dumps({'predictions':[{'id':'spoken','symptom':'Reported color changes',
+                'expected_behavior':'Keep yellow','expected_source':'spoken','span':{'start_s':.1,'end_s':1.5},
+                'observations':[{'timestamp_s':.2,'detail':'Spoken requirement: keep yellow'}]}],'questions':[]}),
+                usage_metadata={},response_metadata={})
+    result=extract.extract_claims(Evidence(),{'id':'audio','problem_statement':'Review narration','issue_sha256':'issue'},
+                                  'issue+media',Model(),tmp_path/'response.json')
+    assert result['identity']['frames']==0 and result['identity']['input_mode']=='audio_only'
+    result['predictions'][0]['expected_source']='shown'
+    with pytest.raises(ValueError,match='cannot establish shown'):
+        extract.validate_output(result,'issue+media',2,allow_spoken=True,allow_shown=False)

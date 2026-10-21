@@ -109,14 +109,18 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    repair67084 are terminal. Its distinct task is exported under
    `tasks/generated-v2/swebench-bpmn-1638`; actual Harbor nop0/oracle1 passes,
    exec9556 terminal. Its report is `notes/runs/harbor-generated-v2-1638.json`.
-   No worker is active. Next attempt1610, then the remaining1570/1659/1719/1928 sequentially;
+   1610 now exhausted both versions: its check resets the current root to itself,
+   never switching planes, so alignment is explicitly rejected and no repair is
+   authorized. Exec42122 is terminal. Remaining public cases:1570/1659/1719/1928.
+   An ordinary synthetic audio-only run is now exercising extraction/checkpoint/
+   reproduction in exec44884 (`ordinary-audio-v1`), without benchmark inputs;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read after terminal1638: $3.281019 charged/reserved, $0.718981 available,
+7. Last read before ordinary audio generation: $3.324319 charged/reserved, $0.675681 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
@@ -127,7 +131,7 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **105 passed** (including task resume identity and
+   Latest full harness suite: **111 passed** (including task resume identity and
    ordinary narrated-video transcript flow). No fresh paid speech quality result.
 9. Ordinary task narration is now transcribed before extraction, cached privately
    by manifest identity, supplied as quoted timestamped evidence, then reinspected
@@ -143,6 +147,12 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     benchmark gold patches. The usage guide includes export/integrity commands.
     Two export tests pass, including ordinary-route gold exclusion and refusing
     an empty/unverified export. `--only` avoids duplicate public claim exports.
+11. Audio-only `.wav` input is now supported through normal registration,
+    bounded transcription, lexical transcript search, spoken-claim extraction,
+    mandatory transcript reinspection and transcript-only generation context.
+    Frame/screen tools return explicit `no_video`; no invented frames. Actual
+    provider + all-five-tool MCP smoke passes on9.36s synthetic narration:
+    `notes/runs/audio-only-provider-mcp-smoke.json`. No human speech-quality claim.
 
 ## Evidence and history
 

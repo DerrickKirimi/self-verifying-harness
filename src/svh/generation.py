@@ -157,6 +157,14 @@ async def recording_context(client, task, claim):
         raise ValueError('Invalid claimed recording interval')
     start=max(0,start);end=min(duration,end,start+30)
     if not start<end:raise ValueError('Claim interval is outside recording')
+    if record.get('kind')=='audio':
+        transcript=await client.call_tool('get_transcript',{'recording_id':task['id'],'t0':start,'t1':end})
+        if transcript.is_error:raise ValueError('Audio claim requires its prepared transcript')
+        quoted=json.dumps(transcript.structured_content,sort_keys=True)
+        return [{'type':'text','text':'Controller-fetched registered audio metadata: '+json.dumps(record)},
+                {'type':'text','text':'Quoted timestamped transcript; reported behavior, not visible proof: '+quoted}],{
+                'metadata':record,'timestamps_s':[],'frame_sha256':[],
+                'transcript_sha256':hashlib.sha256(quoted.encode()).hexdigest()}
     frames=await client.call_tool('get_frames',{'recording_id':task['id'],'t0':start,'t1':end,'max_frames':3})
     if frames.is_error:raise ValueError('Actual recording frames are unavailable')
     images=[b for b in frames.content if b.type=='image']
@@ -181,6 +189,8 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
         raise ValueError('Repair requires the frozen check')
     schema=SourceFix if repairing else CheckSubmission
     prompt=FIX if repairing else REPRO
+    if not repairing and task.get('media_kind')=='audio':
+        prompt += '\nThis task is AUDIO ONLY. No frames exist. Use the supplied timestamped transcript as fallible reported evidence, never claim to have seen the reported behavior. Establish it with an actual browser check on buggy code.'
     probes=None if repairing else ProbeRegistry(task,destination.parent)
     tools=[probes.tool()] if probes is not None else []
     agent=create_harness(model,backend,tools=tools,system_prompt=prompt,

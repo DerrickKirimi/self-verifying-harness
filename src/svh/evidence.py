@@ -37,7 +37,7 @@ class Evidence:
         self.retrieval_method = retrieval_method
         self.semantic_root = semantic_root
         self.semantic_index_root = semantic_index_root
-        if retrieval_method not in {"fixed45", "temporal3", "embeddinggemma2", "embeddinggemma2-observation"}:
+        if retrieval_method not in {"fixed45", "temporal3", "embeddinggemma2", "embeddinggemma2-observation", "transcript_fts5"}:
             raise ValueError("Unknown server retrieval policy")
         if retrieval_method.startswith("embeddinggemma2") and semantic_root is None:
             raise ValueError("Semantic retrieval requires server-owned index paths")
@@ -91,6 +91,8 @@ class Evidence:
             raise ValueError("Frame interval must be inside the recording and at most 30 seconds")
         if type(max_frames) is not int or not 1 <= max_frames <= 4:
             raise ValueError("Request between one and four frames")
+        if record.kind == 'audio':
+            return []
         if hashlib.sha256(record.path.read_bytes()).hexdigest() != record.sha256:
             raise ValueError("Recording bytes changed after registration")
         if record.sha256 not in self._frame_times:
@@ -126,6 +128,8 @@ class Evidence:
         record = self.recording(recording_id)
         if not all(math.isfinite(t) for t in (t0, t1)) or not 0 <= t0 < t1 <= record.duration_s:
             raise ValueError("Transcript interval must be inside the recording")
+        if hashlib.sha256(record.path.read_bytes()).hexdigest() != record.sha256:
+            raise ValueError('Recording bytes changed after registration')
         if not record.has_audio:
             return {"recording_id": recording_id, "status": "no_audio", "segments": []}
         if recording_id in self.transcripts:
@@ -137,9 +141,18 @@ class Evidence:
         raise ValueError("This audio recording has not been transcribed")
 
     def find_moment(self, recording_id, query, limit=5):
-        self.recording(recording_id)
+        record=self.recording(recording_id)
         if not isinstance(query, str) or not 0 < len(query) <= 2000:
             raise ValueError("Supply a question of at most 2000 characters")
+        if record.kind == 'audio':
+            from svh.ingest import retrieve
+            transcript=self.transcript(recording_id,0,record.duration_s)
+            index={'frames':[{'timestamp_s':(s['start_s']+s['end_s'])/2,
+                              'caption':s['text'],'screen_text':''} for s in transcript['segments']]}
+            matches=retrieve(index,query,'fixed45',limit)
+            return {'recording_id':recording_id,'method':'transcript_fts5',
+                    'matches':[{'timestamp_s':m['timestamp_s'],'score':m['score'],'text':m['caption']} for m in matches],
+                    'evidence_mode':'fallible timestamped transcript; reported behavior, not visible proof'}
         if recording_id not in self.visual_indexes:
             raise ValueError("Recording has not been visually indexed")
         if self.retrieval_method.startswith("embeddinggemma2"):
@@ -161,6 +174,8 @@ class Evidence:
         record = self.recording(recording_id)
         if not all(math.isfinite(time) for time in (t0, t1)) or not 0 <= t0 < t1 <= record.duration_s:
             raise ValueError("Screen text interval must be inside recording")
+        if record.kind == 'audio':
+            return {'recording_id':recording_id,'status':'no_video','frames':[]}
         if recording_id not in self.visual_indexes:
             raise ValueError("Recording has not been visually indexed")
         frames = self.visual_indexes[recording_id]["frames"]

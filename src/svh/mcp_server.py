@@ -73,7 +73,7 @@ def build_server(evidence: Evidence):
         """View up to four timestamped frames from an interval of at most 30 seconds."""
         frames = await asyncio.to_thread(evidence.frames, recording_id, t0, t1, max_frames)
         metadata = {"recording_id": recording_id, "timestamps_s": [time for time, _ in frames],
-                    "evidence_mode": "sampled_frames"}
+                    "evidence_mode": "no_video" if evidence.recording(recording_id).kind == 'audio' else "sampled_frames"}
         return CallToolResult(content=[TextContent(type="text", text=json.dumps(metadata)),
                                       *[ImageContent(data=base64.b64encode(data).decode(), mimeType="image/png")
                                         for _, data in frames]], structuredContent=metadata)
