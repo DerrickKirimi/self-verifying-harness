@@ -6,7 +6,7 @@ documents half-price inference, supported3.5FlashLite/3.8Flash models,
 `service_tier=flex`, no automatic server upgrade to Standard, and longer client
 timeouts for queued requests. [INF] This is a candidate for another sequential
 evaluation under the same $4 ledger cap and full-context reservations. It has
-**not** been enabled or called here. Keep retries and client fallback disabled;
+**now been implemented and called** in the separately frozen v3 method below. Keep retries and client fallback disabled;
 unknown outcomes must still retain reservations.
 
 [SRC] The official [pricing table](https://ai.google.dev/gemini-api/docs/pricing)
@@ -17,10 +17,18 @@ tier/effort with corrected root-spec reference imports. Do not silently change
 the completed v2 run or its rubric, and do not raise/reset the cap.
 
 [CODE] Installed google-genai2.31.0 exposes GenerateContentConfig.service_tier;
-the current budget wrapper rejects it as unreviewed. Before using it, add strict
-factory-owned tier validation, matching dated prices, full-input/output worst-case
-reservations, adequate timeouts, and tests against bind/config overrides. Test
-actual access separately; documented support is not a successful call.
+the budget wrapper now validates factory-owned tiers, matching dated prices,
+full-input/output worst-case reservations, a 900-second Flex timeout and bind/config
+overrides. No retry or Standard fallback is enabled. [RUN] Actual access passed:
+`notes/runs/gemini-flex-smoke.json`, six input tokens and one output token,
+$0.000003 local accounted cost. This is transport evidence, not code performance
+or a provider billing receipt. Reviewed policy: `notes/runs/gemini-flex-policy.json`.
+
+[CODE/INF] `evals/m3-method-mapped-flex-v3.json` freezes a separate all-eleven
+development evaluation before its calls: Lite/Flex/medium, mapped base-spec
+import examples and explicit recorded-transition fidelity. Actual generated
+checks remain unchanged. The two-distinct-version limit, rubric, denominator,
+SDK-owned loop and $4 cap are unchanged; old v1/v2 successes are not pooled.
 
 [SRC] The [countTokens reference](https://ai.google.dev/api/tokens) accepts an
 overall generateContentRequest, including system/tool input. Its text example

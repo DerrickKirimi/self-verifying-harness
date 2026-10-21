@@ -125,15 +125,20 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    are now terminal, exhausting their two distinct versions. All11 public cases
    are considered; final v2 score is2/11 [5.14%,47.70%],zero pending,gate fails.
    See `notes/2026-10-21-m3-probed-v2-results.md` and final report/score snapshots.
-   No worker is active. Next: improve relocated-import examples and transition
-   fidelity, freeze a new method, then evaluate it without pooling v1/v2 results;
+   A fresh mapped-flex-v3 method is now frozen with relocated-import examples,
+   recorded-transition fidelity and Lite/Flex/medium. Its1640 candidate2 reproduces
+   the actual subprocess transition and loses loop cardinality after initial-state
+   assertions pass; repair36204 is terminal, returning an empty edit list and
+   failing validation. Candidate1 is rejected
+   because it substituted a Task for the reported SubProcess. Continue sequentially,
+   without pooling v1/v2 results;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read after final public v2 case: $3.565270 charged/reserved, $0.434730 available,
+7. Last read after v3 case1640 repair: $3.632989 charged/reserved, $0.367011 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
@@ -144,7 +149,7 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **116 passed** (including task resume identity and
+   Previous full harness suite: **116 passed** (including task resume identity and
    ordinary narrated-video transcript flow). No fresh paid speech quality result.
 9. Ordinary task narration is now transcribed before extraction, cached privately
    by manifest identity, supplied as quoted timestamped evidence, then reinspected
@@ -182,6 +187,14 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     reexecuted after that fix still fail on bad imports; no new version granted.
     An older image's exact frozen check/fix retains actual fail/pass under the new
     runner. Both reports are in `notes/runs/`. Existing bundles remain unchanged.
+15. Reviewed Flex transport now passes an actual access smoke and reserves the
+    full authenticated input limit plus maximum output at matching reviewed rates.
+    No retries, Standard fallback or cap change. Root-spec reference imports are
+    mapped to project-root aliases with original hashes; model checks are never
+    rewritten. New method/source hashes are frozen before v3 calls. See
+    `notes/2026-10-21-next-evaluation-budget-options.md`.
+    Full harness suite: **123 passed**, with one expected SDK warning from the
+    test that rejects an invalid `auto` tier. No model calls in this test suite.
 
 ## Evidence and history
 

@@ -21,6 +21,8 @@ p.add_argument('--stage',choices=['reproduce','repair'],required=True)
 p.add_argument('--run-name',required=True)
 p.add_argument('--candidate',type=int,choices=[1,2],default=1)
 p.add_argument('--model',choices=['gemini-3.8-flash','gemini-3.5-flash-lite'],default='gemini-3.8-flash')
+p.add_argument('--service-tier',choices=['standard','flex'],default='standard')
+p.add_argument('--thinking',choices=['low','medium','high'])
 a=p.parse_args()
 if not re.fullmatch('[A-Za-z0-9_-]{1,64}',a.run_name):raise SystemExit('Invalid run name')
 root=Path(__file__).resolve().parents[1]
@@ -44,8 +46,15 @@ report=json.loads(rpath.read_text()) if rpath.exists() else {'corpus_sha256':cor
 if report['corpus_sha256']!=corpus_sha:raise SystemExit('Different corpus')
 if report.get('method'):
     method_bytes=(root/report['method']).read_bytes();method=json.loads(method_bytes)
-    if digest(method_bytes)!=report['method_sha256'] or method['model']!=a.model:
+    thinking=a.thinking or ('medium' if a.model=='gemini-3.8-flash' else 'low')
+    if (digest(method_bytes)!=report['method_sha256'] or method['model']!=a.model
+            or method.get('service_tier','standard')!=a.service_tier or method['thinking_level']!=thinking):
         raise SystemExit('Use the prepared run method and model; do not mix methods silently')
+    for filename,expected in method.get('implementation_sha256',{}).items():
+        if filename not in {'generation.py','source_packet.py','probes.py','browser_runner.py','docker_backend.py','harness.py','gemini.py'}:
+            raise SystemExit('Unrecognized method implementation file')
+        if digest((root/'src/svh'/filename).read_bytes())!=expected:
+            raise SystemExit('Method implementation changed; prepare a new method/run before paid work')
 task=next(t for t in tasks if t['id']==a.only)
 row=next(t for t in report['cases'] if t['id']==a.only)
 claim=None
@@ -54,7 +63,8 @@ if not a.task_manifest:
     claim=next(c for c in claims['cases'] if c['id']==a.only)
     # Copy only model outputs, never scorer/gold.
     claim={k:claim[k] for k in ('refined_predictions','code_evidence','hypotheses','questions')}
-model=configured_model(root,name=a.model,output_cap=8192);model.reasoning_effort='medium' if a.model=='gemini-3.8-flash' else 'low'
+model=configured_model(root,name=a.model,output_cap=8192,service_tier=a.service_tier)
+model.reasoning_effort=a.thinking or ('medium' if a.model=='gemini-3.8-flash' else 'low')
 casepath=work/task['id']/str(a.candidate);casepath.mkdir(parents=True,exist_ok=True)
 
 
@@ -116,7 +126,7 @@ async def run():
     index=a.candidate-1
     if a.stage=='reproduce':
         if len(row['candidates'])!=index:raise ValueError('Candidate already recorded or earlier candidate missing')
-        candidate={'number':a.candidate,'status':'generating_check','model':a.model}
+        candidate={'number':a.candidate,'status':'generating_check','model':a.model,'service_tier':a.service_tier,'thinking_level':model.reasoning_effort}
         row['candidates'].append(candidate);row['status']='attempted';save()
     else:
         candidate=row['candidates'][index]

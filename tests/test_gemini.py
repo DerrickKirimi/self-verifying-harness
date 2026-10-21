@@ -12,9 +12,10 @@ from svh.budget import Budget, BudgetExceeded, token_cost
 from svh.gemini import Price, model, private_values
 
 
-def setup(tmp_path, cap="4"):
+def setup(tmp_path, cap="4",tier='standard'):
     budget = Budget(tmp_path / "budget.db", cap)
-    price = Price("gemini-3.5-flash-lite", ".30", "2.50", datetime.now(timezone.utc), 1_048_576, 65_536)
+    rates=('.15','1.25') if tier=='flex' else ('.30','2.50')
+    price = Price("gemini-3.5-flash-lite", *rates, datetime.now(timezone.utc), 1_048_576, 65_536,tier)
     return model(api_key="test-not-a-key", budget=budget, price=price), budget
 
 
@@ -124,3 +125,34 @@ def test_private_configuration_is_literal_and_rejects_permissions_and_symlinks(t
     link.symlink_to(config)
     with pytest.raises(OSError):
         private_values(link)
+
+
+def test_flex_pins_tier_full_context_reservation_and_timeout(tmp_path):
+    instance,budget=setup(tmp_path,tier='flex')
+    def generate(**request):
+        assert request['config'].service_tier=='flex'
+        assert request['config'].http_options.timeout==900000
+        assert request['config'].http_options.retry_options.attempts==1
+        assert budget.summary()['charged_or_reserved_microdollars']==token_cost(1048576,4096,'.15','1.25')
+        return response()
+    with tracing_context(enabled=False),patch.object(instance.client.models,'generate_content',side_effect=generate):
+        instance.invoke('controlled request')
+    assert budget.summary()['charged_or_reserved_microdollars']==token_cost(20,12,'.15','1.25')
+
+
+@pytest.mark.parametrize('override',['standard','priority','auto'])
+def test_flex_cannot_upgrade_through_bound_arguments(tmp_path,override):
+    instance,budget=setup(tmp_path,tier='flex')
+    with tracing_context(enabled=False),patch.object(instance.client.models,'generate_content') as provider:
+        with pytest.raises(ValueError,match='tier override'):
+            instance.bind(service_tier=override).invoke('controlled')
+        assert not provider.called
+
+
+def test_flex_timeout_never_retries_or_falls_back_to_standard(tmp_path):
+    instance,budget=setup(tmp_path,tier='flex')
+    with tracing_context(enabled=False),patch.object(instance.client.models,'generate_content',side_effect=TimeoutError()) as provider:
+        with pytest.raises(TimeoutError):instance.invoke('controlled')
+        assert provider.call_count==1
+    assert budget.summary()['charged_or_reserved_microdollars']==token_cost(1048576,4096,'.15','1.25')
+    assert budget.summary()['unsettled_requests']==1

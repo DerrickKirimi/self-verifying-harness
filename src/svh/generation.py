@@ -133,6 +133,11 @@ APIs instead of guessing the original fixture text. Re-query current DOM after
 modeling actions, because the renderer may replace nodes. Confirm initial state
 before the action, but an initial-state assertion failing is not bug evidence.
 Never propose a source fix yet.
+Reproduce the reported object type and action, not a supporting invariant on a
+different object. Prove that transition states differ (for example, a root switch
+must use a different root). Never remove a feature manually to simulate its loss.
+Base-spec excerpts may have explicitly mapped imports for the generated test's
+location; use those mapped test/... and lib/... paths rather than original relative imports.
 '''
 FIX=COMMON+'''A trusted controller already observed the frozen browser check failing
 by assertion on the buggy source. Propose a minimal source-only fix in SourceFix.
@@ -206,7 +211,8 @@ async def generate(task, claim, model, backend, client, destination, *, pre=None
     media,provenance=await recording_context(client,task,claim) if not repairing else ([],None)
     message_content=[{'type':'text','text':json.dumps(request)},*media] if not repairing else json.dumps(request)
     before=backend.initial_source_fingerprint
-    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v7-frozen-development-probes','limit':3 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort}
+    raw={'model':model.model,'stage':'repair' if repairing else 'reproduce','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'messages':[], 'inspection_policy':{'version':'bounded-v8-mapped-references','limit':3 if repairing else 10,'media_first':not repairing}, 'thinking_level':model.reasoning_effort,
+         'service_tier':model._price.service_tier}
     raw['prefetched_recording_evidence']=provenance
     from pathlib import Path
     module=Path(__file__).parent

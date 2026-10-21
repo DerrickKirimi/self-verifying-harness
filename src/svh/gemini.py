@@ -44,6 +44,7 @@ class Price:
     checked_at: datetime
     input_limit: int
     output_limit: int
+    service_tier: str = 'standard'
 
     def validate(self):
         age = datetime.now(timezone.utc) - self.checked_at
@@ -51,6 +52,8 @@ class Price:
             raise ValueError("Model limits and prices require a review within 24 hours")
         if any(type(n) is not int or n <= 0 for n in (self.input_limit, self.output_limit)):
             raise ValueError("Authenticated model token limits are required")
+        if self.service_tier not in {'standard','flex'}:
+            raise ValueError('Unreviewed service tier')
         token_cost(1, 1, self.input_rate, self.output_rate)
 
 
@@ -75,7 +78,7 @@ class BudgetedGemini(ChatGoogleGenerativeAI):
                    "candidate_count", "max_output_tokens", "stop_sequences", "seed",
                    "presence_penalty", "frequency_penalty", "response_mime_type",
                    "response_schema", "response_json_schema", "response_modalities",
-                   "safety_settings", "tools", "tool_config", "thinking_config"}
+                   "safety_settings", "tools", "tool_config", "thinking_config", "service_tier"}
         if set(config.model_dump(exclude_none=True)) - allowed:
             raise ValueError("Unreviewed provider configuration is disabled")
         for content in request["contents"]:
@@ -97,9 +100,13 @@ class BudgetedGemini(ChatGoogleGenerativeAI):
                 raise ValueError("Provider-hosted tools are not budgeted")
         if config.max_output_tokens != self._output_cap:
             raise ValueError("Output token cap override is forbidden")
+        if config.service_tier not in (None,self._price.service_tier):
+            raise ValueError('Service tier override is forbidden')
+        config.service_tier='flex' if self._price.service_tier=='flex' else None
         # Force a single network attempt and the official Developer API endpoint.
         from google.genai.types import HttpOptions, HttpRetryOptions
-        config.http_options = HttpOptions(timeout=120_000, retry_options=HttpRetryOptions(attempts=1))
+        config.http_options = HttpOptions(timeout=900_000 if self._price.service_tier=='flex' else 120_000,
+                                         retry_options=HttpRetryOptions(attempts=1))
         return request
 
     def _reserve(self):
@@ -110,7 +117,7 @@ class BudgetedGemini(ChatGoogleGenerativeAI):
             raise ValueError("Streaming and Vertex AI are disabled")
         return self._budget.reserve(token_cost(
             self._price.input_limit, self._output_cap,
-            self._price.input_rate, self._price.output_rate), label=self._price.model)
+            self._price.input_rate, self._price.output_rate), label=self._price.model+':'+self._price.service_tier)
 
     def _settle(self, reservation, result):
         if len(result.generations) != 1:
@@ -157,7 +164,7 @@ def model(*, api_key: str, budget: Budget, price: Price, output_cap=4096):
     return instance
 
 
-def configured_model(root: Path, name="gemini-3.5-flash-lite", output_cap=4096):
+def configured_model(root: Path, name="gemini-3.5-flash-lite", output_cap=4096, *, service_tier='standard'):
     """Use only the authorized secret pointer, reviewed prices and shared ledger."""
     config = private_values(root / ".env")
     secrets = private_values(Path(config["SVH_GEMINI_SECRETS_FILE"]))
@@ -172,7 +179,18 @@ def configured_model(root: Path, name="gemini-3.5-flash-lite", output_cap=4096):
     entry = next(item for item in metadata["models"] if item["model"] == name)
     if entry.get("returned_name") != "models/" + name or "generateContent" not in entry.get("supported_actions", []):
         raise ValueError("Authenticated model access is unconfirmed")
-    price = Price(name, *rates[name], checked, entry["input_limit"], entry["output_limit"])
+    if service_tier=='flex':
+        policy=json.loads((root/'notes/runs/gemini-flex-policy.json').read_text())
+        reviewed={'gemini-3.5-flash-lite':('0.15','1.25'),'gemini-3.8-flash':('0.375','1.875')}
+        if policy.get('pricing_checked_date')!='2026-10-21' or policy.get('service_tier')!='flex' or tuple(policy['rates'][name])!=reviewed[name]:
+            raise ValueError('No reviewed Flex price policy')
+        flex_checked=datetime.fromisoformat(policy['checked_at'])
+        if flex_checked.date().isoformat()!=policy['pricing_checked_date'] or flex_checked>datetime.now(timezone.utc):
+            raise ValueError('Invalid Flex review date')
+        checked=min(checked,flex_checked)
+        rates=reviewed
+    elif service_tier!='standard':raise ValueError('Unreviewed service tier')
+    price = Price(name, *rates[name], checked, entry["input_limit"], entry["output_limit"],service_tier)
     from decimal import Decimal
     cap = min(Decimal(config["SVH_API_CAP_USD"]), Decimal("4.00"))
     return model(api_key=secrets.get("GEMINI_API_KEY") or secrets.get("GOOGLE_API_KEY"),

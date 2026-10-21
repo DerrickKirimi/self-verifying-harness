@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-21T10:13:53+00:00",
+  "pricing_checked_date": "2026-10-21",
+  "service_tier": "flex",
+  "rates": {
+    "gemini-3.5-flash-lite": ["0.15", "1.25"],
+    "gemini-3.8-flash": ["0.375", "1.875"]
+  },
+  "output_includes_thinking": true,
+  "input_reservation": "full authenticated model context limit; no estimate or countTokens substitution",
+  "client_timeout_ms": 900000,
+  "network_attempts": 1,
+  "automatic_standard_fallback": false,
+  "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing",
+  "transport_source": "https://ai.google.dev/gemini-api/docs/generate-content/flex-inference"
+}

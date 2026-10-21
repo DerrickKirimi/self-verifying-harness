@@ -2,6 +2,8 @@
 import json
 import re
 import shlex
+import hashlib
+import posixpath
 from pathlib import PurePosixPath
 
 SCRIPT=r'''
@@ -38,6 +40,29 @@ print(json.dumps(packet))
 '''
 
 
+def root_spec_references(packet):
+    """Map copied base-spec imports to webpack roots; never edit executed tests."""
+    pattern=re.compile(r'''(?P<prefix>\bfrom\s*|\brequire\s*\(\s*|\bimport\s*)(?P<quote>['"])(?P<target>\.[^'"\n]+)(?P=quote)''')
+    output=[]
+    for original in packet:
+        entry=dict(original);path=PurePosixPath(entry['path'])
+        if not str(path).startswith('/workspace/test/spec/') or path.suffix!='.js' or '..' in path.parts:
+            output.append(entry);continue
+        mappings={}
+        def replace(match):
+            target=posixpath.normpath(str(path.parent/match['target']))
+            if not target.startswith(('/workspace/test/','/workspace/lib/')):return match[0]
+            alias=target.removeprefix('/workspace/')
+            mappings[match['target']]=alias
+            return match['prefix']+match['quote']+alias+match['quote']
+        text=entry['content'];normalized=pattern.sub(replace,text)
+        if mappings:
+            entry.update(content=normalized,content_mode='base-spec reference with imports relocated for test/SvhGeneratedSpec.js',
+                         original_excerpt_sha256=hashlib.sha256(text.encode()).hexdigest(),import_mapping=mappings)
+        output.append(entry)
+    return output
+
+
 def source_packet(backend, claim, *, include_tests=True):
     paths=[]
     for citation in claim.get('code_evidence',[])[:2]:
@@ -47,4 +72,5 @@ def source_packet(backend, claim, *, include_tests=True):
         paths.append({'path':str(path.relative_to('/workspace')),'line':citation['line']})
     result=backend.execute('python3 -I -c '+shlex.quote(SCRIPT)+' '+shlex.quote(json.dumps(paths))+' '+('1' if include_tests else '0'),timeout=30)
     if result.exit_code != 0 or result.truncated:raise ValueError('Could not retrieve bounded base source packet')
-    return json.loads(result.output)
+    packet=json.loads(result.output)
+    return root_spec_references(packet) if include_tests else packet
