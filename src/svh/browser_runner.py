@@ -8,9 +8,10 @@ from svh.verification import digest
 CHECK_PATH = 'test/SvhGeneratedSpec.js'
 
 CONFIG = r'''module.exports = function(karma) {
+  process.env.PUPPETEER_EXECUTABLE_PATH='/usr/bin/google-chrome-stable';
+  process.env.CHROME_BIN='/usr/bin/google-chrome-stable';
   const set = karma.set.bind(karma);
   require('/workspace/test/config/karma.unit.js')({set: function(config) {
-    process.env.CHROME_BIN='/usr/bin/google-chrome-stable';
     config.basePath='/workspace';
     if (!process.env.SVH_NATIVE) {
       config.files=['node_modules/promise-polyfill/dist/polyfill.js','test/SvhGeneratedSpec.js'];

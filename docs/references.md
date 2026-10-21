@@ -175,3 +175,16 @@ Local download: `data/external/docker-buildx/v0.38.1/`; project-only plugin conf
 `data/runtime/docker-client/`. Installer: `scripts/install_buildx.py`; metadata:
 `notes/runs/buildx-release-metadata.json`. No system plugin or owner Docker config
 was modified. Installed version command returned v0.38.1, commit0dbe87f36ed472fe36b6796c3f70b4210a731fc5.
+
+## Candidate inference-cost review (2026-10-21)
+
+[SRC/CODE] Primary sources inspected for a possible future development run:
+[Flex generate-content guide](https://ai.google.dev/gemini-api/docs/generate-content/flex-inference),
+[pricing](https://ai.google.dev/gemini-api/docs/pricing),
+[thinking levels](https://ai.google.dev/gemini-api/docs/thinking),
+[3.5FlashLite model limits](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite),
+[token-count API](https://ai.google.dev/api/tokens) and
+[billing FAQ](https://ai.google.dev/gemini-api/docs/billing).
+Installed SDK types/request preparation were inspected locally. Scope and limits:
+`notes/2026-10-21-next-evaluation-budget-options.md`. Flex is not yet enabled;
+the existing cap, reservations and completed-run pricing remain unchanged.

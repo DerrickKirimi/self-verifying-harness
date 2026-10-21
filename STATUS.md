@@ -121,15 +121,19 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    independently observed original native baseline, without benchmark gold.
    Ordinary private export and actual Harbor nop0/oracle1 now pass; exec68550 and
    Harbor44084 terminal. `notes/runs/harbor-ordinary-audio-v3.json` pins its bundle.
-   Its outcome stays outside the public denominator. Public1719 candidate1 is
-   now running in exec72400. After it, attempt1928,1570 and1659 sequentially;
+   Its outcome stays outside the public denominator. Public1719,1928,1570 and1659
+   are now terminal, exhausting their two distinct versions. All11 public cases
+   are considered; final v2 score is2/11 [5.14%,47.70%],zero pending,gate fails.
+   See `notes/2026-10-21-m3-probed-v2-results.md` and final report/score snapshots.
+   No worker is active. Next: improve relocated-import examples and transition
+   fidelity, freeze a new method, then evaluate it without pooling v1/v2 results;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read after ordinary audio repair: $3.509556 charged/reserved, $0.490444 available,
+7. Last read after final public v2 case: $3.565270 charged/reserved, $0.434730 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
@@ -140,7 +144,7 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **114 passed** (including task resume identity and
+   Latest full harness suite: **116 passed** (including task resume identity and
    ordinary narrated-video transcript flow). No fresh paid speech quality result.
 9. Ordinary task narration is now transcribed before extraction, cached privately
    by manifest identity, supplied as quoted timestamped evidence, then reinspected
@@ -173,6 +177,11 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     inspection. A long-recording sampler bug is fixed: the fixed45 grid now uses
     centered windows <=30s even for the advertised one-hour input bound. Ten
     targeted ingestion/preparation tests pass; no long-meeting quality claim.
+14. Trusted Chrome discovery is fixed for newer Puppeteer configs, setting the
+    installed executable before loading upstream Karma. Exact1928 frozen checks
+    reexecuted after that fix still fail on bad imports; no new version granted.
+    An older image's exact frozen check/fix retains actual fail/pass under the new
+    runner. Both reports are in `notes/runs/`. Existing bundles remain unchanged.
 
 ## Evidence and history
 
@@ -194,4 +203,4 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | Two distinct claims exported with actual Harbor0/1; v2 2/11 [5.14%,47.70%], five not attempted; finite controls on1679; MVP incomplete |
+| M3 generated verification/fix/Harbor | All11 considered; v2 2/11 [5.14%,47.70%], gate fails; two canonical public tasks plus ordinary audio export have actual Harbor0/1; MVP incomplete |

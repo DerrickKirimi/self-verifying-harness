@@ -1,0 +1,93 @@
+{
+  "scope": "Trusted Chrome-discovery repair; reexecute exact previously frozen model checks, no new versions or source fixes",
+  "checks": [
+    {
+      "probe": "probe-1",
+      "check_sha256": "8590f0d6e0cca508154d9951fabbb8f9eb457b7adf1f2f96ee2ad8d18c91486f",
+      "before": {
+        "complete": false,
+        "errors": [
+          "runner result unavailable"
+        ],
+        "results": [],
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "8590f0d6e0cca508154d9951fabbb8f9eb457b7adf1f2f96ee2ad8d18c91486f",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+        "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+        "source_is_base": true,
+        "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+        "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+        "source_files_sha256": {},
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "1452049ba2f5df2e1e6e5768dc2c6eb282a071ebc95ec0f2d0f65686b33205f3"
+      },
+      "after": {
+        "complete": true,
+        "errors": [
+          "Uncaught Error: Cannot find module '../../../../util/MockEvents'\nat webpack-internal:///./test/SvhGeneratedSpec.js:8:142\n\nError: Cannot find module '../../../../util/MockEvents'\n    at webpackMissingModule (webpack-internal:///./test/SvhGeneratedSpec.js:8:50)\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:8:152)\n    at ./test/SvhGeneratedSpec.js (http://localhost:9876/absolute/tmp/_karma_webpack_825651/commons.js?3b7808e4c050ae7d7ebb37f915f5608f81d84e9d:4061:1)\n    at __webpack_require__ (http://localhost:9876/absolute/tmp/_karma_webpack_825651/runtime.js?ae5c34a08bca58b060dcc25364894addf0a30ef2:31:41)\n    at __webpack_exec__ (http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:14:48)\n    at http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:15:55\n    at __webpack_require__.O (http://localhost:9876/absolute/tmp/_karma_webpack_825651/runtime.js?ae5c34a08bca58b060dcc25364894addf0a30ef2:65:23)\n    at http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:16:56\n    at webpackJsonpCallback (http://localhost:9876/absolute/tmp/_karma_webpack_825651/runtime.js?ae5c34a08bca58b060dcc25364894addf0a30ef2:148:39)\n    at http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:12:67"
+        ],
+        "results": [],
+        "browser": null,
+        "disconnected": false,
+        "total": 0,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "8590f0d6e0cca508154d9951fabbb8f9eb457b7adf1f2f96ee2ad8d18c91486f",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+        "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+        "source_is_base": true,
+        "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+        "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "8bf01ee81dbd267c13c27746fc930def88c6e3874cfb656d967f537fd0234b02"
+      }
+    },
+    {
+      "probe": "probe-2",
+      "check_sha256": "7ef3f1b42e74edccd906cb51a54b919ec0d73beca0a38c486f5852b58a3cfb0e",
+      "before": {
+        "complete": false,
+        "errors": [
+          "runner result unavailable"
+        ],
+        "results": [],
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "7ef3f1b42e74edccd906cb51a54b919ec0d73beca0a38c486f5852b58a3cfb0e",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+        "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+        "source_is_base": true,
+        "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+        "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+        "source_files_sha256": {},
+        "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+        "console_sha256": "52fc5a0746e74bf6075185ccb8df7aeaeb8501dbb1455b3acf15e6602797eebf"
+      },
+      "after": {
+        "complete": true,
+        "errors": [
+          "Uncaught Error: Cannot find module '../../../../util/MockEvents'\nat webpack-internal:///./test/SvhGeneratedSpec.js:8:142\n\nError: Cannot find module '../../../../util/MockEvents'\n    at webpackMissingModule (webpack-internal:///./test/SvhGeneratedSpec.js:8:50)\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:8:152)\n    at ./test/SvhGeneratedSpec.js (http://localhost:9876/absolute/tmp/_karma_webpack_898509/commons.js?d3ab8dc2f7d683c2d74b60ff4b693b7f9f87fc7d:4061:1)\n    at __webpack_require__ (http://localhost:9876/absolute/tmp/_karma_webpack_898509/runtime.js?ae5c34a08bca58b060dcc25364894addf0a30ef2:31:41)\n    at __webpack_exec__ (http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:14:48)\n    at http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:15:55\n    at __webpack_require__.O (http://localhost:9876/absolute/tmp/_karma_webpack_898509/runtime.js?ae5c34a08bca58b060dcc25364894addf0a30ef2:65:23)\n    at http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:16:56\n    at webpackJsonpCallback (http://localhost:9876/absolute/tmp/_karma_webpack_898509/runtime.js?ae5c34a08bca58b060dcc25364894addf0a30ef2:148:39)\n    at http://localhost:9876/absoluteSvhGeneratedSpec.1426989085.js?18c4ee59a936a06e275b4f9379394139b8e2a7b1:12:67"
+        ],
+        "results": [],
+        "browser": null,
+        "disconnected": false,
+        "total": 0,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "7ef3f1b42e74edccd906cb51a54b919ec0d73beca0a38c486f5852b58a3cfb0e",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1928@sha256:b75c9ea8b10388807e0f02841c5671ee76aa1afad4579751c484a674c5ae3f1b",
+        "base_commit": "948c0d73bd9187b6d24ba01f930bd8334898fdb1",
+        "source_is_base": true,
+        "source_archive_sha256": "f921a6eb5dc51b9849ce8f91c7636f27cd0dd6b91d02a7aac3a6dc7c7eac8bb3",
+        "baseline_fingerprint": "e6519ad41ada52a31c8c4d0786b9762be62257b5fb1cdd60a8a0a32b85bf8d2a",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "85879ae53e5dd824e81f870bc6a82d16d091b4a7f79284424150c76c04f7e1d1"
+      }
+    }
+  ]
+}

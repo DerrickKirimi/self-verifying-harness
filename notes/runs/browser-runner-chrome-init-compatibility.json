@@ -1,0 +1,62 @@
+{
+  "scope": "Trusted runner Chrome discovery compatibility; exact previously frozen generated check/fix, no fresh model call",
+  "passed": true,
+  "pre": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "SvhGeneratedSpec should remove label property from di when label is cleared",
+        "success": false,
+        "skipped": false,
+        "log": [
+          "AssertionError: expected { Object ($type, id, ...) } to not have property 'label'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:27:37)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        ]
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 1,
+    "timed_out": false,
+    "check_sha256": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": true,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {},
+    "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+    "console_sha256": "2b4979ef6c47711cc4741fc0937e0236f4f52d4c75ee9b2a8bd8eb0b2b19a977"
+  },
+  "post": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "SvhGeneratedSpec should remove label property from di when label is cleared",
+        "success": true,
+        "skipped": false,
+        "log": []
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 0,
+    "timed_out": false,
+    "check_sha256": "369a28913f05586ea7eca78894a61f6f58b427891fee1de13cf6c924bbd832c1",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": false,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {
+      "lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+    },
+    "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+    "console_sha256": "d97bdf7b9f6976b508a7f07c0a36611ba1bbc7f387c2c98157b23b947c97dd95"
+  }
+}
