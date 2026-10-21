@@ -61,4 +61,6 @@ def load_task(root, manifest_path):
     public={'id':task['id'],'problem_statement':task['problem_statement'],
             'issue_sha256':hashlib.sha256(task['problem_statement'].encode()).hexdigest(),
             'image':env['image'],'base_commit':env['base_commit'],'adapter':env['adapter']}
-    return identity,public,Evidence([recording],identity)
+    transcript_path=root/'data/runtime/task-evidence'/identity/'transcript.json'
+    transcripts={recording.id:json.loads(transcript_path.read_text())} if transcript_path.exists() else {}
+    return identity,public,Evidence([recording],identity,transcripts=transcripts)

@@ -96,10 +96,12 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    A fresh **probed-v2** all-eleven run uses unchanged rubric, Lite/low. Its1557
    ambiguity is an abstention;1655 exhausted two checks, both explicitly rejected
    for wrong DI-property assertions (the second also expected the wrong color).
-   1679 candidate1 has a reviewed target type-transition failure; repair/native
-   stage is running in exec70987. Do not mix the earlier v1 success into v2 scores.
-7. Last read before the v2 repair: $3.208077 charged/reserved, $0.791923 available,
-   zero pending, cap $4.00. Read `svh budget` again after terminal repair; do not
+   1679 candidate1 now has a full new generated repair/native pass (exec70987
+   terminal). Its check covers parallel type transition; the canonical earlier
+   exported task also checks sequential mode and XML. Do not mix v1 into v2 scores.
+   1623 candidate1 reproduction is running in exec21395; all others remain pending.
+7. Last read after the v2 repair: $3.212184 charged/reserved, $0.787816 available,
+   zero pending, cap $4.00. Read `svh budget` again after terminal1623; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
 8. **Runnable README demo passes:** `.venv/bin/python -I scripts/demo.py` retrieves
@@ -109,7 +111,13 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **100 passed** (including task resume identity).
+   Latest full harness suite: **102 passed** (including task resume identity and
+   ordinary narrated-video transcript flow). No fresh paid speech quality result.
+9. Ordinary task narration is now transcribed before extraction, cached privately
+   by manifest identity, supplied as quoted timestamped evidence, then reinspected
+   via MCP during the code checkpoint. Silent corpus prompts stay unchanged.
+   Remaining ordinary-input gap: visual/OCR/retrieval indexes are still corpus-only;
+   wire an ordinary ingestion command and bound caches before claiming full MVP.
 
 ## Evidence and history
 

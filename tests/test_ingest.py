@@ -87,3 +87,33 @@ def test_gif_sampling_preserves_final_hold_and_uses_preceding_frame(tmp_path):
     held = evidence.frames("held", 4, 4.1, 1)[0][1]
     assert first != second
     assert second == held
+
+
+def test_ordinary_audio_cache_is_reloaded_for_mcp_and_resumes_without_charge(tmp_path):
+    from svh.ingest import prepare_task_audio
+    from svh.tasks import load_task
+    media=tmp_path/'spoken.mp4'
+    subprocess.run(['ffmpeg','-nostdin','-v','error','-f','lavfi','-i','color=c=blue:s=32x32:d=2',
+                    '-f','lavfi','-i','sine=frequency=400:duration=2','-shortest',str(media)],check=True,timeout=20)
+    manifest=tmp_path/'task.json'
+    manifest.write_text(json.dumps({'format':'svh.task.v1','id':'spoken-task','problem_statement':'Review the narration',
+        'environment':{'adapter':'bpmn-karma-v1','image':'sha256:'+'a'*64,'base_commit':'b'*40},
+        'recording':{'path':'spoken.mp4','sha256':hashlib.sha256(media.read_bytes()).hexdigest(),'source_url':'controlled'}}))
+    class Model:
+        model='deterministic';calls=0
+        def invoke(self,messages):
+            self.calls+=1
+            assert messages[0].content[1]['mime_type']=='audio/wav'
+            return SimpleNamespace(text=json.dumps({'segments':[{'start_s':.1,'end_s':1.5,
+                'speaker':'speaker_1','text':'Keep the label yellow'}]}),usage_metadata={})
+    model=Model()
+    identity,task,evidence=prepare_task_audio(tmp_path,manifest,model)
+    assert evidence.transcript(task['id'],0,2)['segments'][0]['text']=='Keep the label yellow'
+    # The separate MCP process takes this same load_task path without model access.
+    _,_,child_evidence=load_task(tmp_path,manifest)
+    assert child_evidence.transcript(task['id'],0,2)==evidence.transcript(task['id'],0,2)
+    prepare_task_audio(tmp_path,manifest,model)
+    assert model.calls==1
+    folder=tmp_path/'data/runtime/task-evidence'/identity
+    assert folder.stat().st_mode & 0o777 == 0o700
+    assert all(path.stat().st_mode & 0o777 == 0o600 for path in folder.iterdir())

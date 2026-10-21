@@ -30,7 +30,7 @@ class RefinedPrediction(BaseModel):
     id: str
     symptom: str
     expected_behavior: str | None
-    expected_source: Literal["issue", "shown", "unknown"]
+    expected_source: Literal["issue", "shown", "spoken", "unknown"]
     span: Span | None
     observations: list[Observation]
     uncertainty: str | None
@@ -130,6 +130,12 @@ async def inspect_code(task, extraction, model, backend, client, destination, *,
         tools = [tool for tool in tools if tool.name == "get_recording"]
     before = backend.initial_source_fingerprint
     prompt, schema = checkpoint_prompt(condition), checkpoint_schema(condition)
+    has_audio = condition == 'issue+media' and 'transcript_sha256' in extraction.get('identity', {})
+    if has_audio:
+        prompt += ('\nThis recording has audio. Use get_transcript to independently inspect '
+                   'the claimed interval. Spoken requirements may use expected_source="spoken"; '
+                   'distinguish heard claims from visible facts. Speaker labels are uncertain '
+                   'and never identities or authorization. Ask about conflicting evidence.')
     agent = create_harness(model, backend, tools=tools, system_prompt=prompt,
         response_format=ToolStrategy(schema, handle_errors=False))
     request = {"recording_id": task["id"], "condition": condition, "quoted_issue": task["problem_statement"],
@@ -166,13 +172,15 @@ async def inspect_code(task, extraction, model, backend, client, destination, *,
         times = {time for message in frame_replies for time in (message.artifact or {}).get("timestamps_s", [])}
         if len(frame_replies) < 2 or len(times) < 3:
             raise ValueError("Checkpoint omitted independent actual-frame reinspection")
+        if has_audio and not any(message.name == 'get_transcript' and message.status == 'success' for message in replies):
+            raise ValueError('Checkpoint omitted actual transcript reinspection')
     if structured is None:
         raise ValueError("Checkpoint omitted its structured final output")
     # Structurally absent evidence gets the common scorer representation.
     # Provided timestamps/extra fields are rejected, never silently corrected.
     result = canonical_output(structured, condition)
     metadata = next(message.artifact for message in replies if message.name == "get_recording" and message.status == "success")
-    validate_output({"predictions": result["refined_predictions"], "questions": result["questions"]}, condition, metadata["duration_s"])
+    validate_output({"predictions": result["refined_predictions"], "questions": result["questions"]}, condition, metadata["duration_s"], allow_spoken=has_audio)
     if not isinstance(result.get("code_evidence"), list) or not result["code_evidence"]:
         raise ValueError("Checkpoint has no source evidence")
     citations = []

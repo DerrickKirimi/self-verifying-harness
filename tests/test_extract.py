@@ -57,3 +57,34 @@ def test_matched_extraction_inputs_resume_and_timestamp_contract(tmp_path, condi
     content = calls[0][0].content
     assert sum(item["type"] == "image_url" for item in content) == (45 if condition == "issue+media" else 0)
     assert "not-model-visible" not in str(content)
+
+
+def test_spoken_requirements_receive_transcript_and_bind_cached_response(tmp_path):
+    transcript={'status':'transcribed','segments':[{'start_s':.2,'end_s':1.2,'speaker':'chunk_0:speaker_1',
+                                                'text':'The label should stay yellow.'}]}
+    class Evidence:
+        corpus_sha256='owner-task'
+        def recording(self, identifier):
+            return SimpleNamespace(id=identifier,duration_s=2.0,sha256='media',has_audio=True)
+        def transcript(self, *args):return transcript
+        def frames(self, identifier, start, end, count):return [((start+end)/2,b'controlled-png')]
+    calls=[]
+    class Model:
+        model='controlled';_output_cap=4096
+        def invoke(self,messages):
+            calls.append(messages)
+            return SimpleNamespace(text=json.dumps({'predictions':[{'id':'spoken-claim','symptom':'Label turns white',
+                'expected_behavior':'Label stays yellow','expected_source':'spoken',
+                'span':{'start_s':.2,'end_s':1.2},'observations':[{'timestamp_s':.3,'detail':'Spoken: stay yellow'}]}],
+                'questions':[]}),usage_metadata={},response_metadata={})
+    task={'id':'owner','problem_statement':'Review this recording','issue_sha256':'issue'}
+    path=tmp_path/'extraction.json'
+    result=extract.extract_claims(Evidence(),task,'issue+media',Model(),path)
+    assert result['predictions'][0]['expected_source']=='spoken'
+    assert 'The label should stay yellow.' in str(calls[0][0].content)
+    assert 'transcript_sha256' in result['identity']
+    transcript['segments'][0]['text']='An updated transcript'
+    with pytest.raises(ValueError,match='different inputs'):
+        extract.extract_claims(Evidence(),task,'issue+media',Model(),path)
+    with pytest.raises(ValueError,match='structure'):
+        extract.validate_output({'predictions':result['predictions'],'questions':[]},'issue-only',2,allow_spoken=True)

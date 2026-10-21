@@ -34,6 +34,7 @@ else:
     corpus_sha,tasks=public_tasks(root,corpus)
 if a.only not in {t['id'] for t in tasks}:raise SystemExit('Unknown task')
 work=root/'data/runtime/m3'/a.run_name;work.mkdir(parents=True,exist_ok=True)
+if a.task_manifest:work.chmod(0o700)
 lock=(root/'data/runtime/m3/worker.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 if a.task_manifest:
     from svh.tasks import bind_task_run
@@ -63,8 +64,10 @@ def save():
 
 
 async def run():
-    global claim
+    global claim,normal_evidence
     if a.task_manifest:
+        from svh.ingest import prepare_task_audio
+        _,_,normal_evidence=prepare_task_audio(root,a.task_manifest,model)
         checkpoint_path=work/'checkpoint.json'
         if checkpoint_path.exists():
             claim=json.loads(checkpoint_path.read_text())

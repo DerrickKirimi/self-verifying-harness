@@ -66,6 +66,16 @@ Read-only MCP can serve this ordinary task without a model key:
 uv run --extra agent svh mcp --task-manifest data/runtime/task.json --port 8765
 ```
 
+[CODE] For narrated video, the generation runner first transcribes bounded audio
+chunks under the same persistent budget. It saves the transcript in an owner-only
+cache bound to the manifest, includes it in claim extraction, and lets the MCP
+code checkpoint reinspect it. `get_transcript` becomes available after that stage;
+a standalone MCP server started before transcription reports that it is missing.
+Silent video makes no transcription call. Spoken requirements and visible facts
+remain distinct, and speaker labels are uncertain chunk-local labels. Human
+narration accuracy has not yet been measured; the audio data-flow tests use a
+deterministic model and synthetic media.
+
 [CODE] The server uses an owner-only bearer token in `data/runtime/mcp.token`.
 The thin client preserves image/structured evidence. Tools/resources/prompts and
 trusted input limits are documented in `notes/2026-10-20-mcp-boundary.md`.

@@ -151,6 +151,22 @@ def transcribe_recording(evidence: Evidence, recording_id, model, destination: P
     return output
 
 
+def prepare_task_audio(root, manifest_path, model):
+    """Prepare private audio evidence once; the MCP child reloads the same cache."""
+    from svh.tasks import load_task
+    identity, task, evidence = load_task(root, manifest_path)
+    if not evidence.recording(task['id']).has_audio:
+        return identity, task, evidence
+    folder = root / 'data/runtime/task-evidence' / identity
+    folder.mkdir(parents=True, exist_ok=True, mode=0o700)
+    folder.chmod(0o700)
+    transcribe_recording(evidence, task['id'], model, folder / 'transcript.json')
+    for path in folder.iterdir():
+        if path.is_file():
+            path.chmod(0o600)
+    return load_task(root, manifest_path)
+
+
 def retrieve(index, query, method="fixed45", limit=5):
     """SQLite FTS5 BM25; temporal windows concatenate adjacent frame evidence.
 
