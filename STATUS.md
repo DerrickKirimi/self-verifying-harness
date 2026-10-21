@@ -7,7 +7,7 @@ Update this file at every session checkpoint. Read AGENTS.md first.
 **M0 and M1 have passed; the full MVP is not shipped.** Selected semantic
 retrieval, authenticated MCP HTTP and the synthetic audio path work. One-shot
 claims failed M2; refined numerical M2 gates now pass under AI-assisted review.
-Independent human adjudication remains outstanding. Two distinct generated repairs
+Independent human adjudication remains outstanding. Three distinct generated repairs
 have passed unchanged checks, independent regressions and real Harbor nop/oracle
 trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN]
 
@@ -249,8 +249,27 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     action and corrective assertions on the first version; the read-budget
     checkpoint repeats that contract. Execution/version limits are unchanged.
     Standard is an explicit new-run selection after Flex capacity errors, not
-    automatic fallback. All128 harness tests still pass. Case1640 candidate1 is
-    running (exec65942); inspect its actual output before advancing.
+    automatic fallback. All128 harness tests still pass. Case1640 candidate1
+    reproduction65942 is terminal: initial markers/properties and actual popup
+    transition pass, then cardinality preservation fails on the real SubProcess.
+    Exact frozen check is explicitly aligned; repair88697 completes with unchanged
+    check pass and1776 executed native passes, seven unchanged skips (1783 total).
+    Finite controls50086 pass: deletion/suppression rejected by assertions; a
+    recorded-ID shortcut passes primary but fails the independent changed-ID/
+    cardinality/condition check. That independent check itself fails on base and
+    passes unchanged after the generated fix. Export80790 is terminal:
+    `tasks/generated-v5/swebench-bpmn-1640`; actual Harbor21376 now completes
+    nop0/oracle1, primary/variation/native all pass. Bundle remains immutable.
+    Checkpoint score1/11 [1.62%,37.74%], two considered/nine unattempted, still no
+    gate pass. Last read after repair: charged/reserved$5.234003,
+    available$6.765997, three unsettled reservations retained. Inspect actual
+    `notes/2026-10-21-subprocess-generated-repair.md` records the complete unit.
+19. Release audit found no supported later-day model-policy renewal: the probe
+    writes a current access timestamp but a hardcoded old pricing date, and the
+    factory rejects that mismatch/age. Current metadata expires at18:22UTC today.
+    Do not overwrite it or edit pinned factory code during v5. Resolve the
+    renewal procedure after the current evaluation; details and acceptance in
+    `notes/2026-10-21-model-policy-renewal-gap.md`. README replay is unaffected.
 
 ## Evidence and history
 
@@ -272,4 +291,4 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | All11 considered; v2 2/11 [5.14%,47.70%], gate fails; two canonical public tasks plus ordinary audio export have actual Harbor0/1; MVP incomplete |
+| M3 generated verification/fix/Harbor | V2 complete2/11 [5.14%,47.70%] fails; fresh v5 partial1/11 [1.62%,37.74%], nine unattempted; three distinct public tasks plus ordinary audio have actual Harbor0/1; MVP incomplete |

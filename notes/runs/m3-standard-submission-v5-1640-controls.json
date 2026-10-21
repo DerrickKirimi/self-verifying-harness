@@ -1,0 +1,275 @@
+{
+  "scope": "Finite authored deletion, suppression and example-shortcut controls; not a comprehensive mutation score",
+  "check_origin": "Original model-generated check plus controller-authored identifier/cardinality/condition variation",
+  "cases": [
+    {
+      "name": "varied-id-values-base",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: loopCardinality should be preserved: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:108:99)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "9d43d6ecf39569558199159291ea7bcb314e66c242c385bd3bceae263dfe5206",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": true,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "b4c48007ef1694be531a12b167a95eeb434b4a6beb82aec59b709f90c0ec3985"
+      }
+    },
+    {
+      "name": "varied-id-values-generated-fix",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "9d43d6ecf39569558199159291ea7bcb314e66c242c385bd3bceae263dfe5206",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": false,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "247241448b9f0356cc5ea739aca51e81cc69c6f889f1568d244395092b07aa67"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "f9293deb2bbbfec8129d27b691b129b5938b27fa681fc1aa6c6f15ed5fb87d7c"
+      }
+    },
+    {
+      "name": "feature-deletion",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected null to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:101:116)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": false,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "0ba84f6c3d6a0a97d542003531adacaf72c42291e7d024f5007d71125b91748e"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "5a4b395cd19035fd9139ee607022eb65a133f8b9013c37b130a42412cbba8e89"
+      }
+    },
+    {
+      "name": "error-suppression",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: loopCardinality should be preserved: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:108:99)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": false,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "d568174845a91ea7d3a709e44047057ef5559f48de6994683708e71860b9987c"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "c73c3456d8c2265d6161eeb4228bdbd7d00c9d8a70abbc1ad296a2ad9608ab50"
+      }
+    },
+    {
+      "name": "example-shortcut-primary",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "19db67ad1258b2e9037e73275331466bb51cac10e081cd1eadae1d8be5556394",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": false,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "1b82cc400b17d42a7c62462b4cb46b9e509f972b34035a8baf7be674ac3e949f"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "fbce6f08051b809c6843c144d8698c60906beca9aa1d532a91b929da891680da"
+      }
+    },
+    {
+      "name": "example-shortcut-varied-id-values",
+      "observation": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: loopCardinality should be preserved: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:108:99)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "9d43d6ecf39569558199159291ea7bcb314e66c242c385bd3bceae263dfe5206",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": false,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "1b82cc400b17d42a7c62462b4cb46b9e509f972b34035a8baf7be674ac3e949f"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "9961f8862bffdd350792440aac6887c38a89aa3780d210cf36471009ff577583"
+      }
+    }
+  ],
+  "passed": true,
+  "independent_checks": [
+    {
+      "id": "varied-id-values",
+      "path": "varied-id-values.js",
+      "sha256": "9d43d6ecf39569558199159291ea7bcb314e66c242c385bd3bceae263dfe5206",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: loopCardinality should be preserved: expected undefined to exist\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:108:99)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "9d43d6ecf39569558199159291ea7bcb314e66c242c385bd3bceae263dfe5206",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": true,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "b4c48007ef1694be531a12b167a95eeb434b4a6beb82aec59b709f90c0ec3985"
+      },
+      "post": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - ReplaceMenuProvider multi-instance should retain multi-instance properties when changing between parallel and sequential",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 1,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "9d43d6ecf39569558199159291ea7bcb314e66c242c385bd3bceae263dfe5206",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1640@sha256:310ae5ed5cc26302e732efbf7669327410489cca6072a3faf37b38af6e5e0b21",
+        "base_commit": "b708a4d7afa57c5944bda777c15c5b7971c3f4c9",
+        "source_is_base": false,
+        "source_archive_sha256": "50552b4ae22fff6f1feb0aa01c8079babc088c2927267653dc5ac60a549948de",
+        "baseline_fingerprint": "4886270712ceaebd4aba131b6261ea7610dd4bcdf039e96dc57f7ca7e8a3678d",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "247241448b9f0356cc5ea739aca51e81cc69c6f889f1568d244395092b07aa67"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "f9293deb2bbbfec8129d27b691b129b5938b27fa681fc1aa6c6f15ed5fb87d7c"
+      }
+    }
+  ],
+  "mutant_source_sha256": {
+    "feature-deletion": "0ba84f6c3d6a0a97d542003531adacaf72c42291e7d024f5007d71125b91748e",
+    "error-suppression": "d568174845a91ea7d3a709e44047057ef5559f48de6994683708e71860b9987c",
+    "example-shortcut": "1b82cc400b17d42a7c62462b4cb46b9e509f972b34035a8baf7be674ac3e949f"
+  }
+}

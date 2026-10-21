@@ -12,13 +12,15 @@ Turn claims about software, spoken or shown in a meeting recording, a bug-walkth
 
 **Status:** M0 passed on eleven reviewed temporal cases with observed supplied
 test failures before and passes after their reference fixes. The visual corpus
-is frozen; M1 and refined numerical M2 checks are measured. M3 now has two distinct generated recording-to-check-to-fix demonstrations,
+is frozen; M1 and refined numerical M2 checks are measured. M3 now has three distinct generated recording-to-check-to-fix demonstrations,
 independent regressions and executed Harbor nop/oracle rewards0/1 for each.
 The [completed all-eleven run](notes/runs/m3-probed-v2-final-score.json) verifies2/11 (Wilson95%
 [5.14%,47.70%]) and fails the acceptance gate; the MVP is not yet shipped. An
 ordinary clarified synthetic audio run also completes generated repair and
 Harbor integrity. A [later evaluation](notes/2026-10-21-m3-mapped-flex-v3-results.md)
-retains a provider error and local budget exhaustion; it adds no verified repair.
+retains a provider error and local budget exhaustion. A fresh Standard run adds
+the [SubProcess property task](tasks/generated-v5/README.md), with real Harbor0/1;
+its all-case evaluation is still in progress.
 Independent human claim
 adjudication is outstanding. See the [development usage guide](docs/mvp-usage.md).
 See [`STATUS.md`](STATUS.md).
