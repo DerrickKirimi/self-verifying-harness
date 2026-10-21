@@ -112,15 +112,22 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    1610 now exhausted both versions: its check resets the current root to itself,
    never switching planes, so alignment is explicitly rejected and no repair is
    authorized. Exec42122 is terminal. Remaining public cases:1570/1659/1719/1928.
-   An ordinary synthetic audio-only run is now exercising extraction/checkpoint/
-   reproduction in exec44884 (`ordinary-audio-v1`), without benchmark inputs;
+   Ordinary synthetic audio v1 omitted transcript reinspection and v2 exceeded
+   graph steps during unbounded source reads; both fail before reproduction and
+   remain retained. A documented fixture-author clarification and bounded SDK
+   checkpoint now let `ordinary-audio-v3` complete extraction/code review and
+   observe its generated target assertion fail. Repair/native now pass, exec52652
+   terminal:1772 executed native passes, seven skips, same1779 coverage as the
+   independently observed original native baseline, without benchmark gold.
+   Ordinary private export is running in exec68550; run actual Harbor only after
+   that handle is terminal. Its outcome stays outside the public denominator;
    do not grant extra versions to
    exhausted cases. The five-considered-case report/score is frozen publicly in
    `notes/runs/m3-probed-v2-checkpoint-{report,score}.json`; it does not pass M3.
    The newer six-considered-case snapshot is
    `notes/runs/m3-probed-v2-after-1638-{report,score}.json`:2/11 [5.14%,47.70%],
    five not attempted, acceptance gate still fails. Do not pool v1 and v2.
-7. Last read before ordinary audio generation: $3.324319 charged/reserved, $0.675681 available,
+7. Last read after ordinary audio repair: $3.509556 charged/reserved, $0.490444 available,
    zero pending, cap $4.00. Read `svh budget` again before new work; do not
    raise/reset it. Export each newly verified claim and run actual Harbor
    integrity; preserve the failed v1 results.
@@ -131,7 +138,7 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
    unchanged skips. No model calls. `notes/runs/harbor-readme-e2e-20261021.json`.
    This is recorded-generation replay, not fresh inference or full-MVP completion.
    The README includes setup/output paths; `docs/mvp-usage.md` covers new inputs.
-   Latest full harness suite: **111 passed** (including task resume identity and
+   Latest full harness suite: **114 passed** (including task resume identity and
    ordinary narrated-video transcript flow). No fresh paid speech quality result.
 9. Ordinary task narration is now transcribed before extraction, cached privately
    by manifest identity, supplied as quoted timestamped evidence, then reinspected
@@ -153,6 +160,13 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     Frame/screen tools return explicit `no_video`; no invented frames. Actual
     provider + all-five-tool MCP smoke passes on9.36s synthetic narration:
     `notes/runs/audio-only-provider-mcp-smoke.json`. No human speech-quality claim.
+12. Ordinary audio checkpoints now force actual metadata/transcript replies and
+    bounded source inspection inside the existing SDK loop. Explicit resumes
+    retain separate attempt traces, preparation errors retain phase/budget, and
+    cached successful checkpoints are hash-bound. See
+    `notes/2026-10-21-ordinary-checkpoint-controls.md` and the retained failure
+    report. The garbled original audio is not silently corrected or counted as
+    accurate transcription; v3 uses an explicit text clarification.
 
 ## Evidence and history
 

@@ -183,6 +183,15 @@ first report is written. A changed manifest needs a new run name. Older ordinary
 run directories without an input identity are rejected; preserve them and start
 a new run rather than importing an unbound checkpoint.
 
+[CODE] Preparation failures are recorded in `report.json` with their phase and
+error types. Code-checkpoint attempts retain separate
+`checkpoint-attempts/<number>/trace.json` and MCP logs; an explicit CLI resume
+starts another attempt without overwriting the failure. Saved extraction is
+reused. Successful checkpoints are hash-bound to the report and rejected if
+changed. Audio checkpoints must obtain metadata/transcript evidence before their
+typed final and have five bounded source-tool replies. An empty or unresolved
+primary requirement abstains before reproduction.
+
 [CODE] For the frozen public evaluation adapter, replace `--task-manifest` with
 `--only swebench-bpmn-<id>`; all eleven corpus rows remain in its report. It
 revalidates corpus provenance and keeps benchmark source/test solutions out of

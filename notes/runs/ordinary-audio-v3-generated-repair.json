@@ -1,0 +1,77 @@
+{
+  "format": "svh.ordinary-generated-repair.v1",
+  "scope": "Controlled synthetic audio plus explicit fixture-author text clarification; no human speech accuracy or public-corpus score",
+  "id": "audio-clarified-e2e",
+  "manifest_sha256": "13c33cb0552f997211e73532a03677555950422884dcf6ac0464f003d3391784",
+  "checkpoint_sha256": "61d65bcea77fae00b83cc130bad0888b07180f21d81cb573f3e9bfab5ff1eb72",
+  "report_sha256": "cd9ea69d27c3afd3eae3b309bb29e931a8560b269eb86d75cb7ea458d17ef4d8",
+  "status": "full_generated_repair",
+  "pre": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "SvhGeneratedSpec should remove di.label entirely when clearing task text",
+        "success": false,
+        "skipped": false,
+        "log": [
+          "AssertionError: expected { Object ($type, id, ...) } to not have property 'label'\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:28:37)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+        ]
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 1,
+    "timed_out": false,
+    "check_sha256": "017a8d07099e0495a42a657ee1b597a6a45a807ef64fe366478547cdacfb620a",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": true,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {},
+    "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+    "console_sha256": "ab9cc958c7ef79c6e9fa540ab674b7b512739c924a2bff5373ea8eb738390d89"
+  },
+  "post": {
+    "complete": true,
+    "errors": [],
+    "results": [
+      {
+        "name": "SvhGeneratedSpec should remove di.label entirely when clearing task text",
+        "success": true,
+        "skipped": false,
+        "log": []
+      }
+    ],
+    "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+    "disconnected": false,
+    "total": 1,
+    "skipped": 0,
+    "exit_code": 0,
+    "timed_out": false,
+    "check_sha256": "017a8d07099e0495a42a657ee1b597a6a45a807ef64fe366478547cdacfb620a",
+    "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1638@sha256:d548fd8261111fdb43dc1204e0535708f1c234197be628e6a98df49e1c8eb25c",
+    "base_commit": "574a674381d6449b509396b6d17c4ca94674ea1c",
+    "source_is_base": false,
+    "source_archive_sha256": "5bc835ed5f9e6908f97fd91a8c1937c01e33275f973cf5e00ee8a971ca2b7d88",
+    "baseline_fingerprint": "659d43b2fe0c2073422ff4ba3423bffcc48f00f33631cec218dbd04372058f74",
+    "source_files_sha256": {
+      "lib/features/label-editing/cmd/UpdateLabelHandler.js": "f9eea47ad2153422cf61507cc8f75c2769399fbfeb301d49e2327795e354edfa"
+    },
+    "runner_sha256": "ad641907c0bf129cacd1f59d76d16ae8169f27db86d667fdcd56233f013c56ca",
+    "console_sha256": "8f28296f229b5052df7c12fb36a5e86ecb2c0d0ab43e78c0c492b56aae293c98"
+  },
+  "native_regressions_passed": true,
+  "native_baseline_sha256": "fcdddface906829c1c82d22ae360fe9c989b87646fc8aaa38aa94891a204f666",
+  "native_post_sha256": "27588f196d43c2727d40c8b5ec49e1373be57ca7cc78a9e6d2b6239bc10c0790",
+  "supplied_gold_source_or_test_patch": false,
+  "budget": {
+    "cap_microdollars": 4000000,
+    "charged_or_reserved_microdollars": 3509556,
+    "available_microdollars": 490444,
+    "unsettled_requests": 0
+  }
+}

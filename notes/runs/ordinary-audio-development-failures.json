@@ -1,0 +1,45 @@
+{
+  "format": "svh.ordinary-audio-development.v1",
+  "scope": "Synthetic development failures, not frozen public-corpus scores",
+  "attempts": [
+    {
+      "run": "ordinary-audio-v1",
+      "status": "failed_before_reproduction",
+      "reason": "Required actual transcript reinspection omitted; refused before reproduction",
+      "checkpoint_trace_sha256": "fe6fe0e8b3c0878a83746584fe31d304626fd03bb5f6e13384910394235c9b89",
+      "actual_tool_replies": [
+        "get_recording",
+        "get_transcript",
+        "glob",
+        "read_file",
+        "read_file",
+        "CheckpointOutput"
+      ],
+      "has_structured_reply": true
+    },
+    {
+      "run": "ordinary-audio-v2",
+      "status": "failed_before_reproduction",
+      "reason": "Actual metadata/transcript obtained, but unbounded source exploration reached GraphRecursionError; clarification question retained",
+      "checkpoint_trace_sha256": "73535e16351883ef97613a48d902d0a4878b8b50891835f007957826d5315936",
+      "actual_tool_replies": [
+        "get_recording",
+        "get_transcript",
+        "glob",
+        "grep",
+        "grep",
+        "glob",
+        "grep",
+        "read_file",
+        "read_file",
+        "read_file",
+        "grep",
+        "read_file",
+        "grep",
+        "read_file",
+        "CheckpointOutput"
+      ],
+      "has_structured_reply": true
+    }
+  ]
+}

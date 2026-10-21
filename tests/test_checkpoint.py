@@ -88,3 +88,45 @@ def test_audio_checkpoint_requires_transcript_reinspection_instead_of_frames(tmp
     if transcript_present:assert asyncio.run(call)['source_unchanged']
     else:
         with pytest.raises(ValueError,match='transcript reinspection'):asyncio.run(call)
+
+
+def test_audio_evidence_gate_forces_actual_tools_before_typed_final():
+    class Request:
+        messages=[]
+        tools=[SimpleNamespace(name=name) for name in ['get_recording','get_transcript','read_file']]
+        response_format='typed-final'
+        def override(self,**kw):return SimpleNamespace(**{'response_format':self.response_format,**kw})
+    request=Request();gate=checkpoint.RequireAudioEvidence()
+    first=gate.narrow(request)
+    assert [t.name for t in first.tools]==['get_recording'] and first.response_format is None
+    request.messages=[ToolMessage(content='actual metadata',name='get_recording',tool_call_id='meta')]
+    second=gate.narrow(request)
+    assert [t.name for t in second.tools]==['get_transcript'] and second.response_format is None
+    request.messages.append(ToolMessage(content='failed span',name='get_transcript',tool_call_id='bad',status='error'))
+    assert gate.narrow(request).response_format is None
+    request.messages.append(ToolMessage(content='actual transcript',name='get_transcript',tool_call_id='audio'))
+    assert gate.narrow(request).response_format is None
+    request.messages.append(ToolMessage(content='actual source',name='read_file',tool_call_id='source'))
+    assert gate.narrow(request).response_format is not None
+    request.system_message=SimpleNamespace(content='Checkpoint')
+    for n in range(4):request.messages.append(ToolMessage(content='source read',name='read_file',tool_call_id=str(n)))
+    assert gate.narrow(request).tools==[]
+
+
+def test_audio_checkpoint_source_budget_scopes_paths_and_denies_writes():
+    class Request:
+        state={'messages':[]}
+        tool_call={'name':'grep','id':'search','args':{'pattern':'label'}}
+        def override(self,**kw):return SimpleNamespace(state=self.state,**kw)
+    request=Request();gate=checkpoint.RequireAudioEvidence(source_limit=1)
+    checked=gate.guarded(request)
+    assert checked.tool_call['args']['path']=='/workspace/lib'
+    assert checked.tool_call['args']['output_mode']=='content'
+    for name,args in [('write_file',{'file_path':'/workspace/lib/a.js'}),
+                      ('read_file',{'file_path':'/workspace/test/a.js'}),
+                      ('read_file',{'file_path':'/workspace/lib/../test/a.js'})]:
+        request.tool_call={'name':name,'id':'denied','args':args}
+        assert gate.guarded(request).status=='error'
+    request.tool_call={'name':'read_file','id':'limited','args':{'file_path':'/workspace/lib/a.js'}}
+    request.state={'messages':[ToolMessage(content='previous source',name='read_file',tool_call_id='prior')]}
+    assert gate.guarded(request).status=='error'

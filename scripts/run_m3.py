@@ -66,19 +66,47 @@ def save():
 async def run():
     global claim,normal_evidence
     if a.task_manifest:
-        from svh.ingest import prepare_task_audio
-        _,_,normal_evidence=prepare_task_audio(root,a.task_manifest,model)
-        checkpoint_path=work/'checkpoint.json'
-        if checkpoint_path.exists():
-            claim=json.loads(checkpoint_path.read_text())
-        else:
-            from svh.extract import extract_claims
-            from svh.checkpoint import inspect_code
-            first=extract_claims(normal_evidence,task,'issue+media',model,work/'extraction.json')
-            async with evidence_client(root,None,work/'mcp.log',task_manifest=a.task_manifest) as client:
-                with sandbox(task['image'],task['base_commit']) as backend:
-                    claim=await inspect_code(task,first,model,backend,client,work/'checkpoint-trace.json')
-            checkpoint_path.write_text(json.dumps(claim,indent=2)+'\n')
+        phase='audio_preparation'
+        try:
+            from svh.ingest import prepare_task_audio
+            row.update(status='preparing',stage=phase);save()
+            _,_,normal_evidence=prepare_task_audio(root,a.task_manifest,model)
+            checkpoint_path=work/'checkpoint.json'
+            if checkpoint_path.exists():
+                phase='checkpoint_resume';row['stage']=phase;save()
+                raw=checkpoint_path.read_bytes()
+                if digest(raw)!=report.get('checkpoint_sha256'):
+                    raise ValueError('Cached checkpoint is unbound or changed; use a new run')
+                claim=json.loads(raw)
+            else:
+                from svh.extract import extract_claims
+                from svh.checkpoint import inspect_code
+                phase='claim_extraction';row['stage']=phase;save()
+                first=extract_claims(normal_evidence,task,'issue+media',model,work/'extraction.json')
+                phase='code_checkpoint';row['stage']=phase;save()
+                attempts=work/'checkpoint-attempts';attempts.mkdir(exist_ok=True)
+                number=1+max([int(p.name) for p in attempts.iterdir() if p.is_dir() and p.name.isdecimal()] or [0])
+                attempt=attempts/str(number);attempt.mkdir(exist_ok=False)
+                async with evidence_client(root,None,attempt/'mcp.log',task_manifest=a.task_manifest) as client:
+                    with sandbox(task['image'],task['base_commit']) as backend:
+                        claim=await inspect_code(task,first,model,backend,client,attempt/'trace.json')
+                checkpoint_path.write_text(json.dumps(claim,indent=2)+'\n')
+                report['checkpoint_sha256']=digest(checkpoint_path.read_bytes());save()
+        except Exception as error:
+            pending=[error];types=[];seen=set()
+            while pending:
+                item=pending.pop()
+                if id(item) in seen:continue
+                seen.add(id(item));types.append(type(item).__name__)
+                pending.extend(getattr(item,'exceptions',[]))
+                if item.__cause__ is not None:pending.append(item.__cause__)
+            row.update(status='preparation_failed',stage=phase,error_types=types);save()
+            raise SystemExit('Ordinary '+phase+' failed; retained report and attempt traces under '+str(work)) from None
+        if not claim.get('refined_predictions') or not claim['refined_predictions'][0].get('expected_behavior'):
+            row.update(status='abstained',stage='requirement_review',questions=claim.get('questions',[]),
+                       reason='The checkpoint returned no actionable primary requirement; no check or fix is generated')
+            save();print(json.dumps({'id':task['id'],'status':'abstained','budget':report['budget']}),flush=True);return
+        row.update(status='attempted',stage=a.stage);row.pop('error_types',None);save()
     index=a.candidate-1
     if a.stage=='reproduce':
         if len(row['candidates'])!=index:raise ValueError('Candidate already recorded or earlier candidate missing')
@@ -159,4 +187,8 @@ async def run():
         # Exceptions can contain provider request data: retain no arbitrary exception text.
     save();print(json.dumps({'id':task['id'],'stage':a.stage,'status':candidate['status'],'budget':report['budget']}),flush=True)
 
-asyncio.run(run())
+try:
+    asyncio.run(run())
+finally:
+    fcntl.flock(lock,fcntl.LOCK_UN)
+    lock.close()

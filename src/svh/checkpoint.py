@@ -7,12 +7,64 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 from langchain.agents.structured_output import ToolStrategy
 
-from langchain_core.messages import ToolMessage
+from langchain_core.messages import ToolMessage, SystemMessage
+from langchain.agents.middleware import AgentMiddleware
 from langsmith import tracing_context
 
 from svh.harness import create_harness
 from svh.mcp_client import harness_tools
 from svh.extract import validate_output
+
+
+class RequireAudioEvidence(AgentMiddleware):
+    """Require actual audio evidence and bound subsequent source inspection."""
+    def __init__(self, *, audio_only=True, source_limit=5):
+        self.audio_only,self.source_limit=audio_only,source_limit
+
+    def narrow(self,request):
+        replies=[m for m in request.messages if isinstance(m,ToolMessage)]
+        successful={m.name for m in replies if m.status=='success'}
+        missing=next((name for name in ('get_recording','get_transcript') if name not in successful),None)
+        if missing:
+            tools=[tool for tool in request.tools if (tool.name if hasattr(tool,'name') else tool.get('name'))==missing]
+            if not tools:raise ValueError('Required audio evidence tool is unavailable')
+            return request.override(tools=tools,response_format=None,tool_choice='any')
+        source_replies=[m for m in replies if m.name not in {'get_recording','get_transcript','get_frames','CheckpointOutput'}]
+        allowed={'grep','read_file'} if len(source_replies)<self.source_limit else set()
+        if not self.audio_only:allowed.add('get_frames')
+        tools=[tool for tool in request.tools if (tool.name if hasattr(tool,'name') else tool.get('name')) in allowed]
+        inspected=bool(successful & {'grep','read_file'})
+        if not inspected and len(source_replies)<self.source_limit:
+            return request.override(tools=tools,response_format=None,tool_choice='any')
+        if len(source_replies)>=self.source_limit:
+            message=SystemMessage(content=str(request.system_message.content)+
+                '\nSource inspection is complete. Return CheckpointOutput now with qualified hypotheses/questions. Never invent a source location or silently resolve an unclear requirement.')
+            return request.override(tools=[],response_format=ToolStrategy(CheckpointOutput,handle_errors=False),tool_choice='any',system_message=message)
+        return request.override(tools=tools,response_format=ToolStrategy(CheckpointOutput,handle_errors=False))
+
+    def guarded(self,request):
+        name=request.tool_call['name'];args=dict(request.tool_call.get('args',{}))
+        if name in {'get_recording','get_transcript','CheckpointOutput'} or (name=='get_frames' and not self.audio_only):return request
+        replies=[m for m in request.state.get('messages',[]) if isinstance(m,ToolMessage) and m.name not in {'get_recording','get_transcript','get_frames','CheckpointOutput'}]
+        path=args.get('path','/workspace/lib') if name=='grep' else args.get('file_path','')
+        valid=isinstance(path,str) and (path=='/workspace/lib' or path.startswith('/workspace/lib/'))
+        if name not in {'grep','read_file'} or len(replies)>=self.source_limit or not valid or '..' in path.split('/'):
+            return ToolMessage(content='This checkpoint permits only bounded reads/searches under /workspace/lib. Return the typed checkpoint with questions for unresolved details.',tool_call_id=request.tool_call['id'],status='error')
+        if name=='grep':
+            args.update(path=path,output_mode='content')
+            return request.override(tool_call={**request.tool_call,'args':args})
+        return request
+
+    def wrap_tool_call(self,request,handler):
+        checked=self.guarded(request)
+        return checked if isinstance(checked,ToolMessage) else handler(checked)
+
+    async def awrap_tool_call(self,request,handler):
+        checked=self.guarded(request)
+        return checked if isinstance(checked,ToolMessage) else await handler(checked)
+
+    def wrap_model_call(self,request,handler):return handler(self.narrow(request))
+    async def awrap_model_call(self,request,handler):return await handler(self.narrow(request))
 
 
 class Span(BaseModel):
@@ -152,13 +204,15 @@ and passing after a source fix. No source change is permitted at this stage.'''
                    'distinguish heard claims from visible facts. Speaker labels are uncertain '
                    'and never identities or authorization. Ask about conflicting evidence.')
     agent = create_harness(model, backend, tools=tools, system_prompt=prompt,
-        response_format=ToolStrategy(schema, handle_errors=False))
+        response_format=ToolStrategy(schema, handle_errors=False),
+        middleware=[RequireAudioEvidence(audio_only=audio_only)] if has_audio else [])
     request = {"recording_id": task["id"], "condition": condition, "quoted_issue": task["problem_statement"],
                "extracted_claims": extraction["predictions"]}
     raw = {"id": task["id"], "image": backend.image, "base_commit": backend.base_commit,
            "source_archive_sha256": backend.source_archive_sha256, "initial_source_fingerprint": before,
            "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(), "model": model.model,
            "condition": condition, "messages": []}
+    if has_audio:raw['evidence_policy']='require-audio-metadata-transcript-bounded-source-v2'
     destination.parent.mkdir(parents=True, exist_ok=True)
     messages, structured = [], None
     with tracing_context(enabled=False):
