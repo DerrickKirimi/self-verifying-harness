@@ -277,8 +277,34 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
     Its model source file is byte-identical to the existing canonical1638 task,
     whose actual Harbor0/1 remains linked; no duplicate claim/task is exported.
     Fresh v5 score2/11 [5.14%,47.70%], three considered/eight unattempted, still
-    no gate pass. Case1679 candidate1 is running (exec2864). Last read after repair:
-    charged/reserved$5.595517, available$6.404483, three
+    no gate pass. Case1679 candidate1 (exec2864) is terminal without a generated
+    check: final response MAX_TOKENS,7864 output tokens all reported as reasoning,
+    no tool call/code and no executed check versions. Candidate2 (exec13546)
+    completes a check. An initial rejection based on raw-source stack offsets is
+    corrected after actual CDP source capture: compiled lines75/106 are the wrong
+    loop-type assertions, after popup selections pass. Original review and failed
+    diagnostics are preserved; no generated test is changed or added. The exact
+    frozen check is aligned and repair is now running. See
+    `notes/runs/m3-standard-submission-v5-1679-stack-review.json`.
+    Case1655 candidate1 (exec22822) is terminal: MAX_TOKENS,7863
+    output tokens all reported as reasoning, no code or executed check. Its
+    candidate2 (exec29053) is terminal with assertions but explicitly rejected:
+    it reuses text nodes captured before setColor and observes empty computed
+    style rather than the recorded wrong fill color, without establishing a
+    current connected node. No source fix or third candidate is authorized.
+    Case1610 candidate1 (exec99230) now has two actual post-navigation editor
+    failures after valid active/attached initial state; its exact check is
+    aligned; repair61864 passes its generated check but fails a held-out native
+    regression because cancellation loses an unsaved edit. The source fix is not
+    fully verified and is not exported. Do not feed held-out test details to the
+    next generation model. The1679 repair12249 now passes its exact check and1792
+    native tests/seven unchanged skips (1799 discovered). Its source bytes equal
+    the existing canonical task; no duplicate is exported. Fresh v5 checkpoint:
+    4/11 valid pairs [15.17%,64.62%],3/11 full repairs [9.75%,56.56%], six
+    considered/five unattempted, gate not yet passed. Case1928 reproduction72501
+    now observes actual space-tool drag resize an empty pool from60 to160; its
+    exact check is aligned and repair is running (exec44724). Last read after that
+    reproduction: charged/reserved$6.961779, available$5.038221, three
     uncertain reservations retained.
 19. Release audit found no supported later-day model-policy renewal: the probe
     writes a current access timestamp but a hardcoded old pricing date, and the
@@ -307,4 +333,4 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 | M0 visual supplied-oracle corpus | Passed: 11/11, Wilson 95% [74.12%, 100%]; frozen manifest saved |
 | M1 ingestion/retrieval/MCP | Passed: selected hit@1 9/11 [52.30%,94.86%], hit@5 11/11 [74.12%,100%]; weak strict localization; audio functional/MCP smoke pass |
 | M2 grounded claims/code checkpoint | Refined numerical gate passed: 10/11 [62.26%,98.38%]; all source unchanged; independent human scoring outstanding |
-| M3 generated verification/fix/Harbor | V2 complete2/11 [5.14%,47.70%] fails; fresh v5 partial1/11 [1.62%,37.74%], nine unattempted; three distinct public tasks plus ordinary audio have actual Harbor0/1; MVP incomplete |
+| M3 generated verification/fix/Harbor | V2 complete2/11 fails; v5 checkpoint4/11 valid pairs [15.17%,64.62%],3/11 full repairs [9.75%,56.56%], evaluation in progress; three distinct public tasks plus ordinary audio have actual Harbor0/1; MVP incomplete |

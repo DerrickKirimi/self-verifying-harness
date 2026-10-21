@@ -1,0 +1,35 @@
+{
+  "previous_review": {
+    "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+    "aligned": false,
+    "reviewer": "Codex AI controller review; not independent human adjudication",
+    "reason": "The primary recorded requirement concerns the serialized loop type. Both complete base executions stop at popup-entry active-class assertions before reaching the business-object type and exported XML assertions. The generated code contains those later assertions, but they were never observed failing on the buggy source. A popup-selection assertion alone is an insufficient oracle for the recorded serialization claim. No source fix is authorized from this supporting failure. Preserve this result and both candidate attempts; do not grant a third candidate or silently reorder the frozen test."
+  },
+  "corrected_review": {
+    "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+    "aligned": true,
+    "reviewer": "Codex AI controller review; not independent human adjudication",
+    "reason": "Corrected using actual loaded webpack source: stack lines75/106 are the MultiInstanceLoopCharacteristics type assertions, after successful initial standard-loop and actual popup selections. The model type remains wrong, directly reproducing the data-type defect underlying the recorded serialized-loop bug. The unchanged check also asserts correct exported XML after repair; its XML assertion is not claimed as the first base failure. The prior rejection incorrectly mapped compiled to original lines and is preserved unchanged. Diagnostic check SHA and base source archive equal the original; no test version was added.",
+    "previous_review_sha256": "52967f02a68c200e5c04bc087306980d554fea91aaa1731d09dd13cd4dc54ad1",
+    "diagnostic_identity": {
+      "scope": "Trusted CDP source capture, not a new generated candidate or fail/pass claim",
+      "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+      "loaded_source_sha256": "56ff1d476ac6ad20bbb4bca326bc84040666a2f9fae7bb5f1df583b54d27854a",
+      "diagnostic_config_sha256": "a343528292c787d9ae157d278c4a0f6612089b224ce208f14c31bc09cb917e4c",
+      "diagnostic_reporter_sha256": "c40609720a09690ca9525d777d7d1beaa62305d2d1a252ec666b38269fd31d50",
+      "exit_code": 1,
+      "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f"
+    },
+    "stack_lines": [
+      {
+        "line": 75,
+        "text": "    expect(Object(lib_util_ModelUtil__WEBPACK_IMPORTED_MODULE_4__[\"is\"])(loopCharacteristics, 'bpmn:MultiInstanceLoopCharacteristics')).to.be.true;"
+      },
+      {
+        "line": 106,
+        "text": "    expect(Object(lib_util_ModelUtil__WEBPACK_IMPORTED_MODULE_4__[\"is\"])(loopCharacteristics, 'bpmn:MultiInstanceLoopCharacteristics')).to.be.true;"
+      }
+    ]
+  },
+  "scope": "Correction of a mistaken compiled-stack interpretation; exact original check/base source retained, no new generated version"
+}

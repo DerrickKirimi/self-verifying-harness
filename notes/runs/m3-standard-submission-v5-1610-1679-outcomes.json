@@ -1,0 +1,238 @@
+{
+  "scope": "Fresh v5 pairs;1610 native regression rejects full fix/export;1679 corrected using loaded source mapping and same canonical source, no duplicate task",
+  "cases": [
+    {
+      "id": "swebench-bpmn-1610",
+      "status": "native_regressions_failed",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features - label-editing plane switch should cancel direct editing when switching planes",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected true to be false\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:47:58)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          },
+          {
+            "name": "features - label-editing plane switch should cancel direct editing when navigating via breadcrumbs",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected true to be false\n    at eval (webpack-internal:///./test/SvhGeneratedSpec.js:74:58)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610@sha256:e04c512ea4dd182059b2eea39716ebd7ee750db6008d8442c2dd65ff9d62f767",
+        "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+        "source_is_base": true,
+        "source_archive_sha256": "098b95be7c6d21231475901c1fad8dcad255aa98340cafbe836078c3adab4f2a",
+        "baseline_fingerprint": "5a41c038b38548bc2ff724d1fa2994b8c21b7008c597aa9fc6c035288e3729e6",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "fbeaffe3f22e16f1e3eaa44ce58e2a94c0d10aefb4acabf1abbe34b1c9695272"
+      },
+      "post": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features - label-editing plane switch should cancel direct editing when switching planes",
+            "success": true,
+            "skipped": false,
+            "log": []
+          },
+          {
+            "name": "features - label-editing plane switch should cancel direct editing when navigating via breadcrumbs",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1610@sha256:e04c512ea4dd182059b2eea39716ebd7ee750db6008d8442c2dd65ff9d62f767",
+        "base_commit": "c657944a7af9d3eab1a7900ed3340395110ca754",
+        "source_is_base": false,
+        "source_archive_sha256": "098b95be7c6d21231475901c1fad8dcad255aa98340cafbe836078c3adab4f2a",
+        "baseline_fingerprint": "5a41c038b38548bc2ff724d1fa2994b8c21b7008c597aa9fc6c035288e3729e6",
+        "source_files_sha256": {
+          "lib/features/label-editing/LabelEditingProvider.js": "1ef7aa8d25d16eda333351920da8f7c3400a3ad6fc9117dd2577c9e83b3507e9"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "4bd5f59b4dbc12c3c587b58b6f652abc41a8d847f41671aee4142982bfb7728f"
+      },
+      "alignment_review": {
+        "check_sha256": "251e60695003f15623c33aca6355ec2f20fa2ea169da99d6c760b31372a20e55",
+        "aligned": true,
+        "reviewer": "Codex AI controller review; not independent human adjudication",
+        "reason": "Both cases activate real direct editing on the nested-plane task and first assert active editing with an attached textbox parent. One switches from collapsedProcess_plane to the distinct rootProcess; the other clicks the actual root breadcrumb and confirms the new rootProcess id. Completed base failures are true-versus-false in the post-action textbox-removal/cancellation assertions, not an initial setup failure. This directly checks the recorded editing overlay remaining after plane navigation. The check never sets the root to itself or manually deletes the editor."
+      },
+      "native": {
+        "complete": true,
+        "exit_code": 1,
+        "discovered": 1776,
+        "skipped": 7,
+        "executed": 1769,
+        "failures": [
+          {
+            "name": "features - label-editing basics should submit on root element changed",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected 'FOO' to equal 'new value'\n    at eval (webpack-internal:///./test/spec/features/label-editing/LabelEditingProviderSpec.js:184:30)\n    at Modeler.invoke (webpack-internal:///../testbed/node_modules/didi/dist/index.esm.js:207:15)\n    at Context.eval (webpack-internal:///./test/helper/index.js:243:20)"
+            ]
+          }
+        ],
+        "observation_sha256": "b17ba9175a6781243bfd58922e8929acbba10f66f1279e6d7a28c7e32faa2042"
+      },
+      "generation_sha256": {
+        "candidate.json": "0549ab2a5901d44985dadebf33ea0a022e739dad1e166846ad1f6d50ec002da5",
+        "source-fix.json": "02e1cfbd266052e995bf363b65e89d183ecc567486e99d704738878643176aea",
+        "reproduce-trace.json": "f6eea2f670498644c212826266ba05f318dd71c09ba80690938f7e0c0b54287e",
+        "repair-trace.json": "afb245d31c677709d2b281367323572d56bfbf64121b5910da44174dde8523af"
+      }
+    },
+    {
+      "id": "swebench-bpmn-1679",
+      "status": "full_generated_repair",
+      "pre": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to parallel multi-instance characteristics",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected false to be true\n    at Context.eval (webpack-internal:///./test/SvhGeneratedSpec.js:75:142)"
+            ]
+          },
+          {
+            "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to sequential multi-instance characteristics",
+            "success": false,
+            "skipped": false,
+            "log": [
+              "AssertionError: expected false to be true\n    at Context.eval (webpack-internal:///./test/SvhGeneratedSpec.js:106:142)"
+            ]
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 1,
+        "timed_out": false,
+        "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": true,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {},
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "0894edfd171df5048fef96fb883d11a1331e6397f40285b6f05fb149ac93884b"
+      },
+      "post": {
+        "complete": true,
+        "errors": [],
+        "results": [
+          {
+            "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to parallel multi-instance characteristics",
+            "success": true,
+            "skipped": false,
+            "log": []
+          },
+          {
+            "name": "features/popup-menu - replace menu provider loop characteristics should switch from standard loop to sequential multi-instance characteristics",
+            "success": true,
+            "skipped": false,
+            "log": []
+          }
+        ],
+        "browser": "Chrome Headless 151.0.0.0 (Linux x86_64)",
+        "disconnected": false,
+        "total": 2,
+        "skipped": 0,
+        "exit_code": 0,
+        "timed_out": false,
+        "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+        "image": "swebench/sweb.eval.x86_64.bpmn-io_1776_bpmn-js-1679@sha256:b9e7aeef61162391296294a52b21d21643b1c1b919184bb50002d77cca56e28c",
+        "base_commit": "6eb9aceb843a43ff6ae6d6d640d22ae84c508315",
+        "source_is_base": false,
+        "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f",
+        "baseline_fingerprint": "ef2dde0723d3ae0e65fd97922ab79e79029922cbdebb5ce4e24ec78bfcd3586e",
+        "source_files_sha256": {
+          "lib/features/popup-menu/ReplaceMenuProvider.js": "41b0003ca600e4852847c0df566937b5fb5682670377cd208b4d0076f7354125"
+        },
+        "runner_sha256": "deab6aad272c64192806f1de87663bddff8a8b3b896f4c8018a29fd497c9071c",
+        "console_sha256": "72ba93a5d57e25653e4c648dac4e707c31ee2b8b6fd39b05991605d159c98496"
+      },
+      "alignment_review": {
+        "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+        "aligned": true,
+        "reviewer": "Codex AI controller review; not independent human adjudication",
+        "reason": "Corrected using actual loaded webpack source: stack lines75/106 are the MultiInstanceLoopCharacteristics type assertions, after successful initial standard-loop and actual popup selections. The model type remains wrong, directly reproducing the data-type defect underlying the recorded serialized-loop bug. The unchanged check also asserts correct exported XML after repair; its XML assertion is not claimed as the first base failure. The prior rejection incorrectly mapped compiled to original lines and is preserved unchanged. Diagnostic check SHA and base source archive equal the original; no test version was added.",
+        "previous_review_sha256": "52967f02a68c200e5c04bc087306980d554fea91aaa1731d09dd13cd4dc54ad1",
+        "diagnostic_identity": {
+          "scope": "Trusted CDP source capture, not a new generated candidate or fail/pass claim",
+          "check_sha256": "800d9addb04c4612a08f270c57ac099c6fde4a643fe8d95722da6e9bf7637b3d",
+          "loaded_source_sha256": "56ff1d476ac6ad20bbb4bca326bc84040666a2f9fae7bb5f1df583b54d27854a",
+          "diagnostic_config_sha256": "a343528292c787d9ae157d278c4a0f6612089b224ce208f14c31bc09cb917e4c",
+          "diagnostic_reporter_sha256": "c40609720a09690ca9525d777d7d1beaa62305d2d1a252ec666b38269fd31d50",
+          "exit_code": 1,
+          "source_archive_sha256": "f7c474c69b4cfd2ae8f939d4182372c47069d15a5cc5a46964a5f0742e19996f"
+        },
+        "stack_lines": [
+          {
+            "line": 75,
+            "text": "    expect(Object(lib_util_ModelUtil__WEBPACK_IMPORTED_MODULE_4__[\"is\"])(loopCharacteristics, 'bpmn:MultiInstanceLoopCharacteristics')).to.be.true;"
+          },
+          {
+            "line": 106,
+            "text": "    expect(Object(lib_util_ModelUtil__WEBPACK_IMPORTED_MODULE_4__[\"is\"])(loopCharacteristics, 'bpmn:MultiInstanceLoopCharacteristics')).to.be.true;"
+          }
+        ]
+      },
+      "native": {
+        "complete": true,
+        "exit_code": 0,
+        "discovered": 1799,
+        "skipped": 7,
+        "executed": 1792,
+        "failures": [],
+        "observation_sha256": "f28a0ab930ad933dbe8da47aa2d5fc1aeb502c454f623474588e9ce247851dfc"
+      },
+      "generation_sha256": {
+        "candidate.json": "fcd35ea44037a4bb37ce096621ee52c70ee4f02a2b05c514f21a93304e5f918b",
+        "source-fix.json": "15e57756c4226aa632c3fe36497889af12dcae7a4b9a2303bbaf4b8f402372a0",
+        "reproduce-trace.json": "87b953a5182f5b2008767e6ddf8826530691bd61d34bee91ac3e43c3c9ee9311",
+        "repair-trace.json": "48ebf3757474a1763ee749a7cb715d0fbe7f3dadd74fb461ec68cffa28bc582f"
+      },
+      "canonical_task": "tasks/generated-v1/swebench-bpmn-1679",
+      "canonical_source_identical": true,
+      "canonical_bundle_sha256": "22a11c721dedabac0e64624a0e4cf08a0c65a30e6e967a1c970946bfe27aff0f",
+      "actual_harbor_report": "notes/runs/harbor-generated-v1-1679-buildx.json"
+    }
+  ],
+  "budget": {
+    "cap_microdollars": 12000000,
+    "charged_or_reserved_microdollars": 6718164,
+    "available_microdollars": 5281836,
+    "unsettled_requests": 3
+  }
+}
