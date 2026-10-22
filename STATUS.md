@@ -71,6 +71,12 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 
 ## Next concrete step
 
+**Goal blocked on independent human judgments.** The same condition remains
+unresolved at implementation checkpoint21, release audit22 and the current
+revalidation23. The preceding audit turn made progress by revalidating artifacts
+and correcting documentation; this turn finds no remaining autonomous action
+that can satisfy human provenance. No inference or repeated trial is needed.
+
 **Complete the independent human review described in `docs/independent-review.md`.**
 Both frozen media-grounded and issue-only packets are ready; no paid model call
 is needed for that review. Do not claim independent judgments or full MVP shipping
@@ -80,7 +86,7 @@ historical and frozen; release adapter changes after it intentionally prevent
 resuming it under mismatched source hashes. Any further evaluation needs a new
 prospectively pinned method, not extra versions in exhausted cases.
 
-The numbered entries below preserve chronological implementation history; entry22
+The numbered entries below preserve chronological implementation history; entry23
 is the latest measured checkpoint.
 
 1. M0/M1 passed. M2 sequential exec93013 is terminal: all eleven cases in both
@@ -400,6 +406,18 @@ is the latest measured checkpoint.
     MVP completion is not claimed. Budget remains$8.454073 charged/reserved,
     $3.741605 available, three uncertain reservations retained. The next step
     remains the human handoff above, not another model evaluation or M4 feature.
+
+23. [RUN/INF] Revalidated the human handoff after the automatic continuation.
+    Both templates remain blank:11 rows/33 undecided fields each. None of the
+    four documented private human review/score files exists. No human response
+    has arrived, and the prior input request remains pending. This is the same
+    unresolved requirement recorded at checkpoints21 and22, now verified again;
+    it requires an actual human reviewer, not another AI/model evaluation.
+    Mark the goal blocked rather than repeat audit turns or invent provenance.
+    Resume when completed independent judgments are provided, score both frozen
+    conditions with the documented commands, record disagreements and actual
+    intervals, and repeat the completion audit before claiming MVP shipping.
+    No source changes, paid calls or task reruns in this revalidation.
 
 ## Evidence and history
 
