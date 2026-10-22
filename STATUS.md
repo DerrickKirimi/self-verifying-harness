@@ -71,19 +71,22 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 
 ## Next concrete step
 
-**Goal resumed; the owner explicitly deferred human review on2026-10-22.**
+**Goal blocked; the owner explicitly deferred human review on2026-10-22.**
 Do not ask for it again now. The optional offline terminal guide in entry24 is
 ready for a later review; it supplies no decisions. Independent human provenance
 remains required for final acceptance, and no paid call can satisfy it.
 
-[RUN/INF] Resumed audit2: the previous turn made concrete progress with the
-guided handoff. Current revalidation finds both11-row templates still entirely
-undecided and none of the four documented human review/score files present.
-No further required engineering action was identified after the release audit
-and completed guide. This turn is a no-progress blocker recheck, not a verified
-process wait. The owner's deferral stands; do not request review again now or
-spend the unused$4 on unrelated evaluations. Goal remains active pending the
-fresh resumed blocked-audit threshold; no judgments or paid requests were made.
+[RUN/INF] Resumed audit3 revalidates the same unmet requirement after the guided
+handoff turn and resumed audit2. Both11-row templates still have33 undecided
+fields each; none of the four documented human review/score files exists.
+The preceding turn was a no-progress blocker recheck, not a live-process wait.
+No remaining autonomous action can supply independent human provenance. Mark
+this freshly resumed goal blocked after three consecutive checks of that same
+condition. The owner's deferral stands; do not ask again now or spend the
+unused$4 on unrelated evaluations. No model calls or judgments were made.
+Resume upon actual independent judgments, score both frozen conditions with
+the documented commands, and repeat the completion audit before claiming MVP
+shipping. This is a human acceptance blocker, not budget exhaustion.
 
 **Complete the independent human review described in `docs/independent-review.md`.**
 Both frozen media-grounded and issue-only packets are ready; no paid model call
