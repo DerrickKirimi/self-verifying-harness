@@ -1,0 +1,23 @@
+{
+  "scope": "Read-only checks of actual frozen packets; no human decisions or paid calls",
+  "previews": [
+    {
+      "condition": "issue+media",
+      "rows": 11,
+      "prediction_sha256": "8c083aefd5b7784c092479055aa95a98298c906ae1524979cc39070b21153ed7",
+      "evidence_hashes_valid": true,
+      "judgments_recorded": 0,
+      "human_provenance_authenticated": false
+    },
+    {
+      "condition": "issue-only",
+      "rows": 11,
+      "prediction_sha256": "40d832a5b299928fb688d97fefb19331455c5119a8233ee7e404cdcb7916651b",
+      "evidence_hashes_valid": true,
+      "judgments_recorded": 0,
+      "human_provenance_authenticated": false
+    }
+  ],
+  "generation_requests": 0,
+  "human_review_complete": false
+}

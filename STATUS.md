@@ -38,8 +38,8 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 - [CODE/SRC] Authorized Gemini credentials remain in the external private file
   named by gitignored `.env`; never print or commit keys/screenshots/account IDs.
   Initial local API cap was $4.00; the owner's explicit additional funding now
-  authorizes a cumulative $12.195678 (latest explicit five-dollar allowance;
-  see entry20). Persistent
+  authorizes a cumulative $12.454073 (latest four-dollar allowance;
+  see entry24). Persistent
   `svh.budget` reservations are tested, and a budget-covered model transport is now tested.
   Reasoning and sync/async summarization calls are covered; ambiguous charges
   retain reservations and SDK/middleware retries are disabled. `notes/2026-10-20-gemini-access.md`.
@@ -71,22 +71,21 @@ trials. A no-Gemini recording-to-repair replay is runnable from the README. [RUN
 
 ## Next concrete step
 
-**Goal blocked on independent human judgments.** The same condition remains
-unresolved at implementation checkpoint21, release audit22 and the current
-revalidation23. The preceding audit turn made progress by revalidating artifacts
-and correcting documentation; this turn finds no remaining autonomous action
-that can satisfy human provenance. No inference or repeated trial is needed.
+**Goal resumed; the owner explicitly deferred human review on2026-10-22.**
+Do not ask for it again now. The optional offline terminal guide in entry24 is
+ready for a later review; it supplies no decisions. Independent human provenance
+remains required for final acceptance, and no paid call can satisfy it.
 
 **Complete the independent human review described in `docs/independent-review.md`.**
 Both frozen media-grounded and issue-only packets are ready; no paid model call
 is needed for that review. Do not claim independent judgments or full MVP shipping
 until a real reviewer supplies them. All inference/Harbor workers are terminal.
-The README demo is runnable; all148 harness tests pass. The completed v5 run is
+The README demo is runnable; all159 harness tests pass. The completed v5 run is
 historical and frozen; release adapter changes after it intentionally prevent
 resuming it under mismatched source hashes. Any further evaluation needs a new
 prospectively pinned method, not extra versions in exhausted cases.
 
-The numbered entries below preserve chronological implementation history; entry23
+The numbered entries below preserve chronological implementation history; entry24
 is the latest measured checkpoint.
 
 1. M0/M1 passed. M2 sequential exec93013 is terminal: all eleven cases in both
@@ -418,6 +417,27 @@ is the latest measured checkpoint.
     conditions with the documented commands, record disagreements and actual
     intervals, and repeat the completion audit before claiming MVP shipping.
     No source changes, paid calls or task reruns in this revalidation.
+
+24. [SRC/CODE/RUN] The owner resumed the goal, authorized up to$4 further usage
+    and explicitly said they will not review now. The new cumulative cap is
+    **$12.454073**, conservatively allowing exactly$4 more from the existing
+    **$8.454073** charged/reserved checkpoint; all three ambiguous reservations
+    remain retained. `notes/2026-10-22-four-dollar-authorization.md` records it.
+    Completed an offline guided handoff: `scripts/review_m2.py` and
+    `svh.review` verify frozen prediction/media/contact-sheet bindings, display
+    actual claims/references, collect explicit reviewer decisions, and save
+    only confirmed rows to owner-only ignored files. Resume preserves prior
+    judgments, refuses changed bindings/reviewers, and locks each output against
+    concurrent guided sessions. Quit/EOF/interrupt leaves unanswered rows null;
+    there are no defaults, model calls or assertions of human authentication.
+    Both actual packets pass `--preview`,11 rows each and zero decisions written:
+    `notes/runs/2026-10-22-guided-review-preview.json`. All **159 harness tests
+    pass**, one expected invalid-tier warning, including synthetic review/quit/
+    resume/provenance/privacy checks. No actual human judgments or paid calls
+    were made. The previous goal turn only revalidated/reported the blocker;
+    this resumed turn makes concrete progress by removing manual JSON editing
+    from the eventual human handoff. Final acceptance remains pending rather
+    than waived. Running instructions are in `docs/independent-review.md`.
 
 ## Evidence and history
 

@@ -7,6 +7,42 @@ needed. On the owner's current workspace the eleven source recordings and
 contact sheets already exist. A fresh clone needs the vetted M0 corpus first;
 see [external admission](../notes/2026-10-20-external-admission.md).
 
+## Guided terminal review, when ready
+
+[CODE] The optional terminal guide avoids editing JSON by hand. It validates the
+frozen prediction, recording and contact-sheet hashes, displays each prediction
+and reference with source paths, and asks for explicit decisions and a reason.
+It does not load previous AI judgment files, open network services or call a
+model. Preview validates the packet without recording any judgments:
+
+```sh
+.venv/bin/python -I scripts/review_m2.py --condition media --preview
+.venv/bin/python -I scripts/review_m2.py --condition issue-only --preview
+```
+
+[CODE] When a human reviewer is available, run each condition separately:
+
+```sh
+.venv/bin/python -I scripts/review_m2.py --condition media \
+  --reviewer your-reviewer-id --output data/runtime/m2/independent-human-review.json
+.venv/bin/python -I scripts/review_m2.py --condition issue-only \
+  --reviewer your-reviewer-id --output data/runtime/m2/independent-human-issue-only.json
+```
+
+[CODE/INF] Watch the full recording using the displayed path before judging the
+source; the guide does not infer that you watched it. Each row is saved only
+after explicit confirmation. Type `q`, press Ctrl-C or close input to retain
+completed rows and leave the remaining fields undecided. Resume with the same
+command and reviewer identifier. Output stays owner-only under ignored
+`data/runtime/`; changed provenance or another reviewer is refused. The guide
+can start from an exact blank copied template, but never overwrites existing
+decisions to initialize a new reviewer. Its session lock prevents two guides
+writing the same output at once. A declared identifier does not authenticate
+human provenance, and collecting all rows does not automatically pass a gate.
+Run the scoring commands below afterward and retain disagreements.
+
+## Manual review and scoring
+
 ```sh
 .venv/bin/python -I scripts/prepare_m2_review.py \
   --predictions notes/runs/m2-refined-media.json \

@@ -52,7 +52,7 @@ ledger. Funding preserves every settled charge and uncertain reservation, reject
 stale/reused amounts and never re-enables an unexpected-overage lock. Keep new
 allowance below actual provider balance and monthly headroom; neither is fetched
 automatically by the harness. The example records a historical funding event. The latest allowance is recorded
-in [the five-dollar authorization](../notes/2026-10-21-additional-five-dollar-authorization.md);
+in [the four-dollar authorization](../notes/2026-10-22-four-dollar-authorization.md);
 do not reuse either authorization for another increase.
 
 ## Ordinary input, without benchmark gold
