@@ -80,7 +80,7 @@ historical and frozen; release adapter changes after it intentionally prevent
 resuming it under mismatched source hashes. Any further evaluation needs a new
 prospectively pinned method, not extra versions in exhausted cases.
 
-The numbered entries below preserve chronological implementation history; entry21
+The numbered entries below preserve chronological implementation history; entry22
 is the latest measured checkpoint.
 
 1. M0/M1 passed. M2 sequential exec93013 is terminal: all eleven cases in both
@@ -384,6 +384,22 @@ is the latest measured checkpoint.
     worker remains. README and usage instructions are current. Independent human
     adjudication remains the unresolved protocol requirement; full MVP shipping
     is not claimed.
+
+22. [RUN] Release audit on2026-10-22 revalidates four current bundle manifests,
+    every bundled file and eight retained Harbor trial/log hashes plus actual
+    primary/native/independent results. All agree with published nop0/oracle1.
+    Both M2 conditions and full M3 score were recomputed without inference;
+    numerical results remain unchanged. Both blank human packets actually fail
+    scoring, with22 rows/66 undecided fields. No completed human review is found
+    at the documented private handoff paths. Corrected stale usage-guide gate,
+    Flex policy and funding text. Evidence:
+    `notes/2026-10-22-mvp-release-audit.md` and
+    `notes/runs/2026-10-22-release-artifact-audit.json`. No code/task bundle
+    changes, paid calls, new browser trials or human decisions in this audit.
+    Asked for the actual independent judgments; goal remains active and full
+    MVP completion is not claimed. Budget remains$8.454073 charged/reserved,
+    $3.741605 available, three uncertain reservations retained. The next step
+    remains the human handoff above, not another model evaluation or M4 feature.
 
 ## Evidence and history
 

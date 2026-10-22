@@ -1,0 +1,138 @@
+{
+  "scope": "Offline revalidation of retained proof artifacts; no new inference, browser execution or human judgments",
+  "public_bundles": [
+    {
+      "task": "tasks/generated-v1/swebench-bpmn-1679",
+      "bundle_sha256": "22a11c721dedabac0e64624a0e4cf08a0c65a30e6e967a1c970946bfe27aff0f",
+      "all_bundle_files_match": true,
+      "retained_trial_results_and_logs_match": true,
+      "harbor_report": "notes/runs/harbor-generated-v1-1679-buildx.json",
+      "trials": [
+        {
+          "agent": "nop",
+          "actual_reward": 0,
+          "trial_result_sha256": "ad65624b32a3da87803b3dade62f606bc2933625a68755b033a5d1b824b5fc1a",
+          "completed_primary_tests": 2
+        },
+        {
+          "agent": "oracle",
+          "actual_reward": 1,
+          "trial_result_sha256": "0e8680c86479a00df7beb99b3b10740009ac7f65da507ff76884979284803c0d",
+          "completed_primary_tests": 2,
+          "native_executed_passes": 1792,
+          "native_skips": 7,
+          "independent_checks": 1
+        }
+      ]
+    },
+    {
+      "task": "tasks/generated-v2/swebench-bpmn-1638",
+      "bundle_sha256": "749f12c7be6b9e0e6cbdb93c6ebe0357eb087223e9d2d624c83ddcf2f3ecbff0",
+      "all_bundle_files_match": true,
+      "retained_trial_results_and_logs_match": true,
+      "harbor_report": "notes/runs/harbor-generated-v2-1638.json",
+      "trials": [
+        {
+          "agent": "nop",
+          "actual_reward": 0,
+          "trial_result_sha256": "f5105d4a2c01025bc4bb6428ad25b64a6548fcff23bd77fd7caf71ca9489954b",
+          "completed_primary_tests": 1
+        },
+        {
+          "agent": "oracle",
+          "actual_reward": 1,
+          "trial_result_sha256": "0235fb327dfa6876af5ede8d9617ed6cf971fc084b1a7624cf9789c3be0d7ee0",
+          "completed_primary_tests": 1,
+          "native_executed_passes": 1772,
+          "native_skips": 7,
+          "independent_checks": 0
+        }
+      ]
+    },
+    {
+      "task": "tasks/generated-v5/swebench-bpmn-1640",
+      "bundle_sha256": "10abf23c4a0eded5a893a4be4095a488026d00efcb18c21c63982deda9dd3b97",
+      "all_bundle_files_match": true,
+      "retained_trial_results_and_logs_match": true,
+      "harbor_report": "notes/runs/harbor-generated-v5-1640.json",
+      "trials": [
+        {
+          "agent": "nop",
+          "actual_reward": 0,
+          "trial_result_sha256": "c0bd85838e90357d28e711bca562655c80cf713fc5c5c2f535fb3aa594132335",
+          "completed_primary_tests": 1
+        },
+        {
+          "agent": "oracle",
+          "actual_reward": 1,
+          "trial_result_sha256": "fd3e810acbaeac7e8bba10335a2321c31377ea54495fc22468bebf4d5b9f3561",
+          "completed_primary_tests": 1,
+          "native_executed_passes": 1776,
+          "native_skips": 7,
+          "independent_checks": 1
+        }
+      ]
+    },
+    {
+      "task": "tasks/generated-v5/swebench-bpmn-1928",
+      "bundle_sha256": "05ead8ba4f24cdd2dca6568f5c7995d590224f14f8032abd99f4f20bbe679bec",
+      "all_bundle_files_match": true,
+      "retained_trial_results_and_logs_match": true,
+      "harbor_report": "notes/runs/harbor-generated-v5-1928.json",
+      "trials": [
+        {
+          "agent": "nop",
+          "actual_reward": 0,
+          "trial_result_sha256": "ff65a7ece9041e5716af1ed6503859aeebc69dca2243838f595fd72c8cf1dfb9",
+          "completed_primary_tests": 1
+        },
+        {
+          "agent": "oracle",
+          "actual_reward": 1,
+          "trial_result_sha256": "d2aec9f61bd6ff12938439509dfb6e6b7618801a7c4cc0cb05de50beef1d6e40",
+          "completed_primary_tests": 1,
+          "native_executed_passes": 1889,
+          "native_skips": 7,
+          "independent_checks": 0
+        }
+      ]
+    }
+  ],
+  "human_review_packets": [
+    {
+      "template": "evals/m2-human-review-template.json",
+      "prediction_sha256": "8c083aefd5b7784c092479055aa95a98298c906ae1524979cc39070b21153ed7",
+      "rows": 11,
+      "undecided_fields": 33,
+      "scorer": "UNREVIEWED: replace with an independent human reviewer identifier",
+      "bound_contact_sheets_match": true
+    },
+    {
+      "template": "evals/m2-human-issue-only-template.json",
+      "prediction_sha256": "40d832a5b299928fb688d97fefb19331455c5119a8233ee7e404cdcb7916651b",
+      "rows": 11,
+      "undecided_fields": 33,
+      "scorer": "UNREVIEWED: replace with an independent human reviewer identifier",
+      "bound_contact_sheets_match": true
+    }
+  ],
+  "paid_generation_requests": 0,
+  "independent_human_review_complete": false,
+  "full_mvp_complete": false,
+  "blank_review_scoring_checks": [
+    {
+      "condition": "issue+media",
+      "returncode": 1,
+      "refused_unreviewed_template": true,
+      "reason": "Judgment decisions must be explicit booleans",
+      "score_file_created": false
+    },
+    {
+      "condition": "issue-only",
+      "returncode": 1,
+      "refused_unreviewed_template": true,
+      "reason": "Judgment decisions must be explicit booleans",
+      "score_file_created": false
+    }
+  ]
+}

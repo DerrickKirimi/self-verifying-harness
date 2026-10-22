@@ -5,11 +5,14 @@ verified generated repair without Gemini calls, start with the
 [README demo](../README.md#try-the-recording-to-repair-demo). The commands below
 cover fresh model-backed work and individual stages.
 
-[CODE/RUN] M0/M1 and refined numerical M2 checks are measured. Generated M3 checks
-are being evaluated. Cases1679 and1638 have observed generated fail/pass repairs,
-independent regressions and real Harbor nop/oracle rewards0/1. The1679 package
-also has finite wrong-fix controls. The all-case gate remains incomplete.
-Independent human claim adjudication remains outstanding. See `STATUS.md`.
+[RUN] M0/M1 and refined numerical M2 checks are measured. The completed,
+financially amended eleven-case v5 run passes the numerical M3 gate:5/11 valid
+fail/pass pairs (Wilson95% [21.27%,71.99%]),4/11 full native-passing repairs
+([15.17%,64.62%]),zero pending stages. Four distinct public task bundles have
+actual Harbor nop/oracle rewards0/1; the1679 and1640 packages also have finite
+wrong-fix controls. See the [final results](../notes/2026-10-21-m3-standard-submission-v5-results.md).
+Independent human claim adjudication remains outstanding; full MVP shipping is
+not declared. See [the review handoff](independent-review.md) and `STATUS.md`.
 
 ## Setup
 
@@ -48,8 +51,9 @@ before starting another worker. Configuration alone cannot raise an existing
 ledger. Funding preserves every settled charge and uncertain reservation, rejects
 stale/reused amounts and never re-enables an unexpected-overage lock. Keep new
 allowance below actual provider balance and monthly headroom; neither is fetched
-automatically by the harness. The owner's current funding decision is recorded
-in the referenced note; do not reuse it for another increase.
+automatically by the harness. The example records a historical funding event. The latest allowance is recorded
+in [the five-dollar authorization](../notes/2026-10-21-additional-five-dollar-authorization.md);
+do not reuse either authorization for another increase.
 
 ## Ordinary input, without benchmark gold
 
@@ -168,7 +172,8 @@ claims and inspect code from an ordinary task before generating its check:
 
 [CODE/SRC] The default service tier is Standard. To use the separately reviewed
 Flex tier, add `--service-tier flex --thinking medium` to **both** stage commands.
-Flex requires fresh access metadata and `notes/runs/gemini-flex-policy.json`;
+Flex requires fresh access metadata bound to `notes/runs/gemini-price-policy.json`,
+which contains separately reviewed Standard and Flex rates;
 the transport reserves the full input-context limit plus maximum output at the
 matching reviewed prices. It permits one request attempt, a fifteen-minute
 timeout, and no automatic Standard fallback. Queuing can make a stage take longer.
